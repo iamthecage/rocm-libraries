@@ -1,0 +1,1 @@
+/opt/rocm/llvm/bin/llvm-objdump: error: '/opt/rocm/lib/hipblaslt/library/TensileLibrary_HH_HH_HA_Bias_Aux_SAV_UA_Type_HH_HPA_Contraction_l_Ailk_Bljk_Cijk_Dijk_gfx1201.co': The file was not recognized as a valid object file

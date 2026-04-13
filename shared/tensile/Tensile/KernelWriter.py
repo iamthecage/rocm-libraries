@@ -32,6 +32,7 @@ from .SolutionStructs import Solution
 import abc
 from collections.abc import Sequence
 import os
+import re
 import shutil
 import subprocess
 import copy
@@ -5369,6 +5370,101 @@ for codeObjectFileName in codeObjectFileNames:
 
     return firstPart + secondPart
 
+  @staticmethod
+  def _convertWaitcntForGfx12(kernelSource):
+    """Convert pre-GFX12 s_waitcnt instructions to GFX12 split wait instructions.
+
+    GFX12 replaced the unified s_waitcnt with separate counters:
+      s_waitcnt lgkmcnt(N) -> s_wait_dscnt N  (DS/LDS operations)
+                              s_wait_kmcnt N   (scalar memory operations)
+      s_waitcnt vmcnt(N)   -> s_wait_loadcnt N (buffer/global loads)
+                              s_wait_storecnt N (buffer/global stores, only for N==0)
+      s_waitcnt lgkmcnt(N) & vmcnt(M) -> all of the above
+      s_waitcnt 0          -> wait for all counters
+    """
+    def _replace_lgkmcnt(m):
+      indent = m.group(1)
+      n = m.group(2)
+      comment = m.group(3) or ""
+      lines = []
+      lines.append("%ss_wait_dscnt %s%s" % (indent, n, comment))
+      lines.append("%ss_wait_kmcnt %s" % (indent, n))
+      return "\n".join(lines)
+
+    def _replace_vmcnt(m):
+      indent = m.group(1)
+      n = m.group(2)
+      comment = m.group(3) or ""
+      lines = []
+      lines.append("%ss_wait_loadcnt %s%s" % (indent, n, comment))
+      if n == "0":
+        lines.append("%ss_wait_storecnt 0" % indent)
+      return "\n".join(lines)
+
+    def _replace_combined(m):
+      indent = m.group(1)
+      n1 = m.group(2)  # first counter value
+      n2 = m.group(3)  # second counter value
+      comment = m.group(4) or ""
+      # Determine which is lgkmcnt and which is vmcnt
+      text = m.group(0)
+      if "lgkmcnt" in text[:text.index("vmcnt")] if "lgkmcnt" in text and "vmcnt" in text else True:
+        lgkm, vm = n1, n2
+      else:
+        vm, lgkm = n1, n2
+      lines = []
+      lines.append("%ss_wait_dscnt %s%s" % (indent, lgkm, comment))
+      lines.append("%ss_wait_kmcnt %s" % (indent, lgkm))
+      lines.append("%ss_wait_loadcnt %s" % (indent, vm))
+      if vm == "0":
+        lines.append("%ss_wait_storecnt 0" % indent)
+      return "\n".join(lines)
+
+    def _replace_zero(m):
+      indent = m.group(1)
+      comment = m.group(2) or ""
+      lines = []
+      lines.append("%ss_wait_dscnt 0%s" % (indent, comment))
+      lines.append("%ss_wait_kmcnt 0" % indent)
+      lines.append("%ss_wait_loadcnt 0" % indent)
+      lines.append("%ss_wait_storecnt 0" % indent)
+      return "\n".join(lines)
+
+    # Pattern: s_waitcnt lgkmcnt(N) & vmcnt(M) or s_waitcnt vmcnt(M) & lgkmcnt(N)
+    # Must come before individual patterns
+    kernelSource = re.sub(
+      r'^(\s*)s_waitcnt\s+lgkmcnt\((\d+)\)\s*(?:&\s*)?vmcnt\((\d+)\)(.*?)$',
+      lambda m: _replace_combined(m),
+      kernelSource, flags=re.MULTILINE)
+    kernelSource = re.sub(
+      r'^(\s*)s_waitcnt\s+vmcnt\((\d+)\)\s*(?:&\s*)?lgkmcnt\((\d+)\)(.*?)$',
+      lambda m: "%ss_wait_loadcnt %s%s\n%s%s%ss_wait_dscnt %s\n%ss_wait_kmcnt %s" % (
+        m.group(1), m.group(2), m.group(4) or "",
+        m.group(1), "s_wait_storecnt 0\n" + m.group(1) if m.group(2) == "0" else "",
+        m.group(1), m.group(3),
+        m.group(1), m.group(3)),
+      kernelSource, flags=re.MULTILINE)
+
+    # Pattern: s_waitcnt lgkmcnt(N)
+    kernelSource = re.sub(
+      r'^(\s*)s_waitcnt\s+lgkmcnt\((\d+)\)(.*?)$',
+      _replace_lgkmcnt,
+      kernelSource, flags=re.MULTILINE)
+
+    # Pattern: s_waitcnt vmcnt(N)
+    kernelSource = re.sub(
+      r'^(\s*)s_waitcnt\s+vmcnt\((\d+)\)(.*?)$',
+      _replace_vmcnt,
+      kernelSource, flags=re.MULTILINE)
+
+    # Pattern: s_waitcnt 0 (wait for everything)
+    kernelSource = re.sub(
+      r'^(\s*)s_waitcnt\s+0\b(.*?)$',
+      _replace_zero,
+      kernelSource, flags=re.MULTILINE)
+
+    return kernelSource
+
   def getKernelObjectAssemblyFile(self, kernel):
     asmPath = self.getAssemblyDirectory()
     # write assembly file to assembly directory
@@ -5400,6 +5496,10 @@ for codeObjectFileName in codeObjectFileNames:
         print(kernelFoundMessage + assemblyFileName)
     else:
       kernelSource = self.getKernelSource(kernel)
+
+      # GFX12: convert old-style s_waitcnt to split wait instructions
+      if hasattr(self, 'version') and self.version[0] >= 12:
+        kernelSource = self._convertWaitcntForGfx12(kernelSource)
 
       if globalParameters["PrintLevel"] >= 3:
         print("write_assemblyFilename %s" % assemblyFileName)
