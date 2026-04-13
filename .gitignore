@@ -12,3 +12,4 @@ CMakeUserPresets.json
 
 # claude tmp files
 .nfs*
+shared/tensile/next-tuning/hipblaslt_kernels_gfx1201.dis
