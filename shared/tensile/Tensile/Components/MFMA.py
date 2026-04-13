@@ -28,7 +28,13 @@ class WMMASelection(MFMA):
     def __call__(self, writer, accOutStart, accOutEnd, in0, in1, accInStart, accInEnd, accStoreCIdx, firstIter):
         kernel = writer.kernel
         inType = kernel["ProblemType"]["DataType"].toNameAbbrev()
-        neg = " neg_lo:[1,1,1]" if (inType == "i8") else ""
+        if inType == "i8":
+            # V2 (RDNA4/gfx12) has 2 source operands, V1 (RDNA3/gfx11) has 3
+            from ..Common import globalParameters
+            is_wmma_v2 = globalParameters["AsmCaps"][writer.version].get("HasWMMA_V2", False)
+            neg = " neg_lo:[1,1]" if is_wmma_v2 else " neg_lo:[1,1,1]"
+        else:
+            neg = ""
         inType = "iu8" if inType == "i8" else inType
         outType = kernel["ProblemType"]["ComputeDataType"].toNameAbbrev()
         if kernel["ProblemType"]["DataType"].isComplex():

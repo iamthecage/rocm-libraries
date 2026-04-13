@@ -106,8 +106,8 @@ class LraTileAssignmentMFMA(LraTileAssignment):
         # get constant parameter
         tile01           = tP["tile01Idx"]
         waveWidth        = kernel["WavefrontSize"]
-        inputPerThreadA  = writer.lrvwA if kernel["UnrollMajorLDSA"] else kernel["MIInputPerThread"]
-        inputPerThreadB  = writer.lrvwB if kernel["UnrollMajorLDSB"] else kernel["MIInputPerThread"]
+        inputPerThreadA  = writer.lrvwA if kernel["UnrollMajorLDSA"] else kernel["MIInputPerThreadA"]
+        inputPerThreadB  = writer.lrvwB if kernel["UnrollMajorLDSB"] else kernel["MIInputPerThreadB"]
         inputPerThread   = max(inputPerThreadA, inputPerThreadB)
         LdsPad           = kernel["LdsPad%s" % tc] if kernel["LdsBlockSizePerPad%s" % tc] == 0 else 0
 

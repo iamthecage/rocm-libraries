@@ -3963,9 +3963,9 @@ class KernelWriter(metaclass=abc.ABCMeta):
     if kernel["EnableMatrixInstruction"] and kernel["MIInputPerThread"] > 1 and \
        kernel["VgprForLocalReadPacking"] and kernel["ClusterLocalRead"]:
       if (not kernel["UnrollMajorLDSA"]):
-        self.lrvwTileA = min(kernel["MIInputPerThread"], kernel["VectorWidthA"]) # should not exceed MIInputPerThread
+        self.lrvwTileA = min(kernel["MIInputPerThreadA"], kernel["VectorWidthA"]) # should not exceed MIInputPerThreadA
       if (not kernel["UnrollMajorLDSB"]):
-        self.lrvwTileB = min(kernel["MIInputPerThread"], kernel["VectorWidthB"]) # should not exceed MIInputPerThread
+        self.lrvwTileB = min(kernel["MIInputPerThreadB"], kernel["VectorWidthB"]) # should not exceed MIInputPerThreadB
     # DirectToVgpr + pack (v_perm)
     self.packDTVA = kernel["DirectToVgprA"] and self.lrvwTileA > 1
     self.packDTVB = kernel["DirectToVgprB"] and self.lrvwTileB > 1
@@ -3977,7 +3977,7 @@ class KernelWriter(metaclass=abc.ABCMeta):
     else:
       if kernel["EnableMatrixInstruction"]:
         # MI + UMLDS, we need minimum of MIInputPerThread for lrvw
-        self.lrvwA = kernel["MIInputPerThread"]
+        self.lrvwA = kernel["MIInputPerThreadA"]
         if kernel["DirectToVgprA"]:
           # DirectToVgprA case, ignore LocalReadVectorWidth and use GlobalLoadVectorWidth instead.
           self.lrvwA = vwa
@@ -3988,7 +3988,7 @@ class KernelWriter(metaclass=abc.ABCMeta):
     else:
       if kernel["EnableMatrixInstruction"]:
         # MI + UMLDS, we need minimum of MIInputPerThread for lrvw
-        self.lrvwB = kernel["MIInputPerThread"]
+        self.lrvwB = kernel["MIInputPerThreadB"]
         if kernel["DirectToVgprB"]:
           # DirectToVgprB case, ignore LocalReadVectorWidth and use GlobalLoadVectorWidth instead.
           self.lrvwB = vwb
@@ -3996,14 +3996,14 @@ class KernelWriter(metaclass=abc.ABCMeta):
           # MI + UMLDS, we need minimum of MIInputPerThread for lrvw
           # DirectToVgprA + TLUA + UnrollMajorLDSB=False case, allow wider LocalReadVectorWidth
           self.lrvwB = kernel["LocalReadVectorWidth"]
-          self.useWiderLocalReadB = self.lrvwB > kernel["MIInputPerThread"]
+          self.useWiderLocalReadB = self.lrvwB > kernel["MIInputPerThreadB"]
       else:
         self.lrvwB = 1
 
     # Wider LocalRead
     if kernel["EnableMatrixInstruction"]:
-      self.numReadsIterCoalescedA = ceil(self.lrvwA / kernel["MIInputPerThread"]) if kernel["UnrollMajorLDSA"] else 1
-      self.numReadsIterCoalescedB = ceil(self.lrvwB / kernel["MIInputPerThread"]) if kernel["UnrollMajorLDSB"] else 1
+      self.numReadsIterCoalescedA = ceil(self.lrvwA / kernel["MIInputPerThreadA"]) if kernel["UnrollMajorLDSA"] else 1
+      self.numReadsIterCoalescedB = ceil(self.lrvwB / kernel["MIInputPerThreadB"]) if kernel["UnrollMajorLDSB"] else 1
     else:
       self.numReadsIterCoalescedA  = 1
       self.numReadsIterCoalescedB  = 1

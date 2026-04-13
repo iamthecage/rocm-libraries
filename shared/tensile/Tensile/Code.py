@@ -774,8 +774,39 @@ class SrdUpperValue11XX(BitfieldUnion):
     return cls(fields=SrdUpperFields11XX.default())
 
 
+class SrdUpperFields12XX(BitfieldStructure):
+  _fields_ = [("dst_sel_x",      ctypes.c_uint, 3),
+              ("dst_sel_y",      ctypes.c_uint, 3),
+              ("dst_sel_z",      ctypes.c_uint, 3),
+              ("dst_sel_w",      ctypes.c_uint, 3),
+              ("format",         ctypes.c_uint, 7),
+              ("_unusedA",       ctypes.c_uint, 2),
+              ("index_stride",   ctypes.c_uint, 2),
+              ("add_tid_enable", ctypes.c_uint, 1),
+              ("resource_level", ctypes.c_uint, 1),
+              ("_unusedB",       ctypes.c_uint, 3),
+              ("oob_select",     ctypes.c_uint, 2),
+              ("type",           ctypes.c_uint, 2)]
+
+
+  @classmethod
+  def default(cls):
+    return cls(format         = 32,
+               oob_select     = 3)
+
+
+class SrdUpperValue12XX(BitfieldUnion):
+  _fields_ = [("fields", SrdUpperFields12XX), ("value", ctypes.c_uint32)]
+
+  @classmethod
+  def default(cls):
+    return cls(fields=SrdUpperFields12XX.default())
+
+
 def SrdUpperValue(isa):
-  if isa[0] >= 11:
+  if isa[0] >= 12:
+    return SrdUpperValue12XX.default()
+  elif isa[0] == 11:
     return SrdUpperValue11XX.default()
   elif isa[0] == 10:
     return SrdUpperValue10XX.default()

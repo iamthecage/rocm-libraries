@@ -1321,8 +1321,8 @@ class KernelWriterAssembly(KernelWriter):
     valuBlocksA = PLRplus1A * kernel["InnerUnroll"]
     valuBlocksB = PLRplus1B * kernel["InnerUnroll"]
     if kernel["EnableMatrixInstruction"]:
-      self.numVgprValuAPerBlock = kernel["MIWaveTileA"] * kernel["MIInputPerThread"] * tPA["bpe"] // self.bpr
-      self.numVgprValuBPerBlock = kernel["MIWaveTileB"] * kernel["MIInputPerThread"] * tPB["bpe"] // self.bpr
+      self.numVgprValuAPerBlock = kernel["MIWaveTileA"] * kernel["MIInputPerThreadA"] * tPA["bpe"] // self.bpr
+      self.numVgprValuBPerBlock = kernel["MIWaveTileB"] * kernel["MIInputPerThreadB"] * tPB["bpe"] // self.bpr
     else:
       self.numVgprValuAPerBlock = kernel["ThreadTileA"] * tPA["bpe"] // self.bpr
       self.numVgprValuBPerBlock = kernel["ThreadTileB"] * tPB["bpe"] // self.bpr
@@ -7294,6 +7294,8 @@ class KernelWriterAssembly(KernelWriter):
 
     # calculate constant
     is_mfma          = globalParameters["AsmCaps"][self.version]["HasMFMA"]
+    is_wmma_v1       = globalParameters["AsmCaps"][self.version].get("HasWMMA_V1", False)
+    is_wmma_v2       = globalParameters["AsmCaps"][self.version].get("HasWMMA_V2", False)
 
     numRegistersIn   = miInputType.numRegisters()
     numRegistersOut  = kernel["MIRegPerOut"]
@@ -7306,12 +7308,16 @@ class KernelWriterAssembly(KernelWriter):
       accs_per_wave = accs_per_wave // 2
     dividerFortidInK = kernel["MatrixInstN"] * kernel["MatrixInstB"]
     numMIInput       = kernel["MIInputPerThread"]
+    numMIInputA      = kernel["MIInputPerThreadA"]
+    numMIInputB      = kernel["MIInputPerThreadB"]
     miInTypeName     = "bf16" if kernel["ProblemType"]["Fp16AltImpl"] else miInputType.toNameAbbrev() # v_mfma_[...xK]<InType>
     miInTypeName     = "iu8" if ((not is_mfma) and miInTypeName == "i8") else miInTypeName
     miOutTypeName    = miInputType.MIOutputTypeNameAbbrev() # v_mfma_<OutType>..
     miOutTypeName    = miOutTypeName if is_mfma else kernel["ProblemType"]["ComputeDataType"].toNameAbbrev()
 
     vgprPerInput     = int(numMIInput * numRegistersIn)
+    vgprPerInputA    = int(numMIInputA * numRegistersIn)
+    vgprPerInputB    = int(numMIInputB * numRegistersIn)
     shiftPerElement  = int(numRegistersIn * 32)
     s_nop            = 0
     accStoreCIdx     = self.startaccValuC1 if kernel["StoreCInUnroll"] and lastKinloop else 0
@@ -7337,7 +7343,7 @@ class KernelWriterAssembly(KernelWriter):
 
     # handle multiple K element in MFMA instruction
     if tail and kernel["MatrixInstK"] > 1:
-      if is_mfma: # mfma
+      if is_mfma or is_wmma_v2: # mfma / wmma v2
         # skip K mask code if BufferLoad + TLU
         # BufferLoad + TLU case, global read for out of range K is already 0 because out of range K is always out of array
         # (this is not true in TLU=False case or not BufferLoad case)
@@ -7437,7 +7443,7 @@ class KernelWriterAssembly(KernelWriter):
           # use s_nop only when actual k mask code is generated here
           s_nop = 2
 
-      else: # wmma
+      else: # wmma v1
         iui = 0
 
         abReg      = self.vgprPool.checkOutAligned(2, 2, "abReg")
@@ -7503,7 +7509,7 @@ class KernelWriterAssembly(KernelWriter):
     enableReverseInner = True
     if (kernel["PrefetchGlobalRead"] == 2 and u == kernel["LoopIters"] - 1 and \
         (kernel["DirectToVgprA"] or kernel["DirectToVgprB"])) or \
-       (not is_mfma) or \
+       (not is_mfma and not is_wmma_v2) or \
        (kernel["ProblemType"]["DataType"].isComplex()):
       enableReverseInner = False
 

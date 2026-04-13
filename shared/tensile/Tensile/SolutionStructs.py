@@ -2406,6 +2406,10 @@ class Solution(collections.abc.Mapping):
         else:
           state['MIInputPerThread'] = state["MatrixInstruction"][2]  # RDNA3: override to K=16 for 8-VGPR A/B operands
 
+      # Per-operand MIInputPerThread (matches tensilelite for forward compatibility)
+      state['MIInputPerThreadA'] = state['MIInputPerThread']
+      state['MIInputPerThreadB'] = state['MIInputPerThread']
+
     else:
       state["EnableMatrixInstruction"] = False
 

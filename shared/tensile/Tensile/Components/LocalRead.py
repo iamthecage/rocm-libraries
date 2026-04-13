@@ -159,7 +159,7 @@ class LocalReadMFMA(LocalRead):
 
         numVectorsPerTile = kernel["MIWaveTile"][tile01] // vectorWidth
         numReadsPerVector = vectorWidth if kernel["UnrollMajorLDS%s"%tc] else (vectorWidth * tP["bpe"]) // int(blockWidth * 4)
-        numReadsPerUnroll = ceil(tP["bpe"] * lrvw / int(blockWidth * 4)) if kernel["UnrollMajorLDS%s"%tc] else kernel["MIInputPerThread"] # bytes/register
+        numReadsPerUnroll = ceil(tP["bpe"] * lrvw / int(blockWidth * 4)) if kernel["UnrollMajorLDS%s"%tc] else kernel["MIInputPerThread%s"%tc] # bytes/register
 
         numVgpr  = int(ceil(blockWidth))
         lrvwTile = writer.lrvwTileA if tc == "A" else writer.lrvwTileB
@@ -202,17 +202,17 @@ class LocalReadMFMA(LocalRead):
                             isHigh8Bits = 0
                             isHigh16Bits = 0
                             numElemPerReg = bpr//tP["bpe"]
-                            destVgpr = vgpr(baseVgprStr + "_D%u+%u"%(rIdx%(kernel["MIInputPerThread"]), vIdx*numVgpr), numVgpr)
+                            destVgpr = vgpr(baseVgprStr + "_D%u+%u"%(rIdx%(kernel["MIInputPerThread%s"%tc]), vIdx*numVgpr), numVgpr)
 
                             # use wider local read + v_perm_b32
                             if rIdx == numReadsPerUnroll-1:
                                 for i in range(0, numVgpr):
                                     # convert from [tile][MiInputPerThread][vector] to [tile][vector][MiInputPerThread]
-                                    vgprIdx = (vIdx*numVgpr+i)*tP["bpe"]*kernel["MIInputPerThread"]//bpr*min(bpr//tP["bpe"],vectorWidth)
+                                    vgprIdx = (vIdx*numVgpr+i)*tP["bpe"]*kernel["MIInputPerThread%s"%tc]//bpr*min(bpr//tP["bpe"],vectorWidth)
                                     vgprOffset = 0
                                     numElemPerRegIter = 2 if tP["bpe"] == 1 and vectorWidth <= 2 else numElemPerReg
                                     for vectorIdx in range(0, numElemPerRegIter):
-                                        for elementIdx in range(0, tP["bpe"]*kernel["MIInputPerThread"]//bpr):
+                                        for elementIdx in range(0, tP["bpe"]*kernel["MIInputPerThread%s"%tc]//bpr):
                                             src0BufIdx = elementIdx*numElemPerReg+1
                                             src1BufIdx = elementIdx*numElemPerReg
                                             srcVregOffset = i+vIdx*numVgpr
