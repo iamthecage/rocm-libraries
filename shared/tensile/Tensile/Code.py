@@ -775,7 +775,7 @@ class SrdUpperValue11XX(BitfieldUnion):
 
 
 def SrdUpperValue(isa):
-  if isa[0] == 11:
+  if isa[0] >= 11:
     return SrdUpperValue11XX.default()
   elif isa[0] == 10:
     return SrdUpperValue10XX.default()

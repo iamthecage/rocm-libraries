@@ -2401,7 +2401,10 @@ class Solution(collections.abc.Mapping):
       isa = tuple(state["ISA"])
       state['MIInputPerThread'] = state["MatrixInstruction"][0] * state["MatrixInstruction"][2] * state["MatrixInstruction"][3] // state["WavefrontSize"]
       if (not globalParameters["AsmCaps"][isa]['HasMFMA']) and globalParameters["AsmCaps"][isa]['HasWMMA']:
-        state['MIInputPerThread'] = state["MatrixInstruction"][2]
+        if isa[0] >= 12:
+          pass  # RDNA4: use the default formula value (= K*M*B/WaveSize), gives correct 4-VGPR A/B operands
+        else:
+          state['MIInputPerThread'] = state["MatrixInstruction"][2]  # RDNA3: override to K=16 for 8-VGPR A/B operands
 
     else:
       state["EnableMatrixInstruction"] = False

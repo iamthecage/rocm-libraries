@@ -1086,9 +1086,12 @@ class KernelWriterAssembly(KernelWriter):
           self.bpeCexternal = self.bpeCinternal
 
     # special case for wmma h and b
+    # RDNA3 WMMA stores f16 accumulators unpacked (1 per VGPR), so inflate bpeCinternal to 4
+    # RDNA4 WMMA stores f16 accumulators packed (2 per VGPR), so keep bpeCinternal = 2
     if (kernel["EnableMatrixInstruction"]
             and globalParameters["AsmCaps"][self.version]["HasWMMA"]
-            and (kernel["ProblemType"]["ComputeDataType"].numRegisters() == 0.5)):
+            and (kernel["ProblemType"]["ComputeDataType"].numRegisters() == 0.5)
+            and self.version[0] < 12):
         self.bpeCinternal = 4
         if kernel["_GlobalAccumulation"]: # TODO SK and kernel["_GlobalAccumulation"] != 'PartialsBuffer':
             self.bpeCexternal = 2
@@ -2561,6 +2564,13 @@ class KernelWriterAssembly(KernelWriter):
     kStr += self.defineDSMacros()
     kStr += self.defineBufferMemoryMacros()
     kStr += self.defineGlobalMemoryMacros()
+    # GFX12: s_barrier replaced by split barrier (s_barrier_signal + s_barrier_wait)
+    if self.version[0] >= 12:
+      kStr += self.endLine
+      kStr += ".macro s_barrier" + self.endLine
+      kStr += "    s_barrier_signal -1" + self.endLine
+      kStr += "    s_barrier_wait -1" + self.endLine
+      kStr += ".endm" + self.endLine
 
     return kStr
 
@@ -7290,6 +7300,10 @@ class KernelWriterAssembly(KernelWriter):
     loopCounterName  = self.loopCounterName(kernel, self.unrollIdx)
     accs_per_wave    = kernel["MatrixInstM"] * kernel["MatrixInstN"] * kernel["MatrixInstB"] \
                        / self.kernel["WavefrontSize"] * numRegistersOut
+    # RDNA4 WMMA: f16/bf16 accumulators are packed (2 per VGPR), halve the register count
+    if not is_mfma and self.version[0] >= 12 \
+       and kernel["ProblemType"]["ComputeDataType"].numRegisters() < 1:
+      accs_per_wave = accs_per_wave // 2
     dividerFortidInK = kernel["MatrixInstN"] * kernel["MatrixInstB"]
     numMIInput       = kernel["MIInputPerThread"]
     miInTypeName     = "bf16" if kernel["ProblemType"]["Fp16AltImpl"] else miInputType.toNameAbbrev() # v_mfma_[...xK]<InType>
@@ -12047,13 +12061,15 @@ class KernelWriterAssembly(KernelWriter):
       tmpSgprRef = self.getTmpSgpr(1)
       tmpSgpr = tmpSgprRef.idx()
     if kernel["ProblemType"]["UseBeta"]:
+      # GFX12: s_cmpk_* removed, use s_cmp_* instead
+      cmpInst = "s_cmp_eq_u32" if self.version[0] >= 12 else "s_cmpk_eq_u32"
       if self.bpeCinternal <= self.bpr: # 1 register to check for Beta==0
-        kStr += inst("s_cmpk_eq_u32", sgpr("Beta"), hex(0), "Beta == 0")
+        kStr += inst(cmpInst, sgpr("Beta"), hex(0), "Beta == 0")
       else: # multiple registers to check for Beta==0
         kStr += inst("s_mov_b32", sgpr(tmpSgpr), sgpr("Beta+0"), "tmp = Beta[0]")
         for i in range(1, self.bpeCinternal//self.bpr):
           kStr += inst("s_or_b32", sgpr(tmpSgpr), sgpr("Beta+%u"%i), sgpr(tmpSgpr), "tmp |= Beta[%u] " % i)
-        kStr += inst("s_cmpk_eq_u32", sgpr(tmpSgpr), hex(0), "Beta == 0")
+        kStr += inst(cmpInst, sgpr(tmpSgpr), hex(0), "Beta == 0")
       kStr += inst("s_cbranch_scc0 %s" % betaLabel, \
           "Branch if Beta is not zero")
       kStr += "\n"
@@ -12100,8 +12116,10 @@ class KernelWriterAssembly(KernelWriter):
     # s01 now = myMT0 = wg0 < nwg0-1 ? MT0 : rMT0
 
     # if rMT0 > 0 goto label_B?_E1
+    # GFX12: s_cmpk_* removed, use s_cmp_* instead
+    cmpGtInst = "s_cmp_gt_u32" if self.version[0] >= 12 else "s_cmpk_gt_u32"
     if self.do["EdgeWrite"]:
-      kStr += inst("s_cmpk_gt_u32", sgpr(tmpS0), hex(0), "rMT0 > 0")
+      kStr += inst(cmpGtInst, sgpr(tmpS0), hex(0), "rMT0 > 0")
       if self.db["ForceEdgeStores"]:
         kStr += inst("s_cmp_eq_u32", sgpr(tmpS0), sgpr(tmpS0), "ForceEdgeStores!")
       kStr += inst("s_cbranch_scc1 %s" % isEdgeTarget, "jump if edges required")
@@ -12122,7 +12140,7 @@ class KernelWriterAssembly(KernelWriter):
 
     # if rMT1 > 0 goto label_B?_E1
     if self.do["EdgeWrite"]:
-      kStr += inst("s_cmpk_gt_u32", sgpr(tmpS0), hex(0), "rMT1 > 0")
+      kStr += inst(cmpGtInst, sgpr(tmpS0), hex(0), "rMT1 > 0")
       kStr += inst("s_cbranch_scc1 %s" % isEdgeTarget, "jump if edges required")
 
     return kStr
@@ -13764,12 +13782,15 @@ class KernelWriterAssembly(KernelWriter):
     rpv = bpl/4.0
 
     if useBuffer:
+      # GFX12 VBUFFER encoding requires 'null' instead of literal 0 for soffset
+      if self.version[0] >= 12 and (soffset == 0 or soffset == "0"):
+        soffset = "null"
       rv = Code.Module("Global Read")
       tailFields = "offen offset:%u"%offset
       # buffer_load offset field is 12-bit.
       # if offset >= 4096, use soffset instead
       if offset >= 4096:
-        if soffset == 0 or soffset == "0":
+        if soffset == 0 or soffset == "0" or soffset == "null":
           tailFields = "offen offset:0"
           soffset = sgpr(self.getTmpSgpr(1).idx())
           rv.addCode(inst("s_mov_b32", soffset, offset, "large offset"))
@@ -13862,7 +13883,8 @@ class KernelWriterAssembly(KernelWriter):
     kStr = ""
 
     if useBuffer:
-      tmpSgpr = 0
+      # GFX12 VBUFFER encoding requires 'null' instead of literal 0 for soffset
+      tmpSgpr = "null" if self.version[0] >= 12 else 0
       # buffer_load offset field is 12-bit.
       # if offset >= 4096, use soffset instead
       if offset >= 4096:
@@ -14019,7 +14041,8 @@ class KernelWriterAssembly(KernelWriter):
                   addr0, addr1, offset, ntStr, hi16=0, vb1Tmp=0, soffset=wsOffset)
       elif dataType.isDouble() or dataType.isSingleComplex():
         if kernel["AtomicAddC"] and not edge:
-          kStr += inst("buffer_atomic_add_f64", vgpr(sumIdx*2, 2), vgpr(addrCalc.addrDVgpr), sgpr("SrdD", 4), "0", "offen offset:{}".format(addrCalc.globalOffset), "AtomicAddC")
+          soff = "null" if self.version[0] >= 12 else "0"
+          kStr += inst("buffer_atomic_add_f64", vgpr(sumIdx*2, 2), vgpr(addrCalc.addrDVgpr), sgpr("SrdD", 4), soff, "offen offset:{}".format(addrCalc.globalOffset), "AtomicAddC")
         else:
           kStr += self.chooseGlobalWrite(useBuffer, bps, sumIdx*2, rpv, \
                     addr0, addr1, offset, ntStr, hi16=0, vb1Tmp=0, soffset=wsOffset)
@@ -14067,12 +14090,13 @@ class KernelWriterAssembly(KernelWriter):
       # use cmpswap_b64 for DGEMM or cmpswap_b32 for DGEMM in CAS loop
       bits = 32 * atomicOpW
       if kernel["BufferStore"]:
+        soff = "null" if self.version[0] >= 12 else "0"
         kStr += "_buffer_atomic_cmpswap_b%u %s, %s, %s %s %s   // %s%s" % \
             (bits, \
             vgpr(addDst,atomicOpW*2), \
             vgpr(addrCalc.addrDVgpr,1), \
             sgpr("SrdD", 4),  \
-            "0 offen offset:%u" % (addrCalc.globalOffset + offset), \
+            "%s offen offset:%u" % (soff, addrCalc.globalOffset + offset), \
             memoryBit,
             "attempt write", self.endLine )
       else:
@@ -14527,12 +14551,13 @@ class KernelWriterAssembly(KernelWriter):
 
             if self.do["GlobalWrite"]:
               if kernel["BufferStore"]:
+                soff = "null" if self.version[0] >= 12 else "0"
                 kStr += "buffer_atomic_add_f%u %s, %s, %s, %s    // %s%s" % \
                     (atomicOpW * 32, \
                      vgpr("ValuC+%u"%sumIdxV,atomicOpW), \
                      vgpr(addrCalc.addrDVgpr,1), \
                      sgpr("SrdD", 4), \
-                     "0 offen offset:%u" % (addrCalc.globalOffset + addrOffset), \
+                     "%s offen offset:%u" % (soff, addrCalc.globalOffset + addrOffset), \
                      "attempt write", self.endLine )
               else:
                 pass # TODO:
