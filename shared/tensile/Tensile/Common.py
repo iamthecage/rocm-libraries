@@ -2016,7 +2016,9 @@ def GetAsmCaps(isaVersion: IsaVersion, hipVersion: SemanticVersion, cachedAsmCap
 
     derivedAsmCaps = {}
     derivedAsmCaps["SupportedISA"]          = tryAssembler(isaVersion, "")
-    derivedAsmCaps["HasExplicitCO"]         = tryAssembler(isaVersion, "v_add_co_u32 v0,vcc,v0,1")
+    # GFX12+ is wave32-only; the carry register is vcc_lo (vcc as 64-bit alias is rejected)
+    _co_probe = "v_add_co_u32 v0,vcc_lo,v0,1" if isaVersion[0] >= 12 else "v_add_co_u32 v0,vcc,v0,1"
+    derivedAsmCaps["HasExplicitCO"]         = tryAssembler(isaVersion, _co_probe)
     derivedAsmCaps["HasExplicitNC"]         = tryAssembler(isaVersion, "v_add_nc_u32 v0,v0,1")
 
     # Syntax of DirectToLds loads has changed: destination vgpr should be omitted
@@ -2031,9 +2033,12 @@ def GetAsmCaps(isaVersion: IsaVersion, hipVersion: SemanticVersion, cachedAsmCap
     derivedAsmCaps["HasSMulHi"]             = tryAssembler(isaVersion, "s_mul_hi_u32 s47, s36, s34")
 
     derivedAsmCaps["HasWMMA"]               = tryAssembler(isaVersion, "v_wmma_f32_16x16x16_f16 v[0:3], v[8:15], v[16:23], v[0:3]") \
-                                           or tryAssembler(isaVersion, "v_wmma_f32_16x16x16_f16 v[0:3], v[8:9], v[10:11], v[0:3]")
+                                           or tryAssembler(isaVersion, "v_wmma_f32_16x16x16_f16 v[0:3], v[8:9], v[10:11], v[0:3]") \
+                                           or tryAssembler(isaVersion, "v_wmma_f32_16x16x16_f16 v[0:7], v[8:11], v[12:15], v[0:7]")
     derivedAsmCaps["HasWMMA_V1"]            = tryAssembler(isaVersion, "v_wmma_f32_16x16x16_f16 v[0:3], v[8:15], v[16:23], v[0:3]")
-    derivedAsmCaps["HasWMMA_V2"]            = tryAssembler(isaVersion, "v_wmma_f32_16x16x16_f16 v[0:3], v[8:9], v[10:11], v[0:3]")
+    # V2: GFX12 wave32 format uses D=8 VGPRs, A=4 VGPRs, B=4 VGPRs
+    derivedAsmCaps["HasWMMA_V2"]            = tryAssembler(isaVersion, "v_wmma_f32_16x16x16_f16 v[0:3], v[8:9], v[10:11], v[0:3]") \
+                                           or tryAssembler(isaVersion, "v_wmma_f32_16x16x16_f16 v[0:7], v[8:11], v[12:15], v[0:7]")
     derivedAsmCaps["HasMFMA"]               = tryAssembler(isaVersion, "v_mfma_f32_32x32x2bf16 a[0:31], v32, v33, a[0:31]") \
                                            or tryAssembler(isaVersion, "v_mfma_f32_32x32x1_2b_f32 a[0:31], v0, v1, a[0:31]")
     derivedAsmCaps["HasMFMA_constSrc"]      = tryAssembler(isaVersion, "v_mfma_f32_32x32x2bf16 a[0:31], v32, v33, 0") \
@@ -2155,6 +2160,7 @@ def GetArchCaps(isaVersion):
   rv["CrosslaneWait"]      = (isaVersion==(9,4,2) or isaVersion==(9,5,0))
   rv["ForceStoreSC1"]      = False
   rv["HasDTLx4"]           = isaVersion==(9,5,0)
+  rv["RequiresWave32"]     = isaVersion[0] >= 12  # GFX12+ is wave32-only; wave64 mode not supported
 
   return rv
 
@@ -2167,7 +2173,10 @@ def tryAssembler(isaVersion, asmString, debug=False, *options):
   if globalParameters["PrintLevel"] >= 3:
     debug = True
 
-  if isaVersion[0] >= 10:
+  if isaVersion[0] >= 12:
+    # GFX12+ is wave32-only; wave64 mode is not supported on this ISA
+    options += ['-mno-wavefrontsize64']
+  elif isaVersion[0] >= 10:
     options += ['-mwavefrontsize64']
 
   assembler = globalParameters['AssemblerPath']

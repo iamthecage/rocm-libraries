@@ -1,0 +1,329 @@
+warning: AMDGPU precise memory access reporting could not be enabled.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+loading config file /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/ClientParameters.ini
+[New Thread 0x7ffff51ff6c0 (LWP 207660)]
+[New Thread 0x7fffec7ff6c0 (LWP 207661)]
+[New Thread 0x7fffeffff6c0 (LWP 207662)]
+[Thread 0x7fffeffff6c0 (LWP 207662) exited]
+Loading /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_HHS_BH_MT128x128x16_MI16x16x16x1_SN_K1_gfx1201.co
+Log level: Debug
+[New Thread 0x7ffed97fe740 (LWP 207665)]
+[New Thread 0x7ffed8ffc7c0 (LWP 207666)]
+[New Thread 0x7ffed3ffe840 (LWP 207667)]
+[New Thread 0x7ffed37fc8c0 (LWP 207668)]
+[New Thread 0x7ffed2ffa940 (LWP 207669)]
+[New Thread 0x7ffed27f89c0 (LWP 207670)]
+[New Thread 0x7ffed1ff6a40 (LWP 207671)]
+[New Thread 0x7ffed17f4ac0 (LWP 207672)]
+[New Thread 0x7ffed0ff2b40 (LWP 207673)]
+[New Thread 0x7ffeb3ffebc0 (LWP 207674)]
+[New Thread 0x7ffeb37fcc40 (LWP 207675)]
+[New Thread 0x7ffeb2ffacc0 (LWP 207676)]
+[New Thread 0x7ffeb27f8d40 (LWP 207677)]
+[New Thread 0x7ffeb1ff6dc0 (LWP 207678)]
+[New Thread 0x7ffeb17f4e40 (LWP 207679)]
+[New Thread 0x7ffeb0ff2ec0 (LWP 207680)]
+[New Thread 0x7ffe8bffef40 (LWP 207681)]
+[New Thread 0x7ffe8b7fcfc0 (LWP 207682)]
+[New Thread 0x7ffe83fff040 (LWP 207683)]
+[New Thread 0x7ffe8affb0c0 (LWP 207684)]
+[New Thread 0x7ffe8a7f9140 (LWP 207685)]
+[New Thread 0x7ffe89ff71c0 (LWP 207686)]
+[New Thread 0x7ffe897f5240 (LWP 207687)]
+[New Thread 0x7ffe88ff32c0 (LWP 207688)]
+[New Thread 0x7ffe837fd340 (LWP 207689)]
+[New Thread 0x7ffe82ffb3c0 (LWP 207690)]
+[New Thread 0x7ffe827f9440 (LWP 207691)]
+[New Thread 0x7ffe81ff74c0 (LWP 207692)]
+[New Thread 0x7ffe817f5540 (LWP 207693)]
+[New Thread 0x7ffe80ff35c0 (LWP 207694)]
+[New Thread 0x7ffe4bfff640 (LWP 207695)]
+[New Thread 0x7ffe4b7fd6c0 (LWP 207696)]
+[New Thread 0x7ffe4affa740 (LWP 207697)]
+[New Thread 0x7ffe4a7f77c0 (LWP 207698)]
+[New Thread 0x7ffe49ff4840 (LWP 207699)]
+[New Thread 0x7ffe497f18c0 (LWP 207700)]
+[New Thread 0x7ffe48fee940 (LWP 207701)]
+[New Thread 0x7ffe33ffe9c0 (LWP 207702)]
+[New Thread 0x7ffe337fba40 (LWP 207703)]
+[New Thread 0x7ffe32ff8ac0 (LWP 207704)]
+[New Thread 0x7ffe327f5b40 (LWP 207705)]
+[New Thread 0x7ffe31ff2bc0 (LWP 207706)]
+[New Thread 0x7ffe317efc40 (LWP 207707)]
+[New Thread 0x7ffe30feccc0 (LWP 207708)]
+[New Thread 0x7ffe0fffed40 (LWP 207709)]
+[New Thread 0x7ffe0f7fbdc0 (LWP 207710)]
+[New Thread 0x7ffe0eff8e40 (LWP 207711)]
+[New Thread 0x7ffe0e7f5ec0 (LWP 207712)]
+[New Thread 0x7ffe0dff2f40 (LWP 207713)]
+[New Thread 0x7ffe0d7effc0 (LWP 207714)]
+[New Thread 0x7ffe0cfed040 (LWP 207715)]
+[New Thread 0x7ffdeffff0c0 (LWP 207716)]
+[New Thread 0x7ffdef7fc140 (LWP 207717)]
+[New Thread 0x7ffdeeff91c0 (LWP 207718)]
+[New Thread 0x7ffdee7f6240 (LWP 207719)]
+[New Thread 0x7ffdedff32c0 (LWP 207720)]
+[New Thread 0x7ffded7f0340 (LWP 207721)]
+[New Thread 0x7ffdecfed3c0 (LWP 207722)]
+[New Thread 0x7ffdcffff440 (LWP 207723)]
+[New Thread 0x7ffdcf7fc4c0 (LWP 207724)]
+[New Thread 0x7ffdceff9540 (LWP 207725)]
+[New Thread 0x7ffdce7f65c0 (LWP 207726)]
+[New Thread 0x7ffdcdff3640 (LWP 207727)]
+
+Thread 68 "Cijk_Ailk_B-ac2c" received signal SIGSEGV, Segmentation fault.
+Warning: precise memory violation signal reporting is not enabled, reported
+location may not be accurate.  See "show amdgpu precise-memory".
+[Switching to thread 68, lane 0 (AMDGPU Lane 1:1:1:1/0 (0,0,0)[0,0,0])]
+0x00007ffff5e6a198 in ShadowInitStart_10 () from memory://207653#offset=0xd79f00&size=52352
+
+=== CRASH PC (all waves) ===
+
+Thread 71 (AMDGPU Wave 1:1:1:4 (0,0,0)/3 "Cijk_Ailk_B-ac2c"):
+#0  0x00007ffff5e6a198 in ShadowInitStart_10 () from memory://207653#offset=0xd79f00&size=52352
+
+Thread 70 (AMDGPU Wave 1:1:1:3 (0,0,0)/2 "Cijk_Ailk_B-ac2c"):
+#0  0x00007ffff5e6a198 in ShadowInitStart_10 () from memory://207653#offset=0xd79f00&size=52352
+
+Thread 69 (AMDGPU Wave 1:1:1:2 (0,0,0)/1 "Cijk_Ailk_B-ac2c"):
+#0  0x00007ffff5e6a198 in ShadowInitStart_10 () from memory://207653#offset=0xd79f00&size=52352
+
+Thread 68 (AMDGPU Wave 1:1:1:1 (0,0,0)/0 "Cijk_Ailk_B-ac2c"):
+#0  0x00007ffff5e6a198 in ShadowInitStart_10 () from memory://207653#offset=0xd79f00&size=52352
+
+Thread 67 (Thread 0x7ffdcdff3640 (LWP 207727) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 66 (Thread 0x7ffdce7f65c0 (LWP 207726) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 65 (Thread 0x7ffdceff9540 (LWP 207725) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 64 (Thread 0x7ffdcf7fc4c0 (LWP 207724) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 63 (Thread 0x7ffdcffff440 (LWP 207723) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 62 (Thread 0x7ffdecfed3c0 (LWP 207722) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 61 (Thread 0x7ffded7f0340 (LWP 207721) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 60 (Thread 0x7ffdedff32c0 (LWP 207720) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 59 (Thread 0x7ffdee7f6240 (LWP 207719) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 58 (Thread 0x7ffdeeff91c0 (LWP 207718) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 57 (Thread 0x7ffdef7fc140 (LWP 207717) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 56 (Thread 0x7ffdeffff0c0 (LWP 207716) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 55 (Thread 0x7ffe0cfed040 (LWP 207715) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 54 (Thread 0x7ffe0d7effc0 (LWP 207714) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 53 (Thread 0x7ffe0dff2f40 (LWP 207713) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 52 (Thread 0x7ffe0e7f5ec0 (LWP 207712) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 51 (Thread 0x7ffe0eff8e40 (LWP 207711) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 50 (Thread 0x7ffe0f7fbdc0 (LWP 207710) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 49 (Thread 0x7ffe0fffed40 (LWP 207709) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 48 (Thread 0x7ffe30feccc0 (LWP 207708) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 47 (Thread 0x7ffe317efc40 (LWP 207707) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 46 (Thread 0x7ffe31ff2bc0 (LWP 207706) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 45 (Thread 0x7ffe327f5b40 (LWP 207705) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 44 (Thread 0x7ffe32ff8ac0 (LWP 207704) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 43 (Thread 0x7ffe337fba40 (LWP 207703) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 42 (Thread 0x7ffe33ffe9c0 (LWP 207702) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 41 (Thread 0x7ffe48fee940 (LWP 207701) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 40 (Thread 0x7ffe497f18c0 (LWP 207700) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 39 (Thread 0x7ffe49ff4840 (LWP 207699) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 38 (Thread 0x7ffe4a7f77c0 (LWP 207698) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 37 (Thread 0x7ffe4affa740 (LWP 207697) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 36 (Thread 0x7ffe4b7fd6c0 (LWP 207696) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 35 (Thread 0x7ffe4bfff640 (LWP 207695) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 34 (Thread 0x7ffe80ff35c0 (LWP 207694) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 33 (Thread 0x7ffe817f5540 (LWP 207693) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 32 (Thread 0x7ffe81ff74c0 (LWP 207692) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 31 (Thread 0x7ffe827f9440 (LWP 207691) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 30 (Thread 0x7ffe82ffb3c0 (LWP 207690) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 29 (Thread 0x7ffe837fd340 (LWP 207689) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 28 (Thread 0x7ffe88ff32c0 (LWP 207688) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 27 (Thread 0x7ffe897f5240 (LWP 207687) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 26 (Thread 0x7ffe89ff71c0 (LWP 207686) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 25 (Thread 0x7ffe8a7f9140 (LWP 207685) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 24 (Thread 0x7ffe8affb0c0 (LWP 207684) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 23 (Thread 0x7ffe83fff040 (LWP 207683) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 22 (Thread 0x7ffe8b7fcfc0 (LWP 207682) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 21 (Thread 0x7ffe8bffef40 (LWP 207681) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 20 (Thread 0x7ffeb0ff2ec0 (LWP 207680) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 19 (Thread 0x7ffeb17f4e40 (LWP 207679) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 18 (Thread 0x7ffeb1ff6dc0 (LWP 207678) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 17 (Thread 0x7ffeb27f8d40 (LWP 207677) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 16 (Thread 0x7ffeb2ffacc0 (LWP 207676) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 15 (Thread 0x7ffeb37fcc40 (LWP 207675) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 14 (Thread 0x7ffeb3ffebc0 (LWP 207674) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 13 (Thread 0x7ffed0ff2b40 (LWP 207673) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 12 (Thread 0x7ffed17f4ac0 (LWP 207672) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 11 (Thread 0x7ffed1ff6a40 (LWP 207671) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 10 (Thread 0x7ffed27f89c0 (LWP 207670) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 9 (Thread 0x7ffed2ffa940 (LWP 207669) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 8 (Thread 0x7ffed37fc8c0 (LWP 207668) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 7 (Thread 0x7ffed3ffe840 (LWP 207667) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 6 (Thread 0x7ffed8ffc7c0 (LWP 207666) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 5 (Thread 0x7ffed97fe740 (LWP 207665) "tensile-client"):
+#0  0x00007ffff5d0e80b in __GI_sched_yield () at ../sysdeps/unix/syscall-template.S:120
+
+Thread 3 (Thread 0x7fffec7ff6c0 (LWP 207661) "tensile-client"):
+#0  __GI___ioctl (fd=3, request=3222817548) at ../sysdeps/unix/sysv/linux/ioctl.c:36
+
+Thread 2 (Thread 0x7ffff51ff6c0 (LWP 207660) "tensile-client"):
+#0  __GI___ioctl (fd=3, request=3222817548) at ../sysdeps/unix/sysv/linux/ioctl.c:36
+
+Thread 1 (Thread 0x7ffff7df4280 (LWP 207653) "tensile-client"):
+#0  0x00007ffff56668cf in ?? () from /opt/rocm/lib/libhsa-runtime64.so.1
+
+=== FAULTING WAVE REGISTERS ===
+$1 = (void (*)(void)) 0x7ffff5e6a198 <ShadowInitStart_10>
+$2 = void
+$3 = 0x10c40
+$4 = 0xf0
+
+=== SRD A (s8-s11) ===
+$5 = 0xd83feffc
+$6 = 0x901e
+$7 = 0x1004
+$8 = 0x30020000
+
+=== SRD B (s12-s15) ===
+$9 = 0xd8400ffc
+$10 = 0x8ffe
+$11 = 0x1004
+$12 = 0x30020000
+
+=== SRD C (s20-s23) ===
+$13 = 0xd8404000
+$14 = 0x7ffe
+$15 = 0x1517a
+$16 = 0x1001a22c
+
+=== SRD D (s16-s19) ===
+$17 = 0xd840d000
+$18 = 0x7ffe
+$19 = 0x20
+$20 = 0x30016fac
+
+=== GRO_A (v165-v172) max per lane ===
+$21 = {0x4, 0x8, 0xc, 0x10, 0x14, 0x18, 0x1c, 0x20, 0x24, 0x28, 0x2c, 0x30, 0x34, 0x38, 0x3c, 0x40, 0x44, 0x48, 0x4c, 0x50, 0x54, 0x58, 0x5c, 0x60, 0x64, 0x68, 0x6c, 0x70, 0x74, 0x78, 0x7c, 0x80}
+$22 = {0x384, 0x388, 0x38c, 0x390, 0x394, 0x398, 0x39c, 0x3a0, 0x3a4, 0x3a8, 0x3ac, 0x3b0, 0x3b4, 0x3b8, 0x3bc, 0x3c0, 0x3c4, 0x3c8, 0x3cc, 0x3d0, 0x3d4, 0x3d8, 0x3dc, 0x3e0, 0x3e4, 0x3e8, 0x3ec, 0x3f0, 0x3f4, 0x3f8, 0x3fc, 0x400}
+
+=== LWA (v163-v164) ===
+$23 = {0x0, 0x4, 0x8, 0xc, 0x10, 0x14, 0x18, 0x1c, 0x20, 0x24, 0x28, 0x2c, 0x30, 0x34, 0x38, 0x3c, 0x40, 0x44, 0x48, 0x4c, 0x50, 0x54, 0x58, 0x5c, 0x60, 0x64, 0x68, 0x6c, 0x70, 0x74, 0x78, 0x7c}
+$24 = {0x1000, 0x1004, 0x1008, 0x100c, 0x1010, 0x1014, 0x1018, 0x101c, 0x1020, 0x1024, 0x1028, 0x102c, 0x1030, 0x1034, 0x1038, 0x103c, 0x1040, 0x1044, 0x1048, 0x104c, 0x1050, 0x1054, 0x1058, 0x105c, 0x1060, 0x1064, 0x1068, 0x106c, 0x1070, 0x1074, 0x1078, 0x107c}

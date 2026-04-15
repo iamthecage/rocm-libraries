@@ -3,7 +3,7 @@
 #
 #  Tensile v4.47.0
 #  Config: /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201_sgemm_valu.yaml
-#  Date & Time: 14/04/2026 18:40:03
+#  Date & Time: 13/04/2026 22:36:55
 #
 ################################################################################
 
@@ -203,7 +203,7 @@ Multi-Value Parameters:
 
 
 ################################################################################
-# Benchmark Step: Cijk_Ailk_Bljk_SB_00 - 00_Final 12.084s
+# Benchmark Step: Cijk_Ailk_Bljk_SB_00 - 00_Final 10.075s
 # Num Sizes: 1
 # Fork Parameters:
 # Enumerating Solutions
@@ -217,9 +217,9 @@ _NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWC
 UPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_
 WGMTB
 ################################################################################
-Finding unique solutions:   0%|          | 0/1 [00:00<?, ?it/s]Finding unique solutions: 100%|██████████| 1/1 [00:00<00:00, 8756.38it/s]
+Finding unique solutions:   0%|          | 0/1 [00:00<?, ?it/s]Finding unique solutions: 100%|██████████| 1/1 [00:00<00:00, 8338.58it/s]
 # Writing Kernels...
-Generating kernels: 12 thread(s), 1 tasks:   0%|          | 0/1 [00:00<?, ?it/s]Generating kernels: 12 thread(s), 1 tasks: 100%|██████████| 1/1 [00:00<00:00, 881.71it/s]
+Generating kernels: 12 thread(s), 1 tasks:   0%|          | 0/1 [00:00<?, ?it/s]Generating kernels: 12 thread(s), 1 tasks: 100%|██████████| 1/1 [00:00<00:00, 1078.23it/s]
 total vgpr count: 47
 
 write_assemblyFilename /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_K1.s
@@ -238,7 +238,7 @@ b''
 Filtering processing errors: 0it [00:00, ?it/s]Filtering processing errors: 1it [00:00, 67650.06it/s]
 > UserWarning: Kernel file context manager opened without any kernel files.
 Compiling source kernels: 0it [00:00, ?it/s]Compiling source kernels: 0it [00:00, ?it/s]
-Relocating code objects: 0it [00:00, ?it/s]Relocating code objects: 1it [00:00, 10010.27it/s]
+Relocating code objects: 0it [00:00, ?it/s]Relocating code objects: 1it [00:00, 13443.28it/s]
 > UserWarning: Code object files are not compressed in `--no-merge-files` build mode.
 # Kernel Building elapsed time = 1.1 secs
 # Actual Solutions: 1 / 1 after KernelWriter
@@ -258,7 +258,7 @@ run,problem-progress,solution-progress,operation,problem-sizes,solution,validati
 + exit 0
 ################################################################################
 # Cijk_Ailk_Bljk_SB_00
-# 00_Final: End - 13.327s
+# 00_Final: End - 11.293s
 ################################################################################
 
 clientExit=0 (PASS) for ['/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201_sgemm_valu.yaml']
@@ -267,48 +267,13 @@ clientExit=0 (PASS) for ['/home/iamthecage/rocm-libraries/shared/tensile/next-tu
 # DefaultAnalysisParameters: 
 
 ################################################################################
-# Analysing data in 2_BenchmarkData - 13.328s
+# Analysing data in 2_BenchmarkData - 11.295s
 #   ScheduleName: navi48
 #   DeviceNames: ['Device 7550']
 #   ArchitectureName: gfx1201
 #   SolutionImportanceMin: 0.01
 ################################################################################
 
-################################################################################
-# Analyzing: Cijk_Ailk_Bljk_HHS_BH
-# Read: /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu/2_BenchmarkData/Cijk_Ailk_Bljk_HHS_BH_00.yaml
-# ProblemSizes: ProblemSizes
-
-# Solutions:
-#  (0) Cijk_Ailk_Bljk_HHS_BH_MT64x32x8_SN_K1
-################################################################################
-# Merging Solutions:
-                                                     # LogicAnalyzer .............................. 100.0%UnifiedProblemSizes: [[], [], [], [], [], [], [], []]
-ExactProblemSizes: {(128, 128, 1, 16, 128, 128, 128, 16)}
-RangeProblemSizes: {(128, 128, 1, 16, 128, 128, 128, 16)}
-# NumProblemSizes: [0, 0, 0, 0, 0, 0, 0, 0]
-TotalProblems: 0
-TotalSolutions: 1
-TotalSize: 0
-IndexOrder: [2, 3, 0, 1]
-reading datafile /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu/2_BenchmarkData/Cijk_Ailk_Bljk_HHS_BH_00.csv
-# ExactWinners: {}
-problemIndicesForGlobalRange []
-Winners set()
-After Removals:
-
-[] enRule([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])
-[] MultiProblem & NotLastIndex
-> UserWarning: [] MultiProblem & NotLastIndex :: nextRule==None; returning
-# Final Range Logic:
-None
-# Range Logic Complexity: [0, 0, 0, 0, 0, 0, 0, 0]
-
-# Score: 0 ms
-# Exact Logic:
-
-{}
-# writing library logic YAML /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu/3_LibraryLogic/navi48_Cijk_Ailk_Bljk_HHS_BH.yaml
 ################################################################################
 # Analyzing: Cijk_Ailk_Bljk_SB
 # Read: /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu/2_BenchmarkData/Cijk_Ailk_Bljk_SB_00.yaml
@@ -334,6 +299,7 @@ After Removals:
 
 [] enRule([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])
 [] MultiProblem & NotLastIndex
+> UserWarning: [] MultiProblem & NotLastIndex :: nextRule==None; returning
 # Final Range Logic:
 None
 # Range Logic Complexity: [0, 0, 0, 0, 0, 0, 0, 0]
@@ -344,7 +310,7 @@ None
 {}
 # writing library logic YAML /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu/3_LibraryLogic/navi48_Cijk_Ailk_Bljk_SB.yaml
 ################################################################################
-# Finish Analysing data to /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu in 13.340s
+# Finish Analysing data to /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu in 11.302s
 ################################################################################
 
 

@@ -4,6 +4,7 @@ TestParameters:
 GlobalParameters:
   NumElementsToValidate: -1
   KernelTime: True
+  MaxWorkspaceSize: 33554432
   PrintSolutionRejectionReason: True
   MergeFiles: False
   DataInitTypeAlpha: 1
@@ -14,15 +15,19 @@ GlobalParameters:
 
 BenchmarkProblems:
   -
-    - # ProblemType - NN SGEMM (plain f32, no MI)
+    - # ProblemType - NT HGEMM (HPA: f16 input, f32 compute, f16 output) -- B transposed
       OperationType: GEMM
-      DataType: s
+      DataType: h
+      ComputeDataType: s
+      DestDataType: h
+      HighPrecisionAccumulate: True
       TransposeA: False
-      TransposeB: False
+      TransposeB: True
       UseBeta: True
       Batched: True
 
     - # BenchmarkProblemSizeGroup
+      # VALU-only (no WMMA), NT layout: same tile as passing NN config
       InitialSolutionParameters:
       BenchmarkCommonParameters:
         - KernelLanguage: ["Assembly"]
@@ -30,18 +35,25 @@ BenchmarkProblems:
         - WavefrontSize: [32]
       ForkParameters:
         - ThreadTile:
-          - [ 4, 4 ]
+          - [ 4, 2 ]
         - WorkGroup:
           - [ 16, 16, 1 ]
         - PrefetchGlobalRead: [1]
         - PrefetchLocalRead: [1]
         - DepthU: [8]
-        - VectorWidth: [1]
-        - GlobalReadVectorWidth: [1]
+        - VectorWidth: [2]
+        - GlobalReadVectorWidth: [2]
+        - AssertFree0ElementMultiple: [1]
+        - AssertFree1ElementMultiple: [1]
+        - ScheduleLocalWrite: [1]
+        - ScheduleGlobalRead: [1]
+        - ScheduleIterAlg: [1]
+        - OptNoLoadLoop: [1]
+        - StaggerU: [0]
       BenchmarkJoinParameters:
       BenchmarkFinalParameters:
         - ProblemSizes:
-          - Exact: [ 128, 128, 1, 128 ]
+          - Exact: [ 128, 128, 1, 16 ]
 
 LibraryLogic:
     ScheduleName: "navi48"

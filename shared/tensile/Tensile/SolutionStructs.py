@@ -3106,6 +3106,9 @@ class Solution(collections.abc.Mapping):
     if state["WavefrontSize"] == 32 and not globalParameters["ArchCaps"][isa]["HasWave32"]:
       reject(state, "WavefrontSize=32 not supported for ISA {}".format(isa))
 
+    if state["WavefrontSize"] == 64 and globalParameters["ArchCaps"][isa].get("RequiresWave32", False):
+      reject(state, "WavefrontSize=64 not supported for ISA {} (wave32-only architecture)".format(isa))
+
     if state["WavefrontSize"] == 32 and state["KernelLanguage"] == "Source":
       reject(state, "WavefrontSize=32 not yet supported for source kernels.")
 

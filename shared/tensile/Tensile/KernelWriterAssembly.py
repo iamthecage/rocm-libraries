@@ -3418,6 +3418,15 @@ class KernelWriterAssembly(KernelWriter):
 
       if self.kernel["WavefrontSize"] == 32:
         kStr += inst("s_mov_b32", "vcc_hi", "0", "Ensure hi bits are zero")
+        if self.version[0] >= 12:
+          # GFX12 TOWID: hardware delivers WG IDs via ttmp registers, not s2/s3/s4.
+          # ttmp9 = WG_ID_X, ttmp7 = WG_ID_Y (confirmed via probe kernel).
+          # WG_ID_Z: ttmp8 is unverified for Z — use 0 which is correct for all
+          # batch=1 dispatches. TODO: probe ttmp registers in a 3D grid to confirm
+          # which register carries WG_ID_Z before enabling batch > 1.
+          kStr += inst("s_mov_b32", sgpr("WorkGroup0"), "ttmp9", "GFX12 TOWID: WG_ID_X via ttmp9")
+          kStr += inst("s_mov_b32", sgpr("WorkGroup1"), "ttmp7", "GFX12 TOWID: WG_ID_Y via ttmp7")
+          kStr += inst("s_mov_b32", sgpr("WorkGroup2"), "0", "GFX12 TOWID: WG_ID_Z=0 (batch=1; ttmp8 unverified)")
 
       if not self.kernel["DelayRemainingArguments"]:
         kStr += self.loadKernelArguments()
@@ -7376,20 +7385,20 @@ class KernelWriterAssembly(KernelWriter):
             self.vgprPool.checkIn(sgId)
 
           # replace 0 for differnet thread
-          shiftK.addCode(inst("v_cmp_ge_i32", sgpr(tmpSgpr, 2), vgpr(kReg), sgpr(loopCounterName), "check K index >= Size L"))
+          shiftK.addCode(inst("v_cmp_ge_i32", sgpr(tmpSgpr, self.laneSGPRCount), vgpr(kReg), sgpr(loopCounterName), "check K index >= Size L"))
           for bk in range(0, vgprPerInput):
             if needKMaskForA:
               for a in range(0, kernel["MIWaveTileA"]):
                 for iui in range(0, innerUnroll):
                   aStr_base = self.generateSrcStrForMFMA(kernel, self.tPA, innerUnroll, vregSetIdx, vgprPerInput, m, u, iui, a, bk)
                   aStr = vgpr(aStr_base, 1)
-                  shiftK.addCode(inst("v_cndmask_b32", aStr, aStr, hex(0), sgpr(tmpSgpr, 2), "set 0 if K_idx >= sizeL"))
+                  shiftK.addCode(inst("v_cndmask_b32", aStr, aStr, hex(0), sgpr(tmpSgpr, self.laneSGPRCount), "set 0 if K_idx >= sizeL"))
             if needKMaskForB:
               for b in range(0, kernel["MIWaveTileB"]):
                 for iui in range(0, innerUnroll):
                   bStr_base = self.generateSrcStrForMFMA(kernel, self.tPB, innerUnroll, vregSetIdx, vgprPerInput, m, u, iui, b, bk)
                   bStr = vgpr(bStr_base, 1)
-                  shiftK.addCode(inst("v_cndmask_b32", bStr, bStr, hex(0), sgpr(tmpSgpr, 2), "set 0 if K_idx >= sizeL"))
+                  shiftK.addCode(inst("v_cndmask_b32", bStr, bStr, hex(0), sgpr(tmpSgpr, self.laneSGPRCount), "set 0 if K_idx >= sizeL"))
 
           # replace 0 for same thread
           # new logic to set partial 0
@@ -7415,15 +7424,37 @@ class KernelWriterAssembly(KernelWriter):
           if numMIInput > 1:
             abReg   = self.vgprPool.checkOutAligned(vgprPerInput, 2 if vgprPerInput>1 else 1, "abReg")
             shiftK.addCode(inst("_v_sub_u32",    vgpr(kReg), sgpr(loopCounterName), vgpr(kReg), "get distance between size and k index"))
-            shiftK.addCode(inst("v_cmp_lt_i32", sgpr(tmpSgpr,2), vgpr(kReg), numMIInput, "set partial 0 if distance less than input per thread"))
+            shiftK.addCode(inst("v_cmp_lt_i32", sgpr(tmpSgpr, self.laneSGPRCount), vgpr(kReg), numMIInput, "set partial 0 if distance less than input per thread"))
             shiftK.addCode(inst("s_and_b32",    sgpr(tmpSgpr+2), sgpr(loopCounterName), numMIInput-1, "get inputs for edge thread"))
             shiftK.addCode(inst("s_sub_u32",    sgpr(tmpSgpr+2), numMIInput, sgpr(tmpSgpr+2), "use shift to fill 0 for outside element"))
             shiftK.addCode(inst("s_lshl_b32",   sgpr(tmpSgpr+2), sgpr(tmpSgpr+2), log2(shiftPerElement), "use shift to fill 0 for outside element"))
             for bk in range(0, vgprPerInput):
               shiftK.addCode(inst("v_mov_b32", vgpr(abReg+bk), "-1", "set 0xffffffff"))
-            shiftK.addCode(inst("v_lshrrev_b%u" % (vgprPerInput*32), vgpr(abReg, vgprPerInput), sgpr(tmpSgpr+2), vgpr(abReg, vgprPerInput), "rshift mask for partial k"))
+            if vgprPerInput == 4:
+              # v_lshrrev_b128 does not exist on GFX12; emulate with two B64 shifts.
+              # Input: v[abReg:abReg+3] = {0xffffffff x4}, shift s = sgpr(tmpSgpr+2) in [0,128).
+              # lo64 = v[abReg+0:1], hi64 = v[abReg+2:3].
+              # Result: if s < 64: hi64 >>= s; lo64 unchanged (all-ones for all s<64 on all-ones input).
+              #         if s >= 64: lo64 = hi64 >> (s-64); hi64 = 0.
+              # Wave32 only: tmpSgpr+1 is free (v_cmp_lt_i32 writes only tmpSgpr+0 in wave32).
+              label_lt64 = self.getNamedLabelUnique("shiftK_b128_lt64")
+              label_done = self.getNamedLabelUnique("shiftK_b128_done")
+              shiftK.addCode(inst("s_cmp_lt_u32", sgpr(tmpSgpr+2), 64, "test if shift < 64"))
+              shiftK.addCode(inst("s_cbranch_scc1", label_lt64, "branch if s < 64"))
+              # s >= 64: lo64 = hi64 >> (s-64), hi64 = 0
+              shiftK.addCode(inst("s_sub_u32", sgpr(tmpSgpr+1), sgpr(tmpSgpr+2), 64, "s - 64"))
+              shiftK.addCode(inst("v_lshrrev_b64", vgpr(abReg, 2), sgpr(tmpSgpr+1), vgpr(abReg+2, 2), "lo64 = hi64 >> (s-64)"))
+              shiftK.addCode(inst("v_mov_b32", vgpr(abReg+2), 0, "hi64 lo = 0"))
+              shiftK.addCode(inst("v_mov_b32", vgpr(abReg+3), 0, "hi64 hi = 0"))
+              shiftK.addCode(inst("s_branch", label_done, ""))
+              shiftK.addText(label_lt64 + ":\n")
+              # s < 64: hi64 >>= s, lo64 stays all-ones
+              shiftK.addCode(inst("v_lshrrev_b64", vgpr(abReg+2, 2), sgpr(tmpSgpr+2), vgpr(abReg+2, 2), "hi64 >>= s"))
+              shiftK.addText(label_done + ":\n")
+            else:
+              shiftK.addCode(inst("v_lshrrev_b%u" % (vgprPerInput*32), vgpr(abReg, vgprPerInput), sgpr(tmpSgpr+2), vgpr(abReg, vgprPerInput), "rshift mask for partial k"))
             for bk in range(0, vgprPerInput):
-              shiftK.addCode(inst("v_cndmask_b32", vgpr(abReg+bk), "-1", vgpr(abReg+bk), sgpr(tmpSgpr, 2), "select shifted mask for partial k"))
+              shiftK.addCode(inst("v_cndmask_b32", vgpr(abReg+bk), "-1", vgpr(abReg+bk), sgpr(tmpSgpr, self.laneSGPRCount), "select shifted mask for partial k"))
             if needKMaskForA:
               for a in range(0, kernel["MIWaveTileA"]):
                 for iui in range(0, innerUnroll):
