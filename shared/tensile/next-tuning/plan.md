@@ -44,7 +44,11 @@ cd ~/rocm-libraries/shared/tensile/next-tuning
 # sgemm, dgemm, i8gemm (no method suffix = VALU-only families)
 ./run_gfx1201_wide.sh --filter sgemm
 ./run_gfx1201_wide.sh --filter dgemm
-./run_gfx1201_wide.sh --filter i8gemm_n   # matches i8gemm_{nn,nt,tn,tt} but not i8gemm_wmma/valu_gb
+./run_gfx1201_wide.sh --filter hgemm_native
+./run_gfx1201_wide.sh --filter i8gemm_n
+./run_gfx1201_wide.sh --filter i8gemm_t
+./run_gfx1201_wide.sh --filter bf16gemm_native
+   # matches i8gemm_{nn,nt,tn,tt} but not i8gemm_wmma/valu_gb
 
 # --- Step 1d: (optional) Re-run any failures ---
 ./run_gfx1201_wide.sh --rerun-failed
