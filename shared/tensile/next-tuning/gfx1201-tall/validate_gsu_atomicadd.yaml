@@ -1,0 +1,56 @@
+TestParameters:
+  marks: [skip-gfx900, skip-gfx906, skip-gfx908, skip-gfx90a, skip-gfx942, skip-gfx950, skip-gfx1010, skip-gfx1011, skip-gfx1012, skip-gfx1030, skip-gfx1031, skip-gfx1032, skip-gfx1033, skip-gfx1034, skip-gfx1035, skip-gfx1036, skip-gfx1100, skip-gfx1101, skip-gfx1102]
+
+GlobalParameters:
+  NumElementsToValidate: -1
+  KernelTime: True
+  MaxWorkspaceSize: 67108864
+  PrintSolutionRejectionReason: True
+  MergeFiles: False
+  DataInitTypeAlpha: 1
+  DataInitTypeBeta: 0
+  EnqueuesPerSync: 1
+  SyncsPerBenchmark: 1
+  SleepPercent: 0
+
+BenchmarkProblems:
+  -
+    - # SGEMM VALU — GlobalSplitUAtomicAdd coverage
+      # Tests buffer_atomic_add_f32 path (fire-and-forget atomic add)
+      # Requires f32 DataType + BufferStore=True
+      # Validates that gfx12 atomic add assembles correctly
+      OperationType: GEMM
+      DataType: s
+      TransposeA: False
+      TransposeB: False
+      UseBeta: True
+      Batched: True
+
+    - InitialSolutionParameters:
+      BenchmarkCommonParameters:
+        - KernelLanguage: ["Assembly"]
+        - EdgeType: ["ShiftPtr"]
+        - WavefrontSize: [32]
+      ForkParameters:
+        - ThreadTile:
+          - [4, 4]
+        - WorkGroup:
+          - [16, 16, 1]
+        - PrefetchGlobalRead: [0]
+        - PrefetchLocalRead: [0]
+        - DepthU: [8]
+        - VectorWidth: [1]
+        - GlobalReadVectorWidth: [1]
+        - BufferLoad: [True]
+        - BufferStore: [True]
+        - GlobalSplitU: [4]
+        - GlobalSplitUAtomicAdd: [True]
+      BenchmarkFinalParameters:
+        - ProblemSizes:
+          - Exact: [64, 64, 1, 32]   # K=4*DU=32 for GSU=4
+          - Exact: [65, 63, 1, 33]   # edge case
+
+LibraryLogic:
+    ScheduleName: "navi48"
+    DeviceNames: ["Device 7550"]
+    ArchitectureName: "gfx1201"

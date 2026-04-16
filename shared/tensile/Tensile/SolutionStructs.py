@@ -1889,6 +1889,9 @@ class Solution(collections.abc.Mapping):
         outputVectorWidth, RegsPerOut = 1, 2
       else:
         outputVectorWidth, RegsPerOut = 4, 1
+    elif globalParameters["AsmCaps"][isa].get("HasWMMA_V2", False):
+      # GFX12 WMMA V2: 8 consecutive row outputs per lane per instruction block
+      outputVectorWidth, RegsPerOut = 8, 1
     elif globalParameters["AsmCaps"][isa]['HasWMMA']:
       outputVectorWidth, RegsPerOut = 1, 1
     else:
@@ -3148,6 +3151,12 @@ class Solution(collections.abc.Mapping):
         if state["ProblemType"]["DataType"].numRegisters() >=1:
           reject(state, "WMMA only supports half, bf16 and i8 types")
           return
+        if isa[0] >= 12 and not state["ProblemType"]["HighPrecisionAccumulate"] \
+           and state["ProblemType"]["DataType"].numRegisters() < 1:
+          reject(state, "WMMA V2 (gfx12+) non-HPA half/bf16 accumulation is not supported: " + \
+           "packed f16 accumulators cause numVgprPerValuC=0 in the store path. " + \
+           "Use HighPrecisionAccumulate: True for f32 accumulation.")
+          return
       if state["InterleaveAlpha"]:
         reject(state, "Matrix instruction does not support InterleaveAlpha")
         return
@@ -3391,6 +3400,11 @@ class Solution(collections.abc.Mapping):
             state["VectorWidthB"] = state["GlobalLoadVectorWidthB"]
           elif state["DirectToVgprA"] and state["ProblemType"]["TLUA"] and state["LocalReadVectorWidth"] != -1:
             state["VectorWidthB"] = state["LocalReadVectorWidth"]
+
+      # GFX12 WMMA V2: each lane outputs exactly 1 N-direction column (lane%16=col),
+      # so VWB must be 1. Override any auto-computed VWB > 1 here.
+      if globalParameters["AsmCaps"].get(tuple(state["ISA"]), {}).get("HasWMMA_V2", False):
+        state["VectorWidthB"] = 1
 
       # TT0,1 both must be multiples of VW, b/c of rC, rA, rB
       if ((state["MIWaveTile"][0] % state["VectorWidth"]) != 0):
@@ -4243,6 +4257,9 @@ class Solution(collections.abc.Mapping):
     if state["AtomicAddC"]:
       if not state["ProblemType"]["DataType"].isDouble():
         reject(state, "AtomicAddC currently only available for dgemm")
+        return
+      if isa[0] >= 12:
+        reject(state, "AtomicAddC requires buffer_atomic_add_f64 which is not available on gfx12+")
         return
       if state["AssertBetaValue"] != 1:
         reject(state, "AtomicAddC requires AssertBetaValue = 1")

@@ -171,6 +171,7 @@ class SignatureDefault(Signature):
         kStr += "  .amdhsa_system_vgpr_workitem_id 0%s" % writer.endLine
         kStr += "  .amdhsa_float_denorm_mode_32 3%s" % writer.endLine
         kStr += "  .amdhsa_float_denorm_mode_16_64 3%s" % writer.endLine
+
         kStr += ".end_amdhsa_kernel%s" % writer.endLine
         kStr += ".text%s" % writer.endLine
 

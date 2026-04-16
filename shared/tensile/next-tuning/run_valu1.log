@@ -1,102 +1,0 @@
-
-################################################################################
-#
-#  Tensile v4.47.0
-#  Config: 
-/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201_valu1_hgemm_n
-t.yaml
-#  Date & Time: 14/04/2026 18:28:36
-#
-################################################################################
-
-# Restoring default globalParameters
-# Found HIP version: 7.2.53211-e1a6bc5663
-# Detected GPU 0:    gfx1201
-> UserWarning: HardwareMonitor currently disabled for gfx942, gfx950, gfx1100, 
-gfx1101, gfx1102, gfx1103, gfx1150, gfx1151, gfx1152, gfx1153, gfx1200, gfx1201
-
-Overriding CxxCompiler=amdclang++
-Overriding PrebuiltClient=/home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client
-
-################################################################################
-# Converting Config to BenchmarkProcess Object
-################################################################################
-
-# Filling in Parameters With Defaults
-# Convert Parameters to Benchmark Step(s)
-# Benchmark Final
-# NumBenchmarkSteps: 1
-
-################################################################################
-# Done Creating BenchmarkProcess Object
-################################################################################
-
-
-################################################################################
-# Benchmark Step: Cijk_Ailk_Bjlk_HHS_BH_00 - 00_Final 11.520s
-# Num Sizes: 1
-# Fork Parameters:
-# Enumerating Solutions
-# Actual Solutions: 1 / 1 after SolutionStructs
-
-Finding unique solutions:   0%|          | 0/1 [00:00<?, ?it/s]Finding unique solutions: 100%|██████████| 1/1 [00:00<00:00, 9341.43it/s]
-# Writing Kernels...
-Generating kernels: 12 thread(s), 1 tasks:   0%|          | 0/1 [00:00<?, ?it/s]Generating kernels: 12 thread(s), 1 tasks: 100%|██████████| 1/1 [00:00<00:00, 1106.68it/s]
-Filtering processing errors: 0it [00:00, ?it/s]Filtering processing errors: 1it [00:00, 72315.59it/s]
-> UserWarning: Kernel file context manager opened without any kernel files.
-Compiling source kernels: 0it [00:00, ?it/s]Compiling source kernels: 0it [00:00, ?it/s]
-Relocating code objects: 0it [00:00, ?it/s]Relocating code objects: 1it [00:00, 9198.04it/s]
-> UserWarning: Code object files are not compressed in `--no-merge-files` build 
-mode.
-# Kernel Building elapsed time = 1.0 secs
-# Actual Solutions: 1 / 1 after KernelWriter
-
-+ ERR=0
-+ /home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client --config-file /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu1/1_BenchmarkProblems/Cijk_Ailk_Bjlk_HHS_BH_00/00_Final/build/../source/ClientParameters.ini
-loading config file /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu1/1_BenchmarkProblems/Cijk_Ailk_Bjlk_HHS_BH_00/00_Final/build/../source/ClientParameters.ini
-Loading /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu1/1_BenchmarkProblems/Cijk_Ailk_Bjlk_HHS_BH_00/00_Final/source/library/Cijk_Ailk_Bjlk_HHS_BH_MT64x32x8_SN_K1_gfx1201.co
-Log level: Debug
-Exception occurred: Error 700(hipErrorIllegalAddress) /home/iamthecage/rocm-libraries/shared/tensile/Tensile/Source/client/source/ReferenceValidator.cpp:512: 
-hipStreamSynchronize(m_stream)
-an illegal memory access was encountered
-
-run,problem-progress,solution-progress,operation,problem-sizes,solution,validation,time-us,gflops,empty,total-gran,tiles-per-cu,num-cus,tile0-gran,tile1-gran,cu-gran,wave-gran,mem-read-bytes,mem-write-bytes,temp-edge,clock-sys,clock-soc,clock-mem,fan-rpm,hardware-samples,gfx-frequency(median),power(median),hotspot-temperature(median),enqueue-time
-0,0/0,0/0,Contraction_l_Ailk_Bjlk_Cijk_Dijk,"(128,128,1,16)",Cijk_Ailk_Bjlk_HHS_BH_MT64x32x8_SN_K1,INVALID,-nan,-nan,,0.25,0.25,32,1,1,0.25,1,57344,32768,,,,,,,,,,
-+ [[ 0 -ne 0 ]]
-+ exit 0
-################################################################################
-# Cijk_Ailk_Bjlk_HHS_BH_00
-# 00_Final: End - 12.607s
-################################################################################
-
-clientExit=0 (PASS) for ['/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201_valu1_hgemm_nt.yaml']
-
-
-################################################################################
-# Analysing data in 2_BenchmarkData - 12.607s
-################################################################################
-
-# Analyzing: Cijk_Ailk_Bjlk_HHS_BH
-# Read: 
-/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu1/2_Benchm
-arkData/Cijk_Ailk_Bjlk_HHS_BH_00.yaml
-# Merging Solutions:
-                                                     # LogicAnalyzer .............................. 100.0%# NumProblemSizes: [0, 0, 0, 0, 0, 0, 0, 0]
-reading datafile /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu1/2_BenchmarkData/Cijk_Ailk_Bjlk_HHS_BH_00.csv
-# ExactWinners: {}
-problemIndicesForGlobalRange []
-Winners set()
-
-[] > UserWarning: [] MultiProblem & NotLastIndex :: nextRule==None; returning
-
-# Score: 0 ms
-# Exact Logic:
-
-{}
-################################################################################
-# Finish Analysing data to 
-/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/output_valu1 in 
-12.612s
-################################################################################
-
-

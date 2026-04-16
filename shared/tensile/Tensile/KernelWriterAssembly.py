@@ -14026,10 +14026,17 @@ class KernelWriterAssembly(KernelWriter):
       # if GWVW > Vw, might need to support loops to
       # implement wider stores
       ntStr = ""
-      if (kernel["NonTemporalD"] & 1) != 0 or kernel["ForceStoreSC1"] or isWorkspace:
-        ntStr += " " + getGlcBitName(kernel["MemoryModifierFormat"])
-      if (kernel["NonTemporalD"] & 2) != 0 or kernel["ForceStoreSC1"] or isWorkspace:
-        ntStr += " " + getSlcBitName(kernel["MemoryModifierFormat"])
+      if self.version[0] >= 12:
+        # gfx12+: sc0/sc1 are invalid; use scope:SCOPE_DEV for workspace coherence
+        if isWorkspace:
+          ntStr += " scope:SCOPE_DEV"
+        # NonTemporalD and ForceStoreSC1 modifiers intentionally omitted on gfx12
+        # (would emit invalid sc0/sc1); default scope already provides device coherence
+      else:
+        if (kernel["NonTemporalD"] & 1) != 0 or kernel["ForceStoreSC1"] or isWorkspace:
+          ntStr += " " + getGlcBitName(kernel["MemoryModifierFormat"])
+        if (kernel["NonTemporalD"] & 2) != 0 or kernel["ForceStoreSC1"] or isWorkspace:
+          ntStr += " " + getSlcBitName(kernel["MemoryModifierFormat"])
       if (kernel["NonTemporalD"] & 4) != 0:
         ntStr += " nt"
 
@@ -14126,6 +14133,12 @@ class KernelWriterAssembly(KernelWriter):
     if self.do["GlobalWrite"]:
       # use cmpswap_b64 for DGEMM or cmpswap_b32 for DGEMM in CAS loop
       bits = 32 * atomicOpW
+      # Atomic cmpswap needs return-value modifier. sc0 is invalid for atomics
+      # on gfx11+; gfx12 uses th:TH_ATOMIC_RETURN, gfx11 and earlier use glc.
+      if self.version[0] >= 12:
+        memoryBit = "th:TH_ATOMIC_RETURN"
+      else:
+        memoryBit = "glc"
       if kernel["BufferStore"]:
         soff = "null" if self.version[0] >= 12 else "0"
         kStr += "_buffer_atomic_cmpswap_b%u %s, %s, %s %s %s   // %s%s" % \

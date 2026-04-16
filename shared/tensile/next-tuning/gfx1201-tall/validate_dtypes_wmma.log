@@ -1,0 +1,690 @@
+
+################################################################################
+#
+#  Tensile v4.47.0
+#  Config: /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-tall/validate_dtypes_wmma.yaml
+#  Date & Time: 15/04/2026 18:59:38
+#
+################################################################################
+
+# Restoring default globalParameters
+# Found HIP version: 7.2.53211-e1a6bc5663
+# Detected GPU 0:    gfx1201
+> UserWarning: HardwareMonitor currently disabled for gfx942, gfx950, gfx1100, gfx1101, gfx1102, gfx1103, gfx1150, gfx1151, 
+gfx1152, gfx1153, gfx1200, gfx1201
+# Command-line override: CurrentISA
+# Command-line override: PrintLevel
+
+Overriding CurrentISA=(12, 0, 1)
+Overriding PrintLevel=3
+Overriding CxxCompiler=amdclang++
+Overriding PrebuiltClient=/home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client
+ProblemTypeConfig: {'OperationType': 'GEMM', 'DataType': 'h', 'ComputeDataType': 's', 'DestDataType': 'h', 
+'HighPrecisionAccumulate': True, 'TransposeA': False, 'TransposeB': False, 'UseBeta': True, 'Batched': True}
+
+################################################################################
+# Converting Config to BenchmarkProcess Object
+################################################################################
+
+# BenchmarkProcess beginning Cijk_Ailk_Bljk_HHS_BH
+
+####################################################################
+# Filling in Parameters With Defaults
+####################################################################
+
+Single Value Parameters:
+    1LDSBuffer: 0
+    AggressivePerfMode: 1
+    AssertAIGreaterThanEqual: -1
+    AssertAILessThanEqual: -1
+    AssertAlphaValue: False
+    AssertBetaValue: False
+    AssertCEqualsD: False
+    AssertFree0ElementMultiple: 1
+    AssertFree1ElementMultiple: 1
+    AssertMinApproxSize: -1
+    AssertSizeEqual: {}
+    AssertSizeGreaterThan: {}
+    AssertSizeLessThan: {}
+    AssertSizeMultiple: {}
+    AssertStrideAEqual: {}
+    AssertStrideBEqual: {}
+    AssertStrideCEqual: {}
+    AssertStrideDEqual: {}
+    AssertSummationElementMultiple: 1
+    AtomicAddC: False
+    BufferLoad: True
+    BufferStore: True
+    CUMode: False
+    CheckDimOverflow: 0
+    CheckTensorDimAsserts: False
+    ClusterLocalRead: False
+    CustomKernelName: 
+    DebugStreamK: 0
+    DepthU: 16
+    DepthULdsDivisor: 1
+    DirectToLdsA: False
+    DirectToLdsB: False
+    DirectToVgprA: False
+    DirectToVgprB: False
+    DisableAtomicFail: 0
+    DisableKernelPieces: 0
+    DisableVgprOverlapping: False
+    EdgeType: ShiftPtr
+    ExpandPointerSwap: True
+    ExtraLatencyForLR: 0
+    ExtraMiLatencyLeft: 0
+    ForceStoreSC1: Auto
+    Fp16AltImpl: False
+    Fp16AltImplRound: False
+    FractionalLoad: 0
+    GlobalLoadVectorWidthA: -1
+    GlobalLoadVectorWidthB: -1
+    GlobalRead2A: True
+    GlobalRead2B: True
+    GlobalReadCoalesceGroupA: True
+    GlobalReadCoalesceGroupB: True
+    GlobalReadCoalesceVectorA: True
+    GlobalReadCoalesceVectorB: True
+    GlobalReadPerMfma: 1
+    GlobalReadVectorWidth: 1
+    GlobalSplitU: 1
+    GlobalSplitUAlgorithm: SingleBuffer
+    GlobalSplitUAtomicAdd: False
+    GlobalSplitUSummationAssignmentRoundRobin: True
+    GlobalSplitUWorkGroupMappingRoundRobin: False
+    GroupLoadStore: False
+    InnerUnroll: 1
+    InterleaveAlpha: 0
+    KernelLanguage: Assembly
+    LdcEqualsLdd: False
+    LdsBlockSizePerPadA: -1
+    LdsBlockSizePerPadB: -1
+    LdsPadA: -1
+    LdsPadB: -1
+    LocalDotLayout: 1
+    LocalRead2A: True
+    LocalRead2B: True
+    LocalReadVectorWidth: -1
+    LocalWrite2A: True
+    LocalWrite2B: True
+    LocalWritePerMfma: -1
+    LoopDoWhile: False
+    LoopTail: True
+    MACInstruction: FMA
+    MIArchVgpr: True
+    MacroTileShapeMax: 64
+    MacroTileShapeMin: 1
+    MagicDivAlg: 2
+    MatrixInstruction: [16, 16, 16, 1, 1, 4, 4, 1, 1]
+    MaxOccupancy: 40
+    MaxVgprNumber: 256
+    MemoryModifierFormat: 
+    MinKForGSU: 256
+    MinVgprNumber: 0
+    NoReject: False
+    NonTemporalA: 0
+    NonTemporalB: 0
+    NonTemporalC: 0
+    NonTemporalD: 0
+    NumElementsPerBatchStore: 0
+    NumLoadsCoalescedA: 1
+    NumLoadsCoalescedB: 1
+    OptNoLoadLoop: 0
+    OptPreLoopVmcnt: True
+    PackBatchDims: 0
+    PackFreeDims: 1
+    PackGranularity: 2
+    PackSummationDims: 0
+    PerformanceSyncLocation: -1
+    PerformanceWaitCount: -1
+    PerformanceWaitLocation: -1
+    PersistentKernel: 0
+    PersistentKernelAlongBatch: False
+    PrefetchAcrossPersistent: 0
+    PrefetchAcrossPersistentMode: 0
+    PrefetchGlobalRead: 0
+    PrefetchLocalRead: 0
+    PreloadKernelArguments: 0
+    ReplacementKernel: False
+    ScheduleGlobalRead: 0
+    ScheduleIterAlg: 0
+    ScheduleLocalWrite: 0
+    StaggerU: 32
+    StaggerUMapping: 0
+    StaggerUStride: 256
+    StoreCInUnroll: False
+    StoreCInUnrollExact: False
+    StoreCInUnrollInterval: 1
+    StoreCInUnrollPostLoop: False
+    StorePriorityOpt: False
+    StoreRemapVectorWidth: 0
+    StoreSyncOpt: 0
+    StoreVectorWidth: -1
+    StreamK: 0
+    StreamKAtomic: 0
+    StreamKXCCMapping: 0
+    SuppressNoLoadLoop: False
+    ThreadSeparateGlobalReadA: 0
+    ThreadSeparateGlobalReadB: 0
+    ThreadTile: [4, 4]
+    UnrollIncIsDepthU: 0
+    UnrollMajorLDSA: False
+    UnrollMajorLDSB: False
+    UnrollMemFence: False
+    Use64bShadowLimit: 1
+    UseInstOffsetForGRO: 0
+    UseSgprForGRO: -1
+    VectorAtomicWidth: -1
+    VectorStore: -1
+    VectorWidth: 1
+    VectorWidthB: -1
+    VgprForLocalReadPacking: False
+    WaveSeparateGlobalReadA: 0
+    WaveSeparateGlobalReadB: 0
+    WavefrontSize: 32
+    WorkGroup: [32, 1, 1]
+    WorkGroupMapping: 8
+    WorkGroupMappingType: B
+Multi-Value Parameters:
+    SourceSwap: [0, 1]
+    TransposeLDS: [0, 1]
+
+####################################################################
+# Convert Parameters to Benchmark Step(s)
+####################################################################
+
+
+####################################################################
+# Benchmark Final
+# Creating BenchmarkStep: 2 fork params and 1 sizes
+# NumBenchmarkSteps: 1
+
+################################################################################
+# Done Creating BenchmarkProcess Object
+################################################################################
+
+
+################################################################################
+# Benchmark Step: Cijk_Ailk_Bljk_HHS_BH_00 - 00_Final 9.610s
+# Num Sizes: 1
+# Fork Parameters:
+#     SourceSwap: [0, 1]
+#     TransposeLDS: [0, 1]
+# Enumerating Solutions
+# Actual Solutions: 4 / 4 after SolutionStructs
+
+#    (0:0) 
+Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_AS
+LT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_D
+KP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GS
+U1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSPPB1024_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2
+A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEP
+BS0_NLCA2_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU
+32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS0_UIIDU0_UMLDS
+A0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_AS
+LT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_D
+KP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GS
+U1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSPPB128_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A
+1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPB
+S0_NLCA2_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU3
+2_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS1_UIIDU0_UMLDSA
+0_UMLDSB1_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_AS
+LT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_D
+KP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GS
+U1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSPPB1024_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2
+A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEP
+BS0_NLCA2_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS1_SU
+32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS0_UIIDU0_UMLDS
+A0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_AS
+LT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_D
+KP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GS
+U1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSPPB128_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A
+1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPB
+S0_NLCA2_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS1_SU3
+2_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS1_UIIDU0_UMLDSA
+0_UMLDSB1_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_2_1_WGM8_WGMTB
+################################################################################
+Finding unique solutions:   0%|          | 0/4 [00:00<?, ?it/s]Finding unique solutions: 100%|██████████| 4/4 [00:00<00:00, 12318.07it/s]
+# Writing Kernels...
+Generating kernels: 12 thread(s), 4 tasks:   0%|          | 0/4 [00:00<?, ?it/s]Generating kernels: 12 thread(s), 4 tasks: 100%|██████████| 4/4 [00:00<00:00, 4350.94it/s]
+total vgpr count: 256
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNIfH_3N1OX8zC6QqB1j3h0iROfZH1XgZmwwLPHcfJCIw=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNIfH_3N1OX8zC6QqB1j3h0iROfZH1XgZmwwLPHcfJCIw=.o 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNIfH_3N1OX8zC6QqB1j3h0iROfZH1XgZmwwLPHcfJCIw=.s && 
+total vgpr count: 256
+
+total vgpr count: 256
+
+total vgpr count: 256
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNatCvswD3h54UVC9vqL62YDj_KFqfGjkdwSmOR9C8ZrA=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNatCvswD3h54UVC9vqL62YDj_KFqfGjkdwSmOR9C8ZrA=.o 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNatCvswD3h54UVC9vqL62YDj_KFqfGjkdwSmOR9C8ZrA=.s && 
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNvd-bjkZ0vfhEbWQ4EPKWIhcAhQ8fgN8R9u01m0-aVEs=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNvd-bjkZ0vfhEbWQ4EPKWIhcAhQ8fgN8R9u01m0-aVEs=.o 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNvd-bjkZ0vfhEbWQ4EPKWIhcAhQ8fgN8R9u01m0-aVEs=.s && 
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNiEnaWki_TDbAu2Uoewpp9bW1JVSLSnZ78USfDZ6JIYw=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNiEnaWki_TDbAu2Uoewpp9bW1JVSLSnZ78USfDZ6JIYw=.o 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNiEnaWki_TDbAu2Uoewpp9bW1JVSLSnZ78USfDZ6JIYw=.s && 
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNIfH_3N1OX8zC6QqB1j3h0iROfZH1XgZmwwLPHcfJCIw=.co 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNIfH_3N1OX8zC6QqB1j3h0iROfZH1XgZmwwLPHcfJCIw=.o
+b''
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNvd-bjkZ0vfhEbWQ4EPKWIhcAhQ8fgN8R9u01m0-aVEs=.co 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNvd-bjkZ0vfhEbWQ4EPKWIhcAhQ8fgN8R9u01m0-aVEs=.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNatCvswD3h54UVC9vqL62YDj_KFqfGjkdwSmOR9C8ZrA=.co 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNatCvswD3h54UVC9vqL62YDj_KFqfGjkdwSmOR9C8ZrA=.o
+b''
+b''
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNiEnaWki_TDbAu2Uoewpp9bW1JVSLSnZ78USfDZ6JIYw=.co 
+/home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNiEnaWki_TDbAu2Uoewpp9bW1JVSLSnZ78USfDZ6JIYw=.o
+b''
+Filtering processing errors: 0it [00:00, ?it/s]Filtering processing errors: 4it [00:00, 217885.92it/s]
+> UserWarning: Kernel file context manager opened without any kernel files.
+Compiling source kernels: 0it [00:00, ?it/s]Compiling source kernels: 0it [00:00, ?it/s]
+Relocating code objects: 0it [00:00, ?it/s]Relocating code objects: 4it [00:00, 13797.05it/s]
+> UserWarning: Code object files are not compressed in `--no-merge-files` build mode.
+# Kernel Building elapsed time = 1.2 secs
+# Actual Solutions: 4 / 4 after KernelWriter
+
++ ERR=0
++ /home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client --config-file /home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/build/../source/ClientParameters.ini
+loading config file /home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/build/../source/ClientParameters.ini
+Loading /home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNIfH_3N1OX8zC6QqB1j3h0iROfZH1XgZmwwLPHcfJCIw=_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNatCvswD3h54UVC9vqL62YDj_KFqfGjkdwSmOR9C8ZrA=_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNvd-bjkZ0vfhEbWQ4EPKWIhcAhQ8fgN8R9u01m0-aVEs=_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_wmma/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SNiEnaWki_TDbAu2Uoewpp9bW1JVSLSnZ78USfDZ6JIYw=_gfx1201.co
+Log level: Debug
+run,problem-progress,solution-progress,operation,problem-sizes,solution,validation,time-us,gflops,empty,total-gran,tiles-per-cu,num-cus,tile0-gran,tile1-gran,cu-gran,wave-gran,mem-read-bytes,mem-write-bytes,temp-edge,clock-sys,clock-soc,clock-mem,fan-rpm,hardware-samples,gfx-frequency(median),power(median),hotspot-temperature(median),enqueue-time
+0,0/0,0/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_LBSPPB1024_SS0_SVW4_TLDS0_UMLDSB0,PASSED,20.161,6.50127,,0.00390625,0.03125,32,1,1,0.03125,0.125,12288,8192,,,,,,,,,,2026-04-15 18:59:48.
+Index:  Device | Reference
+[0]  elem=0 idx=0: 2!=-16
+[1]  elem=1 idx=1: -15!=-2
+[2]  elem=2 idx=2: -14!=-24
+[3]  elem=3 idx=3: 4!=-8
+0,0/0,1/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_LBSPPB128_SS0_SVW4_TLDS1_UMLDSB1,FAILED,13.2,9.9297,,0.00390625,0.03125,32,1,1,0.03125,0.125,12288,8192,,,,,,,,,,2026-04-15 18:59:48.
+0,0/0,2/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_LBSPPB1024_SS1_SVW1_TLDS0_UMLDSB0,PASSED,16.72,7.83923,,0.00390625,0.03125,32,1,1,0.03125,0.125,12288,8192,,,,,,,,,,2026-04-15 18:59:49.
+Index:  Device | Reference
+[0]  elem=0 idx=0: 2!=-16
+[1]  elem=1 idx=1: -15!=-2
+[2]  elem=2 idx=2: -14!=-24
+[3]  elem=3 idx=3: 4!=-8
+0,0/0,3/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_LBSPPB128_SS1_SVW1_TLDS1_UMLDSB1,FAILED,13.161,9.95912,,0.00390625,0.03125,32,1,1,0.03125,0.125,12288,8192,,,,,,,,,,2026-04-15 18:59:49.
+> UserWarning: ClientWriter Benchmark Process exited with code 2
+> UserWarning: BenchmarkProblems: Benchmark Process exited with code 2
+################################################################################
+# Cijk_Ailk_Bljk_HHS_BH_00
+# 00_Final: End - 10.990s
+################################################################################
+
+clientExit=1 (ERROR) for ['/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-tall/validate_dtypes_wmma.yaml']
+ProblemTypeConfig: {'OperationType': 'GEMM', 'DataType': 'h', 'ComputeDataType': 'h', 'DestDataType': 'h', 
+'HighPrecisionAccumulate': False, 'TransposeA': False, 'TransposeB': False, 'UseBeta': True, 'Batched': True}
+
+################################################################################
+# Converting Config to BenchmarkProcess Object
+################################################################################
+
+# BenchmarkProcess beginning Cijk_Ailk_Bljk_HB
+
+####################################################################
+# Filling in Parameters With Defaults
+####################################################################
+
+Single Value Parameters:
+    1LDSBuffer: 0
+    AggressivePerfMode: 1
+    AssertAIGreaterThanEqual: -1
+    AssertAILessThanEqual: -1
+    AssertAlphaValue: False
+    AssertBetaValue: False
+    AssertCEqualsD: False
+    AssertFree0ElementMultiple: 1
+    AssertFree1ElementMultiple: 1
+    AssertMinApproxSize: -1
+    AssertSizeEqual: {}
+    AssertSizeGreaterThan: {}
+    AssertSizeLessThan: {}
+    AssertSizeMultiple: {}
+    AssertStrideAEqual: {}
+    AssertStrideBEqual: {}
+    AssertStrideCEqual: {}
+    AssertStrideDEqual: {}
+    AssertSummationElementMultiple: 1
+    AtomicAddC: False
+    BufferLoad: True
+    BufferStore: True
+    CUMode: False
+    CheckDimOverflow: 0
+    CheckTensorDimAsserts: False
+    ClusterLocalRead: False
+    CustomKernelName: 
+    DebugStreamK: 0
+    DepthU: 16
+    DepthULdsDivisor: 1
+    DirectToLdsA: False
+    DirectToLdsB: False
+    DirectToVgprA: False
+    DirectToVgprB: False
+    DisableAtomicFail: 0
+    DisableKernelPieces: 0
+    DisableVgprOverlapping: False
+    EdgeType: ShiftPtr
+    ExpandPointerSwap: True
+    ExtraLatencyForLR: 0
+    ExtraMiLatencyLeft: 0
+    ForceStoreSC1: Auto
+    Fp16AltImpl: False
+    Fp16AltImplRound: False
+    FractionalLoad: 0
+    GlobalLoadVectorWidthA: -1
+    GlobalLoadVectorWidthB: -1
+    GlobalRead2A: True
+    GlobalRead2B: True
+    GlobalReadCoalesceGroupA: True
+    GlobalReadCoalesceGroupB: True
+    GlobalReadCoalesceVectorA: True
+    GlobalReadCoalesceVectorB: True
+    GlobalReadPerMfma: 1
+    GlobalReadVectorWidth: 1
+    GlobalSplitU: 1
+    GlobalSplitUAlgorithm: SingleBuffer
+    GlobalSplitUAtomicAdd: False
+    GlobalSplitUSummationAssignmentRoundRobin: True
+    GlobalSplitUWorkGroupMappingRoundRobin: False
+    GroupLoadStore: False
+    InnerUnroll: 1
+    InterleaveAlpha: 0
+    KernelLanguage: Assembly
+    LdcEqualsLdd: False
+    LdsBlockSizePerPadA: -1
+    LdsBlockSizePerPadB: -1
+    LdsPadA: -1
+    LdsPadB: -1
+    LocalDotLayout: 1
+    LocalRead2A: True
+    LocalRead2B: True
+    LocalReadVectorWidth: -1
+    LocalWrite2A: True
+    LocalWrite2B: True
+    LocalWritePerMfma: -1
+    LoopDoWhile: False
+    LoopTail: True
+    MACInstruction: FMA
+    MIArchVgpr: True
+    MacroTileShapeMax: 64
+    MacroTileShapeMin: 1
+    MagicDivAlg: 2
+    MatrixInstruction: [16, 16, 16, 1, 1, 4, 4, 1, 1]
+    MaxOccupancy: 40
+    MaxVgprNumber: 256
+    MemoryModifierFormat: 
+    MinKForGSU: 256
+    MinVgprNumber: 0
+    NoReject: False
+    NonTemporalA: 0
+    NonTemporalB: 0
+    NonTemporalC: 0
+    NonTemporalD: 0
+    NumElementsPerBatchStore: 0
+    NumLoadsCoalescedA: 1
+    NumLoadsCoalescedB: 1
+    OptNoLoadLoop: 0
+    OptPreLoopVmcnt: True
+    PackBatchDims: 0
+    PackFreeDims: 1
+    PackGranularity: 2
+    PackSummationDims: 0
+    PerformanceSyncLocation: -1
+    PerformanceWaitCount: -1
+    PerformanceWaitLocation: -1
+    PersistentKernel: 0
+    PersistentKernelAlongBatch: False
+    PrefetchAcrossPersistent: 0
+    PrefetchAcrossPersistentMode: 0
+    PrefetchGlobalRead: 0
+    PrefetchLocalRead: 0
+    PreloadKernelArguments: 0
+    ReplacementKernel: False
+    ScheduleGlobalRead: 0
+    ScheduleIterAlg: 0
+    ScheduleLocalWrite: 0
+    StaggerU: 32
+    StaggerUMapping: 0
+    StaggerUStride: 256
+    StoreCInUnroll: False
+    StoreCInUnrollExact: False
+    StoreCInUnrollInterval: 1
+    StoreCInUnrollPostLoop: False
+    StorePriorityOpt: False
+    StoreRemapVectorWidth: 0
+    StoreSyncOpt: 0
+    StoreVectorWidth: -1
+    StreamK: 0
+    StreamKAtomic: 0
+    StreamKXCCMapping: 0
+    SuppressNoLoadLoop: False
+    ThreadSeparateGlobalReadA: 0
+    ThreadSeparateGlobalReadB: 0
+    ThreadTile: [4, 4]
+    UnrollIncIsDepthU: 0
+    UnrollMajorLDSA: False
+    UnrollMajorLDSB: False
+    UnrollMemFence: False
+    Use64bShadowLimit: 1
+    UseInstOffsetForGRO: 0
+    UseSgprForGRO: -1
+    VectorAtomicWidth: -1
+    VectorStore: -1
+    VectorWidth: 1
+    VectorWidthB: -1
+    VgprForLocalReadPacking: False
+    WaveSeparateGlobalReadA: 0
+    WaveSeparateGlobalReadB: 0
+    WavefrontSize: 32
+    WorkGroup: [32, 1, 1]
+    WorkGroupMapping: 8
+    WorkGroupMappingType: B
+Multi-Value Parameters:
+    SourceSwap: [0, 1]
+    TransposeLDS: [0, 1]
+
+####################################################################
+# Convert Parameters to Benchmark Step(s)
+####################################################################
+
+
+####################################################################
+# Benchmark Final
+# Creating BenchmarkStep: 2 fork params and 1 sizes
+# NumBenchmarkSteps: 1
+
+################################################################################
+# Done Creating BenchmarkProcess Object
+################################################################################
+
+
+################################################################################
+# Benchmark Step: Cijk_Ailk_Bljk_HB_00 - 00_Final 11.004s
+# Num Sizes: 1
+# Fork Parameters:
+#     SourceSwap: [0, 1]
+#     TransposeLDS: [0, 1]
+# Enumerating Solutions
+# Actual Solutions: 4 / 4 after SolutionStructs
+
+#    (0:0) 
+Cijk_Ailk_Bljk_HB_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_A
+SM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_
+DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_G
+SUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSPPB1024_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_L
+W2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_
+NLCA2_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_S
+UM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS0_UIIDU0_UMLDSA0_U
+MLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW2_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_HB_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_A
+SM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_
+DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_G
+SUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSPPB128_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW
+2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_N
+LCA2_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SU
+M0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS1_UIIDU0_UMLDSA0_UM
+LDSB1_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW2_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_HB_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_A
+SM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_
+DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_G
+SUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSPPB1024_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_L
+W2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_
+NLCA2_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS1_SU32_S
+UM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS0_UIIDU0_UMLDSA0_U
+MLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW2_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_HB_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_A
+SM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_
+DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_G
+SUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSPPB128_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW
+2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_N
+LCA2_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS1_SU32_SU
+M0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS1_UIIDU0_UMLDSA0_UM
+LDSB1_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW2_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_2_1_WGM8_WGMTB
+################################################################################
+Finding unique solutions:   0%|          | 0/4 [00:00<?, ?it/s]Finding unique solutions: 100%|██████████| 4/4 [00:00<00:00, 12363.46it/s]
+# Writing Kernels...
+Generating kernels: 12 thread(s), 4 tasks:   0%|          | 0/4 [00:00<?, ?it/s]Generating kernels: 12 thread(s), 4 tasks: 100%|██████████| 4/4 [00:00<00:00, 18662.09it/s]
+joblib.externals.loky.process_executor._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/iamthecage/master/lib/python3.12/site-packages/joblib/externals/loky/process_executor.py", line 490, in _process_worker
+    r = call_item()
+        ^^^^^^^^^^^
+  File "/home/iamthecage/master/lib/python3.12/site-packages/joblib/externals/loky/process_executor.py", line 291, in __call__
+    return self.fn(*self.args, **self.kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/master/lib/python3.12/site-packages/joblib/parallel.py", line 607, in __call__
+    return [func(*args, **kwargs) for func, args, kwargs in self.items]
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/Parallel.py", line 60, in pcallWithGlobalParamsMultiArg
+    return f(*args)
+           ^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/TensileCreateLibrary.py", line 118, in processKernelSource
+    (err, src) = kernelWriter.getSourceFileString(kernel)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/KernelWriter.py", line 5603, in getSourceFileString
+    self.getSingleCodeObjectFile(kernel)
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/KernelWriter.py", line 5534, in getSingleCodeObjectFile
+    objectFileName = self.getAssembledKernelObjectFile(kernel)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/KernelWriter.py", line 5513, in getAssembledKernelObjectFile
+    assemblyFileName = self.getKernelObjectAssemblyFile(kernel)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/KernelWriter.py", line 5498, in getKernelObjectAssemblyFile
+    kernelSource = self.getKernelSource(kernel)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/KernelWriter.py", line 5262, in getKernelSource
+    (error, kb) = self.kernelBody( kernel, tensorParametersA, tensorParametersB)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/KernelWriter.py", line 3587, in kernelBody
+    kl.append(self.notLocalSplitUGlobalWrite(kernel))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/KernelWriterAssembly.py", line 11235, in notLocalSplitUGlobalWrite
+    kStr = self.globalWriteElements(kernel, vectorWidths, elements)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/KernelWriterAssembly.py", line 13794, in globalWriteElements
+    kStr += self.globalWriteProcedure(kernel, vectorWidths, elements, applyAlpha, beta, edge, atomic, tmpVgpr, tmpCVTVgpr, isOptNLL, endLabel)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/KernelWriterAssembly.py", line 13600, in globalWriteProcedure
+    kStr += self.globalWriteBatch(kernel, self.ss, batchIdx, alpha, beta, edge, atomic, gwvw, atomicW, \
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/KernelWriterAssembly.py", line 14337, in globalWriteBatch
+    ss.setupStoreElementsForBatch(kernel, gwvw, batchElements, batchElementSgprs, preventOverflow=preventOverflow)
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/KernelWriterAssembly.py", line 11652, in setupStoreElementsForBatch
+    sumIdx    = kw.vgprPool.checkOutAligned(self.cfg.numVgprPerValuC*self.cfg.gwvw, alignment, "vgprValuC") // self.cfg.numVgprPerValuC
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/AsmRegisterPool.py", line 256, in checkOutAligned
+    assert size > 0
+           ^^^^^^^^
+AssertionError
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/iamthecage/master/bin/Tensile", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/Tensile.py", line 365, in main
+    Tensile(sys.argv[1:])
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/Tensile.py", line 342, in Tensile
+    executeStepsInConfig(config)
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/Tensile.py", line 59, in executeStepsInConfig
+    BenchmarkProblems.main(config["BenchmarkProblems"], config["UseCache"])
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/BenchmarkProblems.py", line 400, in main
+    benchmarkProblemType(problemTypeConfig, sizeGroupConfig, idx, useCache)
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/BenchmarkProblems.py", line 307, in benchmarkProblemType
+    codeObjectFiles = writeBenchmarkFiles(stepBaseDir, solutions, \
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/BenchmarkProblems.py", line 155, in writeBenchmarkFiles
+    codeObjectFiles, kernels, solutions = writeKernels( \
+                                          ^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/TensileCreateLibrary.py", line 533, in writeKernels
+    results = Common.ParallelMap(processKernelSource, list(kIter), "Generating kernels")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/rocm-libraries/shared/tensile/Tensile/Parallel.py", line 115, in ParallelMap
+    return joblib.Parallel(n_jobs=threadCount)(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/master/lib/python3.12/site-packages/joblib/parallel.py", line 2072, in __call__
+    return output if self.return_generator else list(output)
+                                                ^^^^^^^^^^^^
+  File "/home/iamthecage/master/lib/python3.12/site-packages/joblib/parallel.py", line 1682, in _get_outputs
+    yield from self._retrieve()
+  File "/home/iamthecage/master/lib/python3.12/site-packages/joblib/parallel.py", line 1784, in _retrieve
+    self._raise_error_fast()
+  File "/home/iamthecage/master/lib/python3.12/site-packages/joblib/parallel.py", line 1859, in _raise_error_fast
+    error_job.get_result(self.timeout)
+  File "/home/iamthecage/master/lib/python3.12/site-packages/joblib/parallel.py", line 758, in get_result
+    return self._return_or_raise()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/iamthecage/master/lib/python3.12/site-packages/joblib/parallel.py", line 773, in _return_or_raise
+    raise self._result
+AssertionError

@@ -24,6 +24,7 @@
 
 from ..Component import ComputeStoreVgprs
 from ..AsmUtils import log2, vectorStaticDivideAndRemainder, staticMultiply, vgpr, sgpr, inst, vectorStaticDivide, vectorStaticRemainder
+from ..Common import globalParameters
 
 class ComputeStoreVgprsVALU(ComputeStoreVgprs):
     kernel = {"EnableMatrixInstructionStore": False}
@@ -164,6 +165,14 @@ class ComputeStoreVgprsMFMA(ComputeStoreVgprs):
         # matrixInstM = kernel["MatrixInstM"] * kernel["MatrixInstBM"] if (kernel["MatrixInstM"] == 4) else kernel["MatrixInstM"]
         matrixInstN = kernel["MatrixInstN"] * kernel["MatrixInstBN"] if (kernel["MatrixInstN"] == 4) else kernel["MatrixInstN"]
 
+        # GFX12 WMMA V2: lane%matInstN = column (N dir, no VWB scaling needed).
+        # row_base = (lane/matInstN) * MIOVW_eff (already correct via getMIOutputInfo returning 8).
+        # coord1 (N/col): force lshift=0 so lane%16 is not doubled by VWB factor.
+        # coord0 (M/row): force lshift=0 so row is not scaled by VWA factor.
+        is_wmma_v2 = globalParameters["AsmCaps"][writer.version].get("HasWMMA_V2", False)
+        wmma_coord1_lshift = 0 if is_wmma_v2 else log2(kernel["VectorWidthB"])
+        wmma_coord0_lshift = 0 if is_wmma_v2 else log2(kernel["VectorWidthA"])
+
         kStr = ""
 
         # coord 1 : wave part
@@ -173,7 +182,7 @@ class ComputeStoreVgprsMFMA(ComputeStoreVgprs):
 
         # coord 1 : thread part
         kStr += vectorStaticRemainder(tmpVgpr0, "Serial", matrixInstN, tmpSgpr)
-        kStr += inst("_v_add_lshl_u32", vgpr(tid1), vgpr(tmpVgpr0), vgpr(tid1), log2(kernel["VectorWidthB"]), "coordination 1 = vwb *(wave_id1 + tid1)")
+        kStr += inst("_v_add_lshl_u32", vgpr(tid1), vgpr(tmpVgpr0), vgpr(tid1), wmma_coord1_lshift, "coordination 1 = vwb *(wave_id1 + tid1)")
 
         if kernel["BufferStore"]:
           # coord 1 : offset part
@@ -197,7 +206,7 @@ class ComputeStoreVgprsMFMA(ComputeStoreVgprs):
         kStr += vectorStaticRemainder(tmpVgpr0, wave_id, kernel["MIWaveGroup"][0], tmpSgpr)
         kStr += inst("v_mul_lo_u32", vgpr(tmpVgpr0), hex(MIBShape0), vgpr(tmpVgpr0), "wave coordination offset 0")
 
-        kStr += inst("_v_add_lshl_u32", vgpr(tid0), vgpr(tmpVgpr0), vgpr(tid0), log2(kernel["VectorWidthA"]), "coordination 0 = vwa *(wave_id0 + tid0)")
+        kStr += inst("_v_add_lshl_u32", vgpr(tid0), vgpr(tmpVgpr0), vgpr(tid0), wmma_coord0_lshift, "coordination 0 = vwa *(wave_id0 + tid0)")
 
         if writer.prefetchAcrossPersistent:
             wg0="PrevWorkGroup0"
@@ -271,6 +280,22 @@ class ComputeStoreVgprsMFMASwap(ComputeStoreVgprs):
         matrixInstM = kernel["MatrixInstM"] * kernel["MatrixInstBM"] if (kernel["MatrixInstM"] == 4) else kernel["MatrixInstM"]
         # matrixInstN = kernel["MatrixInstN"] * kernel["MatrixInstBN"] if (kernel["MatrixInstN"] == 4) else kernel["MatrixInstN"]
 
+        # GFX12 WMMA V2: lane%matInstM = column (N dir), not row.
+        # Hardware: lane i -> col=i%16, row_base=(i/16)*8 per 16x16x16 WMMA block.
+        # Legacy MIOVW=1 and VWA lshift are both wrong for WMMA V2:
+        #   coord1 must be (lane/16)*MIOVW_eff*VWB where MIOVW_eff = MIM*MIN//(WFS*VWB)
+        #   coord0 must be (lane%matInstM)*1 (no VWA scaling per lane)
+        is_wmma_v2 = globalParameters["AsmCaps"][writer.version].get("HasWMMA_V2", False)
+        if is_wmma_v2:
+            wmma_miovw_eff = (kernel["MatrixInstM"] * kernel["MatrixInstN"]
+                              // (writer.kernel["WavefrontSize"] * kernel["VectorWidthB"]))
+            wmma_coord0_lshift = 0  # each WMMA lane owns exactly 1 column, no VWA scaling
+            wmma_coord1_lshift = 0  # lane%16 is the column index, no VWB scaling
+        else:
+            wmma_miovw_eff     = kernel["MIOutputVectorWidth"]
+            wmma_coord0_lshift = log2(kernel["VectorWidthA"])
+            wmma_coord1_lshift = log2(kernel["VectorWidthB"])
+
         kStr = ""
 
         kStr += vectorStaticDivide(wave_id, "Serial", writer.kernel["WavefrontSize"], tmpSgpr)
@@ -279,7 +304,7 @@ class ComputeStoreVgprsMFMASwap(ComputeStoreVgprs):
         # coord 1 : thread part
         kStr += vectorStaticRemainder(tid1, "Serial", writer.kernel["WavefrontSize"], tmpSgpr)
         kStr += vectorStaticDivide(tid1, tid1, matrixInstM, tmpSgpr)
-        kStr += staticMultiply(vgpr(tid1), vgpr(tid1), kernel["MIOutputVectorWidth"], sgpr(tmpSgpr), "thread0 * continuous_output")
+        kStr += staticMultiply(vgpr(tid1), vgpr(tid1), wmma_miovw_eff, sgpr(tmpSgpr), "thread0 * continuous_output")
         if kernel["MatrixInstBN"] > 1 and kernel["MatrixInstM"] == 4 and (kernel["MatrixInstN"] > kernel["MIOutputVectorWidth"]):
           # conversion for MI4x4 + MIBN>1
           # tid1 = (tid1/MIBN) + (tid1%MIBN)*(MIN//MIOVW)
@@ -289,7 +314,7 @@ class ComputeStoreVgprsMFMASwap(ComputeStoreVgprs):
         # coord 1 : wave part
         kStr += vectorStaticDivide(tmpVgpr0, wave_id, kernel["MIWaveGroup"][0], tmpSgpr)
         kStr += inst("v_mul_lo_u32", vgpr(tmpVgpr0), hex(MIBShape1), vgpr(tmpVgpr0), "wave coordination offset 1")
-        kStr += inst("_v_add_lshl_u32", vgpr(tid1), vgpr(tmpVgpr0), vgpr(tid1), log2(kernel["VectorWidthB"]), "coordination 1 = vwb *(wave_id1 + tid1)")
+        kStr += inst("_v_add_lshl_u32", vgpr(tid1), vgpr(tmpVgpr0), vgpr(tid1), wmma_coord1_lshift, "coordination 1 = vwb *(wave_id1 + tid1)")
 
         if kernel["BufferStore"]:
           # coord 1 : offset part
@@ -306,7 +331,7 @@ class ComputeStoreVgprsMFMASwap(ComputeStoreVgprs):
 
         # coord 0 : thread part
         kStr += vectorStaticRemainder(tid0, "Serial", matrixInstM, tmpSgpr)
-        kStr += inst("_v_add_lshl_u32", vgpr(tid0), vgpr(tmpVgpr0), vgpr(tid0), log2(kernel["VectorWidthA"]), "coordination 0 = vwa *(wave_id0 + tid0)")
+        kStr += inst("_v_add_lshl_u32", vgpr(tid0), vgpr(tmpVgpr0), vgpr(tid0), wmma_coord0_lshift, "coordination 0 = vwa *(wave_id0 + tid0)")
 
         if writer.prefetchAcrossPersistent:
             wg0="PrevWorkGroup0"

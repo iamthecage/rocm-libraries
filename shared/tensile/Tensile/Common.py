@@ -1444,6 +1444,11 @@ validParameters = {
     # 0=none, 1=add setprio, 2=add setprio and modify LDS to allow only 2 waves/simd
     "AggressivePerfMode":       [0,1,2],
 
+    # CU vs WGP scheduling mode (gfx10+)
+    # False = WGP mode (default: both CUs in a WGP share LDS and scheduling)
+    # True  = CU mode (each CU gets its own LDS partition, reduced wave contention)
+    "CUMode":                   [False, True],
+
     # Use the feature whereby 56 bytes of kernel arguments can be preloaded in SGPRs
     # before the kernel begins executing.  This is currently only supported in cases
     # where that is enough to initiate the first load of the A and B tensors before
@@ -1510,6 +1515,7 @@ defaultBenchmarkCommonParameters = [
     {"InnerUnroll":               [ 1 ] },
     {"LocalDotLayout":            [ 1 ] },
     {"AggressivePerfMode":        [ 1 ] },
+    {"CUMode":                    [ False ] },
     {"PreloadKernelArguments":    [ 0 ] },
     {"KernelLanguage":            [ "Source" ] },
     {"LdsPadA":                   [ -1 ] },

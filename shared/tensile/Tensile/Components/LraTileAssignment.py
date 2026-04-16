@@ -88,6 +88,7 @@ class LraTileAssignmentMFMA(LraTileAssignment):
                 % (writer.commentPrefix, tP["tileChar"], writer.commentSuffix, writer.endLine)
 
         isMfma = writer.asmCaps["HasMFMA"]
+        is_wmma_v2 = writer.asmCaps.get("HasWMMA_V2", False)
 
         # get constant parameter
         tc               = tP["tensorChar"]
@@ -179,7 +180,15 @@ class LraTileAssignmentMFMA(LraTileAssignment):
             "4. apply VectorWidth: bnOffset = bnOffset * vw(%u)" % vectorWidth)
 
         # unroll offset
-        if isMfma and (dividendForKId != waveWidth):
+        # WMMA V2 (RDNA4/GFX12): wave32 splits k across the two lane halves. Lane group 0
+        # (lanes 0..MatrixInstM-1) starts at k=0; group 1 (lanes MatrixInstM..2*MatrixInstM-1)
+        # starts at k=MatrixInstK/4. The standard strideK formula overshoots by 2x, so use
+        # the quarter-K stride instead.
+        if is_wmma_v2:
+            actual_strideK = (kernel["MatrixInstK"] // 4) * (mt + LdsPad)
+        else:
+            actual_strideK = strideK
+        if (isMfma or is_wmma_v2) and (dividendForKId != waveWidth):
             kStr += vectorStaticDivide(kReg, kReg, dividendForKId, tmpSgpr, \
                 "5. K offset: kIdx = wtid / (MIN(%u) * MIBB(%u))" % (kernel["MatrixInstN"], kernel["MatrixInstB"]))
             if dtlTsgr:
@@ -196,8 +205,8 @@ class LraTileAssignmentMFMA(LraTileAssignment):
                   "5. K offset: kIdx_higher = kIdx_higher * mStride(%u)" % (KelementsPerMFrag * NblockSizePerLoad * vectorWidth))
               kStr += inst("_v_add_u32", vgpr(kReg), vgpr(kReg), vgpr(mReg), \
                   "5. K offset: kIdx = kIdx_lower + kIdx_higher")
-            kStr += staticMultiply(vgpr(kReg), vgpr(kReg), strideK, sgpr(tmpSgpr), \
-                "5. K offset: lrKOffset = kIdx * mStride(%u)" % strideK)
+            kStr += staticMultiply(vgpr(kReg), vgpr(kReg), actual_strideK, sgpr(tmpSgpr), \
+                "5. K offset: lrKOffset = kIdx * mStride(%u)" % actual_strideK)
 
             kStr += inst("_v_add_u32", vgpr(tReg), vgpr(kReg), vgpr(tReg), \
                 "6. offset in wave: lrOffset = bnOffset + lrKOffset")

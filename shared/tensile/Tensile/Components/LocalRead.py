@@ -161,6 +161,13 @@ class LocalReadMFMA(LocalRead):
         numReadsPerVector = vectorWidth if kernel["UnrollMajorLDS%s"%tc] else (vectorWidth * tP["bpe"]) // int(blockWidth * 4)
         numReadsPerUnroll = ceil(tP["bpe"] * lrvw / int(blockWidth * 4)) if kernel["UnrollMajorLDS%s"%tc] else kernel["MIInputPerThread%s"%tc] # bytes/register
 
+        # WMMA V2 (RDNA4/GFX12): k-values for each lane group are non-contiguous.
+        # Lanes 0..MatrixInstM-1 hold k={0,1,2,3,8,9,10,11} and lanes
+        # MatrixInstM..2*MatrixInstM-1 hold k={4,5,6,7,12,13,14,15}.
+        # When UnrollMajorLDS is False, consecutive rIdx steps by one k-row each,
+        # but a gap of MatrixInstK//4 k-rows exists between the first and second half.
+        is_wmma_v2 = writer.asmCaps.get("HasWMMA_V2", False)
+
         numVgpr  = int(ceil(blockWidth))
         lrvwTile = writer.lrvwTileA if tc == "A" else writer.lrvwTileB
         numElementPerRead = int(blockWidth * 4) // tP['bpe'] // lrvwTile
@@ -296,6 +303,12 @@ class LocalReadMFMA(LocalRead):
                         offset_val = eIdx * tileStride2 + (vIdx * numOffsets+oIdx) * MIWaveGroupShape[tile01] * tileStride
                         # normal case
                         offset_val = (rIdx * numElementPerRead * UnrollStride + offset_val + localReadOffset) * tP["bpe"]
+                        # WMMA V2 non-contiguous k-gap correction: the second half of A/B
+                        # registers (rIdx >= numReadsPerUnroll//2) correspond to k-values that
+                        # skip over the middle MatrixInstK//4 k-rows owned by the other lane group.
+                        if is_wmma_v2 and not kernel["UnrollMajorLDS%s" % tc] and rIdx >= numReadsPerUnroll // 2:
+                            skip_k_elems = (kernel["MatrixInstK"] // 4) * numElementPerRead * UnrollStride
+                            offset_val += skip_k_elems * tP["bpe"]
                         if localReadOffsetDiv > 0:
                           # TSGR special conversion
                           # Multiply BlockSize for each lrdOffsetMod

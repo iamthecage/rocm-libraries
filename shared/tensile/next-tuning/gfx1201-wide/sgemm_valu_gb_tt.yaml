@@ -1,0 +1,129 @@
+TestParameters:
+  marks: [skip-gfx900, skip-gfx906, skip-gfx908, skip-gfx90a, skip-gfx942, skip-gfx950, skip-gfx1010, skip-gfx1011, skip-gfx1012, skip-gfx1030, skip-gfx1031, skip-gfx1032, skip-gfx1033, skip-gfx1034, skip-gfx1035, skip-gfx1036, skip-gfx1100, skip-gfx1101, skip-gfx1102]
+
+GlobalParameters:
+  NumElementsToValidate: 0
+  KernelTime: True
+  MaxWorkspaceSize: 67108864
+  PrintSolutionRejectionReason: True
+  MergeFiles: False
+  DataInitTypeAlpha: 1
+  DataInitTypeBeta: 0
+  EnqueuesPerSync: 1
+  SyncsPerBenchmark: 1
+  SleepPercent: 0
+
+BenchmarkProblems:
+  -
+    - # TT — both transposed (Alik_Bjlk) [grouped-batch / MoE] — f32 VALU
+      OperationType: GEMM
+      DataType: s
+      TransposeA: True
+      TransposeB: True
+      UseBeta: True
+      Batched: True
+
+    - InitialSolutionParameters:
+      BenchmarkCommonParameters:
+        - KernelLanguage: ["Assembly"]
+        - EdgeType: ["ShiftPtr"]
+        - WavefrontSize: [32]
+      ForkParameters:
+        - ThreadTile:
+          - [2, 2]
+          - [4, 2]
+          - [2, 4]
+          - [4, 4]
+          - [8, 4]
+          - [4, 8]
+        - WorkGroup:
+          - [16, 16, 1]
+        - PrefetchGlobalRead: [1]
+        - PrefetchLocalRead: [1]
+        - DepthU: [8, 16, 32]
+        - VectorWidth: [1, 2, 4]
+        - GlobalReadVectorWidth: [1, 2, 4]
+        - StaggerU: [0, 32]
+        - ScheduleLocalWrite: [1]
+        - ScheduleGlobalRead: [1]
+        - ScheduleIterAlg: [1]
+        - OptNoLoadLoop: [1]
+      BenchmarkFinalParameters:
+        - ProblemSizes:
+          - Exact: [1, 256, 1, 256]
+          - Exact: [1, 256, 1, 1024]
+          - Exact: [1, 256, 1, 4096]
+          - Exact: [1, 1024, 1, 256]
+          - Exact: [1, 1024, 1, 1024]
+          - Exact: [1, 1024, 1, 4096]
+          - Exact: [1, 2048, 1, 1024]
+          - Exact: [1, 2048, 1, 2048]
+          - Exact: [1, 2048, 1, 4096]
+          - Exact: [1, 4096, 1, 1024]
+          - Exact: [1, 4096, 1, 2048]
+          - Exact: [1, 4096, 1, 4096]
+          - Exact: [8, 256, 1, 256]
+          - Exact: [8, 256, 1, 1024]
+          - Exact: [8, 256, 1, 4096]
+          - Exact: [8, 1024, 1, 256]
+          - Exact: [8, 1024, 1, 1024]
+          - Exact: [8, 1024, 1, 4096]
+          - Exact: [8, 2048, 1, 1024]
+          - Exact: [8, 2048, 1, 2048]
+          - Exact: [8, 2048, 1, 4096]
+          - Exact: [8, 4096, 1, 1024]
+          - Exact: [8, 4096, 1, 2048]
+          - Exact: [8, 4096, 1, 4096]
+          - Exact: [32, 256, 1, 256]
+          - Exact: [32, 256, 1, 1024]
+          - Exact: [32, 256, 1, 4096]
+          - Exact: [32, 1024, 1, 256]
+          - Exact: [32, 1024, 1, 1024]
+          - Exact: [32, 1024, 1, 4096]
+          - Exact: [32, 2048, 1, 1024]
+          - Exact: [32, 2048, 1, 2048]
+          - Exact: [32, 2048, 1, 4096]
+          - Exact: [32, 4096, 1, 1024]
+          - Exact: [32, 4096, 1, 2048]
+          - Exact: [32, 4096, 1, 4096]
+          - Exact: [128, 256, 1, 256]
+          - Exact: [128, 256, 1, 1024]
+          - Exact: [128, 256, 1, 4096]
+          - Exact: [128, 1024, 1, 256]
+          - Exact: [128, 1024, 1, 1024]
+          - Exact: [128, 1024, 1, 4096]
+          - Exact: [128, 2048, 1, 1024]
+          - Exact: [128, 2048, 1, 2048]
+          - Exact: [128, 2048, 1, 4096]
+          - Exact: [128, 4096, 1, 1024]
+          - Exact: [128, 4096, 1, 2048]
+          - Exact: [128, 4096, 1, 4096]
+          - Exact: [512, 256, 1, 256]
+          - Exact: [512, 256, 1, 1024]
+          - Exact: [512, 256, 1, 4096]
+          - Exact: [512, 1024, 1, 256]
+          - Exact: [512, 1024, 1, 1024]
+          - Exact: [512, 1024, 1, 4096]
+          - Exact: [512, 2048, 1, 1024]
+          - Exact: [512, 2048, 1, 2048]
+          - Exact: [512, 2048, 1, 4096]
+          - Exact: [512, 4096, 1, 1024]
+          - Exact: [512, 4096, 1, 2048]
+          - Exact: [512, 4096, 1, 4096]
+          - Exact: [1024, 256, 1, 256]
+          - Exact: [1024, 256, 1, 1024]
+          - Exact: [1024, 256, 1, 4096]
+          - Exact: [1024, 1024, 1, 256]
+          - Exact: [1024, 1024, 1, 1024]
+          - Exact: [1024, 1024, 1, 4096]
+          - Exact: [1024, 2048, 1, 1024]
+          - Exact: [1024, 2048, 1, 2048]
+          - Exact: [1024, 2048, 1, 4096]
+          - Exact: [1024, 4096, 1, 1024]
+          - Exact: [1024, 4096, 1, 2048]
+          - Exact: [1024, 4096, 1, 4096]
+
+LibraryLogic:
+    ScheduleName: "navi48"
+    DeviceNames: ["Device 7550"]
+    ArchitectureName: "gfx1201"

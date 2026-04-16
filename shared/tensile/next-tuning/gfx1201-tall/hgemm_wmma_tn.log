@@ -1,0 +1,356 @@
+
+################################################################################
+#
+#  Tensile v4.47.0
+#  Config: /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-tall/hgemm_wmma_tn.yaml
+#  Date & Time: 15/04/2026 18:57:44
+#
+################################################################################
+
+# Restoring default globalParameters
+# Found HIP version: 7.2.53211-e1a6bc5663
+# Detected GPU 0:    gfx1201
+> UserWarning: HardwareMonitor currently disabled for gfx942, gfx950, gfx1100, gfx1101, gfx1102, gfx1103, gfx1150, gfx1151, 
+gfx1152, gfx1153, gfx1200, gfx1201
+# Command-line override: CurrentISA
+# Command-line override: PrintLevel
+
+Overriding CurrentISA=(12, 0, 1)
+Overriding PrintLevel=3
+Overriding CxxCompiler=amdclang++
+Overriding PrebuiltClient=/home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client
+ProblemTypeConfig: {'OperationType': 'GEMM', 'DataType': 'h', 'ComputeDataType': 's', 'DestDataType': 'h', 
+'HighPrecisionAccumulate': True, 'TransposeA': True, 'TransposeB': False, 'UseBeta': True, 'Batched': True}
+
+################################################################################
+# Converting Config to BenchmarkProcess Object
+################################################################################
+
+# BenchmarkProcess beginning Cijk_Alik_Bljk_HHS_BH
+
+####################################################################
+# Filling in Parameters With Defaults
+####################################################################
+
+Single Value Parameters:
+    1LDSBuffer: 0
+    AggressivePerfMode: 1
+    AssertAIGreaterThanEqual: -1
+    AssertAILessThanEqual: -1
+    AssertAlphaValue: False
+    AssertBetaValue: False
+    AssertCEqualsD: False
+    AssertFree0ElementMultiple: 1
+    AssertFree1ElementMultiple: 1
+    AssertMinApproxSize: -1
+    AssertSizeEqual: {}
+    AssertSizeGreaterThan: {}
+    AssertSizeLessThan: {}
+    AssertSizeMultiple: {}
+    AssertStrideAEqual: {}
+    AssertStrideBEqual: {}
+    AssertStrideCEqual: {}
+    AssertStrideDEqual: {}
+    AssertSummationElementMultiple: 1
+    AtomicAddC: False
+    BufferLoad: True
+    BufferStore: True
+    CUMode: False
+    CheckDimOverflow: 0
+    CheckTensorDimAsserts: False
+    ClusterLocalRead: False
+    CustomKernelName: 
+    DebugStreamK: 0
+    DepthU: 16
+    DepthULdsDivisor: 1
+    DirectToLdsA: False
+    DirectToLdsB: False
+    DirectToVgprA: False
+    DirectToVgprB: False
+    DisableAtomicFail: 0
+    DisableKernelPieces: 0
+    DisableVgprOverlapping: False
+    EdgeType: ShiftPtr
+    ExpandPointerSwap: True
+    ExtraLatencyForLR: 0
+    ExtraMiLatencyLeft: 0
+    ForceStoreSC1: Auto
+    Fp16AltImpl: False
+    Fp16AltImplRound: False
+    FractionalLoad: 0
+    GlobalLoadVectorWidthA: -1
+    GlobalLoadVectorWidthB: -1
+    GlobalRead2A: True
+    GlobalRead2B: True
+    GlobalReadCoalesceGroupA: True
+    GlobalReadCoalesceGroupB: True
+    GlobalReadCoalesceVectorA: True
+    GlobalReadCoalesceVectorB: True
+    GlobalReadPerMfma: 1
+    GlobalReadVectorWidth: 1
+    GlobalSplitU: 1
+    GlobalSplitUAlgorithm: SingleBuffer
+    GlobalSplitUAtomicAdd: False
+    GlobalSplitUSummationAssignmentRoundRobin: True
+    GlobalSplitUWorkGroupMappingRoundRobin: False
+    GroupLoadStore: False
+    InnerUnroll: 1
+    InterleaveAlpha: 0
+    KernelLanguage: Assembly
+    LdcEqualsLdd: False
+    LdsBlockSizePerPadA: -1
+    LdsBlockSizePerPadB: -1
+    LdsPadA: -1
+    LdsPadB: -1
+    LocalDotLayout: 1
+    LocalRead2A: True
+    LocalRead2B: True
+    LocalReadVectorWidth: -1
+    LocalWrite2A: True
+    LocalWrite2B: True
+    LocalWritePerMfma: -1
+    LoopDoWhile: False
+    LoopTail: True
+    MACInstruction: FMA
+    MIArchVgpr: True
+    MacroTileShapeMax: 64
+    MacroTileShapeMin: 1
+    MagicDivAlg: 2
+    MatrixInstruction: [16, 16, 16, 1, 1, 4, 4, 1, 1]
+    MaxOccupancy: 40
+    MaxVgprNumber: 256
+    MemoryModifierFormat: 
+    MinKForGSU: 256
+    MinVgprNumber: 0
+    NoReject: False
+    NonTemporalA: 0
+    NonTemporalB: 0
+    NonTemporalC: 0
+    NonTemporalD: 0
+    NumElementsPerBatchStore: 0
+    NumLoadsCoalescedA: 1
+    NumLoadsCoalescedB: 1
+    OptNoLoadLoop: 0
+    OptPreLoopVmcnt: True
+    PackBatchDims: 0
+    PackFreeDims: 1
+    PackGranularity: 2
+    PackSummationDims: 0
+    PerformanceSyncLocation: -1
+    PerformanceWaitCount: -1
+    PerformanceWaitLocation: -1
+    PersistentKernel: 0
+    PersistentKernelAlongBatch: False
+    PrefetchAcrossPersistent: 0
+    PrefetchAcrossPersistentMode: 0
+    PrefetchGlobalRead: 0
+    PrefetchLocalRead: 0
+    PreloadKernelArguments: 0
+    ReplacementKernel: False
+    ScheduleGlobalRead: 0
+    ScheduleIterAlg: 0
+    ScheduleLocalWrite: 0
+    StaggerU: 32
+    StaggerUMapping: 0
+    StaggerUStride: 256
+    StoreCInUnroll: False
+    StoreCInUnrollExact: False
+    StoreCInUnrollInterval: 1
+    StoreCInUnrollPostLoop: False
+    StorePriorityOpt: False
+    StoreRemapVectorWidth: 0
+    StoreSyncOpt: 0
+    StoreVectorWidth: -1
+    StreamK: 0
+    StreamKAtomic: 0
+    StreamKXCCMapping: 0
+    SuppressNoLoadLoop: False
+    ThreadSeparateGlobalReadA: 0
+    ThreadSeparateGlobalReadB: 0
+    ThreadTile: [4, 4]
+    TransposeLDS: 0
+    UnrollIncIsDepthU: 0
+    UnrollMajorLDSA: False
+    UnrollMajorLDSB: False
+    UnrollMemFence: False
+    Use64bShadowLimit: 1
+    UseInstOffsetForGRO: 0
+    UseSgprForGRO: -1
+    VectorAtomicWidth: -1
+    VectorStore: -1
+    VectorWidth: 1
+    VectorWidthB: -1
+    VgprForLocalReadPacking: False
+    WaveSeparateGlobalReadA: 0
+    WaveSeparateGlobalReadB: 0
+    WavefrontSize: 32
+    WorkGroup: [32, 1, 1]
+    WorkGroupMapping: 8
+    WorkGroupMappingType: B
+Multi-Value Parameters:
+    SourceSwap: [0, 1]
+
+####################################################################
+# Convert Parameters to Benchmark Step(s)
+####################################################################
+
+
+####################################################################
+# Benchmark Final
+# Creating BenchmarkStep: 1 fork params and 1 sizes
+# NumBenchmarkSteps: 1
+
+################################################################################
+# Done Creating BenchmarkProcess Object
+################################################################################
+
+
+################################################################################
+# Benchmark Step: Cijk_Alik_Bljk_HHS_BH_00 - 00_Final 12.034s
+# Num Sizes: 1
+# Fork Parameters:
+#     SourceSwap: [0, 1]
+# Enumerating Solutions
+# Actual Solutions: 2 / 2 after SolutionStructs
+
+#    (0:0) 
+Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_AS
+LT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_D
+KP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GS
+U1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSPPB1024_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2
+A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEP
+BS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU
+32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS0_UIIDU0_UMLDS
+A0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_AS
+LT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_D
+KP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GS
+U1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSPPB1024_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2
+A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEP
+BS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS1_SU
+32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS0_UIIDU0_UMLDS
+A0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_2_1_WGM8_WGMTB
+################################################################################
+Finding unique solutions:   0%|          | 0/2 [00:00<?, ?it/s]Finding unique solutions: 100%|██████████| 2/2 [00:00<00:00, 9915.61it/s]
+# Writing Kernels...
+Generating kernels: 12 thread(s), 2 tasks:   0%|          | 0/2 [00:00<?, ?it/s]Generating kernels: 12 thread(s), 2 tasks: 100%|██████████| 2/2 [00:00<00:00, 2484.78it/s]
+total vgpr count: 256
+
+write_assemblyFilename /home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS0_SVW4.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/asse
+mbly/Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS0_SVW4.o 
+/home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/asse
+mbly/Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS0_SVW4.s && 
+total vgpr count: 256
+
+write_assemblyFilename /home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS1_SVW1.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/asse
+mbly/Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS1_SVW1.o 
+/home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/asse
+mbly/Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS1_SVW1.s && 
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/asse
+mbly/Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS0_SVW4.co 
+/home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/asse
+mbly/Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS0_SVW4.o
+b''
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/asse
+mbly/Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS1_SVW1.co 
+/home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/asse
+mbly/Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS1_SVW1.o
+b''
+Filtering processing errors: 0it [00:00, ?it/s]Filtering processing errors: 2it [00:00, 110376.42it/s]
+> UserWarning: Kernel file context manager opened without any kernel files.
+Compiling source kernels: 0it [00:00, ?it/s]Compiling source kernels: 0it [00:00, ?it/s]
+Relocating code objects: 0it [00:00, ?it/s]Relocating code objects: 2it [00:00, 15196.75it/s]
+> UserWarning: Code object files are not compressed in `--no-merge-files` build mode.
+# Kernel Building elapsed time = 1.1 secs
+# Actual Solutions: 2 / 2 after KernelWriter
+
++ ERR=0
++ /home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client --config-file /home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/build/../source/ClientParameters.ini
+loading config file /home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/build/../source/ClientParameters.ini
+Loading /home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/source/library/Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS0_SVW4_gfx1201.co
+Loading /home/iamthecage/out_validate/hgemm_wmma_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_HHS_BH_00/00_Final/source/library/Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS1_SVW1_gfx1201.co
+Log level: Debug
+run,problem-progress,solution-progress,operation,problem-sizes,solution,validation,time-us,gflops,empty,total-gran,tiles-per-cu,num-cus,tile0-gran,tile1-gran,cu-gran,wave-gran,mem-read-bytes,mem-write-bytes,temp-edge,clock-sys,clock-soc,clock-mem,fan-rpm,hardware-samples,gfx-frequency(median),power(median),hotspot-temperature(median),enqueue-time
+0,0/0,0/1,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS0_SVW4,PASSED,19.88,6.59316,,0.00390625,0.03125,32,1,1,0.03125,0.125,12288,8192,,,,,,,,,,2026-04-15 18:57:56.
+0,0/0,1/1,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS1_SVW1,PASSED,20.08,6.52749,,0.00390625,0.03125,32,1,1,0.03125,0.125,12288,8192,,,,,,,,,,2026-04-15 18:57:56.
++ [[ 0 -ne 0 ]]
++ exit 0
+################################################################################
+# Cijk_Alik_Bljk_HHS_BH_00
+# 00_Final: End - 13.183s
+################################################################################
+
+clientExit=0 (PASS) for ['/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-tall/hgemm_wmma_tn.yaml']
+
+# LibraryLogic config: {'ScheduleName': 'navi48', 'DeviceNames': ['Device 7550'], 'ArchitectureName': 'gfx1201'}
+# DefaultAnalysisParameters: 
+
+################################################################################
+# Analysing data in 2_BenchmarkData - 13.184s
+#   ScheduleName: navi48
+#   DeviceNames: ['Device 7550']
+#   ArchitectureName: gfx1201
+#   SolutionImportanceMin: 0.01
+################################################################################
+
+################################################################################
+# Analyzing: Cijk_Alik_Bljk_HHS_BH
+# Read: /home/iamthecage/out_validate/hgemm_wmma_tn/2_BenchmarkData/Cijk_Alik_Bljk_HHS_BH_00.yaml
+# ProblemSizes: ProblemSizes
+
+# Solutions:
+#  (0) Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS0_SVW4
+#  (1) Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS1_SVW1
+################################################################################
+# Merging Solutions:
+                                                    # LogicAnalyzer ...............                50.0%                                                     # LogicAnalyzer .............................. 100.0%UnifiedProblemSizes: [[], [], [], [], [], [], [], []]
+ExactProblemSizes: {(64, 64, 1, 16, 64, 64, 16, 16)}
+RangeProblemSizes: {(64, 64, 1, 16, 64, 64, 16, 16)}
+# NumProblemSizes: [0, 0, 0, 0, 0, 0, 0, 0]
+TotalProblems: 0
+TotalSolutions: 2
+TotalSize: 0
+IndexOrder: [2, 3, 0, 1]
+reading datafile /home/iamthecage/out_validate/hgemm_wmma_tn/2_BenchmarkData/Cijk_Alik_Bljk_HHS_BH_00.csv
+# ExactWinners: {(64, 64, 1, 16, 64, 64, 16, 16): [0, 6.59316]}
+problemIndicesForGlobalRange []
+Winners {0}
+After Removals:
+
+( 0) Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_K1_SS0_SVW4 : 
+Cijk_Alik_Bljk_HHS_BH_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_AS
+LT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_D
+KP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GS
+U1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSPPB1024_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2
+A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEP
+BS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU
+32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS0_UIIDU0_UMLDS
+A0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_2_1_WGM8_WGMTB
+[] enRule([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])
+[] MultiProblem & NotLastIndex
+> UserWarning: [] MultiProblem & NotLastIndex :: nextRule==None; returning
+# Final Range Logic:
+None
+# Range Logic Complexity: [0, 0, 0, 0, 0, 0, 0, 0]
+
+# Score: 0 ms
+# Exact Logic:
+
+{(64, 64, 1, 16, 64, 64, 16, 16): [0, 6.59316]}
+# writing library logic YAML /home/iamthecage/out_validate/hgemm_wmma_tn/3_LibraryLogic/navi48_Cijk_Alik_Bljk_HHS_BH.yaml
+################################################################################
+# Finish Analysing data to /home/iamthecage/out_validate/hgemm_wmma_tn in 13.200s
+################################################################################
+
+

@@ -1,0 +1,1569 @@
+
+################################################################################
+#
+#  Tensile v4.47.0
+#  Config: /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-tall/validate_dtypes_valu.yaml
+#  Date & Time: 15/04/2026 18:59:21
+#
+################################################################################
+
+# Restoring default globalParameters
+# Found HIP version: 7.2.53211-e1a6bc5663
+# Detected GPU 0:    gfx1201
+> UserWarning: HardwareMonitor currently disabled for gfx942, gfx950, gfx1100, gfx1101, gfx1102, gfx1103, gfx1150, gfx1151, 
+gfx1152, gfx1153, gfx1200, gfx1201
+# Command-line override: CurrentISA
+# Command-line override: PrintLevel
+
+Overriding CurrentISA=(12, 0, 1)
+Overriding PrintLevel=3
+Overriding CxxCompiler=amdclang++
+Overriding PrebuiltClient=/home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client
+ProblemTypeConfig: {'OperationType': 'GEMM', 'DataType': 's', 'TransposeA': False, 'TransposeB': False, 'UseBeta': True, 
+'Batched': True}
+
+################################################################################
+# Converting Config to BenchmarkProcess Object
+################################################################################
+
+# BenchmarkProcess beginning Cijk_Ailk_Bljk_SB
+
+####################################################################
+# Filling in Parameters With Defaults
+####################################################################
+
+Single Value Parameters:
+    1LDSBuffer: 0
+    AggressivePerfMode: 1
+    AssertAIGreaterThanEqual: -1
+    AssertAILessThanEqual: -1
+    AssertAlphaValue: False
+    AssertBetaValue: False
+    AssertCEqualsD: False
+    AssertFree0ElementMultiple: 1
+    AssertFree1ElementMultiple: 1
+    AssertMinApproxSize: -1
+    AssertSizeEqual: {}
+    AssertSizeGreaterThan: {}
+    AssertSizeLessThan: {}
+    AssertSizeMultiple: {}
+    AssertStrideAEqual: {}
+    AssertStrideBEqual: {}
+    AssertStrideCEqual: {}
+    AssertStrideDEqual: {}
+    AssertSummationElementMultiple: 1
+    AtomicAddC: False
+    BufferLoad: True
+    BufferStore: True
+    CUMode: False
+    CheckDimOverflow: 0
+    CheckTensorDimAsserts: False
+    ClusterLocalRead: False
+    CustomKernelName: 
+    DebugStreamK: 0
+    DepthU: 8
+    DepthULdsDivisor: 1
+    DirectToLdsA: False
+    DirectToLdsB: False
+    DirectToVgprA: False
+    DirectToVgprB: False
+    DisableAtomicFail: 0
+    DisableKernelPieces: 0
+    DisableVgprOverlapping: False
+    EdgeType: ShiftPtr
+    ExpandPointerSwap: True
+    ExtraLatencyForLR: 0
+    ExtraMiLatencyLeft: 0
+    ForceStoreSC1: Auto
+    Fp16AltImpl: False
+    Fp16AltImplRound: False
+    FractionalLoad: 0
+    GlobalLoadVectorWidthA: -1
+    GlobalLoadVectorWidthB: -1
+    GlobalRead2A: True
+    GlobalRead2B: True
+    GlobalReadCoalesceGroupA: True
+    GlobalReadCoalesceGroupB: True
+    GlobalReadCoalesceVectorA: True
+    GlobalReadCoalesceVectorB: True
+    GlobalReadPerMfma: 1
+    GlobalReadVectorWidth: 1
+    GlobalSplitU: 1
+    GlobalSplitUAlgorithm: SingleBuffer
+    GlobalSplitUAtomicAdd: False
+    GlobalSplitUSummationAssignmentRoundRobin: True
+    GlobalSplitUWorkGroupMappingRoundRobin: False
+    GroupLoadStore: False
+    InnerUnroll: 1
+    InterleaveAlpha: 0
+    KernelLanguage: Assembly
+    LdcEqualsLdd: False
+    LdsBlockSizePerPadA: -1
+    LdsBlockSizePerPadB: -1
+    LdsPadA: -1
+    LdsPadB: -1
+    LocalDotLayout: 1
+    LocalRead2A: True
+    LocalRead2B: True
+    LocalReadVectorWidth: -1
+    LocalWrite2A: True
+    LocalWrite2B: True
+    LocalWritePerMfma: -1
+    LoopDoWhile: False
+    LoopTail: True
+    MACInstruction: FMA
+    MIArchVgpr: False
+    MacroTileShapeMax: 64
+    MacroTileShapeMin: 1
+    MagicDivAlg: 2
+    MatrixInstruction: []
+    MaxOccupancy: 40
+    MaxVgprNumber: 256
+    MemoryModifierFormat: 
+    MinKForGSU: 256
+    MinVgprNumber: 0
+    NoReject: False
+    NonTemporalA: 0
+    NonTemporalB: 0
+    NonTemporalC: 0
+    NonTemporalD: 0
+    NumElementsPerBatchStore: 0
+    NumLoadsCoalescedA: 1
+    NumLoadsCoalescedB: 1
+    OptNoLoadLoop: 1
+    OptPreLoopVmcnt: True
+    PackBatchDims: 0
+    PackFreeDims: 1
+    PackGranularity: 2
+    PackSummationDims: 0
+    PerformanceSyncLocation: -1
+    PerformanceWaitCount: -1
+    PerformanceWaitLocation: -1
+    PersistentKernel: 0
+    PersistentKernelAlongBatch: False
+    PrefetchAcrossPersistent: 0
+    PrefetchAcrossPersistentMode: 0
+    PreloadKernelArguments: 0
+    ReplacementKernel: False
+    ScheduleGlobalRead: 1
+    ScheduleIterAlg: 1
+    ScheduleLocalWrite: 1
+    SourceSwap: False
+    StaggerU: 32
+    StaggerUMapping: 0
+    StaggerUStride: 256
+    StoreCInUnroll: False
+    StoreCInUnrollExact: False
+    StoreCInUnrollInterval: 1
+    StoreCInUnrollPostLoop: False
+    StorePriorityOpt: False
+    StoreRemapVectorWidth: 0
+    StoreSyncOpt: 0
+    StoreVectorWidth: -1
+    StreamK: 0
+    StreamKAtomic: 0
+    StreamKXCCMapping: 0
+    SuppressNoLoadLoop: False
+    ThreadSeparateGlobalReadA: 0
+    ThreadSeparateGlobalReadB: 0
+    ThreadTile: [4, 4]
+    TransposeLDS: 0
+    UnrollIncIsDepthU: 0
+    UnrollMajorLDSA: False
+    UnrollMajorLDSB: False
+    UnrollMemFence: False
+    Use64bShadowLimit: 1
+    UseInstOffsetForGRO: 0
+    UseSgprForGRO: -1
+    VectorAtomicWidth: -1
+    VectorStore: -1
+    VectorWidth: 1
+    VectorWidthB: -1
+    VgprForLocalReadPacking: False
+    WaveSeparateGlobalReadA: 0
+    WaveSeparateGlobalReadB: 0
+    WavefrontSize: 32
+    WorkGroup: [16, 16, 1]
+    WorkGroupMapping: 8
+    WorkGroupMappingType: B
+Multi-Value Parameters:
+    PrefetchGlobalRead: [0, 1]
+    PrefetchLocalRead: [0, 1]
+
+####################################################################
+# Convert Parameters to Benchmark Step(s)
+####################################################################
+
+
+####################################################################
+# Benchmark Final
+# Creating BenchmarkStep: 2 fork params and 1 sizes
+# NumBenchmarkSteps: 1
+
+################################################################################
+# Done Creating BenchmarkProcess Object
+################################################################################
+
+
+################################################################################
+# Benchmark Step: Cijk_Ailk_Bljk_SB_00 - 00_Final 10.378s
+# Num Sizes: 1
+# Fork Parameters:
+#     PrefetchGlobalRead: [0, 1]
+#     PrefetchLocalRead: [0, 1]
+# Enumerating Solutions
+# Actual Solutions: 4 / 4 after SolutionStructs
+
+#    (0:0) 
+Cijk_Ailk_Bljk_SB_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE
+01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_
+ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GS
+USARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB1_LDL1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FM
+A_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_PFD1
+_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SC
+IUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_SB_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE
+01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_
+ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GS
+USARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB1_LDL1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FM
+A_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_PFD1
+_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR0_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SC
+IUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_SB_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE
+01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_
+ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GS
+USARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB1_LDL1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FM
+A_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_PFD1
+_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SC
+IUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_SB_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE
+01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_
+ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GS
+USARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB1_LDL1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FM
+A_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_PFD1
+_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SC
+IUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+################################################################################
+Finding unique solutions:   0%|          | 0/4 [00:00<?, ?it/s]Finding unique solutions: 100%|██████████| 4/4 [00:00<00:00, 11941.08it/s]
+# Writing Kernels...
+Generating kernels: 12 thread(s), 4 tasks:   0%|          | 0/4 [00:00<?, ?it/s]Generating kernels: 12 thread(s), 4 tasks: 100%|██████████| 4/4 [00:00<00:00, 4571.45it/s]
+total vgpr count: 34
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.s && 
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.o
+b''
+total vgpr count: 42
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.s && 
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.o
+b''
+total vgpr count: 47
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.s && 
+total vgpr count: 39
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.s && 
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.o
+b''
+b''
+Filtering processing errors: 0it [00:00, ?it/s]Filtering processing errors: 4it [00:00, 223696.21it/s]
+> UserWarning: Kernel file context manager opened without any kernel files.
+Compiling source kernels: 0it [00:00, ?it/s]Compiling source kernels: 0it [00:00, ?it/s]
+Relocating code objects: 0it [00:00, ?it/s]Relocating code objects: 4it [00:00, 25930.78it/s]
+> UserWarning: Code object files are not compressed in `--no-merge-files` build mode.
+# Kernel Building elapsed time = 1.3 secs
+# Actual Solutions: 4 / 4 after KernelWriter
+
++ ERR=0
++ /home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client --config-file /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/build/../source/ClientParameters.ini
+loading config file /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/build/../source/ClientParameters.ini
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/library/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR0_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/library/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR0_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/library/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR1_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_SB_00/00_Final/source/library/Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR1_gfx1201.co
+Log level: Debug
+run,problem-progress,solution-progress,operation,problem-sizes,solution,validation,time-us,gflops,empty,total-gran,tiles-per-cu,num-cus,tile0-gran,tile1-gran,cu-gran,wave-gran,mem-read-bytes,mem-write-bytes,temp-edge,clock-sys,clock-soc,clock-mem,fan-rpm,hardware-samples,gfx-frequency(median),power(median),hotspot-temperature(median),enqueue-time
+0,0/0,0/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR0,PASSED,26.121,5.01788,,0.03125,0.03125,32,1,1,0.03125,1,24576,16384,,,,,,,,,,2026-04-15 18:59:32.
+0,0/0,1/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR0,PASSED,546.609,0.239791,,0.03125,0.03125,32,1,1,0.03125,1,24576,16384,,,,,,,,,,2026-04-15 18:59:32.
+0,0/0,2/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR1,PASSED,18.04,7.26563,,0.03125,0.03125,32,1,1,0.03125,1,24576,16384,,,,,,,,,,2026-04-15 18:59:32.
+0,0/0,3/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR1,PASSED,10.96,11.9591,,0.03125,0.03125,32,1,1,0.03125,1,24576,16384,,,,,,,,,,2026-04-15 18:59:32.
++ [[ 0 -ne 0 ]]
++ exit 0
+################################################################################
+# Cijk_Ailk_Bljk_SB_00
+# 00_Final: End - 11.750s
+################################################################################
+
+clientExit=0 (PASS) for ['/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-tall/validate_dtypes_valu.yaml']
+ProblemTypeConfig: {'OperationType': 'GEMM', 'DataType': 'd', 'TransposeA': False, 'TransposeB': False, 'UseBeta': True, 
+'Batched': True}
+
+################################################################################
+# Converting Config to BenchmarkProcess Object
+################################################################################
+
+# BenchmarkProcess beginning Cijk_Ailk_Bljk_DB
+
+####################################################################
+# Filling in Parameters With Defaults
+####################################################################
+
+Single Value Parameters:
+    1LDSBuffer: 0
+    AggressivePerfMode: 1
+    AssertAIGreaterThanEqual: -1
+    AssertAILessThanEqual: -1
+    AssertAlphaValue: False
+    AssertBetaValue: False
+    AssertCEqualsD: False
+    AssertFree0ElementMultiple: 1
+    AssertFree1ElementMultiple: 1
+    AssertMinApproxSize: -1
+    AssertSizeEqual: {}
+    AssertSizeGreaterThan: {}
+    AssertSizeLessThan: {}
+    AssertSizeMultiple: {}
+    AssertStrideAEqual: {}
+    AssertStrideBEqual: {}
+    AssertStrideCEqual: {}
+    AssertStrideDEqual: {}
+    AssertSummationElementMultiple: 1
+    AtomicAddC: False
+    BufferLoad: True
+    BufferStore: True
+    CUMode: False
+    CheckDimOverflow: 0
+    CheckTensorDimAsserts: False
+    ClusterLocalRead: False
+    CustomKernelName: 
+    DebugStreamK: 0
+    DepthU: 4
+    DepthULdsDivisor: 1
+    DirectToLdsA: False
+    DirectToLdsB: False
+    DirectToVgprA: False
+    DirectToVgprB: False
+    DisableAtomicFail: 0
+    DisableKernelPieces: 0
+    DisableVgprOverlapping: False
+    EdgeType: ShiftPtr
+    ExpandPointerSwap: True
+    ExtraLatencyForLR: 0
+    ExtraMiLatencyLeft: 0
+    ForceStoreSC1: Auto
+    Fp16AltImpl: False
+    Fp16AltImplRound: False
+    FractionalLoad: 0
+    GlobalLoadVectorWidthA: -1
+    GlobalLoadVectorWidthB: -1
+    GlobalRead2A: True
+    GlobalRead2B: True
+    GlobalReadCoalesceGroupA: True
+    GlobalReadCoalesceGroupB: True
+    GlobalReadCoalesceVectorA: True
+    GlobalReadCoalesceVectorB: True
+    GlobalReadPerMfma: 1
+    GlobalReadVectorWidth: 1
+    GlobalSplitU: 1
+    GlobalSplitUAlgorithm: SingleBuffer
+    GlobalSplitUAtomicAdd: False
+    GlobalSplitUSummationAssignmentRoundRobin: True
+    GlobalSplitUWorkGroupMappingRoundRobin: False
+    GroupLoadStore: False
+    InnerUnroll: 1
+    InterleaveAlpha: 0
+    KernelLanguage: Assembly
+    LdcEqualsLdd: False
+    LdsBlockSizePerPadA: -1
+    LdsBlockSizePerPadB: -1
+    LdsPadA: -1
+    LdsPadB: -1
+    LocalDotLayout: 1
+    LocalRead2A: True
+    LocalRead2B: True
+    LocalReadVectorWidth: -1
+    LocalWrite2A: True
+    LocalWrite2B: True
+    LocalWritePerMfma: -1
+    LoopDoWhile: False
+    LoopTail: True
+    MACInstruction: FMA
+    MIArchVgpr: False
+    MacroTileShapeMax: 64
+    MacroTileShapeMin: 1
+    MagicDivAlg: 2
+    MatrixInstruction: []
+    MaxOccupancy: 40
+    MaxVgprNumber: 256
+    MemoryModifierFormat: 
+    MinKForGSU: 256
+    MinVgprNumber: 0
+    NoReject: False
+    NonTemporalA: 0
+    NonTemporalB: 0
+    NonTemporalC: 0
+    NonTemporalD: 0
+    NumElementsPerBatchStore: 0
+    NumLoadsCoalescedA: 1
+    NumLoadsCoalescedB: 1
+    OptNoLoadLoop: 1
+    OptPreLoopVmcnt: True
+    PackBatchDims: 0
+    PackFreeDims: 1
+    PackGranularity: 2
+    PackSummationDims: 0
+    PerformanceSyncLocation: -1
+    PerformanceWaitCount: -1
+    PerformanceWaitLocation: -1
+    PersistentKernel: 0
+    PersistentKernelAlongBatch: False
+    PrefetchAcrossPersistent: 0
+    PrefetchAcrossPersistentMode: 0
+    PreloadKernelArguments: 0
+    ReplacementKernel: False
+    ScheduleGlobalRead: 1
+    ScheduleIterAlg: 1
+    ScheduleLocalWrite: 1
+    SourceSwap: False
+    StaggerU: 32
+    StaggerUMapping: 0
+    StaggerUStride: 256
+    StoreCInUnroll: False
+    StoreCInUnrollExact: False
+    StoreCInUnrollInterval: 1
+    StoreCInUnrollPostLoop: False
+    StorePriorityOpt: False
+    StoreRemapVectorWidth: 0
+    StoreSyncOpt: 0
+    StoreVectorWidth: -1
+    StreamK: 0
+    StreamKAtomic: 0
+    StreamKXCCMapping: 0
+    SuppressNoLoadLoop: False
+    ThreadSeparateGlobalReadA: 0
+    ThreadSeparateGlobalReadB: 0
+    ThreadTile: [4, 4]
+    TransposeLDS: 0
+    UnrollIncIsDepthU: 0
+    UnrollMajorLDSA: False
+    UnrollMajorLDSB: False
+    UnrollMemFence: False
+    Use64bShadowLimit: 1
+    UseInstOffsetForGRO: 0
+    UseSgprForGRO: -1
+    VectorAtomicWidth: -1
+    VectorStore: -1
+    VectorWidth: 1
+    VectorWidthB: -1
+    VgprForLocalReadPacking: False
+    WaveSeparateGlobalReadA: 0
+    WaveSeparateGlobalReadB: 0
+    WavefrontSize: 32
+    WorkGroup: [16, 16, 1]
+    WorkGroupMapping: 8
+    WorkGroupMappingType: B
+Multi-Value Parameters:
+    PrefetchGlobalRead: [0, 1]
+    PrefetchLocalRead: [0, 1]
+
+####################################################################
+# Convert Parameters to Benchmark Step(s)
+####################################################################
+
+
+####################################################################
+# Benchmark Final
+# Creating BenchmarkStep: 2 fork params and 1 sizes
+# NumBenchmarkSteps: 1
+
+################################################################################
+# Done Creating BenchmarkProcess Object
+################################################################################
+
+
+################################################################################
+# Benchmark Step: Cijk_Ailk_Bljk_DB_00 - 00_Final 11.763s
+# Num Sizes: 1
+# Fork Parameters:
+#     PrefetchGlobalRead: [0, 1]
+#     PrefetchLocalRead: [0, 1]
+# Enumerating Solutions
+# Actual Solutions: 4 / 4 after SolutionStructs
+
+#    (0:0) 
+Cijk_Ailk_Bljk_DB_MT64x64x4_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE
+01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU4_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_
+ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GS
+USARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB1_LDL1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FM
+A_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_PFD1
+_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SC
+IUPL0_SPO0_SRVW0_SSO0_SVW2_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_DB_MT64x64x4_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE
+01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU4_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_
+ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GS
+USARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB1_LDL1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FM
+A_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_PFD1
+_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR0_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SC
+IUPL0_SPO0_SRVW0_SSO0_SVW2_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_DB_MT64x64x4_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE
+01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU4_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_
+ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GS
+USARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB1_LDL1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FM
+A_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_PFD1
+_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SC
+IUPL0_SPO0_SRVW0_SSO0_SVW2_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_DB_MT64x64x4_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE
+01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU4_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_
+ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GS
+USARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB1_LDL1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FM
+A_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_PFD1
+_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SC
+IUPL0_SPO0_SRVW0_SSO0_SVW2_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+################################################################################
+Finding unique solutions:   0%|          | 0/4 [00:00<?, ?it/s]Finding unique solutions: 100%|██████████| 4/4 [00:00<00:00, 9921.48it/s]
+# Writing Kernels...
+Generating kernels: 12 thread(s), 4 tasks:   0%|          | 0/4 [00:00<?, ?it/s]Generating kernels: 12 thread(s), 4 tasks: 100%|██████████| 4/4 [00:00<00:00, 16946.68it/s]
+total vgpr count: 74
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR1.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR1.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR1.s && 
+total vgpr count: 60
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR0.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR0.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR0.s && 
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR1.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR1.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR0.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR0.o
+b''
+b''
+total vgpr count: 63
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR0.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR0.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR0.s && 
+total vgpr count: 79
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR1.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR1.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR1.s && 
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR0.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR0.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR1.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/build_tmp/SOURCE/a
+ssembly/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR1.o
+b''
+b''
+Filtering processing errors: 0it [00:00, ?it/s]Filtering processing errors: 4it [00:00, 197379.01it/s]
+> UserWarning: Kernel file context manager opened without any kernel files.
+Compiling source kernels: 0it [00:00, ?it/s]Compiling source kernels: 0it [00:00, ?it/s]
+Relocating code objects: 0it [00:00, ?it/s]Relocating code objects: 4it [00:00, 29279.61it/s]
+> UserWarning: Code object files are not compressed in `--no-merge-files` build mode.
+# Kernel Building elapsed time = 1.2 secs
+# Actual Solutions: 4 / 4 after KernelWriter
+
++ ERR=0
++ /home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client --config-file /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/build/../source/ClientParameters.ini
+loading config file /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/build/../source/ClientParameters.ini
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/library/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR0_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/library/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR0_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/library/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR1_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_DB_00/00_Final/source/library/Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR1_gfx1201.co
+Log level: Debug
+run,problem-progress,solution-progress,operation,problem-sizes,solution,validation,time-us,gflops,empty,total-gran,tiles-per-cu,num-cus,tile0-gran,tile1-gran,cu-gran,wave-gran,mem-read-bytes,mem-write-bytes,temp-edge,clock-sys,clock-soc,clock-mem,fan-rpm,hardware-samples,gfx-frequency(median),power(median),hotspot-temperature(median),enqueue-time
+0,0/0,0/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,8)",Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR0,PASSED,12.08,5.42517,,0.03125,0.03125,32,1,1,0.03125,1,40960,32768,,,,,,,,,,2026-04-15 18:59:33.
+0,0/0,1/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,8)",Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR0,PASSED,11.4,5.74877,,0.03125,0.03125,32,1,1,0.03125,1,40960,32768,,,,,,,,,,2026-04-15 18:59:33.
+0,0/0,2/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,8)",Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR1,PASSED,11.88,5.5165,,0.03125,0.03125,32,1,1,0.03125,1,40960,32768,,,,,,,,,,2026-04-15 18:59:33.
+0,0/0,3/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,8)",Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR1,PASSED,11.24,5.83061,,0.03125,0.03125,32,1,1,0.03125,1,40960,32768,,,,,,,,,,2026-04-15 18:59:33.
++ [[ 0 -ne 0 ]]
++ exit 0
+################################################################################
+# Cijk_Ailk_Bljk_DB_00
+# 00_Final: End - 13.043s
+################################################################################
+
+clientExit=0 (PASS) for ['/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-tall/validate_dtypes_valu.yaml']
+ProblemTypeConfig: {'OperationType': 'GEMM', 'DataType': 'h', 'ComputeDataType': 's', 'DestDataType': 'h', 
+'HighPrecisionAccumulate': True, 'TransposeA': False, 'TransposeB': False, 'UseBeta': True, 'Batched': True}
+
+################################################################################
+# Converting Config to BenchmarkProcess Object
+################################################################################
+
+# BenchmarkProcess beginning Cijk_Ailk_Bljk_HHS_BH
+
+####################################################################
+# Filling in Parameters With Defaults
+####################################################################
+
+Single Value Parameters:
+    1LDSBuffer: 0
+    AggressivePerfMode: 1
+    AssertAIGreaterThanEqual: -1
+    AssertAILessThanEqual: -1
+    AssertAlphaValue: False
+    AssertBetaValue: False
+    AssertCEqualsD: False
+    AssertFree0ElementMultiple: 1
+    AssertFree1ElementMultiple: 1
+    AssertMinApproxSize: -1
+    AssertSizeEqual: {}
+    AssertSizeGreaterThan: {}
+    AssertSizeLessThan: {}
+    AssertSizeMultiple: {}
+    AssertStrideAEqual: {}
+    AssertStrideBEqual: {}
+    AssertStrideCEqual: {}
+    AssertStrideDEqual: {}
+    AssertSummationElementMultiple: 1
+    AtomicAddC: False
+    BufferLoad: True
+    BufferStore: True
+    CUMode: False
+    CheckDimOverflow: 0
+    CheckTensorDimAsserts: False
+    ClusterLocalRead: False
+    CustomKernelName: 
+    DebugStreamK: 0
+    DepthU: 8
+    DepthULdsDivisor: 1
+    DirectToLdsA: False
+    DirectToLdsB: False
+    DirectToVgprA: False
+    DirectToVgprB: False
+    DisableAtomicFail: 0
+    DisableKernelPieces: 0
+    DisableVgprOverlapping: False
+    EdgeType: ShiftPtr
+    ExpandPointerSwap: True
+    ExtraLatencyForLR: 0
+    ExtraMiLatencyLeft: 0
+    ForceStoreSC1: Auto
+    Fp16AltImpl: False
+    Fp16AltImplRound: False
+    FractionalLoad: 0
+    GlobalLoadVectorWidthA: -1
+    GlobalLoadVectorWidthB: -1
+    GlobalRead2A: True
+    GlobalRead2B: True
+    GlobalReadCoalesceGroupA: True
+    GlobalReadCoalesceGroupB: True
+    GlobalReadCoalesceVectorA: True
+    GlobalReadCoalesceVectorB: True
+    GlobalReadPerMfma: 1
+    GlobalReadVectorWidth: 2
+    GlobalSplitU: 1
+    GlobalSplitUAlgorithm: SingleBuffer
+    GlobalSplitUAtomicAdd: False
+    GlobalSplitUSummationAssignmentRoundRobin: True
+    GlobalSplitUWorkGroupMappingRoundRobin: False
+    GroupLoadStore: False
+    InnerUnroll: 1
+    InterleaveAlpha: 0
+    KernelLanguage: Assembly
+    LdcEqualsLdd: False
+    LdsBlockSizePerPadA: -1
+    LdsBlockSizePerPadB: -1
+    LdsPadA: -1
+    LdsPadB: -1
+    LocalDotLayout: 1
+    LocalRead2A: True
+    LocalRead2B: True
+    LocalReadVectorWidth: -1
+    LocalWrite2A: True
+    LocalWrite2B: True
+    LocalWritePerMfma: -1
+    LoopDoWhile: False
+    LoopTail: True
+    MACInstruction: FMA
+    MIArchVgpr: False
+    MacroTileShapeMax: 64
+    MacroTileShapeMin: 1
+    MagicDivAlg: 2
+    MatrixInstruction: []
+    MaxOccupancy: 40
+    MaxVgprNumber: 256
+    MemoryModifierFormat: 
+    MinKForGSU: 256
+    MinVgprNumber: 0
+    NoReject: False
+    NonTemporalA: 0
+    NonTemporalB: 0
+    NonTemporalC: 0
+    NonTemporalD: 0
+    NumElementsPerBatchStore: 0
+    NumLoadsCoalescedA: 1
+    NumLoadsCoalescedB: 1
+    OptNoLoadLoop: 1
+    OptPreLoopVmcnt: True
+    PackBatchDims: 0
+    PackFreeDims: 1
+    PackGranularity: 2
+    PackSummationDims: 0
+    PerformanceSyncLocation: -1
+    PerformanceWaitCount: -1
+    PerformanceWaitLocation: -1
+    PersistentKernel: 0
+    PersistentKernelAlongBatch: False
+    PrefetchAcrossPersistent: 0
+    PrefetchAcrossPersistentMode: 0
+    PreloadKernelArguments: 0
+    ReplacementKernel: False
+    ScheduleGlobalRead: 1
+    ScheduleIterAlg: 1
+    ScheduleLocalWrite: 1
+    SourceSwap: False
+    StaggerU: 32
+    StaggerUMapping: 0
+    StaggerUStride: 256
+    StoreCInUnroll: False
+    StoreCInUnrollExact: False
+    StoreCInUnrollInterval: 1
+    StoreCInUnrollPostLoop: False
+    StorePriorityOpt: False
+    StoreRemapVectorWidth: 0
+    StoreSyncOpt: 0
+    StoreVectorWidth: -1
+    StreamK: 0
+    StreamKAtomic: 0
+    StreamKXCCMapping: 0
+    SuppressNoLoadLoop: False
+    ThreadSeparateGlobalReadA: 0
+    ThreadSeparateGlobalReadB: 0
+    ThreadTile: [4, 4]
+    TransposeLDS: 0
+    UnrollIncIsDepthU: 0
+    UnrollMajorLDSA: False
+    UnrollMajorLDSB: False
+    UnrollMemFence: False
+    Use64bShadowLimit: 1
+    UseInstOffsetForGRO: 0
+    UseSgprForGRO: -1
+    VectorAtomicWidth: -1
+    VectorStore: -1
+    VectorWidth: 2
+    VectorWidthB: -1
+    VgprForLocalReadPacking: False
+    WaveSeparateGlobalReadA: 0
+    WaveSeparateGlobalReadB: 0
+    WavefrontSize: 32
+    WorkGroup: [16, 16, 1]
+    WorkGroupMapping: 8
+    WorkGroupMappingType: B
+Multi-Value Parameters:
+    PrefetchGlobalRead: [0, 1]
+    PrefetchLocalRead: [0, 1]
+
+####################################################################
+# Convert Parameters to Benchmark Step(s)
+####################################################################
+
+
+####################################################################
+# Benchmark Final
+# Creating BenchmarkStep: 2 fork params and 1 sizes
+# NumBenchmarkSteps: 1
+
+################################################################################
+# Done Creating BenchmarkProcess Object
+################################################################################
+
+
+################################################################################
+# Benchmark Step: Cijk_Ailk_Bljk_HHS_BH_00 - 00_Final 13.056s
+# Num Sizes: 1
+# Fork Parameters:
+#     PrefetchGlobalRead: [0, 1]
+#     PrefetchLocalRead: [0, 1]
+# Enumerating Solutions
+# Actual Solutions: 4 / 4 after SolutionStructs
+
+#    (0:0) 
+Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS3_ASE_ASGT_ASLT_ASM_ASAE01_
+ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_E
+PS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA2_GLVWB2_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW2_GSU1_GSUASB_GSUAA
+0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB2_LDL1_LR2A1_LR2B1_LRVW2_LW2A1_LW2B1_LWPMn1_LDW0_LT
+1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_
+PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI
+1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_US
+FGROn1_VAW1_VSn1_VW2_VWB2_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS3_ASE_ASGT_ASLT_ASM_ASAE01_
+ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_E
+PS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA2_GLVWB2_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW2_GSU1_GSUASB_GSUAA
+0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB2_LDL1_LR2A1_LR2B1_LRVW2_LW2A1_LW2B1_LWPMn1_LDW0_LT
+1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_
+PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR0_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI
+1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_US
+FGROn1_VAW1_VSn1_VW2_VWB2_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS3_ASE_ASGT_ASLT_ASM_ASAE01_
+ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_E
+PS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA2_GLVWB2_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW2_GSU1_GSUASB_GSUAA
+0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB2_LDL1_LR2A1_LR2B1_LRVW2_LW2A1_LW2B1_LWPMn1_LDW0_LT
+1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_
+PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI
+1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_US
+FGROn1_VAW1_VSn1_VW2_VWB2_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS3_ASE_ASGT_ASLT_ASM_ASAE01_
+ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_E
+PS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA2_GLVWB2_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW2_GSU1_GSUASB_GSUAA
+0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB2_LDL1_LR2A1_LR2B1_LRVW2_LW2A1_LW2B1_LWPMn1_LDW0_LT
+1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_
+PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI
+1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_US
+FGROn1_VAW1_VSn1_VW2_VWB2_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+################################################################################
+Finding unique solutions:   0%|          | 0/4 [00:00<?, ?it/s]Finding unique solutions: 100%|██████████| 4/4 [00:00<00:00, 11823.27it/s]
+# Writing Kernels...
+Generating kernels: 12 thread(s), 4 tasks:   0%|          | 0/4 [00:00<?, ?it/s]Generating kernels: 12 thread(s), 4 tasks: 100%|██████████| 4/4 [00:00<00:00, 16777.22it/s]
+info: growing pool += 2 * 1 for GlobalWrite
+
+0         1         2         
+012345678901234567890123456789
+..................########|...
+0         1         2         3
+0123456789012345678901234567890
+..................########|...|
+info: growing pool += 2 * 2 for GlobalWrite
+
+0         1         2         3
+0123456789012345678901234567890
+..................######|||...|
+0         1         2         3 
+01234567890123456789012345678901
+..................######|||...||
+total vgpr count: 32
+
+total vgpr count: 34
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.s && 
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.s && 
+b''
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.o
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.o
+b''
+b''
+total vgpr count: 38
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.s && 
+total vgpr count: 34
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.s && 
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.o
+b''
+b''
+Filtering processing errors: 0it [00:00, ?it/s]Filtering processing errors: 4it [00:00, 266305.02it/s]
+> UserWarning: Kernel file context manager opened without any kernel files.
+Compiling source kernels: 0it [00:00, ?it/s]Compiling source kernels: 0it [00:00, ?it/s]
+Relocating code objects: 0it [00:00, ?it/s]Relocating code objects: 4it [00:00, 27869.13it/s]
+> UserWarning: Code object files are not compressed in `--no-merge-files` build mode.
+# Kernel Building elapsed time = 1.2 secs
+# Actual Solutions: 4 / 4 after KernelWriter
+
++ ERR=0
++ /home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client --config-file /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/build/../source/ClientParameters.ini
+loading config file /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/build/../source/ClientParameters.ini
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_HHS_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1_gfx1201.co
+Log level: Debug
+run,problem-progress,solution-progress,operation,problem-sizes,solution,validation,time-us,gflops,empty,total-gran,tiles-per-cu,num-cus,tile0-gran,tile1-gran,cu-gran,wave-gran,mem-read-bytes,mem-write-bytes,temp-edge,clock-sys,clock-soc,clock-mem,fan-rpm,hardware-samples,gfx-frequency(median),power(median),hotspot-temperature(median),enqueue-time
+0,0/0,0/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0,PASSED,47.281,2.77219,,0.03125,0.03125,32,1,1,0.03125,1,12288,8192,,,,,,,,,,2026-04-15 18:59:35.
+0,0/0,1/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0,PASSED,13.88,9.44323,,0.03125,0.03125,32,1,1,0.03125,1,12288,8192,,,,,,,,,,2026-04-15 18:59:35.
+0,0/0,2/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1,PASSED,18.401,7.12309,,0.03125,0.03125,32,1,1,0.03125,1,12288,8192,,,,,,,,,,2026-04-15 18:59:35.
+0,0/0,3/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1,PASSED,13.16,9.95988,,0.03125,0.03125,32,1,1,0.03125,1,12288,8192,,,,,,,,,,2026-04-15 18:59:35.
++ [[ 0 -ne 0 ]]
++ exit 0
+################################################################################
+# Cijk_Ailk_Bljk_HHS_BH_00
+# 00_Final: End - 14.317s
+################################################################################
+
+clientExit=0 (PASS) for ['/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-tall/validate_dtypes_valu.yaml']
+ProblemTypeConfig: {'OperationType': 'GEMM', 'DataType': 'B', 'ComputeDataType': 's', 'DestDataType': 'B', 
+'HighPrecisionAccumulate': True, 'TransposeA': False, 'TransposeB': False, 'UseBeta': True, 'Batched': True}
+
+################################################################################
+# Converting Config to BenchmarkProcess Object
+################################################################################
+
+# BenchmarkProcess beginning Cijk_Ailk_Bljk_BBS_BH
+
+####################################################################
+# Filling in Parameters With Defaults
+####################################################################
+
+Single Value Parameters:
+    1LDSBuffer: 0
+    AggressivePerfMode: 1
+    AssertAIGreaterThanEqual: -1
+    AssertAILessThanEqual: -1
+    AssertAlphaValue: False
+    AssertBetaValue: False
+    AssertCEqualsD: False
+    AssertFree0ElementMultiple: 1
+    AssertFree1ElementMultiple: 1
+    AssertMinApproxSize: -1
+    AssertSizeEqual: {}
+    AssertSizeGreaterThan: {}
+    AssertSizeLessThan: {}
+    AssertSizeMultiple: {}
+    AssertStrideAEqual: {}
+    AssertStrideBEqual: {}
+    AssertStrideCEqual: {}
+    AssertStrideDEqual: {}
+    AssertSummationElementMultiple: 1
+    AtomicAddC: False
+    BufferLoad: True
+    BufferStore: True
+    CUMode: False
+    CheckDimOverflow: 0
+    CheckTensorDimAsserts: False
+    ClusterLocalRead: False
+    CustomKernelName: 
+    DebugStreamK: 0
+    DepthU: 8
+    DepthULdsDivisor: 1
+    DirectToLdsA: False
+    DirectToLdsB: False
+    DirectToVgprA: False
+    DirectToVgprB: False
+    DisableAtomicFail: 0
+    DisableKernelPieces: 0
+    DisableVgprOverlapping: False
+    EdgeType: ShiftPtr
+    ExpandPointerSwap: True
+    ExtraLatencyForLR: 0
+    ExtraMiLatencyLeft: 0
+    ForceStoreSC1: Auto
+    Fp16AltImpl: False
+    Fp16AltImplRound: False
+    FractionalLoad: 0
+    GlobalLoadVectorWidthA: -1
+    GlobalLoadVectorWidthB: -1
+    GlobalRead2A: True
+    GlobalRead2B: True
+    GlobalReadCoalesceGroupA: True
+    GlobalReadCoalesceGroupB: True
+    GlobalReadCoalesceVectorA: True
+    GlobalReadCoalesceVectorB: True
+    GlobalReadPerMfma: 1
+    GlobalReadVectorWidth: 2
+    GlobalSplitU: 1
+    GlobalSplitUAlgorithm: SingleBuffer
+    GlobalSplitUAtomicAdd: False
+    GlobalSplitUSummationAssignmentRoundRobin: True
+    GlobalSplitUWorkGroupMappingRoundRobin: False
+    GroupLoadStore: False
+    InnerUnroll: 1
+    InterleaveAlpha: 0
+    KernelLanguage: Assembly
+    LdcEqualsLdd: False
+    LdsBlockSizePerPadA: -1
+    LdsBlockSizePerPadB: -1
+    LdsPadA: -1
+    LdsPadB: -1
+    LocalDotLayout: 1
+    LocalRead2A: True
+    LocalRead2B: True
+    LocalReadVectorWidth: -1
+    LocalWrite2A: True
+    LocalWrite2B: True
+    LocalWritePerMfma: -1
+    LoopDoWhile: False
+    LoopTail: True
+    MACInstruction: FMA
+    MIArchVgpr: False
+    MacroTileShapeMax: 64
+    MacroTileShapeMin: 1
+    MagicDivAlg: 2
+    MatrixInstruction: []
+    MaxOccupancy: 40
+    MaxVgprNumber: 256
+    MemoryModifierFormat: 
+    MinKForGSU: 256
+    MinVgprNumber: 0
+    NoReject: False
+    NonTemporalA: 0
+    NonTemporalB: 0
+    NonTemporalC: 0
+    NonTemporalD: 0
+    NumElementsPerBatchStore: 0
+    NumLoadsCoalescedA: 1
+    NumLoadsCoalescedB: 1
+    OptNoLoadLoop: 1
+    OptPreLoopVmcnt: True
+    PackBatchDims: 0
+    PackFreeDims: 1
+    PackGranularity: 2
+    PackSummationDims: 0
+    PerformanceSyncLocation: -1
+    PerformanceWaitCount: -1
+    PerformanceWaitLocation: -1
+    PersistentKernel: 0
+    PersistentKernelAlongBatch: False
+    PrefetchAcrossPersistent: 0
+    PrefetchAcrossPersistentMode: 0
+    PreloadKernelArguments: 0
+    ReplacementKernel: False
+    ScheduleGlobalRead: 1
+    ScheduleIterAlg: 1
+    ScheduleLocalWrite: 1
+    SourceSwap: False
+    StaggerU: 32
+    StaggerUMapping: 0
+    StaggerUStride: 256
+    StoreCInUnroll: False
+    StoreCInUnrollExact: False
+    StoreCInUnrollInterval: 1
+    StoreCInUnrollPostLoop: False
+    StorePriorityOpt: False
+    StoreRemapVectorWidth: 0
+    StoreSyncOpt: 0
+    StoreVectorWidth: -1
+    StreamK: 0
+    StreamKAtomic: 0
+    StreamKXCCMapping: 0
+    SuppressNoLoadLoop: False
+    ThreadSeparateGlobalReadA: 0
+    ThreadSeparateGlobalReadB: 0
+    ThreadTile: [4, 4]
+    TransposeLDS: 0
+    UnrollIncIsDepthU: 0
+    UnrollMajorLDSA: False
+    UnrollMajorLDSB: False
+    UnrollMemFence: False
+    Use64bShadowLimit: 1
+    UseInstOffsetForGRO: 0
+    UseSgprForGRO: -1
+    VectorAtomicWidth: -1
+    VectorStore: -1
+    VectorWidth: 2
+    VectorWidthB: -1
+    VgprForLocalReadPacking: False
+    WaveSeparateGlobalReadA: 0
+    WaveSeparateGlobalReadB: 0
+    WavefrontSize: 32
+    WorkGroup: [16, 16, 1]
+    WorkGroupMapping: 8
+    WorkGroupMappingType: B
+Multi-Value Parameters:
+    PrefetchGlobalRead: [0, 1]
+    PrefetchLocalRead: [0, 1]
+
+####################################################################
+# Convert Parameters to Benchmark Step(s)
+####################################################################
+
+
+####################################################################
+# Benchmark Final
+# Creating BenchmarkStep: 2 fork params and 1 sizes
+# NumBenchmarkSteps: 1
+
+################################################################################
+# Done Creating BenchmarkProcess Object
+################################################################################
+
+
+################################################################################
+# Benchmark Step: Cijk_Ailk_Bljk_BBS_BH_00 - 00_Final 14.329s
+# Num Sizes: 1
+# Fork Parameters:
+#     PrefetchGlobalRead: [0, 1]
+#     PrefetchLocalRead: [0, 1]
+# Enumerating Solutions
+# Actual Solutions: 4 / 4 after SolutionStructs
+
+#    (0:0) 
+Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS3_ASE_ASGT_ASLT_ASM_ASAE01_
+ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_E
+PS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA2_GLVWB2_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW2_GSU1_GSUASB_GSUAA
+0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB2_LDL1_LR2A1_LR2B1_LRVW2_LW2A1_LW2B1_LWPMn1_LDW0_LT
+1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_
+PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI
+1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_US
+FGROn1_VAW1_VSn1_VW2_VWB2_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS3_ASE_ASGT_ASLT_ASM_ASAE01_
+ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_E
+PS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA2_GLVWB2_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW2_GSU1_GSUASB_GSUAA
+0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB2_LDL1_LR2A1_LR2B1_LRVW2_LW2A1_LW2B1_LWPMn1_LDW0_LT
+1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_
+PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR0_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI
+1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_US
+FGROn1_VAW1_VSn1_VW2_VWB2_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS3_ASE_ASGT_ASLT_ASM_ASAE01_
+ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_E
+PS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA2_GLVWB2_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW2_GSU1_GSUASB_GSUAA
+0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB2_LDL1_LR2A1_LR2B1_LRVW2_LW2A1_LW2B1_LWPMn1_LDW0_LT
+1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_
+PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI
+1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_US
+FGROn1_VAW1_VSn1_VW2_VWB2_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS3_ASE_ASGT_ASLT_ASM_ASAE01_
+ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_E
+PS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA2_GLVWB2_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW2_GSU1_GSUASB_GSUAA
+0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB2_LDL1_LR2A1_LR2B1_LRVW2_LW2A1_LW2B1_LWPMn1_LDW0_LT
+1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_
+PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI
+1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_US
+FGROn1_VAW1_VSn1_VW2_VWB2_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+################################################################################
+Finding unique solutions:   0%|          | 0/4 [00:00<?, ?it/s]Finding unique solutions: 100%|██████████| 4/4 [00:00<00:00, 11915.64it/s]
+# Writing Kernels...
+Generating kernels: 12 thread(s), 4 tasks:   0%|          | 0/4 [00:00<?, ?it/s]Generating kernels: 12 thread(s), 4 tasks: 100%|██████████| 4/4 [00:00<00:00, 13785.72it/s]
+info: growing pool += 2 * 1 for GlobalWrite
+
+total vgpr count: 42
+
+0         1         2         3   
+0123456789012345678901234567890123
+..................############|...
+0         1         2         3    
+01234567890123456789012345678901234
+..................############|...|
+info: growing pool += 2 * 2 for GlobalWrite
+
+0         1         2         3    
+01234567890123456789012345678901234
+..................##########|||...|
+0         1         2         3     
+012345678901234567890123456789012345
+..................##########|||...||
+total vgpr count: 36
+
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.s && 
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.s && 
+b''
+total vgpr count: 38
+
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0.o
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.s && 
+total vgpr count: 46
+
+b''
+b''
+write_assemblyFilename /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 
+-mno-wavefrontsize64 -c -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.s && 
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.co 
+/home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOUR
+CE/assembly/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1.o
+b''
+b''
+Filtering processing errors: 0it [00:00, ?it/s]Filtering processing errors: 4it [00:00, 279620.27it/s]
+> UserWarning: Kernel file context manager opened without any kernel files.
+Compiling source kernels: 0it [00:00, ?it/s]Compiling source kernels: 0it [00:00, ?it/s]
+Relocating code objects: 0it [00:00, ?it/s]Relocating code objects: 4it [00:00, 30174.85it/s]
+> UserWarning: Code object files are not compressed in `--no-merge-files` build mode.
+# Kernel Building elapsed time = 0.1 secs
+# Actual Solutions: 4 / 4 after KernelWriter
+
++ ERR=0
++ /home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client --config-file /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/build/../source/ClientParameters.ini
+loading config file /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/build/../source/ClientParameters.ini
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1_gfx1201.co
+Loading /home/iamthecage/out_validate/validate_dtypes_valu/1_BenchmarkProblems/Cijk_Ailk_Bljk_BBS_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1_gfx1201.co
+Log level: Debug
+run,problem-progress,solution-progress,operation,problem-sizes,solution,validation,time-us,gflops,empty,total-gran,tiles-per-cu,num-cus,tile0-gran,tile1-gran,cu-gran,wave-gran,mem-read-bytes,mem-write-bytes,temp-edge,clock-sys,clock-soc,clock-mem,fan-rpm,hardware-samples,gfx-frequency(median),power(median),hotspot-temperature(median),enqueue-time
+0,0/0,0/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0,PASSED,111.481,1.17573,,0.03125,0.03125,32,1,1,0.03125,1,12288,8192,,,,,,,,,,2026-04-15 18:59:35.
+0,0/0,1/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0,PASSED,79.561,1.64744,,0.03125,0.03125,32,1,1,0.03125,1,12288,8192,,,,,,,,,,2026-04-15 18:59:35.
+0,0/0,2/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1,PASSED,2171.31,0.0603654,,0.03125,0.03125,32,1,1,0.03125,1,12288,8192,,,,,,,,,,2026-04-15 18:59:35.
+0,0/0,3/3,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16)",Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1,PASSED,11.16,11.7448,,0.03125,0.03125,32,1,1,0.03125,1,12288,8192,,,,,,,,,,2026-04-15 18:59:35.
++ [[ 0 -ne 0 ]]
++ exit 0
+################################################################################
+# Cijk_Ailk_Bljk_BBS_BH_00
+# 00_Final: End - 14.508s
+################################################################################
+
+clientExit=0 (PASS) for ['/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-tall/validate_dtypes_valu.yaml']
+
+# LibraryLogic config: {'ScheduleName': 'navi48', 'DeviceNames': ['Device 7550'], 'ArchitectureName': 'gfx1201'}
+# DefaultAnalysisParameters: 
+
+################################################################################
+# Analysing data in 2_BenchmarkData - 14.509s
+#   ScheduleName: navi48
+#   DeviceNames: ['Device 7550']
+#   ArchitectureName: gfx1201
+#   SolutionImportanceMin: 0.01
+################################################################################
+
+################################################################################
+# Analyzing: Cijk_Ailk_Bljk_BBS_BH
+# Read: /home/iamthecage/out_validate/validate_dtypes_valu/2_BenchmarkData/Cijk_Ailk_Bljk_BBS_BH_00.yaml
+# ProblemSizes: ProblemSizes
+
+# Solutions:
+#  (0) Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0
+#  (1) Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0
+#  (2) Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1
+#  (3) Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1
+################################################################################
+# Merging Solutions:
+                                                    # LogicAnalyzer .......                        25.0%                                                    # LogicAnalyzer ...............                50.0%                                                    # LogicAnalyzer ......................         75.0%                                                     # LogicAnalyzer .............................. 100.0%UnifiedProblemSizes: [[], [], [], [], [], [], [], []]
+ExactProblemSizes: {(64, 64, 1, 16, 64, 64, 64, 16)}
+RangeProblemSizes: {(64, 64, 1, 16, 64, 64, 64, 16)}
+# NumProblemSizes: [0, 0, 0, 0, 0, 0, 0, 0]
+TotalProblems: 0
+TotalSolutions: 4
+TotalSize: 0
+IndexOrder: [2, 3, 0, 1]
+reading datafile /home/iamthecage/out_validate/validate_dtypes_valu/2_BenchmarkData/Cijk_Ailk_Bljk_BBS_BH_00.csv
+# ExactWinners: {(64, 64, 1, 16, 64, 64, 64, 16): [3, 11.7448]}
+problemIndicesForGlobalRange []
+Winners {3}
+After Removals:
+
+( 0) Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1 : 
+Cijk_Ailk_Bljk_BBS_BH_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS3_ASE_ASGT_ASLT_ASM_ASAE01_
+ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_E
+PS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA2_GLVWB2_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW2_GSU1_GSUASB_GSUAA
+0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB2_LDL1_LR2A1_LR2B1_LRVW2_LW2A1_LW2B1_LWPMn1_LDW0_LT
+1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_
+PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI
+1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_US
+FGROn1_VAW1_VSn1_VW2_VWB2_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+[] enRule([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])
+[] MultiProblem & NotLastIndex
+> UserWarning: [] MultiProblem & NotLastIndex :: nextRule==None; returning
+# Final Range Logic:
+None
+# Range Logic Complexity: [0, 0, 0, 0, 0, 0, 0, 0]
+
+# Score: 0 ms
+# Exact Logic:
+
+{(64, 64, 1, 16, 64, 64, 64, 16): [0, 11.7448]}
+# writing library logic YAML 
+/home/iamthecage/out_validate/validate_dtypes_valu/3_LibraryLogic/navi48_Cijk_Ailk_Bljk_BBS_BH.yaml
+################################################################################
+# Analyzing: Cijk_Ailk_Bljk_DB
+# Read: /home/iamthecage/out_validate/validate_dtypes_valu/2_BenchmarkData/Cijk_Ailk_Bljk_DB_00.yaml
+# ProblemSizes: ProblemSizes
+
+# Solutions:
+#  (0) Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR0
+#  (1) Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR0
+#  (2) Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS0_K1_PGR0_PLR1
+#  (3) Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR1
+################################################################################
+# Merging Solutions:
+                                                    # LogicAnalyzer .......                        25.0%                                                    # LogicAnalyzer ...............                50.0%                                                    # LogicAnalyzer ......................         75.0%                                                     # LogicAnalyzer .............................. 100.0%UnifiedProblemSizes: [[], [], [], [], [], [], [], []]
+ExactProblemSizes: {(64, 64, 1, 8, 64, 64, 64, 8)}
+RangeProblemSizes: {(64, 64, 1, 8, 64, 64, 64, 8)}
+# NumProblemSizes: [0, 0, 0, 0, 0, 0, 0, 0]
+TotalProblems: 0
+TotalSolutions: 4
+TotalSize: 0
+IndexOrder: [2, 3, 0, 1]
+reading datafile /home/iamthecage/out_validate/validate_dtypes_valu/2_BenchmarkData/Cijk_Ailk_Bljk_DB_00.csv
+# ExactWinners: {(64, 64, 1, 8, 64, 64, 64, 8): [3, 5.83061]}
+problemIndicesForGlobalRange []
+Winners {3}
+After Removals:
+
+( 0) Cijk_Ailk_Bljk_DB_MT64x64x4_SN_EPS1_K1_PGR1_PLR1 : 
+Cijk_Ailk_Bljk_DB_MT64x64x4_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE
+01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU4_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_
+ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GS
+USARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB1_LDL1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FM
+A_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_PFD1
+_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SC
+IUPL0_SPO0_SRVW0_SSO0_SVW2_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+[] enRule([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])
+[] MultiProblem & NotLastIndex
+# Final Range Logic:
+None
+# Range Logic Complexity: [0, 0, 0, 0, 0, 0, 0, 0]
+
+# Score: 0 ms
+# Exact Logic:
+
+{(64, 64, 1, 8, 64, 64, 64, 8): [0, 5.83061]}
+# writing library logic YAML /home/iamthecage/out_validate/validate_dtypes_valu/3_LibraryLogic/navi48_Cijk_Ailk_Bljk_DB.yaml
+################################################################################
+# Analyzing: Cijk_Ailk_Bljk_HHS_BH
+# Read: /home/iamthecage/out_validate/validate_dtypes_valu/2_BenchmarkData/Cijk_Ailk_Bljk_HHS_BH_00.yaml
+# ProblemSizes: ProblemSizes
+
+# Solutions:
+#  (0) Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR0
+#  (1) Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR0
+#  (2) Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS0_K1_PGR0_PLR1
+#  (3) Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1
+################################################################################
+# Merging Solutions:
+                                                    # LogicAnalyzer .......                        25.0%                                                    # LogicAnalyzer ...............                50.0%                                                    # LogicAnalyzer ......................         75.0%                                                     # LogicAnalyzer .............................. 100.0%UnifiedProblemSizes: [[], [], [], [], [], [], [], []]
+ExactProblemSizes: {(64, 64, 1, 16, 64, 64, 64, 16)}
+RangeProblemSizes: {(64, 64, 1, 16, 64, 64, 64, 16)}
+# NumProblemSizes: [0, 0, 0, 0, 0, 0, 0, 0]
+TotalProblems: 0
+TotalSolutions: 4
+TotalSize: 0
+IndexOrder: [2, 3, 0, 1]
+reading datafile /home/iamthecage/out_validate/validate_dtypes_valu/2_BenchmarkData/Cijk_Ailk_Bljk_HHS_BH_00.csv
+# ExactWinners: {(64, 64, 1, 16, 64, 64, 64, 16): [3, 9.95988]}
+problemIndicesForGlobalRange []
+Winners {3}
+After Removals:
+
+( 0) Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_EPS1_K1_PGR1_PLR1 : 
+Cijk_Ailk_Bljk_HHS_BH_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS3_ASE_ASGT_ASLT_ASM_ASAE01_
+ASBE01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_E
+PS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA2_GLVWB2_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW2_GSU1_GSUASB_GSUAA
+0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB2_LDL1_LR2A1_LR2B1_LRVW2_LW2A1_LW2B1_LWPMn1_LDW0_LT
+1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_
+PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI
+1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_US
+FGROn1_VAW1_VSn1_VW2_VWB2_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+[] enRule([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])
+[] MultiProblem & NotLastIndex
+# Final Range Logic:
+None
+# Range Logic Complexity: [0, 0, 0, 0, 0, 0, 0, 0]
+
+# Score: 0 ms
+# Exact Logic:
+
+{(64, 64, 1, 16, 64, 64, 64, 16): [0, 9.95988]}
+# writing library logic YAML 
+/home/iamthecage/out_validate/validate_dtypes_valu/3_LibraryLogic/navi48_Cijk_Ailk_Bljk_HHS_BH.yaml
+################################################################################
+# Analyzing: Cijk_Ailk_Bljk_SB
+# Read: /home/iamthecage/out_validate/validate_dtypes_valu/2_BenchmarkData/Cijk_Ailk_Bljk_SB_00.yaml
+# ProblemSizes: ProblemSizes
+
+# Solutions:
+#  (0) Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR0
+#  (1) Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR0
+#  (2) Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS0_K1_PGR0_PLR1
+#  (3) Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR1
+################################################################################
+# Merging Solutions:
+                                                    # LogicAnalyzer .......                        25.0%                                                    # LogicAnalyzer ...............                50.0%                                                    # LogicAnalyzer ......................         75.0%                                                     # LogicAnalyzer .............................. 100.0%UnifiedProblemSizes: [[], [], [], [], [], [], [], []]
+ExactProblemSizes: {(64, 64, 1, 16, 64, 64, 64, 16)}
+RangeProblemSizes: {(64, 64, 1, 16, 64, 64, 64, 16)}
+# NumProblemSizes: [0, 0, 0, 0, 0, 0, 0, 0]
+TotalProblems: 0
+TotalSolutions: 4
+TotalSize: 0
+IndexOrder: [2, 3, 0, 1]
+reading datafile /home/iamthecage/out_validate/validate_dtypes_valu/2_BenchmarkData/Cijk_Ailk_Bljk_SB_00.csv
+# ExactWinners: {(64, 64, 1, 16, 64, 64, 64, 16): [3, 11.9591]}
+problemIndicesForGlobalRange []
+Winners {3}
+After Removals:
+
+( 0) Cijk_Ailk_Bljk_SB_MT64x64x8_SN_EPS1_K1_PGR1_PLR1 : 
+Cijk_Ailk_Bljk_SB_MT64x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE
+01_ASCE01_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_
+ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GS
+USARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB1_LDL1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FM
+A_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL1_OPLV0_PBD0_PFD1
+_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SC
+IUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+[] enRule([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])
+[] MultiProblem & NotLastIndex
+# Final Range Logic:
+None
+# Range Logic Complexity: [0, 0, 0, 0, 0, 0, 0, 0]
+
+# Score: 0 ms
+# Exact Logic:
+
+{(64, 64, 1, 16, 64, 64, 64, 16): [0, 11.9591]}
+# writing library logic YAML /home/iamthecage/out_validate/validate_dtypes_valu/3_LibraryLogic/navi48_Cijk_Ailk_Bljk_SB.yaml
+################################################################################
+# Finish Analysing data to /home/iamthecage/out_validate/validate_dtypes_valu in 14.692s
+################################################################################
+
+
