@@ -1,0 +1,96 @@
+# WMMA GSU Sweep — GlobalSplitU with fixed MT32×32
+# Purpose: Test GSU={1,2,4,8} to see if splitting K across workgroups helps
+#          small problem sizes where the GPU is underutilized
+#
+# MT32×32 = 32×32 = 1024 output elements per tile
+# At 256×256: 64 tiles, 32 CUs → 2 tiles/CU (good candidate for GSU)
+# At 64×64: 4 tiles, 32 CUs → most CUs idle (GSU should help a lot)
+#
+# Problem sizes include small/rectangular shapes typical of rocblas workloads
+#
+# Fixed: MT32×32, DU=16, PGR=0, GLVWA=4, SU=16, all scheduling OFF
+# Fork: GSU(4) × WSGRA(2) × WSGRB(2) = 16 kernels
+#
+# Usage:
+#   cd /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/compile
+#   export PYTHONPATH=/home/iamthecage/rocm-libraries/shared/tensile
+#   python3 /home/iamthecage/rocm-libraries/shared/tensile/Tensile/bin/Tensile \
+#     wmma_gsu_sweep.yaml ./gsu_output \
+#     --arch gfx1201 --cxx-compiler /opt/rocm/bin/amdclang++ \
+#     --no-merge-files -v \
+#     --prebuilt-client /home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client
+
+TestParameters:
+  marks: [skip-gfx900, skip-gfx906, skip-gfx908, skip-gfx90a, skip-gfx942, skip-gfx950, skip-gfx1010, skip-gfx1011, skip-gfx1012, skip-gfx1030, skip-gfx1031, skip-gfx1032, skip-gfx1033, skip-gfx1034, skip-gfx1035, skip-gfx1036, skip-gfx1100, skip-gfx1101, skip-gfx1102]
+
+GlobalParameters:
+  NumElementsToValidate: 0
+  KernelTime: True
+  MaxWorkspaceSize: 67108864
+  PrintSolutionRejectionReason: True
+  MergeFiles: False
+  DataInitTypeAlpha: 1
+  DataInitTypeBeta: 0
+  EnqueuesPerSync: 1
+  SyncsPerBenchmark: 1
+  SleepPercent: 0
+
+BenchmarkProblems:
+  -
+    - # NT layout — f16 HPA WMMA V2
+      OperationType: GEMM
+      DataType: h
+      ComputeDataType: s
+      DestDataType: h
+      HighPrecisionAccumulate: True
+      TransposeA: False
+      TransposeB: True
+      UseBeta: True
+      Batched: True
+
+    - InitialSolutionParameters:
+      BenchmarkCommonParameters:
+        - KernelLanguage: ["Assembly"]
+        - EdgeType: ["ShiftPtr"]
+      ForkParameters:
+        - MIArchVgpr: [True]
+        - WavefrontSize: [32]
+        - MatrixInstruction:
+          - [16, 16, 16, 1,  1,  2,2,  1,1]   # MT32×32 fixed
+        # --- Scheduling OFF ---
+        - PrefetchGlobalRead: [0]
+        - PrefetchLocalRead: [0]
+        - ScheduleLocalWrite: [0]
+        - ScheduleGlobalRead: [0]
+        - ScheduleIterAlg: [0]
+        # --- Fixed proven settings ---
+        - DepthU: [16]
+        - TransposeLDS: [0]
+        - VectorWidth: [1]
+        - GlobalReadVectorWidth: [4]
+        - SourceSwap: [0]
+        - StaggerU: [16]
+        - OptNoLoadLoop: [0]
+        # --- GSU sweep (the variable under test) ---
+        - GlobalSplitU: [1, 2, 4, 8]
+        # --- WSGR fork ---
+        - WaveSeparateGlobalReadA: [0, 1]
+        - WaveSeparateGlobalReadB: [0, 1]
+      BenchmarkFinalParameters:
+        - ProblemSizes:
+          # Small squares (few tiles → GSU should help)
+          - Exact: [64, 64, 1, 1024]
+          - Exact: [128, 128, 1, 1024]
+          - Exact: [256, 256, 1, 256]
+          - Exact: [256, 256, 1, 1024]
+          # Rectangular — small M×N, large K
+          - Exact: [64, 256, 1, 2048]
+          - Exact: [256, 64, 1, 2048]
+          # Medium — reference sizes
+          - Exact: [1024, 1024, 1, 1024]
+          - Exact: [4096, 4096, 1, 4096]
+
+LibraryLogic:
+    ScheduleName: "navi48"
+    DeviceNames: ["Device 7550"]
+    ArchitectureName: "gfx1201"

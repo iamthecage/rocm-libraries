@@ -1,0 +1,101 @@
+# WMMA UseSgprForGRO — VGPR pressure reduction for larger DepthU
+# Purpose: Test UseSgprForGRO=1 to move GlobalReadOffsets from VGPRs to SGPRs
+# This saves ~62 VGPRs (from 64 down to 2), potentially enabling DU=32/64
+#
+# Key insight: Line 1611 in KernelWriterAssembly.py:
+#   vgprIdx += 1 if kernel["_UseSgprForGRO"] else self.numGlobalReadOffsetsA
+#
+# Requirements satisfied:
+#   - BufferLoad=1 (default for Assembly)
+#   - GuaranteeNoPartialA: AF0EM(8) % GLVWA(max 4) == 0 ✓
+#   - GuaranteeNoPartialB: AF1EM(8) % GLVWB(max 4) == 0 ✓
+#   → ShiftPtr remains compatible (SolutionStructs.py:4610-4612)
+#
+# DirectToLds NOT available on gfx12 (AsmCaps: HasDirectToLds*=False)
+#
+# Usage:
+#   export PYTHONPATH=/home/iamthecage/rocm-libraries/shared/tensile
+#   python3 /home/iamthecage/rocm-libraries/shared/tensile/Tensile/bin/Tensile \
+#     wmma_sgprforgro.yaml ./sgprforgro_output \
+#     --arch gfx1201 --cxx-compiler /opt/rocm/bin/amdclang++ \
+#     --no-merge-files -v \
+#     --prebuilt-client /home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client
+#
+# Fork combos: DU(3) × GRVA(3) × SU(3) × WSGRA(2) × WSGRB(2) = 108
+
+TestParameters:
+  marks: [skip-gfx900, skip-gfx906, skip-gfx908, skip-gfx90a, skip-gfx942, skip-gfx950, skip-gfx1010, skip-gfx1011, skip-gfx1012, skip-gfx1030, skip-gfx1031, skip-gfx1032, skip-gfx1033, skip-gfx1034, skip-gfx1035, skip-gfx1036, skip-gfx1100, skip-gfx1101, skip-gfx1102]
+
+GlobalParameters:
+  NumElementsToValidate: 0
+  KernelTime: True
+  MaxWorkspaceSize: 67108864
+  PrintSolutionRejectionReason: True
+  MergeFiles: False
+  DataInitTypeAlpha: 1
+  DataInitTypeBeta: 0
+  EnqueuesPerSync: 1
+  SyncsPerBenchmark: 1
+  SleepPercent: 0
+
+BenchmarkProblems:
+  -
+    - # NT — B transposed (Ailk_Bjlk) — f16 HPA WMMA V2 (v_wmma_f32_16x16x16_f16)
+      OperationType: GEMM
+      DataType: h
+      ComputeDataType: s
+      DestDataType: h
+      HighPrecisionAccumulate: True
+      TransposeA: False
+      TransposeB: True
+      UseBeta: True
+      Batched: True
+
+    - InitialSolutionParameters:
+      BenchmarkCommonParameters:
+        - KernelLanguage: ["Assembly"]
+        - EdgeType: ["ShiftPtr"]
+      ForkParameters:
+        - MIArchVgpr: [True]
+        - WavefrontSize: [32]
+        - MatrixInstruction:
+          - [16, 16, 16, 1,  1,  4,4,  1,1]   # MT64×64, single wave
+        - WorkGroup:
+          - [32, 1, 1]
+        # --- Scheduling OFF (PGR=0 wins for WMMA on gfx1201) ---
+        - PrefetchGlobalRead: [0]
+        - PrefetchLocalRead: [0]
+        - ScheduleLocalWrite: [0]
+        - ScheduleGlobalRead: [0]
+        - ScheduleIterAlg: [0]
+        # --- VGPR savings: move GRO from VGPRs to SGPRs ---
+        - UseSgprForGRO: [1]
+        # --- Assert element multiples: guarantee no partial loads ---
+        # All problem sizes are multiples of 256, so AF*EM=8 is safe
+        # This enables GuaranteeNoPartial{A,B} which keeps UseSgprForGRO
+        # active even with EdgeType=ShiftPtr
+        - AssertFree0ElementMultiple: [8]
+        - AssertFree1ElementMultiple: [8]
+        - AssertSummationElementMultiple: [8]
+        # --- DepthU sweep (the whole point — DU=32/64 previously overflowed VGPRs) ---
+        - DepthU: [16, 32, 64]
+        # --- Memory access patterns (proven winners from explore run) ---
+        - TransposeLDS: [0]
+        - VectorWidth: [1]
+        - GlobalReadVectorWidth: [1, 2, 4]
+        - SourceSwap: [0]
+        - WaveSeparateGlobalReadA: [0, 1]
+        - WaveSeparateGlobalReadB: [0, 1]
+        - StaggerU: [0, 16, 32]
+        - OptNoLoadLoop: [0]
+      BenchmarkFinalParameters:
+        - ProblemSizes:
+          # Same sizes as explore run — all divisible by MT=64 and max DepthU=64
+          - Exact: [256, 256, 1, 256]
+          - Exact: [1024, 1024, 1, 1024]
+          - Exact: [4096, 4096, 1, 4096]
+
+LibraryLogic:
+    ScheduleName: "navi48"
+    DeviceNames: ["Device 7550"]
+    ArchitectureName: "gfx1201"

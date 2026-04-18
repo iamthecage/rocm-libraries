@@ -1,4 +1,5 @@
 # gfx1201 rocBLAS Tuning Pipeline — End-to-End Plan
+asdf
 # =================================================
 #
 # Dirs:
@@ -144,9 +145,9 @@ python3 Tensile/bin/TensileCreateLibrary \
 # that references both tuned kernels AND fallbacks.
 
 # --- Step 4a: Backup existing gfx1201 files ---
-sudo mkdir -p /opt/rocm/lib/rocblas/library/backup_gfx1201
-sudo cp /opt/rocm/lib/rocblas/library/*gfx1201* \
-        /opt/rocm/lib/rocblas/library/backup_gfx1201/
+sudo mkdir -p /home/iamthecage/backup_gfx1201_2
+sudo mv /opt/rocm/lib/rocblas/library/*gfx1201* \
+        /home/iamthecage/backup_gfx1201_2/
 
 # --- Step 4b: Install new library files ---
 sudo cp /tmp/gfx1201_library_out/library/TensileLibrary_lazy_gfx1201.dat \

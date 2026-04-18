@@ -1,0 +1,64 @@
+GlobalParameters:
+  NumElementsToValidate: 128
+  KernelTime: True
+  MaxWorkspaceSize: 67108864
+  PrintSolutionRejectionReason: True
+  MergeFiles: False
+  DataInitTypeAlpha: 1
+  DataInitTypeBeta: 0
+  EnqueuesPerSync: 1
+  SyncsPerBenchmark: 4
+  SleepPercent: 0
+
+BenchmarkProblems:
+  -
+    - # TN layout: TLUA=False, TLUB=False — DTV can work via TLU=False path
+      # fp16 HHS_BH WMMA
+      OperationType: GEMM
+      DataType: H
+      DestDataType: H
+      ComputeDataType: S
+      HighPrecisionAccumulate: True
+      TransposeA: True
+      TransposeB: False
+      UseBeta: True
+      Batched: True
+
+    - BenchmarkCommonParameters:
+        - KernelLanguage: ["Assembly"]
+        - EdgeType: ["ShiftPtr"]
+      ForkParameters:
+        - MIArchVgpr: [True]
+        - WavefrontSize: [32]
+        - MatrixInstruction:
+          - [16, 16, 16, 1,  1,  4,4,  1,1]   # MT64x64, MIWaveGroup=[1,1]
+        - WorkGroup:
+          - [32, 1, 1]
+        - SourceSwap: [0]
+        - PrefetchGlobalRead: [1]
+        # PLR=1 required for TLU=False + DTV
+        - PrefetchLocalRead: [1]
+        - DepthU: [16]
+        - TransposeLDS: [0]
+        # VW=1 required for TLU=False + PLR=1 + DTV
+        - VectorWidth: [1]
+        - GlobalReadVectorWidth: [8]
+        # WSGR must be 0 for the DTV operand
+        - WaveSeparateGlobalReadA: [0]
+        - WaveSeparateGlobalReadB: [0]
+        # Sweep: baseline vs DTVA vs DTVB vs both
+        - DirectToVgprA: [False, True]
+        - DirectToVgprB: [False, True]
+        - ExpandPointerSwap: [True]
+        - StaggerU: [16]
+        - GlobalSplitU: [1]
+        - OptNoLoadLoop: [0]
+        - ScheduleLocalWrite: [0]
+        - ScheduleGlobalRead: [0]
+        - ScheduleIterAlg: [0]
+      BenchmarkFinalParameters:
+        - ProblemSizes:
+          - Exact: [256, 256, 1, 256]
+          - Exact: [256, 256, 1, 1024]
+          - Exact: [1024, 1024, 1, 1024]
+          - Exact: [4096, 4096, 1, 4096]

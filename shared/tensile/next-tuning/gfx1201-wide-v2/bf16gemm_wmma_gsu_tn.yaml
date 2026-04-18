@@ -1,0 +1,97 @@
+TestParameters:
+  marks: [skip-gfx900, skip-gfx906, skip-gfx908, skip-gfx90a, skip-gfx942, skip-gfx950, skip-gfx1010, skip-gfx1011, skip-gfx1012, skip-gfx1030, skip-gfx1031, skip-gfx1032, skip-gfx1033, skip-gfx1034, skip-gfx1035, skip-gfx1036, skip-gfx1100, skip-gfx1101, skip-gfx1102]
+
+GlobalParameters:
+  NumElementsToValidate: 0
+  KernelTime: True
+  MaxWorkspaceSize: 67108864
+  PrintSolutionRejectionReason: True
+  MergeFiles: False
+  DataInitTypeAlpha: 1
+  DataInitTypeBeta: 0
+  EnqueuesPerSync: 1
+  SyncsPerBenchmark: 1
+  SleepPercent: 0
+
+BenchmarkProblems:
+  -
+    - # TN — A transposed  (Alik_Bljk) — bf16 HPA WMMA V2 with GSU sweep
+      OperationType: GEMM
+      DataType: B
+      ComputeDataType: s
+      DestDataType: B
+      HighPrecisionAccumulate: True
+      TransposeA: True
+      TransposeB: False
+      UseBeta: True
+      Batched: True
+
+    - InitialSolutionParameters:
+      BenchmarkCommonParameters:
+        - KernelLanguage: ["Assembly"]
+        - EdgeType: ["ShiftPtr"]
+      ForkParameters:
+        - MIArchVgpr: [True]
+        - WavefrontSize: [32]
+        - MatrixInstruction:
+          - [16, 16, 16, 1,  1,  2,2,  1,1]   # MT32×32
+          - [16, 16, 16, 1,  1,  4,4,  1,1]   # MT64×64
+        - WorkGroup:
+          - [32, 1, 1]
+        - SourceSwap: [0]
+        - PrefetchGlobalRead: [0]
+        - PrefetchLocalRead: [0]
+        - DepthU: [16]
+        - GlobalSplitU: [1, 2, 4]
+        - TransposeLDS: [0]
+        - VectorWidth: [1]
+        - GlobalReadVectorWidth: [4]
+        - WaveSeparateGlobalReadA: [1]
+        - WaveSeparateGlobalReadB: [1]
+        - OptNoLoadLoop: [0]
+        - ScheduleLocalWrite: [0]
+        - ScheduleGlobalRead: [0]
+        - ScheduleIterAlg: [0]
+      BenchmarkFinalParameters:
+        - ProblemSizes:
+          - Exact: [16, 16, 1, 4096]
+          - Exact: [16, 16, 1, 8192]
+          - Exact: [16, 16, 1, 16384]
+          - Exact: [16, 16, 1, 28672]
+          - Exact: [16, 64, 1, 4096]
+          - Exact: [16, 64, 1, 8192]
+          - Exact: [16, 64, 1, 16384]
+          - Exact: [16, 64, 1, 28672]
+          - Exact: [16, 256, 1, 4096]
+          - Exact: [16, 256, 1, 8192]
+          - Exact: [16, 256, 1, 16384]
+          - Exact: [16, 256, 1, 28672]
+          - Exact: [64, 16, 1, 4096]
+          - Exact: [64, 16, 1, 8192]
+          - Exact: [64, 16, 1, 16384]
+          - Exact: [64, 16, 1, 28672]
+          - Exact: [64, 64, 1, 4096]
+          - Exact: [64, 64, 1, 8192]
+          - Exact: [64, 64, 1, 16384]
+          - Exact: [64, 64, 1, 28672]
+          - Exact: [64, 256, 1, 4096]
+          - Exact: [64, 256, 1, 8192]
+          - Exact: [64, 256, 1, 16384]
+          - Exact: [64, 256, 1, 28672]
+          - Exact: [256, 16, 1, 4096]
+          - Exact: [256, 16, 1, 8192]
+          - Exact: [256, 16, 1, 16384]
+          - Exact: [256, 16, 1, 28672]
+          - Exact: [256, 64, 1, 4096]
+          - Exact: [256, 64, 1, 8192]
+          - Exact: [256, 64, 1, 16384]
+          - Exact: [256, 64, 1, 28672]
+          - Exact: [256, 256, 1, 4096]
+          - Exact: [256, 256, 1, 8192]
+          - Exact: [256, 256, 1, 16384]
+          - Exact: [256, 256, 1, 28672]
+
+LibraryLogic:
+    ScheduleName: "navi48"
+    DeviceNames: ["Device 7550"]
+    ArchitectureName: "gfx1201"

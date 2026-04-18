@@ -1,0 +1,915 @@
+
+################################################################################
+#
+#  Tensile v4.47.0
+#  Config: /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-wide-v2/zgemm_nc.yaml
+#  Date & Time: 18/04/2026 15:34:01
+#
+################################################################################
+
+# Restoring default globalParameters
+# Found HIP version: 7.2.53211-e1a6bc5663
+# Detected GPU 0:    gfx1201
+> UserWarning: HardwareMonitor currently disabled for gfx942, gfx950, gfx1100, gfx1101, gfx1102, gfx1103, gfx1150, gfx1151, gfx1152, gfx1153, gfx1200, 
+gfx1201
+# Command-line override: CurrentISA
+# Command-line override: PrintLevel
+
+Overriding CurrentISA=(12, 0, 1)
+Overriding PrintLevel=3
+Overriding CxxCompiler=amdclang++
+Overriding PrebuiltClient=/home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client
+ProblemTypeConfig: {'OperationType': 'GEMM', 'DataType': 'z', 'DestDataType': 'z', 'ComputeDataType': 'z', 'TransposeA': False, 'TransposeB': True, 
+'ComplexConjugateA': False, 'ComplexConjugateB': True, 'UseBeta': True, 'Batched': True}
+
+################################################################################
+# Converting Config to BenchmarkProcess Object
+################################################################################
+
+# BenchmarkProcess beginning Cijk_Ailk_BjlkC_ZB
+
+####################################################################
+# Filling in Parameters With Defaults
+####################################################################
+
+Single Value Parameters:
+    1LDSBuffer: 0
+    AggressivePerfMode: 1
+    AssertAIGreaterThanEqual: -1
+    AssertAILessThanEqual: -1
+    AssertAlphaValue: False
+    AssertBetaValue: False
+    AssertCEqualsD: False
+    AssertFree0ElementMultiple: 1
+    AssertFree1ElementMultiple: 1
+    AssertMinApproxSize: -1
+    AssertSizeEqual: {}
+    AssertSizeGreaterThan: {}
+    AssertSizeLessThan: {}
+    AssertSizeMultiple: {}
+    AssertStrideAEqual: {}
+    AssertStrideBEqual: {}
+    AssertStrideCEqual: {}
+    AssertStrideDEqual: {}
+    AssertSummationElementMultiple: 1
+    AtomicAddC: False
+    BufferLoad: True
+    BufferStore: True
+    CUMode: False
+    CheckDimOverflow: 0
+    CheckTensorDimAsserts: False
+    ClusterLocalRead: False
+    CustomKernelName: 
+    DebugStreamK: 0
+    DepthULdsDivisor: 1
+    DirectToLdsA: False
+    DirectToLdsB: False
+    DirectToVgprA: False
+    DirectToVgprB: False
+    DisableAtomicFail: 0
+    DisableKernelPieces: 0
+    DisableVgprOverlapping: False
+    EdgeType: ShiftPtr
+    ExpandPointerSwap: True
+    ExtraLatencyForLR: 0
+    ExtraMiLatencyLeft: 0
+    ForceStoreSC1: Auto
+    Fp16AltImpl: False
+    Fp16AltImplRound: False
+    FractionalLoad: 0
+    GlobalLoadVectorWidthA: -1
+    GlobalLoadVectorWidthB: -1
+    GlobalRead2A: True
+    GlobalRead2B: True
+    GlobalReadCoalesceGroupA: True
+    GlobalReadCoalesceGroupB: True
+    GlobalReadCoalesceVectorA: True
+    GlobalReadCoalesceVectorB: True
+    GlobalReadPerMfma: 1
+    GlobalReadVectorWidth: 1
+    GlobalSplitU: 1
+    GlobalSplitUAlgorithm: SingleBuffer
+    GlobalSplitUAtomicAdd: False
+    GlobalSplitUSummationAssignmentRoundRobin: True
+    GlobalSplitUWorkGroupMappingRoundRobin: False
+    GroupLoadStore: False
+    InnerUnroll: 1
+    InterleaveAlpha: 0
+    KernelLanguage: Assembly
+    LdcEqualsLdd: False
+    LdsBlockSizePerPadA: -1
+    LdsBlockSizePerPadB: -1
+    LdsPadA: -1
+    LdsPadB: -1
+    LocalDotLayout: 1
+    LocalRead2A: True
+    LocalRead2B: True
+    LocalReadVectorWidth: -1
+    LocalWrite2A: True
+    LocalWrite2B: True
+    LocalWritePerMfma: -1
+    LoopDoWhile: False
+    LoopTail: True
+    MACInstruction: FMA
+    MIArchVgpr: False
+    MacroTileShapeMax: 64
+    MacroTileShapeMin: 1
+    MagicDivAlg: 2
+    MatrixInstruction: []
+    MaxOccupancy: 40
+    MaxVgprNumber: 256
+    MemoryModifierFormat: 
+    MinKForGSU: 256
+    MinVgprNumber: 0
+    NoReject: False
+    NonTemporalA: 0
+    NonTemporalB: 0
+    NonTemporalC: 0
+    NonTemporalD: 0
+    NumElementsPerBatchStore: 0
+    NumLoadsCoalescedA: 1
+    NumLoadsCoalescedB: 1
+    OptNoLoadLoop: 1
+    OptPreLoopVmcnt: True
+    PackBatchDims: 0
+    PackFreeDims: 1
+    PackGranularity: 2
+    PackSummationDims: 0
+    PerformanceSyncLocation: -1
+    PerformanceWaitCount: -1
+    PerformanceWaitLocation: -1
+    PersistentKernel: 0
+    PersistentKernelAlongBatch: False
+    PrefetchAcrossPersistent: 0
+    PrefetchAcrossPersistentMode: 0
+    PrefetchGlobalRead: 1
+    PrefetchLocalRead: 1
+    PreloadKernelArguments: 0
+    ReplacementKernel: False
+    ScheduleGlobalRead: 1
+    ScheduleIterAlg: 1
+    ScheduleLocalWrite: 1
+    SourceSwap: False
+    StaggerUMapping: 0
+    StaggerUStride: 256
+    StoreCInUnroll: False
+    StoreCInUnrollExact: False
+    StoreCInUnrollInterval: 1
+    StoreCInUnrollPostLoop: False
+    StorePriorityOpt: False
+    StoreRemapVectorWidth: 0
+    StoreSyncOpt: 0
+    StoreVectorWidth: -1
+    StreamK: 0
+    StreamKAtomic: 0
+    StreamKXCCMapping: 0
+    SuppressNoLoadLoop: False
+    ThreadSeparateGlobalReadA: 0
+    ThreadSeparateGlobalReadB: 0
+    TransposeLDS: 0
+    UnrollIncIsDepthU: 0
+    UnrollMajorLDSA: False
+    UnrollMajorLDSB: False
+    UnrollMemFence: False
+    Use64bShadowLimit: 1
+    UseInstOffsetForGRO: 0
+    UseSgprForGRO: -1
+    VectorAtomicWidth: -1
+    VectorStore: -1
+    VectorWidth: 1
+    VectorWidthB: -1
+    VgprForLocalReadPacking: False
+    WaveSeparateGlobalReadA: 0
+    WaveSeparateGlobalReadB: 0
+    WavefrontSize: 32
+    WorkGroup: [16, 16, 1]
+    WorkGroupMapping: 8
+    WorkGroupMappingType: B
+Multi-Value Parameters:
+    DepthU: [4, 8]
+    StaggerU: [0, 32]
+    ThreadTile: [[2, 2], [4, 2], [2, 4]]
+
+####################################################################
+# Convert Parameters to Benchmark Step(s)
+####################################################################
+
+
+####################################################################
+# Benchmark Final
+# Creating BenchmarkStep: 3 fork params and 48 sizes
+# NumBenchmarkSteps: 1
+
+################################################################################
+# Done Creating BenchmarkProcess Object
+################################################################################
+
+
+################################################################################
+# Benchmark Step: Cijk_Ailk_BjlkC_ZB_00 - 00_Final 9.996s
+# Num Sizes: 48
+# Fork Parameters:
+#     DepthU: [4, 8]
+#     StaggerU: [0, 32]
+#     ThreadTile: [[2, 2], [4, 2], [2, 4]]
+# Enumerating Solutions
+
+reject: GlobalLoadVectorWidthA 1 % pv 2 != 0
+
+reject: GlobalLoadVectorWidthB 1 % pv 2 != 0
+
+reject: No valid DepthU found
+rejecting solution 
+Cijk_Ailk_BjlkC_ZB_MT32x32x4_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMASn1_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AA
+C0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU4_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA0_GLVWB0
+_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPAn1_LBSPPBn1_LPAn1_LPBn1_LD
+L1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLC
+B1_ONLL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU0_SUM0_SUS0_SCIU0_SCIUE0_SCIUI1_SCIUPL0_
+SPO0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_2_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGR
+A0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+
+reject: GlobalLoadVectorWidthA 1 % pv 2 != 0
+
+reject: GlobalLoadVectorWidthB 1 % pv 2 != 0
+
+reject: No valid DepthU found
+rejecting solution 
+Cijk_Ailk_BjlkC_ZB_MT32x32x4_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMASn1_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AA
+C0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU4_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA0_GLVWB0
+_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPAn1_LBSPPBn1_LPAn1_LPBn1_LD
+L1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLC
+B1_ONLL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUP
+L0_SPO0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_2_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_W
+SGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+
+reject: GlobalLoadVectorWidthB 1 % pv 2 != 0
+
+reject: No valid DepthU found
+rejecting solution 
+Cijk_Ailk_BjlkC_ZB_MT64x32x4_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMASn1_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AA
+C0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU4_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB0
+_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPAn1_LBSPPBn1_LPAn1_LPBn1_LD
+L1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLC
+B1_ONLL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU0_SUM0_SUS0_SCIU0_SCIUE0_SCIUI1_SCIUPL0_
+SPO0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_2_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGR
+A0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+
+reject: GlobalLoadVectorWidthB 1 % pv 2 != 0
+
+reject: No valid DepthU found
+rejecting solution 
+Cijk_Ailk_BjlkC_ZB_MT64x32x4_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMASn1_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AA
+C0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU4_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB0
+_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPAn1_LBSPPBn1_LPAn1_LPBn1_LD
+L1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLC
+B1_ONLL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUP
+L0_SPO0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_2_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_W
+SGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+
+reject: GlobalLoadVectorWidthA 1 % pv 2 != 0
+
+reject: No valid DepthU found
+rejecting solution 
+Cijk_Ailk_BjlkC_ZB_MT32x64x4_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMASn1_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AA
+C0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU4_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA0_GLVWB1
+_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPAn1_LBSPPBn1_LPAn1_LPBn1_LD
+L1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLC
+B1_ONLL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU0_SUM0_SUS0_SCIU0_SCIUE0_SCIUI1_SCIUPL0_
+SPO0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGR
+A0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+
+reject: GlobalLoadVectorWidthA 1 % pv 2 != 0
+
+reject: No valid DepthU found
+rejecting solution 
+Cijk_Ailk_BjlkC_ZB_MT32x64x4_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMASn1_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AA
+C0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU4_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA0_GLVWB1
+_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPAn1_LBSPPBn1_LPAn1_LPBn1_LD
+L1_LR2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLC
+B1_ONLL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUP
+L0_SPO0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_W
+SGRA0_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+# Actual Solutions: 6 / 12 after SolutionStructs
+
+#    (0:0) 
+Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC
+0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_
+GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB0_LDL1_LR
+2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ON
+LL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU0_SUM0_SUS0_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_
+SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_2_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WS
+GRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC
+0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_
+GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB0_LDL1_LR
+2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ON
+LL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SP
+O0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_2_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0
+_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC
+0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_
+GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB0_LDL1_LR
+2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ON
+LL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU0_SUM0_SUS0_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_
+SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_2_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WS
+GRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC
+0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_
+GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB0_LDL1_LR
+2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ON
+LL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SP
+O0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_2_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0
+_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC
+0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_
+GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB0_LDL1_LR
+2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ON
+LL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU0_SUM0_SUS0_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_
+SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WS
+GRB0_WS32_WG16_16_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC
+0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_
+GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB0_LDL1_LR
+2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ON
+LL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SP
+O0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0
+_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+################################################################################
+Finding unique solutions:   0%|          | 0/6 [00:00<?, ?it/s]Finding unique solutions: 100%|██████████| 6/6 [00:00<00:00, 13880.76it/s]
+# Writing Kernels...
+Generating kernels: 12 thread(s), 6 tasks:   0%|          | 0/6 [00:00<?, ?it/s]Generating kernels: 12 thread(s), 6 tasks: 100%|██████████| 6/6 [00:00<00:00, 6431.34it/s]
+total vgpr count: 67
+
+write_assemblyFilename /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_S
+U32_SUS256_TT2_2.o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_S
+U32_SUS256_TT2_2.s && 
+total vgpr count: 67
+
+total vgpr count: 103
+
+total vgpr count: 103
+
+write_assemblyFilename /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_S
+U0_SUS0_TT2_2.o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_S
+U0_SUS0_TT2_2.s && 
+total vgpr count: 103
+
+write_assemblyFilename /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_S
+U0_SUS0_TT2_4.o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_S
+U0_SUS0_TT2_4.s && 
+write_assemblyFilename /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_S
+U0_SUS0_TT4_2.o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_S
+U0_SUS0_TT4_2.s && 
+total vgpr count: 103
+
+b''
+write_assemblyFilename /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_S
+U32_SUS256_TT2_4.o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_S
+U32_SUS256_TT2_4.s && 
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_S
+U32_SUS256_TT2_2.co 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_S
+U32_SUS256_TT2_2.o
+write_assemblyFilename /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_S
+U32_SUS256_TT4_2.o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_S
+U32_SUS256_TT4_2.s && 
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_S
+U0_SUS0_TT2_2.co 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_S
+U0_SUS0_TT2_2.o
+b''
+b''
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_S
+U0_SUS0_TT2_4.co 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_S
+U0_SUS0_TT2_4.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_S
+U0_SUS0_TT4_2.co 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_S
+U0_SUS0_TT4_2.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_S
+U32_SUS256_TT2_4.co 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_S
+U32_SUS256_TT2_4.o
+b''
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_S
+U32_SUS256_TT4_2.co 
+/home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_S
+U32_SUS256_TT4_2.o
+b''
+b''
+b''
+Filtering processing errors: 0it [00:00, ?it/s]Filtering processing errors: 6it [00:00, 224694.86it/s]
+> UserWarning: Kernel file context manager opened without any kernel files.
+Compiling source kernels: 0it [00:00, ?it/s]Compiling source kernels: 0it [00:00, ?it/s]
+Relocating code objects: 0it [00:00, ?it/s]Relocating code objects: 6it [00:00, 17860.77it/s]
+> UserWarning: Code object files are not compressed in `--no-merge-files` build mode.
+# Kernel Building elapsed time = 1.5 secs
+# Actual Solutions: 6 / 6 after KernelWriter
+
++ ERR=0
++ /home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client --config-file /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/build/../source/ClientParameters.ini
+loading config file /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/build/../source/ClientParameters.ini
+Loading /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/library/Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2_gfx1201.co
+Loading /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/library/Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2_gfx1201.co
+Loading /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/library/Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2_gfx1201.co
+Loading /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/library/Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2_gfx1201.co
+Loading /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/library/Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4_gfx1201.co
+Loading /home/iamthecage/out-v2/zgemm_nc/1_BenchmarkProblems/Cijk_Ailk_BjlkC_ZB_00/00_Final/source/library/Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4_gfx1201.co
+Log level: Debug
+run,problem-progress,solution-progress,operation,problem-sizes,solution,validation,time-us,gflops,empty,total-gran,tiles-per-cu,num-cus,tile0-gran,tile1-gran,cu-gran,wave-gran,mem-read-bytes,mem-write-bytes,temp-edge,clock-sys,clock-soc,clock-mem,fan-rpm,hardware-samples,gfx-frequency(median),power(median),hotspot-temperature(median),enqueue-time
+0,0/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,69.4,7.55458,,0.125,0.125,32,1,1,0.125,1,327680,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,0/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,56.121,9.3421,,0.125,0.125,32,1,1,0.125,1,327680,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,0/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,97.642,5.36949,,0.0625,0.0625,32,1,1,0.0625,1,262144,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,0/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,102.482,5.1159,,0.0625,0.0625,32,1,1,0.0625,1,262144,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,0/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,102.321,5.12395,,0.0625,0.0625,32,1,1,0.0625,1,262144,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,0/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,97.761,5.36296,,0.0625,0.0625,32,1,1,0.0625,1,262144,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,1/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,181.722,11.5404,,0.125,0.125,32,1,1,0.125,1,1114112,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,1/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,181.843,11.5328,,0.125,0.125,32,1,1,0.125,1,1114112,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,1/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,365.845,5.73235,,0.0625,0.0625,32,1,1,0.0625,1,851968,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,1/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,366.044,5.72923,,0.0625,0.0625,32,1,1,0.0625,1,851968,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,1/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,365.924,5.73111,,0.0625,0.0625,32,1,1,0.0625,1,851968,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,1/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,346.124,6.05896,,0.0625,0.0625,32,1,1,0.0625,1,851968,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,2/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,689.488,12.1664,,0.125,0.125,32,1,1,0.125,1,4259840,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,2/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,689.288,12.17,,0.125,0.125,32,1,1,0.125,1,4259840,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,2/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,1354.14,6.19481,,0.0625,0.0625,32,1,1,0.0625,1,3211264,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,2/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,1431.38,5.86052,,0.0625,0.0625,32,1,1,0.0625,1,3211264,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,2/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,1433.26,5.85283,,0.0625,0.0625,32,1,1,0.0625,1,3211264,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,2/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,1354.45,6.19335,,0.0625,0.0625,32,1,1,0.0625,1,3211264,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,3/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,1373.81,12.2121,,0.125,0.125,32,1,1,0.125,1,8454144,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,3/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,1394.5,12.031,,0.125,0.125,32,1,1,0.125,1,8454144,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,3/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,1407.7,11.9182,,0.0625,0.0625,32,1,1,0.0625,1,6356992,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,3/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,1362.5,12.3136,,0.0625,0.0625,32,1,1,0.0625,1,6356992,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,3/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,1356.58,12.3673,,0.0625,0.0625,32,1,1,0.0625,1,6356992,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,3/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,1386.26,12.1025,,0.0625,0.0625,32,1,1,0.0625,1,6356992,65536,,,,,,,,,,2026-04-18 15:34:12.
+0,4/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,43.841,47.8354,,0.5,0.5,32,1,1,0.5,1,1310720,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,4/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,34.6,60.6113,,0.5,0.5,32,1,1,0.5,1,1310720,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,4/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,58.001,36.1572,,0.25,0.25,32,1,1,0.25,1,1048576,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,4/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,72.961,28.7435,,0.25,0.25,32,1,1,0.25,1,1048576,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,4/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,56.28,37.2628,,0.25,0.25,32,1,1,0.25,1,1048576,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,4/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,56.081,37.3951,,0.25,0.25,32,1,1,0.25,1,1048576,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,5/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,99.641,84.1883,,0.5,0.5,32,1,1,0.5,1,4456448,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,5/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,99.441,84.3576,,0.5,0.5,32,1,1,0.5,1,4456448,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,5/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,182.162,46.0503,,0.25,0.25,32,1,1,0.25,1,3407872,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,5/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,181.602,46.1923,,0.25,0.25,32,1,1,0.25,1,3407872,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,5/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,181.522,46.2126,,0.25,0.25,32,1,1,0.25,1,3407872,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,5/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,181.762,46.1516,,0.25,0.25,32,1,1,0.25,1,3407872,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,6/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,355.844,94.2953,,0.5,0.5,32,1,1,0.5,1,17039360,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,6/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,354.244,94.7212,,0.5,0.5,32,1,1,0.5,1,17039360,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,6/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,697.168,48.1296,,0.25,0.25,32,1,1,0.25,1,12845056,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,6/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,686.928,48.8471,,0.25,0.25,32,1,1,0.25,1,12845056,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,6/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,685.808,48.9269,,0.25,0.25,32,1,1,0.25,1,12845056,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,6/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,685.288,48.964,,0.25,0.25,32,1,1,0.25,1,12845056,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,7/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,695.088,96.5473,,0.5,0.5,32,1,1,0.5,1,33816576,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,7/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,696.768,96.3145,,0.5,0.5,32,1,1,0.5,1,33816576,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,7/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,1359.14,49.3762,,0.25,0.25,32,1,1,0.25,1,25427968,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,7/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,1358.86,49.3863,,0.25,0.25,32,1,1,0.25,1,25427968,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,7/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,1355.62,49.5044,,0.25,0.25,32,1,1,0.25,1,25427968,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,7/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,1347.13,49.816,,0.25,0.25,32,1,1,0.25,1,25427968,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,8/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,64.561,129.933,,1,2,32,1,1,1,1,5242880,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,8/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,56.56,148.313,,1,2,32,1,1,1,1,5242880,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,8/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,56.881,147.476,,1,1,32,1,1,1,1,4194304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,8/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,57.041,147.063,,1,1,32,1,1,1,1,4194304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,8/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,57.081,146.96,,1,1,32,1,1,1,1,4194304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,8/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,57.361,146.242,,1,1,32,1,1,1,1,4194304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,9/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,183.642,182.717,,1,2,32,1,1,1,1,17825792,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,9/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,184.242,182.122,,1,2,32,1,1,1,1,17825792,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,9/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,184.642,181.727,,1,1,32,1,1,1,1,13631488,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,9/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,184.242,182.122,,1,1,32,1,1,1,1,13631488,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,9/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,184.522,181.845,,1,1,32,1,1,1,1,13631488,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,9/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,184.643,181.726,,1,1,32,1,1,1,1,13631488,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,10/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,701.448,191.344,,1,2,32,1,1,1,1,68157440,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,10/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,691.488,194.1,,1,2,32,1,1,1,1,68157440,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,10/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,692.208,193.898,,1,1,32,1,1,1,1,51380224,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,10/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,690.727,194.314,,1,1,32,1,1,1,1,51380224,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,10/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,698.008,192.287,,1,1,32,1,1,1,1,51380224,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,10/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,683.848,196.268,,1,1,32,1,1,1,1,51380224,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,11/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,1356.98,197.819,,1,2,32,1,1,1,1,135266304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,11/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,1349.53,198.91,,1,2,32,1,1,1,1,135266304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,11/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,1358.02,197.667,,1,1,32,1,1,1,1,101711872,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,11/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,1360.38,197.324,,1,1,32,1,1,1,1,101711872,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,11/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,1362.33,197.041,,1,1,32,1,1,1,1,101711872,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,11/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,1363.65,196.85,,1,1,32,1,1,1,1,101711872,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,12/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,98.961,169.534,,1,4,32,1,1,1,1,10485760,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,12/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,99.361,168.851,,1,4,32,1,1,1,1,10485760,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,12/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,99.601,168.444,,1,2,32,1,1,1,1,8388608,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,12/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,99.761,168.174,,1,2,32,1,1,1,1,8388608,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,12/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,99.321,168.919,,1,2,32,1,1,1,1,8388608,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,12/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,183.922,91.2192,,1,2,32,1,1,1,1,8388608,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,13/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,346.324,193.775,,1,4,32,1,1,1,1,35651584,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,13/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,348.405,192.617,,1,4,32,1,1,1,1,35651584,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,13/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,357.525,187.704,,1,2,32,1,1,1,1,27262976,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,13/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,352.124,190.583,,1,2,32,1,1,1,1,27262976,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,13/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,351.964,190.67,,1,2,32,1,1,1,1,27262976,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,13/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,352.564,190.345,,1,2,32,1,1,1,1,27262976,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,14/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,1359.45,197.458,,1,4,32,1,1,1,1,136314880,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,14/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,1356.38,197.906,,1,4,32,1,1,1,1,136314880,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,14/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,1352.58,198.462,,1,2,32,1,1,1,1,102760448,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,14/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,1349.46,198.921,,1,2,32,1,1,1,1,102760448,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,14/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,1348.82,199.016,,1,2,32,1,1,1,1,102760448,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,14/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,1353.1,198.386,,1,2,32,1,1,1,1,102760448,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,15/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,2683.59,200.057,,1,4,32,1,1,1,1,270532608,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,15/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,2832.27,189.555,,1,4,32,1,1,1,1,270532608,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,15/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,2662.75,201.623,,1,2,32,1,1,1,1,203423744,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,15/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,2665.55,201.411,,1,2,32,1,1,1,1,203423744,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,15/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,2656.99,202.06,,1,2,32,1,1,1,1,203423744,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,15/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(64,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,2684.75,199.97,,1,2,32,1,1,1,1,203423744,2097152,,,,,,,,,,2026-04-18 15:34:12.
+0,16/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,41.921,50.0263,,0.5,0.5,32,1,1,0.5,1,1310720,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,16/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,33.721,62.1913,,0.5,0.5,32,1,1,0.5,1,1310720,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,16/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,54.88,38.2134,,0.25,0.25,32,1,1,0.25,1,1048576,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,16/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,54.561,38.4368,,0.25,0.25,32,1,1,0.25,1,1048576,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,16/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,53.56,39.1552,,0.25,0.25,32,1,1,0.25,1,1048576,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,16/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,53.04,39.5391,,0.25,0.25,32,1,1,0.25,1,1048576,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,17/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,96.042,87.3431,,0.5,0.5,32,1,1,0.5,1,4456448,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,17/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,96.161,87.235,,0.5,0.5,32,1,1,0.5,1,4456448,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,17/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,177.482,47.2646,,0.25,0.25,32,1,1,0.25,1,3407872,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,17/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,177.882,47.1583,,0.25,0.25,32,1,1,0.25,1,3407872,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,17/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,177.962,47.1371,,0.25,0.25,32,1,1,0.25,1,3407872,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,17/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,178.042,47.1159,,0.25,0.25,32,1,1,0.25,1,3407872,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,18/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,349.724,95.9455,,0.5,0.5,32,1,1,0.5,1,17039360,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,18/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,350.004,95.8687,,0.5,0.5,32,1,1,0.5,1,17039360,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,18/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,684.768,49.0012,,0.25,0.25,32,1,1,0.25,1,12845056,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,18/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,685.648,48.9383,,0.25,0.25,32,1,1,0.25,1,12845056,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,18/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,686.048,48.9097,,0.25,0.25,32,1,1,0.25,1,12845056,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,18/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,685.248,48.9668,,0.25,0.25,32,1,1,0.25,1,12845056,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,19/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,694.768,96.5918,,0.5,0.5,32,1,1,0.5,1,33816576,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,19/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,693.968,96.7031,,0.5,0.5,32,1,1,0.5,1,33816576,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,19/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,1352.22,49.6288,,0.25,0.25,32,1,1,0.25,1,25427968,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,19/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,1353.18,49.5936,,0.25,0.25,32,1,1,0.25,1,25427968,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,19/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,1359.9,49.3485,,0.25,0.25,32,1,1,0.25,1,25427968,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,19/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,1360.34,49.3326,,0.25,0.25,32,1,1,0.25,1,25427968,262144,,,,,,,,,,2026-04-18 15:34:12.
+0,20/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,57.201,146.651,,1,2,32,1,1,1,1,5242880,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,20/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,57.201,146.651,,1,2,32,1,1,1,1,5242880,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,20/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,58.401,143.638,,1,1,32,1,1,1,1,4194304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,20/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,65.241,128.579,,1,1,32,1,1,1,1,4194304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,20/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,66.201,126.714,,1,1,32,1,1,1,1,4194304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,20/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,69.841,120.11,,1,1,32,1,1,1,1,4194304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,21/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,183.722,182.637,,1,2,32,1,1,1,1,17825792,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,21/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,183.362,182.996,,1,2,32,1,1,1,1,17825792,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,21/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,186.843,179.586,,1,1,32,1,1,1,1,13631488,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,21/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,184.282,182.082,,1,1,32,1,1,1,1,13631488,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,21/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,184.163,182.2,,1,1,32,1,1,1,1,13631488,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,21/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,183.642,182.717,,1,1,32,1,1,1,1,13631488,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,22/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,689.168,194.753,,1,2,32,1,1,1,1,68157440,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,22/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,687.768,195.15,,1,2,32,1,1,1,1,68157440,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,22/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,689.368,194.697,,1,1,32,1,1,1,1,51380224,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,22/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,689.208,194.742,,1,1,32,1,1,1,1,51380224,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,22/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,686.968,195.377,,1,1,32,1,1,1,1,51380224,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,22/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,687.048,195.354,,1,1,32,1,1,1,1,51380224,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,23/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,1356.26,197.924,,1,2,32,1,1,1,1,135266304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,23/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,1356.42,197.901,,1,2,32,1,1,1,1,135266304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,23/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,1359.9,197.394,,1,1,32,1,1,1,1,101711872,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,23/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,1360.1,197.365,,1,1,32,1,1,1,1,101711872,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,23/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,1357.34,197.766,,1,1,32,1,1,1,1,101711872,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,23/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,1362.46,197.023,,1,1,32,1,1,1,1,101711872,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,24/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,281.244,119.307,,1,8,32,1,1,1,1,20971520,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,24/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,272.523,123.125,,1,8,32,1,1,1,1,20971520,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,24/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,185.802,180.592,,1,4,32,1,1,1,1,16777216,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,24/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,273.003,122.909,,1,4,32,1,1,1,1,16777216,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,24/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,272.323,123.216,,1,4,32,1,1,1,1,16777216,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,24/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,272.043,123.342,,1,4,32,1,1,1,1,16777216,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,25/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,720.088,186.391,,1,8,32,1,1,1,1,71303168,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,25/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,781.769,171.685,,1,8,32,1,1,1,1,71303168,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,25/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,682.728,196.59,,1,4,32,1,1,1,1,54525952,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,25/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,766.809,175.034,,1,4,32,1,1,1,1,54525952,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,25/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,762.649,175.989,,1,4,32,1,1,1,1,54525952,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,25/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,815.29,164.626,,1,4,32,1,1,1,1,54525952,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,26/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,2671.35,200.973,,1,8,32,1,1,1,1,272629760,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,26/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,2674.39,200.745,,1,8,32,1,1,1,1,272629760,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,26/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,2664.03,201.526,,1,4,32,1,1,1,1,205520896,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,26/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,2645.79,202.915,,1,4,32,1,1,1,1,205520896,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,26/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,2667.87,201.236,,1,4,32,1,1,1,1,205520896,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,26/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,2655.43,202.178,,1,4,32,1,1,1,1,205520896,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,27/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,5291.9,202.903,,1,8,32,1,1,1,1,541065216,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,27/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,5293.98,202.823,,1,8,32,1,1,1,1,541065216,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,27/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,5291.22,202.929,,1,4,32,1,1,1,1,406847488,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,27/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,5297.38,202.693,,1,4,32,1,1,1,1,406847488,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,27/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,5280.54,203.339,,1,4,32,1,1,1,1,406847488,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,27/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,5294.9,202.788,,1,4,32,1,1,1,1,406847488,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,28/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,435.766,154.002,,1,16,32,1,1,1,1,41943040,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,28/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,449.125,149.421,,1,16,32,1,1,1,1,41943040,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,28/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,349.004,192.287,,1,8,32,1,1,1,1,33554432,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,28/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,365.884,183.416,,1,8,32,1,1,1,1,33554432,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,28/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,434.325,154.513,,1,8,32,1,1,1,1,33554432,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,28/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,570.287,117.676,,1,8,32,1,1,1,1,33554432,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,29/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,1390.1,193.106,,1,16,32,1,1,1,1,142606336,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,29/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,1354.34,198.204,,1,16,32,1,1,1,1,142606336,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,29/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,1349.26,198.951,,1,8,32,1,1,1,1,109051904,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,29/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,1425.7,188.284,,1,8,32,1,1,1,1,109051904,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,29/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,1417.54,189.368,,1,8,32,1,1,1,1,109051904,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,29/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,1366.7,196.412,,1,8,32,1,1,1,1,109051904,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,30/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,5303.62,202.454,,1,16,32,1,1,1,1,545259520,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,30/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,5261.14,204.089,,1,16,32,1,1,1,1,545259520,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,30/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,5273.94,203.594,,1,8,32,1,1,1,1,411041792,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,30/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,5298.58,202.647,,1,8,32,1,1,1,1,411041792,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,30/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,5285.82,203.136,,1,8,32,1,1,1,1,411041792,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,30/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,5311.06,202.171,,1,8,32,1,1,1,1,411041792,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,31/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,10871.2,197.539,,1,16,32,1,1,1,1,1082130432,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,31/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,10547.8,203.595,,1,16,32,1,1,1,1,1082130432,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,31/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,10534.9,203.845,,1,8,32,1,1,1,1,813694976,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,31/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,10549.9,203.554,,1,8,32,1,1,1,1,813694976,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,31/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,10532.5,203.891,,1,8,32,1,1,1,1,813694976,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,31/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(256,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,10527.5,203.987,,1,8,32,1,1,1,1,813694976,8388608,,,,,,,,,,2026-04-18 15:34:12.
+0,32/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,63.68,131.731,,1,2,32,1,1,1,1,5242880,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,32/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,55.281,151.745,,1,2,32,1,1,1,1,5242880,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,32/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,56.28,149.051,,1,1,32,1,1,1,1,4194304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,32/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,56.12,149.476,,1,1,32,1,1,1,1,4194304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,32/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,55.881,150.116,,1,1,32,1,1,1,1,4194304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,32/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,55.2,151.968,,1,1,32,1,1,1,1,4194304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,33/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,179.243,187.201,,1,2,32,1,1,1,1,17825792,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,33/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,180.043,186.369,,1,2,32,1,1,1,1,17825792,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,33/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,180.322,186.081,,1,1,32,1,1,1,1,13631488,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,33/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,180.563,185.832,,1,1,32,1,1,1,1,13631488,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,33/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,180.963,185.422,,1,1,32,1,1,1,1,13631488,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,33/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,180.483,185.915,,1,1,32,1,1,1,1,13631488,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,34/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,692.408,193.842,,1,2,32,1,1,1,1,68157440,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,34/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,692.928,193.696,,1,2,32,1,1,1,1,68157440,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,34/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,693.928,193.417,,1,1,32,1,1,1,1,51380224,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,34/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,688.528,194.934,,1,1,32,1,1,1,1,51380224,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,34/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,690.688,194.325,,1,1,32,1,1,1,1,51380224,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,34/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,689.568,194.64,,1,1,32,1,1,1,1,51380224,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,35/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,1349.94,198.851,,1,2,32,1,1,1,1,135266304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,35/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,1354.1,198.24,,1,2,32,1,1,1,1,135266304,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,35/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,1354.02,198.251,,1,1,32,1,1,1,1,101711872,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,35/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,1351.58,198.609,,1,1,32,1,1,1,1,101711872,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,35/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,1362.66,196.994,,1,1,32,1,1,1,1,101711872,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,35/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,64,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,1359.34,197.475,,1,1,32,1,1,1,1,101711872,1048576,,,,,,,,,,2026-04-18 15:34:12.
+0,36/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,181.283,185.094,,1,8,32,1,1,1,1,20971520,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,36/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,181.282,185.095,,1,8,32,1,1,1,1,20971520,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,36/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,181.362,185.014,,1,4,32,1,1,1,1,16777216,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,36/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,199.683,168.039,,1,4,32,1,1,1,1,16777216,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,36/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,181.123,185.258,,1,4,32,1,1,1,1,16777216,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,36/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,179.762,186.66,,1,4,32,1,1,1,1,16777216,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,37/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,675.007,198.839,,1,8,32,1,1,1,1,71303168,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,37/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,678.968,197.679,,1,8,32,1,1,1,1,71303168,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,37/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,692.488,193.82,,1,4,32,1,1,1,1,54525952,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,37/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,687.288,195.286,,1,4,32,1,1,1,1,54525952,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,37/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,685.168,195.89,,1,4,32,1,1,1,1,54525952,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,37/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,685.128,195.902,,1,4,32,1,1,1,1,54525952,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,38/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,2657.87,201.993,,1,8,32,1,1,1,1,272629760,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,38/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,2647.67,202.771,,1,8,32,1,1,1,1,272629760,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,38/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,2647.91,202.753,,1,4,32,1,1,1,1,205520896,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,38/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,2662.87,201.614,,1,4,32,1,1,1,1,205520896,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,38/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,2654.87,202.221,,1,4,32,1,1,1,1,205520896,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,38/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,2651.59,202.471,,1,4,32,1,1,1,1,205520896,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,39/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,5295.22,202.776,,1,8,32,1,1,1,1,541065216,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,39/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,5285.22,203.159,,1,8,32,1,1,1,1,541065216,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,39/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,5293.46,202.843,,1,4,32,1,1,1,1,406847488,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,39/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,5279.3,203.387,,1,4,32,1,1,1,1,406847488,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,39/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,5278.62,203.413,,1,4,32,1,1,1,1,406847488,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,39/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,256,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,5297.62,202.684,,1,4,32,1,1,1,1,406847488,4194304,,,,,,,,,,2026-04-18 15:34:12.
+0,40/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,773.009,173.63,,1,32,32,1,1,1,1,83886080,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,40/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,787.729,170.386,,1,32,32,1,1,1,1,83886080,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,40/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,1026.33,130.774,,1,16,32,1,1,1,1,67108864,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,40/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,774.009,173.406,,1,16,32,1,1,1,1,67108864,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,40/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,690.168,194.471,,1,16,32,1,1,1,1,67108864,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,40/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,690.568,194.358,,1,16,32,1,1,1,1,67108864,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,41/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,2669.75,201.094,,1,32,32,1,1,1,1,285212672,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,41/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,2653.79,202.303,,1,32,32,1,1,1,1,285212672,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,41/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,2643.91,203.059,,1,16,32,1,1,1,1,218103808,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,41/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,2647.71,202.768,,1,16,32,1,1,1,1,218103808,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,41/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,2652.63,202.392,,1,16,32,1,1,1,1,218103808,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,41/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,2643.23,203.112,,1,16,32,1,1,1,1,218103808,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,42/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,10508.4,204.359,,1,32,32,1,1,1,1,1090519040,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,42/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,10826.3,198.358,,1,32,32,1,1,1,1,1090519040,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,42/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,10520.3,204.127,,1,16,32,1,1,1,1,822083584,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,42/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,10537.8,203.789,,1,16,32,1,1,1,1,822083584,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,42/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,10526.8,204.002,,1,16,32,1,1,1,1,822083584,16777216,,,,,,,,,,2026-04-18 15:34:12.
+0,42/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,10532.2,203.896,,1,16,32,1,1,1,1,822083584,16777216,,,,,,,,,,2026-04-18 15:34:13.
+0,43/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,21721.9,197.725,,1,32,32,1,1,1,1,2164260864,16777216,,,,,,,,,,2026-04-18 15:34:13.
+0,43/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,21037.2,204.161,,1,32,32,1,1,1,1,2164260864,16777216,,,,,,,,,,2026-04-18 15:34:13.
+0,43/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,21276.5,201.864,,1,16,32,1,1,1,1,1627389952,16777216,,,,,,,,,,2026-04-18 15:34:13.
+0,43/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,21020.7,204.321,,1,16,32,1,1,1,1,1627389952,16777216,,,,,,,,,,2026-04-18 15:34:13.
+0,43/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,21023.6,204.292,,1,16,32,1,1,1,1,1627389952,16777216,,,,,,,,,,2026-04-18 15:34:13.
+0,43/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,1024,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,21318,201.471,,1,16,32,1,1,1,1,1627389952,16777216,,,,,,,,,,2026-04-18 15:34:13.
+0,44/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,1513.9,177.314,,1,64,32,1,1,1,1,167772160,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,44/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,1518.3,176.8,,1,64,32,1,1,1,1,167772160,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,44/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,1425.62,188.294,,1,32,32,1,1,1,1,134217728,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,44/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,1450.3,185.09,,1,32,32,1,1,1,1,134217728,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,44/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,1341.18,200.149,,1,32,32,1,1,1,1,134217728,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,44/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,64)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,1340.62,200.233,,1,32,32,1,1,1,1,134217728,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,45/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,5291.78,202.907,,1,64,32,1,1,1,1,570425344,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,45/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,5265.22,203.931,,1,64,32,1,1,1,1,570425344,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,45/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,5554.87,193.298,,1,32,32,1,1,1,1,436207616,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,45/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,5285.58,203.145,,1,32,32,1,1,1,1,436207616,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,45/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,5274.82,203.56,,1,32,32,1,1,1,1,436207616,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,45/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,256)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,5269.34,203.771,,1,32,32,1,1,1,1,436207616,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,46/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,20982.3,204.695,,1,64,32,1,1,1,1,2181038080,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,46/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,21166.9,202.909,,1,64,32,1,1,1,1,2181038080,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,46/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,20939.4,205.114,,1,32,32,1,1,1,1,1644167168,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,46/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,20977.1,204.746,,1,32,32,1,1,1,1,1644167168,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,46/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,20935.2,205.155,,1,32,32,1,1,1,1,1644167168,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,46/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,1024)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,20892.1,205.578,,1,32,32,1,1,1,1,1644167168,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,47/47,0/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2,NO_CHECK,41935.3,204.838,,1,64,32,1,1,1,1,4328521728,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,47/47,1/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2,NO_CHECK,41685.9,206.064,,1,64,32,1,1,1,1,4328521728,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,47/47,2/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2,NO_CHECK,41467.6,207.148,,1,32,32,1,1,1,1,3254779904,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,47/47,3/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2,NO_CHECK,41452.1,207.226,,1,32,32,1,1,1,1,3254779904,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,47/47,4/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4,NO_CHECK,41441.5,207.279,,1,32,32,1,1,1,1,3254779904,33554432,,,,,,,,,,2026-04-18 15:34:13.
+0,47/47,5/5,Contraction_l_Ailk_BjlkC_Cijk_Dijk,"(1024,2048,1,2048)",Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4,NO_CHECK,41413.2,207.42,,1,32,32,1,1,1,1,3254779904,33554432,,,,,,,,,,2026-04-18 15:34:13.
++ [[ 0 -ne 0 ]]
++ exit 0
+################################################################################
+# Cijk_Ailk_BjlkC_ZB_00
+# 00_Final: End - 12.911s
+################################################################################
+
+clientExit=0 (PASS) for ['/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-wide-v2/zgemm_nc.yaml']
+
+# LibraryLogic config: {'ScheduleName': 'navi48', 'DeviceNames': ['Device 7550'], 'ArchitectureName': 'gfx1201'}
+# DefaultAnalysisParameters: 
+
+################################################################################
+# Analysing data in 2_BenchmarkData - 12.912s
+#   ScheduleName: navi48
+#   DeviceNames: ['Device 7550']
+#   ArchitectureName: gfx1201
+#   SolutionImportanceMin: 0.01
+################################################################################
+
+################################################################################
+# Analyzing: Cijk_Ailk_BjlkC_ZB
+# Read: /home/iamthecage/out-v2/zgemm_nc/2_BenchmarkData/Cijk_Ailk_BjlkC_ZB_00.yaml
+# ProblemSizes: ProblemSizes
+
+# Solutions:
+#  (0) Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2
+#  (1) Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2
+#  (2) Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2
+#  (3) Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2
+#  (4) Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4
+#  (5) Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4
+################################################################################
+# Merging Solutions:
+                                                    # LogicAnalyzer .....                          16.7%                                                    # LogicAnalyzer ..........                     33.3%                                                    # LogicAnalyzer ...............                50.0%                                                    # LogicAnalyzer ....................           66.7%                                                    # LogicAnalyzer .........................      83.3%                                                     # LogicAnalyzer .............................. 100.0%UnifiedProblemSizes: [[], [], [], [], [], [], [], []]
+ExactProblemSizes: {(256, 2048, 1, 1024, 256, 256, 256, 2048), (256, 1024, 1, 1024, 256, 256, 256, 1024), (64, 1024, 1, 2048, 64, 64, 64, 1024), (1024, 
+2048, 1, 1024, 1024, 1024, 1024, 2048), (256, 64, 1, 2048, 256, 256, 256, 64), (1024, 64, 1, 1024, 1024, 1024, 1024, 64), (1024, 256, 1, 1024, 1024, 
+1024, 1024, 256), (1024, 64, 1, 256, 1024, 1024, 1024, 64), (64, 256, 1, 1024, 64, 64, 64, 256), (64, 2048, 1, 256, 64, 64, 64, 2048), (256, 256, 1, 
+2048, 256, 256, 256, 256), (1024, 1024, 1, 256, 1024, 1024, 1024, 1024), (64, 2048, 1, 1024, 64, 64, 64, 2048), (64, 64, 1, 256, 64, 64, 64, 64), (256, 
+256, 1, 64, 256, 256, 256, 256), (256, 2048, 1, 256, 256, 256, 256, 2048), (64, 256, 1, 2048, 64, 64, 64, 256), (256, 1024, 1, 256, 256, 256, 256, 1024),
+(1024, 64, 1, 64, 1024, 1024, 1024, 64), (64, 256, 1, 64, 64, 64, 64, 256), (1024, 1024, 1, 2048, 1024, 1024, 1024, 1024), (1024, 64, 1, 2048, 1024, 
+1024, 1024, 64), (64, 64, 1, 2048, 64, 64, 64, 64), (1024, 256, 1, 256, 1024, 1024, 1024, 256), (256, 256, 1, 256, 256, 256, 256, 256), (256, 256, 1, 
+1024, 256, 256, 256, 256), (256, 64, 1, 64, 256, 256, 256, 64), (1024, 1024, 1, 64, 1024, 1024, 1024, 1024), (64, 64, 1, 64, 64, 64, 64, 64), (1024, 
+2048, 1, 256, 1024, 1024, 1024, 2048), (64, 1024, 1, 256, 64, 64, 64, 1024), (64, 1024, 1, 1024, 64, 64, 64, 1024), (256, 2048, 1, 64, 256, 256, 256, 
+2048), (64, 256, 1, 256, 64, 64, 64, 256), (256, 64, 1, 256, 256, 256, 256, 64), (256, 1024, 1, 2048, 256, 256, 256, 1024), (64, 1024, 1, 64, 64, 64, 64,
+1024), (1024, 256, 1, 64, 1024, 1024, 1024, 256), (256, 1024, 1, 64, 256, 256, 256, 1024), (1024, 2048, 1, 2048, 1024, 1024, 1024, 2048), (256, 2048, 1, 
+2048, 256, 256, 256, 2048), (1024, 1024, 1, 1024, 1024, 1024, 1024, 1024), (1024, 256, 1, 2048, 1024, 1024, 1024, 256), (1024, 2048, 1, 64, 1024, 1024, 
+1024, 2048), (256, 64, 1, 1024, 256, 256, 256, 64), (64, 2048, 1, 64, 64, 64, 64, 2048), (64, 64, 1, 1024, 64, 64, 64, 64), (64, 2048, 1, 2048, 64, 64, 
+64, 2048)}
+RangeProblemSizes: {(256, 2048, 1, 1024, 256, 256, 256, 2048), (256, 1024, 1, 1024, 256, 256, 256, 1024), (64, 1024, 1, 2048, 64, 64, 64, 1024), (1024, 
+2048, 1, 1024, 1024, 1024, 1024, 2048), (256, 64, 1, 2048, 256, 256, 256, 64), (1024, 64, 1, 1024, 1024, 1024, 1024, 64), (1024, 256, 1, 1024, 1024, 
+1024, 1024, 256), (1024, 64, 1, 256, 1024, 1024, 1024, 64), (64, 256, 1, 1024, 64, 64, 64, 256), (64, 2048, 1, 256, 64, 64, 64, 2048), (256, 256, 1, 
+2048, 256, 256, 256, 256), (1024, 1024, 1, 256, 1024, 1024, 1024, 1024), (64, 2048, 1, 1024, 64, 64, 64, 2048), (64, 64, 1, 256, 64, 64, 64, 64), (256, 
+256, 1, 64, 256, 256, 256, 256), (256, 2048, 1, 256, 256, 256, 256, 2048), (64, 256, 1, 2048, 64, 64, 64, 256), (256, 1024, 1, 256, 256, 256, 256, 1024),
+(1024, 64, 1, 64, 1024, 1024, 1024, 64), (64, 256, 1, 64, 64, 64, 64, 256), (1024, 1024, 1, 2048, 1024, 1024, 1024, 1024), (1024, 64, 1, 2048, 1024, 
+1024, 1024, 64), (64, 64, 1, 2048, 64, 64, 64, 64), (1024, 256, 1, 256, 1024, 1024, 1024, 256), (256, 256, 1, 256, 256, 256, 256, 256), (256, 256, 1, 
+1024, 256, 256, 256, 256), (256, 64, 1, 64, 256, 256, 256, 64), (1024, 1024, 1, 64, 1024, 1024, 1024, 1024), (64, 64, 1, 64, 64, 64, 64, 64), (1024, 
+2048, 1, 256, 1024, 1024, 1024, 2048), (64, 1024, 1, 256, 64, 64, 64, 1024), (64, 1024, 1, 1024, 64, 64, 64, 1024), (256, 2048, 1, 64, 256, 256, 256, 
+2048), (64, 256, 1, 256, 64, 64, 64, 256), (256, 64, 1, 256, 256, 256, 256, 64), (256, 1024, 1, 2048, 256, 256, 256, 1024), (64, 1024, 1, 64, 64, 64, 64,
+1024), (1024, 256, 1, 64, 1024, 1024, 1024, 256), (256, 1024, 1, 64, 256, 256, 256, 1024), (1024, 2048, 1, 2048, 1024, 1024, 1024, 2048), (256, 2048, 1, 
+2048, 256, 256, 256, 2048), (1024, 1024, 1, 1024, 1024, 1024, 1024, 1024), (1024, 256, 1, 2048, 1024, 1024, 1024, 256), (1024, 2048, 1, 64, 1024, 1024, 
+1024, 2048), (256, 64, 1, 1024, 256, 256, 256, 64), (64, 2048, 1, 64, 64, 64, 64, 2048), (64, 64, 1, 1024, 64, 64, 64, 64), (64, 2048, 1, 2048, 64, 64, 
+64, 2048)}
+# NumProblemSizes: [0, 0, 0, 0, 0, 0, 0, 0]
+TotalProblems: 0
+TotalSolutions: 6
+TotalSize: 0
+IndexOrder: [2, 3, 0, 1]
+reading datafile /home/iamthecage/out-v2/zgemm_nc/2_BenchmarkData/Cijk_Ailk_BjlkC_ZB_00.csv
+# ExactWinners: {(64, 64, 1, 64, 64, 64, 64, 64): [1, 9.3421], (64, 64, 1, 256, 64, 64, 64, 64): [0, 11.5404], (64, 64, 1, 1024, 64, 64, 64, 64): [1, 
+12.17], (64, 64, 1, 2048, 64, 64, 64, 64): [4, 12.3673], (64, 256, 1, 64, 64, 64, 64, 256): [1, 60.6113], (64, 256, 1, 256, 64, 64, 64, 256): [1, 
+84.3576], (64, 256, 1, 1024, 64, 64, 64, 256): [1, 94.7212], (64, 256, 1, 2048, 64, 64, 64, 256): [0, 96.5473], (64, 1024, 1, 64, 64, 64, 64, 1024): [1, 
+148.313], (64, 1024, 1, 256, 64, 64, 64, 1024): [0, 182.717], (64, 1024, 1, 1024, 64, 64, 64, 1024): [5, 196.268], (64, 1024, 1, 2048, 64, 64, 64, 1024):
+[1, 198.91], (64, 2048, 1, 64, 64, 64, 64, 2048): [0, 169.534], (64, 2048, 1, 256, 64, 64, 64, 2048): [0, 193.775], (64, 2048, 1, 1024, 64, 64, 64, 
+2048): [4, 199.016], (64, 2048, 1, 2048, 64, 64, 64, 2048): [4, 202.06], (256, 64, 1, 64, 256, 256, 256, 64): [1, 62.1913], (256, 64, 1, 256, 256, 256, 
+256, 64): [0, 87.3431], (256, 64, 1, 1024, 256, 256, 256, 64): [0, 95.9455], (256, 64, 1, 2048, 256, 256, 256, 64): [1, 96.7031], (256, 256, 1, 64, 256, 
+256, 256, 256): [0, 146.651], (256, 256, 1, 256, 256, 256, 256, 256): [1, 182.996], (256, 256, 1, 1024, 256, 256, 256, 256): [4, 195.377], (256, 256, 1, 
+2048, 256, 256, 256, 256): [0, 197.924], (256, 1024, 1, 64, 256, 256, 256, 1024): [2, 180.592], (256, 1024, 1, 256, 256, 256, 256, 1024): [2, 196.59], 
+(256, 1024, 1, 1024, 256, 256, 256, 1024): [3, 202.915], (256, 1024, 1, 2048, 256, 256, 256, 1024): [4, 203.339], (256, 2048, 1, 64, 256, 256, 256, 
+2048): [2, 192.287], (256, 2048, 1, 256, 256, 256, 256, 2048): [2, 198.951], (256, 2048, 1, 1024, 256, 256, 256, 2048): [1, 204.089], (256, 2048, 1, 
+2048, 256, 256, 256, 2048): [5, 203.987], (1024, 64, 1, 64, 1024, 1024, 1024, 64): [5, 151.968], (1024, 64, 1, 256, 1024, 1024, 1024, 64): [0, 187.201], 
+(1024, 64, 1, 1024, 1024, 1024, 1024, 64): [3, 194.934], (1024, 64, 1, 2048, 1024, 1024, 1024, 64): [0, 198.851], (1024, 256, 1, 64, 1024, 1024, 1024, 
+256): [5, 186.66], (1024, 256, 1, 256, 1024, 1024, 1024, 256): [0, 198.839], (1024, 256, 1, 1024, 1024, 1024, 1024, 256): [1, 202.771], (1024, 256, 1, 
+2048, 1024, 1024, 1024, 256): [4, 203.413], (1024, 1024, 1, 64, 1024, 1024, 1024, 1024): [4, 194.471], (1024, 1024, 1, 256, 1024, 1024, 1024, 1024): [5, 
+203.112], (1024, 1024, 1, 1024, 1024, 1024, 1024, 1024): [0, 204.359], (1024, 1024, 1, 2048, 1024, 1024, 1024, 1024): [3, 204.321], (1024, 2048, 1, 64, 
+1024, 1024, 1024, 2048): [5, 200.233], (1024, 2048, 1, 256, 1024, 1024, 1024, 2048): [1, 203.931], (1024, 2048, 1, 1024, 1024, 1024, 1024, 2048): [5, 
+205.578], (1024, 2048, 1, 2048, 1024, 1024, 1024, 2048): [5, 207.42]}
+problemIndicesForGlobalRange []
+Winners {0, 1, 2, 3, 4, 5}
+After Removals:
+
+( 0) Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU0_SUS0_TT2_2 : 
+Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC
+0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_
+GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB0_LDL1_LR
+2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ON
+LL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU0_SUM0_SUS0_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_
+SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_2_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WS
+GRB0_WS32_WG16_16_1_WGM8_WGMTB
+( 1) Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_K1_SU32_SUS256_TT2_2 : 
+Cijk_Ailk_BjlkC_ZB_MT32x32x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC
+0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_
+GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB0_LDL1_LR
+2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ON
+LL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SP
+O0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_2_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0
+_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+( 2) Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU0_SUS0_TT4_2 : 
+Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC
+0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_
+GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB0_LDL1_LR
+2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ON
+LL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU0_SUM0_SUS0_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_
+SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_2_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WS
+GRB0_WS32_WG16_16_1_WGM8_WGMTB
+( 3) Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_K1_SU32_SUS256_TT4_2 : 
+Cijk_Ailk_BjlkC_ZB_MT64x32x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC
+0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_
+GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB0_LDL1_LR
+2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ON
+LL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SP
+O0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_2_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0
+_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+( 4) Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU0_SUS0_TT2_4 : 
+Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC
+0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_
+GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB0_LDL1_LR
+2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ON
+LL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU0_SUM0_SUS0_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_
+SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0_WS
+GRB0_WS32_WG16_16_1_WGM8_WGMTB
+( 5) Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_K1_SU32_SUS256_TT2_4 : 
+Cijk_Ailk_BjlkC_ZB_MT32x64x8_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01_ASDE01_ASEM1_AAC
+0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU8_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS1_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_FL0_GLVWA1_GLVWB1_
+GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW1_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA0_LBSPPB0_LPA0_LPB0_LDL1_LR
+2A1_LR2B1_LRVW1_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV0_MTSM64_MTSM1_MDA2_MI_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ON
+LL1_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR1_PLR1_PKA0_RK0_SGR1_SIA1_SLW1_SS0_SU32_SUM0_SUS256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SP
+O0_SRVW0_SSO0_SVW1_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_4_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA0
+_WSGRB0_WS32_WG16_16_1_WGM8_WGMTB
+[] enRule([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])
+[] MultiProblem & NotLastIndex
+> UserWarning: [] MultiProblem & NotLastIndex :: nextRule==None; returning
+# Final Range Logic:
+None
+# Range Logic Complexity: [0, 0, 0, 0, 0, 0, 0, 0]
+
+# Score: 0 ms
+# Exact Logic:
+
+{(64, 64, 1, 64, 64, 64, 64, 64): [1, 9.3421], (64, 64, 1, 256, 64, 64, 64, 64): [0, 11.5404], (64, 64, 1, 1024, 64, 64, 64, 64): [1, 12.17], (64, 64, 1,
+2048, 64, 64, 64, 64): [4, 12.3673], (64, 256, 1, 64, 64, 64, 64, 256): [1, 60.6113], (64, 256, 1, 256, 64, 64, 64, 256): [1, 84.3576], (64, 256, 1, 
+1024, 64, 64, 64, 256): [1, 94.7212], (64, 256, 1, 2048, 64, 64, 64, 256): [0, 96.5473], (64, 1024, 1, 64, 64, 64, 64, 1024): [1, 148.313], (64, 1024, 1,
+256, 64, 64, 64, 1024): [0, 182.717], (64, 1024, 1, 1024, 64, 64, 64, 1024): [5, 196.268], (64, 1024, 1, 2048, 64, 64, 64, 1024): [1, 198.91], (64, 2048,
+1, 64, 64, 64, 64, 2048): [0, 169.534], (64, 2048, 1, 256, 64, 64, 64, 2048): [0, 193.775], (64, 2048, 1, 1024, 64, 64, 64, 2048): [4, 199.016], (64, 
+2048, 1, 2048, 64, 64, 64, 2048): [4, 202.06], (256, 64, 1, 64, 256, 256, 256, 64): [1, 62.1913], (256, 64, 1, 256, 256, 256, 256, 64): [0, 87.3431], 
+(256, 64, 1, 1024, 256, 256, 256, 64): [0, 95.9455], (256, 64, 1, 2048, 256, 256, 256, 64): [1, 96.7031], (256, 256, 1, 64, 256, 256, 256, 256): [0, 
+146.651], (256, 256, 1, 256, 256, 256, 256, 256): [1, 182.996], (256, 256, 1, 1024, 256, 256, 256, 256): [4, 195.377], (256, 256, 1, 2048, 256, 256, 256,
+256): [0, 197.924], (256, 1024, 1, 64, 256, 256, 256, 1024): [2, 180.592], (256, 1024, 1, 256, 256, 256, 256, 1024): [2, 196.59], (256, 1024, 1, 1024, 
+256, 256, 256, 1024): [3, 202.915], (256, 1024, 1, 2048, 256, 256, 256, 1024): [4, 203.339], (256, 2048, 1, 64, 256, 256, 256, 2048): [2, 192.287], (256,
+2048, 1, 256, 256, 256, 256, 2048): [2, 198.951], (256, 2048, 1, 1024, 256, 256, 256, 2048): [1, 204.089], (256, 2048, 1, 2048, 256, 256, 256, 2048): [5,
+203.987], (1024, 64, 1, 64, 1024, 1024, 1024, 64): [5, 151.968], (1024, 64, 1, 256, 1024, 1024, 1024, 64): [0, 187.201], (1024, 64, 1, 1024, 1024, 1024, 
+1024, 64): [3, 194.934], (1024, 64, 1, 2048, 1024, 1024, 1024, 64): [0, 198.851], (1024, 256, 1, 64, 1024, 1024, 1024, 256): [5, 186.66], (1024, 256, 1, 
+256, 1024, 1024, 1024, 256): [0, 198.839], (1024, 256, 1, 1024, 1024, 1024, 1024, 256): [1, 202.771], (1024, 256, 1, 2048, 1024, 1024, 1024, 256): [4, 
+203.413], (1024, 1024, 1, 64, 1024, 1024, 1024, 1024): [4, 194.471], (1024, 1024, 1, 256, 1024, 1024, 1024, 1024): [5, 203.112], (1024, 1024, 1, 1024, 
+1024, 1024, 1024, 1024): [0, 204.359], (1024, 1024, 1, 2048, 1024, 1024, 1024, 1024): [3, 204.321], (1024, 2048, 1, 64, 1024, 1024, 1024, 2048): [5, 
+200.233], (1024, 2048, 1, 256, 1024, 1024, 1024, 2048): [1, 203.931], (1024, 2048, 1, 1024, 1024, 1024, 1024, 2048): [5, 205.578], (1024, 2048, 1, 2048, 
+1024, 1024, 1024, 2048): [5, 207.42]}
+# writing library logic YAML /home/iamthecage/out-v2/zgemm_nc/3_LibraryLogic/navi48_Cijk_Ailk_BjlkC_ZB.yaml
+################################################################################
+# Finish Analysing data to /home/iamthecage/out-v2/zgemm_nc in 13.096s
+################################################################################
+
+

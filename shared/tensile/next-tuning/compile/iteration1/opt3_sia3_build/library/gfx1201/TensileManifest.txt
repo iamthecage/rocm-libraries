@@ -1,0 +1,5 @@
+/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/compile/iteration1/opt3_sia3_build/library/gfx1201/TensileLibrary.dat
+/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/compile/iteration1/opt3_sia3_build/library/gfx1201/Cijk_Ailk_Bjlk_HHS_BH_MT64x64x16_MI16x16x16x1_SNQgSZHfB5BEvZvz82TorrWZSVvmApBkw2iSktlJe0CgI=_gfx1201.co
+/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/compile/iteration1/opt3_sia3_build/library/gfx1201/Cijk_Ailk_Bjlk_HHS_BH_MT64x64x16_MI16x16x16x1_SNtIFkQumpZ5ozgQ1aG22JJmxcRIRXtOhZo5WMuR6skSs=_gfx1201.co
+/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/compile/iteration1/opt3_sia3_build/library/gfx1201/Cijk_Ailk_Bjlk_HHS_BH_MT64x64x16_MI16x16x16x1_SNHAIPDLT5e_SekWPJ14SY-2rxntDNiZfq_K4g0ivrS2Q=_gfx1201.co
+/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/compile/iteration1/opt3_sia3_build/library/gfx1201/Cijk_Ailk_Bjlk_HHS_BH_MT64x64x16_MI16x16x16x1_SNlHnyBZtnE3IRvTemt1jOPuPyvt3yl5A4cBI2E0Thmyo=_gfx1201.co

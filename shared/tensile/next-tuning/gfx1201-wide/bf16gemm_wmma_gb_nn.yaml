@@ -40,7 +40,7 @@ BenchmarkProblems:
         - SourceSwap: [0, 1]
         - PrefetchGlobalRead: [0]
         - PrefetchLocalRead: [0]
-        - DepthU: [16, 32]
+        - DepthU: [16, 32, 64]
         - TransposeLDS: [0]
         - VectorWidth: [1]
         - GlobalReadVectorWidth: [1, 2, 4]

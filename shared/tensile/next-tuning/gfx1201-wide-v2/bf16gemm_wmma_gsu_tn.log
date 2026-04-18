@@ -1,0 +1,1286 @@
+
+################################################################################
+#
+#  Tensile v4.47.0
+#  Config: /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-wide-v2/bf16gemm_wmma_gsu_tn.yaml
+#  Date & Time: 18/04/2026 03:38:43
+#
+################################################################################
+
+# Restoring default globalParameters
+# Found HIP version: 7.2.53211-e1a6bc5663
+# Detected GPU 0:    gfx1201
+> UserWarning: HardwareMonitor currently disabled for gfx942, gfx950, gfx1100, gfx1101, gfx1102, gfx1103, gfx1150, gfx1151, gfx1152, gfx1153, gfx1200, 
+gfx1201
+# Command-line override: CurrentISA
+# Command-line override: PrintLevel
+
+Overriding CurrentISA=(12, 0, 1)
+Overriding PrintLevel=3
+Overriding CxxCompiler=amdclang++
+Overriding PrebuiltClient=/home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client
+ProblemTypeConfig: {'OperationType': 'GEMM', 'DataType': 'B', 'ComputeDataType': 's', 'DestDataType': 'B', 'HighPrecisionAccumulate': True, 'TransposeA':
+True, 'TransposeB': False, 'UseBeta': True, 'Batched': True}
+
+################################################################################
+# Converting Config to BenchmarkProcess Object
+################################################################################
+
+# BenchmarkProcess beginning Cijk_Alik_Bljk_BBS_BH
+
+####################################################################
+# Filling in Parameters With Defaults
+####################################################################
+
+Single Value Parameters:
+    1LDSBuffer: 0
+    AggressivePerfMode: 1
+    AssertAIGreaterThanEqual: -1
+    AssertAILessThanEqual: -1
+    AssertAlphaValue: False
+    AssertBetaValue: False
+    AssertCEqualsD: False
+    AssertFree0ElementMultiple: 1
+    AssertFree1ElementMultiple: 1
+    AssertMinApproxSize: -1
+    AssertSizeEqual: {}
+    AssertSizeGreaterThan: {}
+    AssertSizeLessThan: {}
+    AssertSizeMultiple: {}
+    AssertStrideAEqual: {}
+    AssertStrideBEqual: {}
+    AssertStrideCEqual: {}
+    AssertStrideDEqual: {}
+    AssertSummationElementMultiple: 1
+    AtomicAddC: False
+    BufferLoad: True
+    BufferStore: True
+    CUMode: False
+    CheckDimOverflow: 0
+    CheckTensorDimAsserts: False
+    ClusterLocalRead: False
+    CustomKernelName: 
+    DebugStreamK: 0
+    DepthU: 16
+    DepthULdsDivisor: 1
+    DirectToLdsA: False
+    DirectToLdsB: False
+    DirectToVgprA: False
+    DirectToVgprB: False
+    DisableAtomicFail: 0
+    DisableKernelPieces: 0
+    DisableVgprOverlapping: False
+    EdgeType: ShiftPtr
+    ExpandPointerSwap: True
+    ExtraLatencyForLR: 0
+    ExtraMiLatencyLeft: 0
+    ForceStoreSC1: Auto
+    Fp16AltImpl: False
+    Fp16AltImplRound: False
+    FractionalLoad: 0
+    GlobalLoadVectorWidthA: -1
+    GlobalLoadVectorWidthB: -1
+    GlobalRead2A: True
+    GlobalRead2B: True
+    GlobalReadCoalesceGroupA: True
+    GlobalReadCoalesceGroupB: True
+    GlobalReadCoalesceVectorA: True
+    GlobalReadCoalesceVectorB: True
+    GlobalReadPerMfma: 1
+    GlobalReadVectorWidth: 4
+    GlobalSplitUAlgorithm: SingleBuffer
+    GlobalSplitUAtomicAdd: False
+    GlobalSplitUSummationAssignmentRoundRobin: True
+    GlobalSplitUWorkGroupMappingRoundRobin: False
+    GroupLoadStore: False
+    InnerUnroll: 1
+    InterleaveAlpha: 0
+    KernelLanguage: Assembly
+    LdcEqualsLdd: False
+    LdsBlockSizePerPadA: -1
+    LdsBlockSizePerPadB: -1
+    LdsPadA: -1
+    LdsPadB: -1
+    LocalDotLayout: 1
+    LocalRead2A: True
+    LocalRead2B: True
+    LocalReadVectorWidth: -1
+    LocalWrite2A: True
+    LocalWrite2B: True
+    LocalWritePerMfma: -1
+    LoopDoWhile: False
+    LoopTail: True
+    MACInstruction: FMA
+    MIArchVgpr: True
+    MacroTileShapeMax: 64
+    MacroTileShapeMin: 1
+    MagicDivAlg: 2
+    MaxOccupancy: 40
+    MaxVgprNumber: 256
+    MemoryModifierFormat: 
+    MinKForGSU: 256
+    MinVgprNumber: 0
+    NoReject: False
+    NonTemporalA: 0
+    NonTemporalB: 0
+    NonTemporalC: 0
+    NonTemporalD: 0
+    NumElementsPerBatchStore: 0
+    NumLoadsCoalescedA: 1
+    NumLoadsCoalescedB: 1
+    OptNoLoadLoop: 0
+    OptPreLoopVmcnt: True
+    PackBatchDims: 0
+    PackFreeDims: 1
+    PackGranularity: 2
+    PackSummationDims: 0
+    PerformanceSyncLocation: -1
+    PerformanceWaitCount: -1
+    PerformanceWaitLocation: -1
+    PersistentKernel: 0
+    PersistentKernelAlongBatch: False
+    PrefetchAcrossPersistent: 0
+    PrefetchAcrossPersistentMode: 0
+    PrefetchGlobalRead: 0
+    PrefetchLocalRead: 0
+    PreloadKernelArguments: 0
+    ReplacementKernel: False
+    ScheduleGlobalRead: 0
+    ScheduleIterAlg: 0
+    ScheduleLocalWrite: 0
+    SourceSwap: 0
+    StaggerU: 32
+    StaggerUMapping: 0
+    StaggerUStride: 256
+    StoreCInUnroll: False
+    StoreCInUnrollExact: False
+    StoreCInUnrollInterval: 1
+    StoreCInUnrollPostLoop: False
+    StorePriorityOpt: False
+    StoreRemapVectorWidth: 0
+    StoreSyncOpt: 0
+    StoreVectorWidth: -1
+    StreamK: 0
+    StreamKAtomic: 0
+    StreamKXCCMapping: 0
+    SuppressNoLoadLoop: False
+    ThreadSeparateGlobalReadA: 0
+    ThreadSeparateGlobalReadB: 0
+    ThreadTile: [4, 4]
+    TransposeLDS: 0
+    UnrollIncIsDepthU: 0
+    UnrollMajorLDSA: False
+    UnrollMajorLDSB: False
+    UnrollMemFence: False
+    Use64bShadowLimit: 1
+    UseInstOffsetForGRO: 0
+    UseSgprForGRO: -1
+    VectorAtomicWidth: -1
+    VectorStore: -1
+    VectorWidth: 1
+    VectorWidthB: -1
+    VgprForLocalReadPacking: False
+    WaveSeparateGlobalReadA: 1
+    WaveSeparateGlobalReadB: 1
+    WavefrontSize: 32
+    WorkGroup: [32, 1, 1]
+    WorkGroupMapping: 8
+    WorkGroupMappingType: B
+Multi-Value Parameters:
+    GlobalSplitU: [1, 2, 4]
+    MatrixInstruction: [[16, 16, 16, 1, 1, 2, 2, 1, 1], [16, 16, 16, 1, 1, 4, 4, 1, 1]]
+
+####################################################################
+# Convert Parameters to Benchmark Step(s)
+####################################################################
+
+
+####################################################################
+# Benchmark Final
+# Creating BenchmarkStep: 2 fork params and 36 sizes
+# NumBenchmarkSteps: 1
+
+################################################################################
+# Done Creating BenchmarkProcess Object
+################################################################################
+
+
+################################################################################
+# Benchmark Step: Cijk_Alik_Bljk_BBS_BH_00 - 00_Final 9.408s
+# Num Sizes: 36
+# Fork Parameters:
+#     GlobalSplitU: [1, 2, 4]
+#     MatrixInstruction: [[16, 16, 16, 1, 1, 2, 2, 1, 1], [16, 16, 16, 1, 1, 4, 4, 1, 1]]
+# Enumerating Solutions
+# Actual Solutions: 6 / 6 after SolutionStructs
+
+#    (0:0) 
+Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01
+_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_
+FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA512_LBSPP
+B512_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NT
+B0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_SUS
+256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_32_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01
+_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_
+FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU2_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA512_LBSPP
+B512_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NT
+B0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_SUS
+256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_32_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01
+_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_
+FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU4_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA512_LBSPP
+B512_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NT
+B0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_SUS
+256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_32_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01
+_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_
+FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSP
+PB1024_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_
+NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_S
+US256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFG
+ROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01
+_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_
+FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU2_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSP
+PB1024_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_
+NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_S
+US256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFG
+ROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01
+_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_
+FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU4_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA1024_LBSP
+PB1024_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_
+NTB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_S
+US256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFG
+ROn1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+################################################################################
+Finding unique solutions:   0%|          | 0/6 [00:00<?, ?it/s]Finding unique solutions: 100%|██████████| 6/6 [00:00<00:00, 12972.07it/s]
+# Writing Kernels...
+Generating kernels: 12 thread(s), 6 tasks:   0%|          | 0/6 [00:00<?, ?it/s]Generating kernels: 12 thread(s), 6 tasks: 100%|██████████| 6/6 [00:00<00:00, 6591.36it/s]
+info: growing pool += 2 * 13 for GlobalWrite
+
+0         1         2         3         4         5         6   
+0123456789012345678901234567890123456789012345678901234567890123
+..................................##########|||||||||||...||||||
+0         1         2         3         4         5         6         7         8   
+012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+..................................##########|||||||||||...||||||||||||||||||||||||||
+total vgpr count: 96
+
+info: growing pool += 2 * 13 for GlobalWrite
+
+0         1         2         3         4         5         6   
+0123456789012345678901234567890123456789012345678901234567890123
+..................................##########|||||||||||...||||||
+0         1         2         3         4         5         6         7         8   
+012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+..................................##########|||||||||||...||||||||||||||||||||||||||
+write_assemblyFilename /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SNVkk5mpQ-5g4yci6wx1lrCR_2nwEcBT-eJ7gDV2EBI6k=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT32x32x16_MI16x16x16x1_SNVkk5mpQ-5g4yci6wx1lrCR_2nwEcBT-eJ7gDV2EBI6k=.o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT32x32x16_MI16x16x16x1_SNVkk5mpQ-5g4yci6wx1lrCR_2nwEcBT-eJ7gDV2EBI6k=.s && 
+info: growing pool += 2 * 6 for GlobalWrite
+
+0         1         2         3         4         5         6   
+0123456789012345678901234567890123456789012345678901234567890123
+..................................############|||||||||...||||||
+0         1         2         3         4         5         6   
+0123456789012345678901234567890123456789012345678901234567890123
+..................................############|||||||||...||||||
+total vgpr count: 96
+
+total vgpr count: 64
+
+write_assemblyFilename /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SNBnnqhTduCqdVx_LdRB7m7tLNucMx8N_gDnVU-IkqBh0=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT32x32x16_MI16x16x16x1_SNBnnqhTduCqdVx_LdRB7m7tLNucMx8N_gDnVU-IkqBh0=.o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT32x32x16_MI16x16x16x1_SNBnnqhTduCqdVx_LdRB7m7tLNucMx8N_gDnVU-IkqBh0=.s && 
+write_assemblyFilename /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SNjkCkBPh9WUp7CZGoHZSu_NTPd-05zGtoh9CgokxuHDM=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT32x32x16_MI16x16x16x1_SNjkCkBPh9WUp7CZGoHZSu_NTPd-05zGtoh9CgokxuHDM=.o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT32x32x16_MI16x16x16x1_SNjkCkBPh9WUp7CZGoHZSu_NTPd-05zGtoh9CgokxuHDM=.s && 
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT32x32x16_MI16x16x16x1_SNVkk5mpQ-5g4yci6wx1lrCR_2nwEcBT-eJ7gDV2EBI6k=.co 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT32x32x16_MI16x16x16x1_SNVkk5mpQ-5g4yci6wx1lrCR_2nwEcBT-eJ7gDV2EBI6k=.o
+total vgpr count: 256
+
+total vgpr count: 256
+
+total vgpr count: 256
+
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT32x32x16_MI16x16x16x1_SNBnnqhTduCqdVx_LdRB7m7tLNucMx8N_gDnVU-IkqBh0=.co 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT32x32x16_MI16x16x16x1_SNBnnqhTduCqdVx_LdRB7m7tLNucMx8N_gDnVU-IkqBh0=.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT32x32x16_MI16x16x16x1_SNjkCkBPh9WUp7CZGoHZSu_NTPd-05zGtoh9CgokxuHDM=.co 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT32x32x16_MI16x16x16x1_SNjkCkBPh9WUp7CZGoHZSu_NTPd-05zGtoh9CgokxuHDM=.o
+b''
+write_assemblyFilename /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN__4pNquWnKIe-tHcVvbOQv46DJgzpZZLmRt9HAd21-Y=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT64x64x16_MI16x16x16x1_SN__4pNquWnKIe-tHcVvbOQv46DJgzpZZLmRt9HAd21-Y=.o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT64x64x16_MI16x16x16x1_SN__4pNquWnKIe-tHcVvbOQv46DJgzpZZLmRt9HAd21-Y=.s && 
+write_assemblyFilename /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SNCZsrtBJ74KEsb8mhyYzx6FtBWXQtDlNnyuhuCb2f2WU=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT64x64x16_MI16x16x16x1_SNCZsrtBJ74KEsb8mhyYzx6FtBWXQtDlNnyuhuCb2f2WU=.o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT64x64x16_MI16x16x16x1_SNCZsrtBJ74KEsb8mhyYzx6FtBWXQtDlNnyuhuCb2f2WU=.s && 
+b''
+write_assemblyFilename /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SNIrK6I5WNSchfui-QGeoIh1h-13aNzhy2omDIFxNqawQ=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT64x64x16_MI16x16x16x1_SNIrK6I5WNSchfui-QGeoIh1h-13aNzhy2omDIFxNqawQ=.o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT64x64x16_MI16x16x16x1_SNIrK6I5WNSchfui-QGeoIh1h-13aNzhy2omDIFxNqawQ=.s && 
+b''
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT64x64x16_MI16x16x16x1_SNIrK6I5WNSchfui-QGeoIh1h-13aNzhy2omDIFxNqawQ=.co 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT64x64x16_MI16x16x16x1_SNIrK6I5WNSchfui-QGeoIh1h-13aNzhy2omDIFxNqawQ=.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT64x64x16_MI16x16x16x1_SNCZsrtBJ74KEsb8mhyYzx6FtBWXQtDlNnyuhuCb2f2WU=.co 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT64x64x16_MI16x16x16x1_SNCZsrtBJ74KEsb8mhyYzx6FtBWXQtDlNnyuhuCb2f2WU=.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT64x64x16_MI16x16x16x1_SN__4pNquWnKIe-tHcVvbOQv46DJgzpZZLmRt9HAd21-Y=.co 
+/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Alik_Bljk_BBS_BH
+_MT64x64x16_MI16x16x16x1_SN__4pNquWnKIe-tHcVvbOQv46DJgzpZZLmRt9HAd21-Y=.o
+b''
+b''
+b''
+Filtering processing errors: 0it [00:00, ?it/s]Filtering processing errors: 6it [00:00, 237413.43it/s]
+> UserWarning: Kernel file context manager opened without any kernel files.
+Compiling source kernels:   0%|          | 0/3 [00:00<?, ?it/s]Compiling source kernels: 100%|██████████| 3/3 [00:00<00:00, 6183.25it/s]
+Compile source object file command: ['amdclang++', '-D__HIP_HCC_COMPAT_MODE__=1', '--cuda-device-only', '-x', 'hip', '-O3', '-I', 
+'/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source', '-Xoffload-linker', '--build-id', 
+'--offload-arch=gfx803', '--offload-arch=gfx900', '--offload-arch=gfx906:xnack-', '--offload-arch=gfx908:xnack-', '--offload-arch=gfx90a:xnack+', 
+'--offload-arch=gfx90a:xnack-', '--offload-arch=gfx942', '--offload-arch=gfx950', '--offload-arch=gfx1010', '--offload-arch=gfx1011', 
+'--offload-arch=gfx1012', '--offload-arch=gfx1030', '--offload-arch=gfx1031', '--offload-arch=gfx1032', '--offload-arch=gfx1033', 
+'--offload-arch=gfx1034', '--offload-arch=gfx1035', '--offload-arch=gfx1036', '--offload-arch=gfx1100', '--offload-arch=gfx1101', 
+'--offload-arch=gfx1102', '--offload-arch=gfx1103', '--offload-arch=gfx1150', '--offload-arch=gfx1151', '--offload-arch=gfx1152', 
+'--offload-arch=gfx1153', '--offload-arch=gfx1200', '--offload-arch=gfx1201', 
+'/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/Kernels/Cijk_B_GA.cpp', '-c', '-o', 
+'/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B_GA.o']
+Compile source object file command: ['amdclang++', '-D__HIP_HCC_COMPAT_MODE__=1', '--cuda-device-only', '-x', 'hip', '-O3', '-I', 
+'/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source', '-Xoffload-linker', '--build-id', 
+'--offload-arch=gfx803', '--offload-arch=gfx900', '--offload-arch=gfx906:xnack-', '--offload-arch=gfx908:xnack-', '--offload-arch=gfx90a:xnack+', 
+'--offload-arch=gfx90a:xnack-', '--offload-arch=gfx942', '--offload-arch=gfx950', '--offload-arch=gfx1010', '--offload-arch=gfx1011', 
+'--offload-arch=gfx1012', '--offload-arch=gfx1030', '--offload-arch=gfx1031', '--offload-arch=gfx1032', '--offload-arch=gfx1033', 
+'--offload-arch=gfx1034', '--offload-arch=gfx1035', '--offload-arch=gfx1036', '--offload-arch=gfx1100', '--offload-arch=gfx1101', 
+'--offload-arch=gfx1102', '--offload-arch=gfx1103', '--offload-arch=gfx1150', '--offload-arch=gfx1151', '--offload-arch=gfx1152', 
+'--offload-arch=gfx1153', '--offload-arch=gfx1200', '--offload-arch=gfx1201', 
+'/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/Kernels/Cijk_B_PostGSU.cpp', '-c', '-o', 
+'/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B_PostGS
+U.o']
+Compile source object file command: ['amdclang++', '-D__HIP_HCC_COMPAT_MODE__=1', '--cuda-device-only', '-x', 'hip', '-O3', '-I', 
+'/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source', '-Xoffload-linker', '--build-id', 
+'--offload-arch=gfx803', '--offload-arch=gfx900', '--offload-arch=gfx906:xnack-', '--offload-arch=gfx908:xnack-', '--offload-arch=gfx90a:xnack+', 
+'--offload-arch=gfx90a:xnack-', '--offload-arch=gfx942', '--offload-arch=gfx950', '--offload-arch=gfx1010', '--offload-arch=gfx1011', 
+'--offload-arch=gfx1012', '--offload-arch=gfx1030', '--offload-arch=gfx1031', '--offload-arch=gfx1032', '--offload-arch=gfx1033', 
+'--offload-arch=gfx1034', '--offload-arch=gfx1035', '--offload-arch=gfx1036', '--offload-arch=gfx1100', '--offload-arch=gfx1101', 
+'--offload-arch=gfx1102', '--offload-arch=gfx1103', '--offload-arch=gfx1150', '--offload-arch=gfx1151', '--offload-arch=gfx1152', 
+'--offload-arch=gfx1153', '--offload-arch=gfx1200', '--offload-arch=gfx1201', 
+'/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/Kernels/Cijk_B_PostGSU_VW2.cpp', '-c', '-o', 
+'/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B_PostGS
+U_VW2.o']
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1030 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1030.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1036 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1036.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1030 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1030.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1201 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1201.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1036 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1036.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx900 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx900.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1201 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1201.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1101 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1101.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx900 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx900.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1012 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1012.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1101 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1101.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1030 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1030.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx906:xnack- 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx906-xnack-.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1012 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1012.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1036 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1036.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1200 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1200.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx906:xnack- 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx906-xnack-.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1201 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1201.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx90a:xnack+ 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx90a-xnack+.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1200 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1200.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx900 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx900.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1011 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1011.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx90a:xnack+ 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx90a-xnack+.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1101 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1101.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1151 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1151.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1011 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1011.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1012 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1012.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1150 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1150.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1151 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1151.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx906:xnack- 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx906-xnack-.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1152 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1152.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1200 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1200.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1150 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1150.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx942 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx942.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx90a:xnack+ 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx90a-xnack+.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1152 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1152.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1032 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1032.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1011 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1011.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx942 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx942.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1010 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1010.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1151 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1151.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1032 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1032.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1031 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1031.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1150 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1150.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1010 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1010.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1152 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1152.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx908:xnack- 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx908-xnack-.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1031 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1031.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx942 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx942.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1153 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1153.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx908:xnack- 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx908-xnack-.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1032 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1032.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1102 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1102.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1153 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1153.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1010 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1010.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx803 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx803.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1102 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1102.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1031 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1031.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1035 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1035.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx803 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx803.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx908:xnack- 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx908-xnack-.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1103 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1103.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1035 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1035.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1153 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1153.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1034 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1034.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1103 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1103.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1102 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1102.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1033 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1033.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1034 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1034.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx803 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx803.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx950 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx950.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1033 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1033.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1035 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1035.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1100 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx1100.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx950 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx950.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1103 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1103.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx90a:xnack- 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_GA.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_GA.so-000-gfx90a-xnack-.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1034 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1034.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1100 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx1100.hsaco.raw --unbundle
+
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1033 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1033.hsaco.raw --unbundle
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx90a:xnack- 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU_VW2.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU_VW2.so-000-gfx90a-xnack-.hsaco.raw --unbundle
+
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx950 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx950.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1100 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx1100.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx90a:xnack- 
+--input=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_B
+_PostGSU.o 
+--output=/home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_
+B_PostGSU.so-000-gfx90a-xnack-.hsaco.raw --unbundle
+
+Relocating code objects: 0it [00:00, ?it/s]Relocating code objects: 6it [00:00, 20729.67it/s]
+> UserWarning: Code object files are not compressed in `--no-merge-files` build mode.
+# Kernel Building elapsed time = 11.5 secs
+# Actual Solutions: 6 / 6 after KernelWriter
+
++ ERR=0
++ /home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client --config-file /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/build/../source/ClientParameters.ini
+loading config file /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/build/../source/ClientParameters.ini
+Loading /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/library/Cijk_B_GA.so-000-gfx1201.hsaco
+Loading /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/library/Cijk_B_PostGSU.so-000-gfx1201.hsaco
+Loading /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/library/Cijk_B_PostGSU_VW2.so-000-gfx1201.hsaco
+Loading /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/library/Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SNBnnqhTduCqdVx_LdRB7m7tLNucMx8N_gDnVU-IkqBh0=_gfx1201.co
+Loading /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/library/Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SNVkk5mpQ-5g4yci6wx1lrCR_2nwEcBT-eJ7gDV2EBI6k=_gfx1201.co
+Loading /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/library/Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SNjkCkBPh9WUp7CZGoHZSu_NTPd-05zGtoh9CgokxuHDM=_gfx1201.co
+Loading /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/library/Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN__4pNquWnKIe-tHcVvbOQv46DJgzpZZLmRt9HAd21-Y=_gfx1201.co
+Loading /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/library/Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SNCZsrtBJ74KEsb8mhyYzx6FtBWXQtDlNnyuhuCb2f2WU=_gfx1201.co
+Loading /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/1_BenchmarkProblems/Cijk_Alik_Bljk_BBS_BH_00/00_Final/source/library/Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SNIrK6I5WNSchfui-QGeoIh1h-13aNzhy2omDIFxNqawQ=_gfx1201.co
+Log level: Debug
+run,problem-progress,solution-progress,operation,problem-sizes,solution,validation,time-us,gflops,empty,total-gran,tiles-per-cu,num-cus,tile0-gran,tile1-gran,cu-gran,wave-gran,mem-read-bytes,mem-write-bytes,temp-edge,clock-sys,clock-soc,clock-mem,fan-rpm,hardware-samples,gfx-frequency(median),power(median),hotspot-temperature(median),enqueue-time
+0,0/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,89.12,23.5318,,0.000976562,0.03125,32,0.5,0.5,0.03125,0.125,131584,512,,,,,,,,,,2026-04-18 03:39:04.
+0,0/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,66.92,31.3382,,0.00195312,0.0625,32,0.5,0.5,0.0625,0.125,131072,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,0/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,57.241,36.6372,,0.00390625,0.125,32,0.5,0.5,0.125,0.125,131072,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,0/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,107.001,19.5994,,0.000244141,0.03125,32,0.25,0.25,0.03125,0.125,66048,512,,,,,,,,,,2026-04-18 03:39:04.
+0,0/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,96.441,21.7454,,0.000488281,0.0625,32,0.25,0.25,0.0625,0.125,65536,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,0/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,76.72,27.3351,,0.000976562,0.125,32,0.25,0.25,0.125,0.125,65536,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,1/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,102.96,40.7372,,0.000976562,0.03125,32,0.5,0.5,0.03125,0.125,262656,512,,,,,,,,,,2026-04-18 03:39:04.
+0,1/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,89.2,47.0213,,0.00195312,0.0625,32,0.5,0.5,0.0625,0.125,262144,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,1/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,71.96,58.2866,,0.00390625,0.125,32,0.5,0.5,0.125,0.125,262144,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,1/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,173.16,24.2221,,0.000244141,0.03125,32,0.25,0.25,0.03125,0.125,131584,512,,,,,,,,,,2026-04-18 03:39:04.
+0,1/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,125.84,33.3305,,0.000488281,0.0625,32,0.25,0.25,0.0625,0.125,131072,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,1/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,92.92,45.1389,,0.000976562,0.125,32,0.25,0.25,0.125,0.125,131072,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,2/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,200.401,41.8591,,0.000976562,0.03125,32,0.5,0.5,0.03125,0.125,524800,512,,,,,,,,,,2026-04-18 03:39:04.
+0,2/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,144.801,57.932,,0.00195312,0.0625,32,0.5,0.5,0.0625,0.125,524288,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,2/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,108.361,77.4135,,0.00390625,0.125,32,0.5,0.5,0.125,0.125,524288,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,2/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,334.562,25.0734,,0.000244141,0.03125,32,0.25,0.25,0.03125,0.125,262656,512,,,,,,,,,,2026-04-18 03:39:04.
+0,2/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,217.401,38.5859,,0.000488281,0.0625,32,0.25,0.25,0.0625,0.125,262144,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,2/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,145.4,57.6933,,0.000976562,0.125,32,0.25,0.25,0.125,0.125,262144,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,3/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,319.281,45.9785,,0.000976562,0.03125,32,0.5,0.5,0.03125,0.125,918016,512,,,,,,,,,,2026-04-18 03:39:04.
+0,3/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,214.521,68.4318,,0.00195312,0.0625,32,0.5,0.5,0.0625,0.125,917504,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,3/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,154.761,94.8564,,0.00390625,0.125,32,0.5,0.5,0.125,0.125,917504,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,3/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,558.363,26.2913,,0.000244141,0.03125,32,0.25,0.25,0.03125,0.125,459264,512,,,,,,,,,,2026-04-18 03:39:04.
+0,3/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,335.321,43.7791,,0.000488281,0.0625,32,0.25,0.25,0.0625,0.125,458752,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,3/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,215.041,68.2664,,0.000976562,0.125,32,0.25,0.25,0.125,0.125,458752,1536,,,,,,,,,,2026-04-18 03:39:04.
+0,4/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,56.241,149.155,,0.00390625,0.0625,32,0.5,1,0.0625,0.125,526336,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,4/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,59.96,139.903,,0.0078125,0.125,32,0.5,1,0.125,0.125,524288,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,4/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,51.8,161.942,,0.015625,0.25,32,0.5,1,0.25,0.125,524288,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,4/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,95.24,88.0786,,0.000976562,0.03125,32,0.25,1,0.03125,0.125,264192,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,4/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,84.4,99.3911,,0.00195312,0.0625,32,0.25,1,0.0625,0.125,262144,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,4/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,66.081,126.944,,0.00390625,0.125,32,0.25,1,0.125,0.125,262144,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,5/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,105.561,158.934,,0.00390625,0.0625,32,0.5,1,0.0625,0.125,1050624,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,5/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,89.081,188.337,,0.0078125,0.125,32,0.5,1,0.125,0.125,1048576,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,5/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,72.32,231.986,,0.015625,0.25,32,0.5,1,0.25,0.125,1048576,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,5/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,174.481,96.155,,0.000976562,0.03125,32,0.25,1,0.03125,0.125,526336,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,5/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,130.881,128.187,,0.00195312,0.0625,32,0.25,1,0.0625,0.125,524288,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,5/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,99.761,168.174,,0.00390625,0.125,32,0.25,1,0.125,0.125,524288,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,6/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,203.281,165.064,,0.00390625,0.0625,32,0.5,1,0.0625,0.125,2099200,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,6/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,149.72,224.115,,0.0078125,0.125,32,0.5,1,0.125,0.125,2097152,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,6/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,117.52,285.521,,0.015625,0.25,32,0.5,1,0.25,0.125,2097152,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,6/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,356.881,94.0213,,0.000976562,0.03125,32,0.25,1,0.03125,0.125,1050624,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,6/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,233.241,143.862,,0.00195312,0.0625,32,0.25,1,0.0625,0.125,1048576,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,6/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,160.481,209.087,,0.00390625,0.125,32,0.25,1,0.125,0.125,1048576,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,7/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,333.042,176.315,,0.00390625,0.0625,32,0.5,1,0.0625,0.125,3672064,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,7/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,225.921,259.915,,0.0078125,0.125,32,0.5,1,0.125,0.125,3670016,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,7/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,164.36,357.266,,0.015625,0.25,32,0.5,1,0.25,0.125,3670016,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,7/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,574.122,102.278,,0.000976562,0.03125,32,0.25,1,0.03125,0.125,1837056,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,7/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,350.921,167.332,,0.00195312,0.0625,32,0.25,1,0.0625,0.125,1835008,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,7/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,229.321,256.061,,0.00390625,0.125,32,0.25,1,0.125,0.125,1835008,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,8/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,56.881,589.906,,0.015625,0.25,32,0.5,1,0.25,0.125,2105344,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,8/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,61.4,546.489,,0.03125,0.5,32,0.5,1,0.5,0.125,2097152,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,8/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,53.64,625.549,,0.125,1,32,0.5,1,1,0.25,2097152,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,8/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,96,349.525,,0.00390625,0.125,32,0.25,1,0.125,0.125,1056768,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,8/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,85.761,391.255,,0.0078125,0.25,32,0.25,1,0.25,0.125,1048576,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,8/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,69.681,481.543,,0.015625,0.5,32,0.25,1,0.5,0.125,1048576,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,9/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,105.361,636.942,,0.015625,0.25,32,0.5,1,0.25,0.125,4202496,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,9/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,91.401,734.225,,0.03125,0.5,32,0.5,1,0.5,0.125,4194304,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,9/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,76.4,878.388,,0.125,1,32,0.5,1,1,0.25,4194304,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,9/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,180.801,371.175,,0.00390625,0.125,32,0.25,1,0.125,0.125,2105344,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,9/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,133.201,503.817,,0.0078125,0.25,32,0.25,1,0.25,0.125,2097152,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,9/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,99.841,672.157,,0.015625,0.5,32,0.25,1,0.5,0.125,2097152,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,10/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,202.641,662.342,,0.015625,0.25,32,0.5,1,0.25,0.125,8396800,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,10/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,147.64,909.088,,0.03125,0.5,32,0.5,1,0.5,0.125,8388608,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,10/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,113.6,1181.49,,0.125,1,32,0.5,1,1,0.25,8388608,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,10/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,342.041,392.402,,0.00390625,0.125,32,0.25,1,0.125,0.125,4202496,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,10/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,222.481,603.277,,0.0078125,0.25,32,0.25,1,0.25,0.125,4194304,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,10/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,156.401,858.164,,0.015625,0.5,32,0.25,1,0.5,0.125,4194304,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,11/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,313.562,749.074,,0.015625,0.25,32,0.5,1,0.25,0.125,14688256,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,11/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,210.721,1114.65,,0.03125,0.5,32,0.5,1,0.5,0.125,14680064,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,11/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,155.12,1514.19,,0.125,1,32,0.5,1,1,0.25,14680064,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,11/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,514.362,456.645,,0.00390625,0.125,32,0.25,1,0.125,0.125,7348224,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,11/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,324.322,724.222,,0.0078125,0.25,32,0.25,1,0.25,0.125,7340032,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,11/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(16,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,211.561,1110.23,,0.015625,0.5,32,0.25,1,0.5,0.125,7340032,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,12/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,51.56,162.696,,0.00390625,0.0625,32,1,0.5,0.0625,0.125,526336,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,12/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,55.721,150.547,,0.0078125,0.125,32,1,0.5,0.125,0.125,524288,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,12/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,48.76,172.039,,0.015625,0.25,32,1,0.5,0.25,0.125,524288,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,12/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,86.08,97.4513,,0.000976562,0.03125,32,1,0.25,0.03125,0.125,264192,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,12/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,77.52,108.212,,0.00195312,0.0625,32,1,0.25,0.0625,0.125,262144,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,12/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,64.321,130.418,,0.00390625,0.125,32,1,0.25,0.125,0.125,262144,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,13/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,93.841,178.783,,0.00390625,0.0625,32,1,0.5,0.0625,0.125,1050624,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,13/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,83.201,201.647,,0.0078125,0.125,32,1,0.5,0.125,0.125,1048576,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,13/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,69.12,242.726,,0.015625,0.25,32,1,0.5,0.25,0.125,1048576,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,13/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,158.84,105.623,,0.000976562,0.03125,32,1,0.25,0.03125,0.125,526336,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,13/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,119.04,140.938,,0.00195312,0.0625,32,1,0.25,0.0625,0.125,524288,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,13/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,91.16,184.041,,0.00390625,0.125,32,1,0.25,0.125,0.125,524288,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,14/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,179.681,186.744,,0.00390625,0.0625,32,1,0.5,0.0625,0.125,2099200,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,14/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,133.401,251.531,,0.0078125,0.125,32,1,0.5,0.125,0.125,2097152,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,14/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,108.761,308.515,,0.015625,0.25,32,1,0.5,0.25,0.125,2097152,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,14/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,307.201,109.226,,0.000976562,0.03125,32,1,0.25,0.03125,0.125,1050624,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,14/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,205.521,163.265,,0.00195312,0.0625,32,1,0.25,0.0625,0.125,1048576,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,14/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,142.041,236.231,,0.00390625,0.125,32,1,0.25,0.125,0.125,1048576,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,15/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,286.201,205.171,,0.00390625,0.0625,32,1,0.5,0.0625,0.125,3672064,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,15/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,195.361,300.573,,0.0078125,0.125,32,1,0.5,0.125,0.125,3670016,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,15/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,143.32,409.714,,0.015625,0.25,32,1,0.5,0.25,0.125,3670016,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,15/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,487.242,120.516,,0.000976562,0.03125,32,1,0.25,0.03125,0.125,1837056,2048,,,,,,,,,,2026-04-18 03:39:04.
+0,15/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,305.361,192.298,,0.00195312,0.0625,32,1,0.25,0.0625,0.125,1835008,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,15/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,202.841,289.489,,0.00390625,0.125,32,1,0.25,0.125,0.125,1835008,6144,,,,,,,,,,2026-04-18 03:39:04.
+0,16/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,48.161,696.714,,0.015625,0.125,32,1,1,0.125,0.125,2105344,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,16/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,54.92,610.969,,0.03125,0.25,32,1,1,0.25,0.125,2097152,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,16/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,48.84,687.028,,0.0625,0.5,32,1,1,0.5,0.125,2097152,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,16/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,84.44,397.376,,0.00390625,0.03125,32,1,1,0.03125,0.125,1056768,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,16/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,81.241,413.023,,0.0078125,0.0625,32,1,1,0.0625,0.125,1048576,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,16/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,68.641,488.84,,0.015625,0.125,32,1,1,0.125,0.125,1048576,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,17/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,94.601,709.389,,0.015625,0.125,32,1,1,0.125,0.125,4202496,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,17/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,84.2,797.017,,0.03125,0.25,32,1,1,0.25,0.125,4194304,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,17/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,70.72,948.938,,0.0625,0.5,32,1,1,0.5,0.125,4194304,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,17/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,161.8,414.764,,0.00390625,0.03125,32,1,1,0.03125,0.125,2105344,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,17/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,126.16,531.935,,0.0078125,0.0625,32,1,1,0.0625,0.125,2097152,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,17/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,96.4,696.15,,0.015625,0.125,32,1,1,0.125,0.125,2097152,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,18/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,187.521,715.748,,0.015625,0.125,32,1,1,0.125,0.125,8396800,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,18/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,138.601,968.375,,0.03125,0.25,32,1,1,0.25,0.125,8388608,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,18/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,105.121,1276.79,,0.0625,0.5,32,1,1,0.5,0.125,8388608,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,18/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,325.201,412.722,,0.00390625,0.03125,32,1,1,0.03125,0.125,4202496,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,18/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,218.121,615.336,,0.0078125,0.0625,32,1,1,0.0625,0.125,4194304,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,18/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,156.281,858.823,,0.015625,0.125,32,1,1,0.125,0.125,4194304,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,19/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,292.721,802.406,,0.015625,0.125,32,1,1,0.125,0.125,14688256,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,19/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,199.56,1176.99,,0.03125,0.25,32,1,1,0.25,0.125,14680064,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,19/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,148.12,1585.75,,0.0625,0.5,32,1,1,0.5,0.125,14680064,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,19/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,496.282,473.281,,0.00390625,0.03125,32,1,1,0.03125,0.125,7348224,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,19/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,317.362,740.104,,0.0078125,0.0625,32,1,1,0.0625,0.125,7340032,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,19/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,215.281,1091.04,,0.015625,0.125,32,1,1,0.125,0.125,7340032,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,20/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,48.72,2754.88,,0.0625,0.5,32,1,1,0.5,0.125,8421376,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,20/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,56.441,2378.02,,0.25,1,32,1,1,1,0.25,8388608,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,20/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,50.8,2642.08,,0.375,2,32,1,1,1,0.375,8388608,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,20/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,80.52,1666.89,,0.015625,0.125,32,1,1,0.125,0.125,4227072,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,20/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,78.48,1710.22,,0.03125,0.25,32,1,1,0.25,0.125,4194304,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,20/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,65.84,2038.54,,0.0625,0.5,32,1,1,0.5,0.125,4194304,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,21/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,94.241,2848.39,,0.0625,0.5,32,1,1,0.5,0.125,16809984,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,21/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,85.641,3134.43,,0.25,1,32,1,1,1,0.25,16777216,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,21/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,72.761,3689.28,,0.375,2,32,1,1,1,0.375,16777216,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,21/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,162.441,1652.51,,0.015625,0.125,32,1,1,0.125,0.125,8421376,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,21/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,126.521,2121.67,,0.03125,0.25,32,1,1,0.25,0.125,8388608,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,21/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,101.881,2634.79,,0.0625,0.5,32,1,1,0.5,0.125,8388608,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,22/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,186.281,2882.05,,0.0625,0.5,32,1,1,0.5,0.125,33587200,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,22/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,140.881,3810.81,,0.25,1,32,1,1,1,0.25,33554432,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,22/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,115.28,4657.1,,0.375,2,32,1,1,1,0.375,33554432,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,22/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,325.161,1651.09,,0.015625,0.125,32,1,1,0.125,0.125,16809984,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,22/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,221.641,2422.25,,0.03125,0.25,32,1,1,0.25,0.125,16777216,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,22/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,160.001,3355.42,,0.0625,0.5,32,1,1,0.5,0.125,16777216,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,23/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,286.841,3275.42,,0.0625,0.5,32,1,1,0.5,0.125,58753024,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,23/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,203.921,4607.29,,0.25,1,32,1,1,1,0.25,58720256,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,23/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,184.041,5104.97,,0.375,2,32,1,1,1,0.375,58720256,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,23/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,495.642,1895.57,,0.015625,0.125,32,1,1,0.125,0.125,29392896,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,23/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,321.401,2923.21,,0.03125,0.25,32,1,1,0.25,0.125,29360128,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,23/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(64,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,224.081,4192.79,,0.0625,0.5,32,1,1,0.5,0.125,29360128,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,24/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,47.96,699.634,,0.015625,0.25,32,1,0.5,0.25,0.125,2105344,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,24/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,53.96,621.839,,0.03125,0.5,32,1,0.5,0.5,0.125,2097152,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,24/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,47.28,709.696,,0.125,1,32,1,0.5,1,0.25,2097152,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,24/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,81.92,409.6,,0.00390625,0.125,32,1,0.25,0.125,0.125,1056768,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,24/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,75.64,443.607,,0.0078125,0.25,32,1,0.25,0.25,0.125,1048576,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,24/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,64.481,520.377,,0.015625,0.5,32,1,0.25,0.5,0.125,1048576,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,25/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,91.001,737.452,,0.015625,0.25,32,1,0.5,0.25,0.125,4202496,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,25/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,80.721,831.368,,0.03125,0.5,32,1,0.5,0.5,0.125,4194304,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,25/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,65.52,1024.25,,0.125,1,32,1,0.5,1,0.25,4194304,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,25/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,155.481,431.621,,0.00390625,0.125,32,1,0.25,0.125,0.125,2105344,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,25/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,117.361,571.816,,0.0078125,0.25,32,1,0.25,0.25,0.125,2097152,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,25/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,89.001,754.024,,0.015625,0.5,32,1,0.25,0.5,0.125,2097152,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,26/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,179.921,745.981,,0.015625,0.25,32,1,0.5,0.25,0.125,8396800,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,26/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,134.081,1001.02,,0.03125,0.5,32,1,0.5,0.5,0.125,8388608,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,26/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,99.081,1354.63,,0.125,1,32,1,0.5,1,0.25,8388608,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,26/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,305.922,438.732,,0.00390625,0.125,32,1,0.25,0.125,0.125,4202496,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,26/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,200.641,668.945,,0.0078125,0.25,32,1,0.25,0.25,0.125,4194304,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,26/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,149.561,897.411,,0.015625,0.5,32,1,0.25,0.5,0.125,4194304,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,27/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,281.481,834.447,,0.015625,0.25,32,1,0.5,0.25,0.125,14688256,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,27/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,197.481,1189.39,,0.03125,0.5,32,1,0.5,0.5,0.125,14680064,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,27/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,145.321,1616.29,,0.125,1,32,1,0.5,1,0.25,14680064,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,27/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,480.881,488.439,,0.00390625,0.125,32,1,0.25,0.125,0.125,7348224,8192,,,,,,,,,,2026-04-18 03:39:04.
+0,27/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,311.241,754.66,,0.0078125,0.25,32,1,0.25,0.25,0.125,7340032,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,27/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,16,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,203.76,1152.73,,0.015625,0.5,32,1,0.25,0.5,0.125,7340032,24576,,,,,,,,,,2026-04-18 03:39:04.
+0,28/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,48.04,2793.87,,0.0625,0.5,32,1,1,0.5,0.125,8421376,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,28/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,55.6,2413.99,,0.25,1,32,1,1,1,0.25,8388608,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,28/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,48.281,2779.93,,0.375,2,32,1,1,1,0.375,8388608,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,28/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,78.841,1702.38,,0.015625,0.125,32,1,1,0.125,0.125,4227072,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,28/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,77.04,1742.18,,0.03125,0.25,32,1,1,0.25,0.125,4194304,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,28/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,65.32,2054.77,,0.0625,0.5,32,1,1,0.5,0.125,4194304,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,29/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,93.12,2882.68,,0.0625,0.5,32,1,1,0.5,0.125,16809984,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,29/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,83.6,3210.95,,0.25,1,32,1,1,1,0.25,16777216,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,29/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,67.04,4004.11,,0.375,2,32,1,1,1,0.375,16777216,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,29/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,159.121,1686.99,,0.015625,0.125,32,1,1,0.125,0.125,8421376,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,29/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,123.6,2171.81,,0.03125,0.25,32,1,1,0.25,0.125,8388608,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,29/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,94.721,2833.96,,0.0625,0.5,32,1,1,0.5,0.125,8388608,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,30/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,183.521,2925.39,,0.0625,0.5,32,1,1,0.5,0.125,33587200,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,30/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,139.92,3836.98,,0.25,1,32,1,1,1,0.25,33554432,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,30/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,108.56,4945.38,,0.375,2,32,1,1,1,0.375,33554432,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,30/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,323.601,1659.05,,0.015625,0.125,32,1,1,0.125,0.125,16809984,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,30/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,235.641,2278.34,,0.03125,0.25,32,1,1,0.25,0.125,16777216,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,30/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,183.801,2920.94,,0.0625,0.5,32,1,1,0.5,0.125,16777216,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,31/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,297.362,3159.53,,0.0625,0.5,32,1,1,0.5,0.125,58753024,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,31/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,203.761,4610.91,,0.25,1,32,1,1,1,0.25,58720256,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,31/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,154.081,6097.6,,0.375,2,32,1,1,1,0.375,58720256,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,31/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,495.482,1896.18,,0.015625,0.125,32,1,1,0.125,0.125,29392896,32768,,,,,,,,,,2026-04-18 03:39:04.
+0,31/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,342.641,2742.01,,0.03125,0.25,32,1,1,0.25,0.125,29360128,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,31/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,64,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,220.681,4257.39,,0.0625,0.5,32,1,1,0.5,0.125,29360128,98304,,,,,,,,,,2026-04-18 03:39:04.
+0,32/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,49.4,10867.8,,0.375,2,32,1,1,1,0.375,33685504,131072,,,,,,,,,,2026-04-18 03:39:04.
+0,32/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,70.92,7570.09,,0.625,4,32,1,1,1,0.625,33554432,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,32/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,69.52,7722.54,,1,8,32,1,1,1,1,33554432,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,32/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,79.201,6778.59,,0.0625,0.5,32,1,1,0.5,0.125,16908288,131072,,,,,,,,,,2026-04-18 03:39:04.
+0,32/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,88.561,6062.16,,0.25,1,32,1,1,1,0.25,16777216,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,32/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,4096)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,75.84,7078.99,,0.375,2,32,1,1,1,0.375,16777216,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,33/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,94.12,11408.2,,0.375,2,32,1,1,1,0.375,67239936,131072,,,,,,,,,,2026-04-18 03:39:04.
+0,33/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,98.8,10867.8,,0.625,4,32,1,1,1,0.625,67108864,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,33/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,100.28,10707.4,,1,8,32,1,1,1,1,67108864,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,33/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,160.2,6702.51,,0.0625,0.5,32,1,1,0.5,0.125,33685504,131072,,,,,,,,,,2026-04-18 03:39:04.
+0,33/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,138.44,7756.01,,0.25,1,32,1,1,1,0.25,33554432,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,33/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,8192)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,112.52,9542.68,,0.375,2,32,1,1,1,0.375,33554432,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,34/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,186.521,11513.4,,0.375,2,32,1,1,1,0.375,134348800,131072,,,,,,,,,,2026-04-18 03:39:04.
+0,34/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,160.881,13348.3,,0.625,4,32,1,1,1,0.625,134217728,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,34/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,151.161,14206.6,,1,8,32,1,1,1,1,134217728,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,34/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,324.402,6619.82,,0.0625,0.5,32,1,1,0.5,0.125,67239936,131072,,,,,,,,,,2026-04-18 03:39:04.
+0,34/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,235.041,9136.63,,0.25,1,32,1,1,1,0.25,67108864,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,34/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,16384)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,179.28,11978.4,,0.375,2,32,1,1,1,0.375,67108864,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,35/35,0/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,302.281,12432.5,,0.375,2,32,1,1,1,0.375,235012096,131072,,,,,,,,,,2026-04-18 03:39:04.
+0,35/35,1/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,242.921,15470.4,,0.625,4,32,1,1,1,0.625,234881024,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,35/35,2/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32,NO_CHECK,212.881,17653.5,,1,8,32,1,1,1,1,234881024,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,35/35,3/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,497.162,7559.1,,0.0625,0.5,32,1,1,0.5,0.125,117571584,131072,,,,,,,,,,2026-04-18 03:39:04.
+0,35/35,4/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,350.041,10736.2,,0.25,1,32,1,1,1,0.25,117440512,393216,,,,,,,,,,2026-04-18 03:39:04.
+0,35/35,5/5,Contraction_l_Alik_Bljk_Cijk_Dijk,"(256,256,1,28672)",Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64,NO_CHECK,248.721,15109.7,,0.375,2,32,1,1,1,0.375,117440512,393216,,,,,,,,,,2026-04-18 03:39:04.
++ [[ 0 -ne 0 ]]
++ exit 0
+################################################################################
+# Cijk_Alik_Bljk_BBS_BH_00
+# 00_Final: End - 21.234s
+################################################################################
+
+clientExit=0 (PASS) for ['/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-wide-v2/bf16gemm_wmma_gsu_tn.yaml']
+
+# LibraryLogic config: {'ScheduleName': 'navi48', 'DeviceNames': ['Device 7550'], 'ArchitectureName': 'gfx1201'}
+# DefaultAnalysisParameters: 
+
+################################################################################
+# Analysing data in 2_BenchmarkData - 21.235s
+#   ScheduleName: navi48
+#   DeviceNames: ['Device 7550']
+#   ArchitectureName: gfx1201
+#   SolutionImportanceMin: 0.01
+################################################################################
+
+################################################################################
+# Analyzing: Cijk_Alik_Bljk_BBS_BH
+# Read: /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/2_BenchmarkData/Cijk_Alik_Bljk_BBS_BH_00.yaml
+# ProblemSizes: ProblemSizes
+
+# Solutions:
+#  (0) Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32
+#  (1) Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT2_32
+#  (2) Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32
+#  (3) Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA1024_LBSPPB1024_TT4_64
+#  (4) Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA1024_LBSPPB1024_TT4_64
+#  (5) Cijk_Alik_Bljk_BBS_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA1024_LBSPPB1024_TT4_64
+################################################################################
+# Merging Solutions:
+                                                    # LogicAnalyzer .....                          16.7%                                                    # LogicAnalyzer ..........                     33.3%                                                    # LogicAnalyzer ...............                50.0%                                                    # LogicAnalyzer ....................           66.7%                                                    # LogicAnalyzer .........................      83.3%                                                     # LogicAnalyzer .............................. 100.0%UnifiedProblemSizes: [[], [], [], [], [], [], [], []]
+ExactProblemSizes: {(16, 16, 1, 28672, 16, 16, 28672, 28672), (64, 64, 1, 16384, 64, 64, 16384, 16384), (256, 256, 1, 16384, 256, 256, 16384, 16384), 
+(16, 16, 1, 16384, 16, 16, 16384, 16384), (16, 256, 1, 4096, 16, 16, 4096, 4096), (16, 64, 1, 28672, 16, 16, 28672, 28672), (16, 64, 1, 16384, 16, 16, 
+16384, 16384), (16, 64, 1, 4096, 16, 16, 4096, 4096), (64, 16, 1, 8192, 64, 64, 8192, 8192), (64, 256, 1, 16384, 64, 64, 16384, 16384), (16, 256, 1, 
+16384, 16, 16, 16384, 16384), (256, 64, 1, 28672, 256, 256, 28672, 28672), (256, 256, 1, 4096, 256, 256, 4096, 4096), (256, 64, 1, 4096, 256, 256, 4096, 
+4096), (256, 256, 1, 8192, 256, 256, 8192, 8192), (256, 64, 1, 16384, 256, 256, 16384, 16384), (256, 64, 1, 8192, 256, 256, 8192, 8192), (64, 16, 1, 
+4096, 64, 64, 4096, 4096), (256, 16, 1, 4096, 256, 256, 4096, 4096), (64, 64, 1, 8192, 64, 64, 8192, 8192), (16, 64, 1, 8192, 16, 16, 8192, 8192), (64, 
+256, 1, 4096, 64, 64, 4096, 4096), (16, 256, 1, 28672, 16, 16, 28672, 28672), (64, 256, 1, 8192, 64, 64, 8192, 8192), (256, 16, 1, 8192, 256, 256, 8192, 
+8192), (16, 256, 1, 8192, 16, 16, 8192, 8192), (16, 16, 1, 4096, 16, 16, 4096, 4096), (64, 256, 1, 28672, 64, 64, 28672, 28672), (256, 16, 1, 16384, 256,
+256, 16384, 16384), (64, 64, 1, 4096, 64, 64, 4096, 4096), (256, 16, 1, 28672, 256, 256, 28672, 28672), (64, 16, 1, 28672, 64, 64, 28672, 28672), (256, 
+256, 1, 28672, 256, 256, 28672, 28672), (64, 16, 1, 16384, 64, 64, 16384, 16384), (64, 64, 1, 28672, 64, 64, 28672, 28672), (16, 16, 1, 8192, 16, 16, 
+8192, 8192)}
+RangeProblemSizes: {(16, 16, 1, 28672, 16, 16, 28672, 28672), (64, 64, 1, 16384, 64, 64, 16384, 16384), (256, 256, 1, 16384, 256, 256, 16384, 16384), 
+(16, 16, 1, 16384, 16, 16, 16384, 16384), (16, 256, 1, 4096, 16, 16, 4096, 4096), (16, 64, 1, 28672, 16, 16, 28672, 28672), (16, 64, 1, 16384, 16, 16, 
+16384, 16384), (16, 64, 1, 4096, 16, 16, 4096, 4096), (64, 16, 1, 8192, 64, 64, 8192, 8192), (64, 256, 1, 16384, 64, 64, 16384, 16384), (16, 256, 1, 
+16384, 16, 16, 16384, 16384), (256, 64, 1, 28672, 256, 256, 28672, 28672), (256, 256, 1, 4096, 256, 256, 4096, 4096), (256, 64, 1, 4096, 256, 256, 4096, 
+4096), (256, 256, 1, 8192, 256, 256, 8192, 8192), (256, 64, 1, 16384, 256, 256, 16384, 16384), (256, 64, 1, 8192, 256, 256, 8192, 8192), (64, 16, 1, 
+4096, 64, 64, 4096, 4096), (256, 16, 1, 4096, 256, 256, 4096, 4096), (64, 64, 1, 8192, 64, 64, 8192, 8192), (16, 64, 1, 8192, 16, 16, 8192, 8192), (64, 
+256, 1, 4096, 64, 64, 4096, 4096), (16, 256, 1, 28672, 16, 16, 28672, 28672), (64, 256, 1, 8192, 64, 64, 8192, 8192), (256, 16, 1, 8192, 256, 256, 8192, 
+8192), (16, 256, 1, 8192, 16, 16, 8192, 8192), (16, 16, 1, 4096, 16, 16, 4096, 4096), (64, 256, 1, 28672, 64, 64, 28672, 28672), (256, 16, 1, 16384, 256,
+256, 16384, 16384), (64, 64, 1, 4096, 64, 64, 4096, 4096), (256, 16, 1, 28672, 256, 256, 28672, 28672), (64, 16, 1, 28672, 64, 64, 28672, 28672), (256, 
+256, 1, 28672, 256, 256, 28672, 28672), (64, 16, 1, 16384, 64, 64, 16384, 16384), (64, 64, 1, 28672, 64, 64, 28672, 28672), (16, 16, 1, 8192, 16, 16, 
+8192, 8192)}
+# NumProblemSizes: [0, 0, 0, 0, 0, 0, 0, 0]
+TotalProblems: 0
+TotalSolutions: 6
+TotalSize: 0
+IndexOrder: [2, 3, 0, 1]
+reading datafile /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/2_BenchmarkData/Cijk_Alik_Bljk_BBS_BH_00.csv
+# ExactWinners: {(16, 16, 1, 4096, 16, 16, 4096, 4096): [2, 36.6372], (16, 16, 1, 8192, 16, 16, 8192, 8192): [2, 58.2866], (16, 16, 1, 16384, 16, 16, 
+16384, 16384): [2, 77.4135], (16, 16, 1, 28672, 16, 16, 28672, 28672): [2, 94.8564], (16, 64, 1, 4096, 16, 16, 4096, 4096): [2, 161.942], (16, 64, 1, 
+8192, 16, 16, 8192, 8192): [2, 231.986], (16, 64, 1, 16384, 16, 16, 16384, 16384): [2, 285.521], (16, 64, 1, 28672, 16, 16, 28672, 28672): [2, 357.266], 
+(16, 256, 1, 4096, 16, 16, 4096, 4096): [2, 625.549], (16, 256, 1, 8192, 16, 16, 8192, 8192): [2, 878.388], (16, 256, 1, 16384, 16, 16, 16384, 16384): 
+[2, 1181.49], (16, 256, 1, 28672, 16, 16, 28672, 28672): [2, 1514.19], (64, 16, 1, 4096, 64, 64, 4096, 4096): [2, 172.039], (64, 16, 1, 8192, 64, 64, 
+8192, 8192): [2, 242.726], (64, 16, 1, 16384, 64, 64, 16384, 16384): [2, 308.515], (64, 16, 1, 28672, 64, 64, 28672, 28672): [2, 409.714], (64, 64, 1, 
+4096, 64, 64, 4096, 4096): [0, 696.714], (64, 64, 1, 8192, 64, 64, 8192, 8192): [2, 948.938], (64, 64, 1, 16384, 64, 64, 16384, 16384): [2, 1276.79], 
+(64, 64, 1, 28672, 64, 64, 28672, 28672): [2, 1585.75], (64, 256, 1, 4096, 64, 64, 4096, 4096): [0, 2754.88], (64, 256, 1, 8192, 64, 64, 8192, 8192): [2,
+3689.28], (64, 256, 1, 16384, 64, 64, 16384, 16384): [2, 4657.1], (64, 256, 1, 28672, 64, 64, 28672, 28672): [2, 5104.97], (256, 16, 1, 4096, 256, 256, 
+4096, 4096): [2, 709.696], (256, 16, 1, 8192, 256, 256, 8192, 8192): [2, 1024.25], (256, 16, 1, 16384, 256, 256, 16384, 16384): [2, 1354.63], (256, 16, 
+1, 28672, 256, 256, 28672, 28672): [2, 1616.29], (256, 64, 1, 4096, 256, 256, 4096, 4096): [0, 2793.87], (256, 64, 1, 8192, 256, 256, 8192, 8192): [2, 
+4004.11], (256, 64, 1, 16384, 256, 256, 16384, 16384): [2, 4945.38], (256, 64, 1, 28672, 256, 256, 28672, 28672): [2, 6097.6], (256, 256, 1, 4096, 256, 
+256, 4096, 4096): [0, 10867.8], (256, 256, 1, 8192, 256, 256, 8192, 8192): [0, 11408.2], (256, 256, 1, 16384, 256, 256, 16384, 16384): [2, 14206.6], 
+(256, 256, 1, 28672, 256, 256, 28672, 28672): [2, 17653.5]}
+problemIndicesForGlobalRange []
+Winners {0, 2}
+After Removals:
+
+( 0) Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT2_32 : 
+Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01
+_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_
+FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA512_LBSPP
+B512_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NT
+B0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_SUS
+256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_32_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+( 1) Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT2_32 : 
+Cijk_Alik_Bljk_BBS_BH_MT32x32x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE01
+_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0_
+FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU4_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA512_LBSPP
+B512_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_NT
+B0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_SUS
+256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_32_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGRO
+n1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+[] enRule([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])
+[] MultiProblem & NotLastIndex
+> UserWarning: [] MultiProblem & NotLastIndex :: nextRule==None; returning
+# Final Range Logic:
+None
+# Range Logic Complexity: [0, 0, 0, 0, 0, 0, 0, 0]
+
+# Score: 0 ms
+# Exact Logic:
+
+{(16, 16, 1, 4096, 16, 16, 4096, 4096): [1, 36.6372], (16, 16, 1, 8192, 16, 16, 8192, 8192): [1, 58.2866], (16, 16, 1, 16384, 16, 16, 16384, 16384): [1, 
+77.4135], (16, 16, 1, 28672, 16, 16, 28672, 28672): [1, 94.8564], (16, 64, 1, 4096, 16, 16, 4096, 4096): [1, 161.942], (16, 64, 1, 8192, 16, 16, 8192, 
+8192): [1, 231.986], (16, 64, 1, 16384, 16, 16, 16384, 16384): [1, 285.521], (16, 64, 1, 28672, 16, 16, 28672, 28672): [1, 357.266], (16, 256, 1, 4096, 
+16, 16, 4096, 4096): [1, 625.549], (16, 256, 1, 8192, 16, 16, 8192, 8192): [1, 878.388], (16, 256, 1, 16384, 16, 16, 16384, 16384): [1, 1181.49], (16, 
+256, 1, 28672, 16, 16, 28672, 28672): [1, 1514.19], (64, 16, 1, 4096, 64, 64, 4096, 4096): [1, 172.039], (64, 16, 1, 8192, 64, 64, 8192, 8192): [1, 
+242.726], (64, 16, 1, 16384, 64, 64, 16384, 16384): [1, 308.515], (64, 16, 1, 28672, 64, 64, 28672, 28672): [1, 409.714], (64, 64, 1, 4096, 64, 64, 4096,
+4096): [0, 696.714], (64, 64, 1, 8192, 64, 64, 8192, 8192): [1, 948.938], (64, 64, 1, 16384, 64, 64, 16384, 16384): [1, 1276.79], (64, 64, 1, 28672, 64, 
+64, 28672, 28672): [1, 1585.75], (64, 256, 1, 4096, 64, 64, 4096, 4096): [0, 2754.88], (64, 256, 1, 8192, 64, 64, 8192, 8192): [1, 3689.28], (64, 256, 1,
+16384, 64, 64, 16384, 16384): [1, 4657.1], (64, 256, 1, 28672, 64, 64, 28672, 28672): [1, 5104.97], (256, 16, 1, 4096, 256, 256, 4096, 4096): [1, 
+709.696], (256, 16, 1, 8192, 256, 256, 8192, 8192): [1, 1024.25], (256, 16, 1, 16384, 256, 256, 16384, 16384): [1, 1354.63], (256, 16, 1, 28672, 256, 
+256, 28672, 28672): [1, 1616.29], (256, 64, 1, 4096, 256, 256, 4096, 4096): [0, 2793.87], (256, 64, 1, 8192, 256, 256, 8192, 8192): [1, 4004.11], (256, 
+64, 1, 16384, 256, 256, 16384, 16384): [1, 4945.38], (256, 64, 1, 28672, 256, 256, 28672, 28672): [1, 6097.6], (256, 256, 1, 4096, 256, 256, 4096, 4096):
+[0, 10867.8], (256, 256, 1, 8192, 256, 256, 8192, 8192): [0, 11408.2], (256, 256, 1, 16384, 256, 256, 16384, 16384): [1, 14206.6], (256, 256, 1, 28672, 
+256, 256, 28672, 28672): [1, 17653.5]}
+# writing library logic YAML /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn/3_LibraryLogic/navi48_Cijk_Alik_Bljk_BBS_BH.yaml
+################################################################################
+# Finish Analysing data to /home/iamthecage/out-v2/bf16gemm_wmma_gsu_tn in 21.390s
+################################################################################
+
+

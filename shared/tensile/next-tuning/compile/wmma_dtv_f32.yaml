@@ -1,0 +1,49 @@
+GlobalParameters:
+  NumElementsToValidate: 128
+  KernelTime: True
+  MaxWorkspaceSize: 67108864
+  PrintSolutionRejectionReason: True
+  MergeFiles: False
+  DataInitTypeAlpha: 1
+  DataInitTypeBeta: 0
+  EnqueuesPerSync: 1
+  SyncsPerBenchmark: 4
+  SleepPercent: 0
+
+BenchmarkProblems:
+  -
+    - # f32 SGEMM — test DirectToVgpr with 4-byte inputs (no WMMA)
+      OperationType: GEMM
+      DataType: S
+      DestDataType: S
+      ComputeDataType: S
+      TransposeA: False
+      TransposeB: True
+      UseBeta: True
+      Batched: True
+
+    - BenchmarkCommonParameters:
+        - KernelLanguage: ["Assembly"]
+        - EdgeType: ["ShiftPtr"]
+      ForkParameters:
+        - WavefrontSize: [32]
+        - PrefetchGlobalRead: [0]
+        - PrefetchLocalRead: [0]
+        - DepthU: [16]
+        - TransposeLDS: [0]
+        - VectorWidth: [1]
+        - GlobalReadVectorWidth: [1]
+        - WaveSeparateGlobalReadA: [0]
+        - WaveSeparateGlobalReadB: [0]
+        - DirectToVgprA: [False, True]
+        - DirectToVgprB: [False, True]
+        - StaggerU: [16]
+        - GlobalSplitU: [1]
+        - OptNoLoadLoop: [0]
+        - ScheduleLocalWrite: [0]
+        - ScheduleGlobalRead: [0]
+        - ScheduleIterAlg: [0]
+      BenchmarkFinalParameters:
+        - ProblemSizes:
+          - Exact: [256, 256, 1, 256]
+          - Exact: [1024, 1024, 1, 1024]

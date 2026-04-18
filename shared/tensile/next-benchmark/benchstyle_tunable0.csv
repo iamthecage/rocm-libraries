@@ -1,0 +1,6 @@
+Validator,PT_VERSION,2.8.0
+Validator,ROCM_VERSION,7.2.1.0-81-e1a6bc5663
+Validator,HIPBLASLT_VERSION,100202-dabb6df2b9
+Validator,GCN_ARCH_NAME,gfx1201
+Validator,ROCBLAS_VERSION,5.2.0.dabb6df2b9
+GemmTunableOp_Half_NN,nn_256_256_256_ld_256_256_256,Gemm_Rocblas_85944,0.0166132

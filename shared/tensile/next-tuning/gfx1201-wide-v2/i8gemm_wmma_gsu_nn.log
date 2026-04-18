@@ -1,0 +1,888 @@
+
+################################################################################
+#
+#  Tensile v4.47.0
+#  Config: /home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-wide-v2/i8gemm_wmma_gsu_nn.yaml
+#  Date & Time: 18/04/2026 15:26:39
+#
+################################################################################
+
+# Restoring default globalParameters
+# Found HIP version: 7.2.53211-e1a6bc5663
+# Detected GPU 0:    gfx1201
+> UserWarning: HardwareMonitor currently disabled for gfx942, gfx950, gfx1100, gfx1101, gfx1102, gfx1103, gfx1150, gfx1151, gfx1152, gfx1153, gfx1200, 
+gfx1201
+# Command-line override: CurrentISA
+# Command-line override: PrintLevel
+
+Overriding CurrentISA=(12, 0, 1)
+Overriding PrintLevel=3
+Overriding CxxCompiler=amdclang++
+Overriding PrebuiltClient=/home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client
+ProblemTypeConfig: {'OperationType': 'GEMM', 'DataType': 'I8', 'ComputeDataType': 'I', 'DestDataType': 'I', 'HighPrecisionAccumulate': True, 
+'TransposeA': False, 'TransposeB': False, 'UseBeta': True, 'Batched': True}
+
+################################################################################
+# Converting Config to BenchmarkProcess Object
+################################################################################
+
+# BenchmarkProcess beginning Cijk_Ailk_Bljk_I8II_BH
+
+####################################################################
+# Filling in Parameters With Defaults
+####################################################################
+
+Single Value Parameters:
+    1LDSBuffer: 0
+    AggressivePerfMode: 1
+    AssertAIGreaterThanEqual: -1
+    AssertAILessThanEqual: -1
+    AssertAlphaValue: False
+    AssertBetaValue: False
+    AssertCEqualsD: False
+    AssertFree0ElementMultiple: 1
+    AssertFree1ElementMultiple: 1
+    AssertMinApproxSize: -1
+    AssertSizeEqual: {}
+    AssertSizeGreaterThan: {}
+    AssertSizeLessThan: {}
+    AssertSizeMultiple: {}
+    AssertStrideAEqual: {}
+    AssertStrideBEqual: {}
+    AssertStrideCEqual: {}
+    AssertStrideDEqual: {}
+    AssertSummationElementMultiple: 1
+    AtomicAddC: False
+    BufferLoad: True
+    BufferStore: True
+    CUMode: False
+    CheckDimOverflow: 0
+    CheckTensorDimAsserts: False
+    ClusterLocalRead: False
+    CustomKernelName: 
+    DebugStreamK: 0
+    DepthU: 16
+    DepthULdsDivisor: 1
+    DirectToLdsA: False
+    DirectToLdsB: False
+    DirectToVgprA: False
+    DirectToVgprB: False
+    DisableAtomicFail: 0
+    DisableKernelPieces: 0
+    DisableVgprOverlapping: False
+    EdgeType: ShiftPtr
+    ExpandPointerSwap: True
+    ExtraLatencyForLR: 0
+    ExtraMiLatencyLeft: 0
+    ForceStoreSC1: Auto
+    Fp16AltImpl: False
+    Fp16AltImplRound: False
+    FractionalLoad: 0
+    GlobalLoadVectorWidthA: -1
+    GlobalLoadVectorWidthB: -1
+    GlobalRead2A: True
+    GlobalRead2B: True
+    GlobalReadCoalesceGroupA: True
+    GlobalReadCoalesceGroupB: True
+    GlobalReadCoalesceVectorA: True
+    GlobalReadCoalesceVectorB: True
+    GlobalReadPerMfma: 1
+    GlobalReadVectorWidth: 4
+    GlobalSplitUAlgorithm: SingleBuffer
+    GlobalSplitUAtomicAdd: False
+    GlobalSplitUSummationAssignmentRoundRobin: True
+    GlobalSplitUWorkGroupMappingRoundRobin: False
+    GroupLoadStore: False
+    InnerUnroll: 1
+    InterleaveAlpha: 0
+    KernelLanguage: Assembly
+    LdcEqualsLdd: False
+    LdsBlockSizePerPadA: -1
+    LdsBlockSizePerPadB: -1
+    LdsPadA: -1
+    LdsPadB: -1
+    LocalDotLayout: 1
+    LocalRead2A: True
+    LocalRead2B: True
+    LocalReadVectorWidth: -1
+    LocalWrite2A: True
+    LocalWrite2B: True
+    LocalWritePerMfma: -1
+    LoopDoWhile: False
+    LoopTail: True
+    MACInstruction: FMA
+    MIArchVgpr: True
+    MacroTileShapeMax: 64
+    MacroTileShapeMin: 1
+    MagicDivAlg: 2
+    MaxOccupancy: 40
+    MaxVgprNumber: 256
+    MemoryModifierFormat: 
+    MinKForGSU: 256
+    MinVgprNumber: 0
+    NoReject: False
+    NonTemporalA: 0
+    NonTemporalB: 0
+    NonTemporalC: 0
+    NonTemporalD: 0
+    NumElementsPerBatchStore: 0
+    NumLoadsCoalescedA: 1
+    NumLoadsCoalescedB: 1
+    OptNoLoadLoop: 0
+    OptPreLoopVmcnt: True
+    PackBatchDims: 0
+    PackFreeDims: 1
+    PackGranularity: 2
+    PackSummationDims: 0
+    PerformanceSyncLocation: -1
+    PerformanceWaitCount: -1
+    PerformanceWaitLocation: -1
+    PersistentKernel: 0
+    PersistentKernelAlongBatch: False
+    PrefetchAcrossPersistent: 0
+    PrefetchAcrossPersistentMode: 0
+    PrefetchGlobalRead: 0
+    PrefetchLocalRead: 0
+    PreloadKernelArguments: 0
+    ReplacementKernel: False
+    ScheduleGlobalRead: 0
+    ScheduleIterAlg: 0
+    ScheduleLocalWrite: 0
+    SourceSwap: 0
+    StaggerU: 32
+    StaggerUMapping: 0
+    StaggerUStride: 256
+    StoreCInUnroll: False
+    StoreCInUnrollExact: False
+    StoreCInUnrollInterval: 1
+    StoreCInUnrollPostLoop: False
+    StorePriorityOpt: False
+    StoreRemapVectorWidth: 0
+    StoreSyncOpt: 0
+    StoreVectorWidth: -1
+    StreamK: 0
+    StreamKAtomic: 0
+    StreamKXCCMapping: 0
+    SuppressNoLoadLoop: False
+    ThreadSeparateGlobalReadA: 0
+    ThreadSeparateGlobalReadB: 0
+    ThreadTile: [4, 4]
+    TransposeLDS: 0
+    UnrollIncIsDepthU: 0
+    UnrollMajorLDSA: False
+    UnrollMajorLDSB: False
+    UnrollMemFence: False
+    Use64bShadowLimit: 1
+    UseInstOffsetForGRO: 0
+    UseSgprForGRO: -1
+    VectorAtomicWidth: -1
+    VectorStore: -1
+    VectorWidth: 1
+    VectorWidthB: -1
+    VgprForLocalReadPacking: False
+    WaveSeparateGlobalReadA: 1
+    WaveSeparateGlobalReadB: 1
+    WavefrontSize: 32
+    WorkGroup: [32, 1, 1]
+    WorkGroupMapping: 8
+    WorkGroupMappingType: B
+Multi-Value Parameters:
+    GlobalSplitU: [1, 2, 4]
+    MatrixInstruction: [[16, 16, 16, 1, 1, 2, 2, 1, 1], [16, 16, 16, 1, 1, 4, 4, 1, 1]]
+
+####################################################################
+# Convert Parameters to Benchmark Step(s)
+####################################################################
+
+
+####################################################################
+# Benchmark Final
+# Creating BenchmarkStep: 2 fork params and 36 sizes
+# NumBenchmarkSteps: 1
+
+################################################################################
+# Done Creating BenchmarkProcess Object
+################################################################################
+
+
+################################################################################
+# Benchmark Step: Cijk_Ailk_Bljk_I8II_BH_00 - 00_Final 10.108s
+# Num Sizes: 36
+# Fork Parameters:
+#     GlobalSplitU: [1, 2, 4]
+#     MatrixInstruction: [[16, 16, 16, 1, 1, 2, 2, 1, 1], [16, 16, 16, 1, 1, 4, 4, 1, 1]]
+# Enumerating Solutions
+# Actual Solutions: 6 / 6 after SolutionStructs
+
+#    (0:0) 
+Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE0
+1_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0
+_FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA256_LBSP
+PB256_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_N
+TB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_SU
+S256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_32_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGR
+On1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE0
+1_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0
+_FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU2_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA256_LBSP
+PB256_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_N
+TB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_SU
+S256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_32_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGR
+On1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE0
+1_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0
+_FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU4_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA256_LBSP
+PB256_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_N
+TB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_SU
+S256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_32_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGR
+On1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE0
+1_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0
+_FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU1_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA512_LBSP
+PB512_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_N
+TB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_SU
+S256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGR
+On1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE0
+1_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0
+_FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU2_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA512_LBSP
+PB512_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_N
+TB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_SU
+S256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGR
+On1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+#    (0:0) 
+Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE0
+1_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0
+_FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU4_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA512_LBSP
+PB512_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_N
+TB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_SU
+S256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT4_64_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGR
+On1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+################################################################################
+Finding unique solutions:   0%|          | 0/6 [00:00<?, ?it/s]Finding unique solutions: 100%|██████████| 6/6 [00:00<00:00, 13573.80it/s]
+# Writing Kernels...
+Generating kernels: 12 thread(s), 6 tasks:   0%|          | 0/6 [00:00<?, ?it/s]Generating kernels: 12 thread(s), 6 tasks: 100%|██████████| 6/6 [00:00<00:00, 6949.97it/s]
+total vgpr count: 72
+
+write_assemblyFilename /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SnJxi8CqCoKINtTnwkAxxuSn2ypY0gDTmqadlq4DYB9w=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT32x32x16_MI16x16x16x1_SnJxi8CqCoKINtTnwkAxxuSn2ypY0gDTmqadlq4DYB9w=.o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT32x32x16_MI16x16x16x1_SnJxi8CqCoKINtTnwkAxxuSn2ypY0gDTmqadlq4DYB9w=.s && 
+total vgpr count: 72
+
+total vgpr count: 72
+
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT32x32x16_MI16x16x16x1_SnJxi8CqCoKINtTnwkAxxuSn2ypY0gDTmqadlq4DYB9w=.co 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT32x32x16_MI16x16x16x1_SnJxi8CqCoKINtTnwkAxxuSn2ypY0gDTmqadlq4DYB9w=.o
+write_assemblyFilename /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_S6VxCFcfT6sg0YWezbAd0T9yXhxUsv7cxS0v4wPmfFL0=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT32x32x16_MI16x16x16x1_S6VxCFcfT6sg0YWezbAd0T9yXhxUsv7cxS0v4wPmfFL0=.o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT32x32x16_MI16x16x16x1_S6VxCFcfT6sg0YWezbAd0T9yXhxUsv7cxS0v4wPmfFL0=.s && 
+write_assemblyFilename /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_S3k4pRBTBdRKDaVL-Mjr6hDLG2ZKPTJ-0WT824MaOoFg=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT32x32x16_MI16x16x16x1_S3k4pRBTBdRKDaVL-Mjr6hDLG2ZKPTJ-0WT824MaOoFg=.o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT32x32x16_MI16x16x16x1_S3k4pRBTBdRKDaVL-Mjr6hDLG2ZKPTJ-0WT824MaOoFg=.s && 
+b''
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT32x32x16_MI16x16x16x1_S6VxCFcfT6sg0YWezbAd0T9yXhxUsv7cxS0v4wPmfFL0=.co 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT32x32x16_MI16x16x16x1_S6VxCFcfT6sg0YWezbAd0T9yXhxUsv7cxS0v4wPmfFL0=.o
+total vgpr count: 256
+
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT32x32x16_MI16x16x16x1_S3k4pRBTBdRKDaVL-Mjr6hDLG2ZKPTJ-0WT824MaOoFg=.co 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT32x32x16_MI16x16x16x1_S3k4pRBTBdRKDaVL-Mjr6hDLG2ZKPTJ-0WT824MaOoFg=.o
+total vgpr count: 256
+
+total vgpr count: 256
+
+b''
+b''
+write_assemblyFilename /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SJZ6dM_UwMsXp-aUBCCOq7o6X4d1qpv-KvQF1XAbYmvA=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT64x64x16_MI16x16x16x1_SJZ6dM_UwMsXp-aUBCCOq7o6X4d1qpv-KvQF1XAbYmvA=.o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT64x64x16_MI16x16x16x1_SJZ6dM_UwMsXp-aUBCCOq7o6X4d1qpv-KvQF1XAbYmvA=.s && 
+write_assemblyFilename /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_Sy8TnA4T6E8Xn4-rflicK_U7NG72TFW2jwle3loMHpaE=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT64x64x16_MI16x16x16x1_Sy8TnA4T6E8Xn4-rflicK_U7NG72TFW2jwle3loMHpaE=.o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT64x64x16_MI16x16x16x1_Sy8TnA4T6E8Xn4-rflicK_U7NG72TFW2jwle3loMHpaE=.s && 
+write_assemblyFilename /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SRUOraM1dnn7wu13WwW3K0LE5I1didnixudxt1EyxrX0=.s
+Assemble command: /opt/rocm/bin/amdclang++ -x assembler -target amdgcn-amd-amdhsa -mcode-object-version=4 -mcpu=gfx1201 -mno-wavefrontsize64 -c -o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT64x64x16_MI16x16x16x1_SRUOraM1dnn7wu13WwW3K0LE5I1didnixudxt1EyxrX0=.o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT64x64x16_MI16x16x16x1_SRUOraM1dnn7wu13WwW3K0LE5I1didnixudxt1EyxrX0=.s && 
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT64x64x16_MI16x16x16x1_SJZ6dM_UwMsXp-aUBCCOq7o6X4d1qpv-KvQF1XAbYmvA=.co 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT64x64x16_MI16x16x16x1_SJZ6dM_UwMsXp-aUBCCOq7o6X4d1qpv-KvQF1XAbYmvA=.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT64x64x16_MI16x16x16x1_SRUOraM1dnn7wu13WwW3K0LE5I1didnixudxt1EyxrX0=.co 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT64x64x16_MI16x16x16x1_SRUOraM1dnn7wu13WwW3K0LE5I1didnixudxt1EyxrX0=.o
+b''
+Single Code Object File: /opt/rocm/bin/amdclang++ -target amdgcn-amd-amdhsa -Xlinker --build-id -o 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT64x64x16_MI16x16x16x1_Sy8TnA4T6E8Xn4-rflicK_U7NG72TFW2jwle3loMHpaE=.co 
+/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/assembly/Cijk_Ailk_Bljk_I8II_BH
+_MT64x64x16_MI16x16x16x1_Sy8TnA4T6E8Xn4-rflicK_U7NG72TFW2jwle3loMHpaE=.o
+b''
+b''
+b''
+Filtering processing errors: 0it [00:00, ?it/s]Filtering processing errors: 6it [00:00, 241979.08it/s]
+> UserWarning: Kernel file context manager opened without any kernel files.
+Compiling source kernels:   0%|          | 0/1 [00:00<?, ?it/s]Compiling source kernels: 100%|██████████| 1/1 [00:00<00:00, 2013.59it/s]
+Compile source object file command: ['amdclang++', '-D__HIP_HCC_COMPAT_MODE__=1', '--cuda-device-only', '-x', 'hip', '-O3', '-I', 
+'/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source', '-Xoffload-linker', '--build-id', 
+'--offload-arch=gfx803', '--offload-arch=gfx900', '--offload-arch=gfx906:xnack-', '--offload-arch=gfx908:xnack-', '--offload-arch=gfx90a:xnack+', 
+'--offload-arch=gfx90a:xnack-', '--offload-arch=gfx942', '--offload-arch=gfx950', '--offload-arch=gfx1010', '--offload-arch=gfx1011', 
+'--offload-arch=gfx1012', '--offload-arch=gfx1030', '--offload-arch=gfx1031', '--offload-arch=gfx1032', '--offload-arch=gfx1033', 
+'--offload-arch=gfx1034', '--offload-arch=gfx1035', '--offload-arch=gfx1036', '--offload-arch=gfx1100', '--offload-arch=gfx1101', 
+'--offload-arch=gfx1102', '--offload-arch=gfx1103', '--offload-arch=gfx1150', '--offload-arch=gfx1151', '--offload-arch=gfx1152', 
+'--offload-arch=gfx1153', '--offload-arch=gfx1200', '--offload-arch=gfx1201', 
+'/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/Kernels/Cijk_I.cpp', '-c', '-o', 
+'/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.o']
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1030 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1030.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1036 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1036.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1201 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1201.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx900 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx900.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1101 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1101.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1012 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1012.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx906:xnack- 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx906-xnack-.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1200 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1200.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx90a:xnack+ 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx90a-xnack+.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1011 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1011.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1151 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1151.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1150 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1150.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1152 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1152.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx942 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx942.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1032 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1032.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1010 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1010.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1031 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1031.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx908:xnack- 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx908-xnack-.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1153 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1153.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1102 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1102.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx803 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx803.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1035 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1035.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1103 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1103.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1034 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1034.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1033 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1033.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx950 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx950.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx1100 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx1100.hsaco.raw --unbundle
+
+Unbundling source code object file: /opt/rocm/lib/llvm/bin/clang-offload-bundler --type=o --targets=hipv4-amdgcn-amd-amdhsa--gfx90a:xnack- 
+--input=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I.
+o 
+--output=/home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/build_tmp/SOURCE/code_object_tmp/Cijk_I
+.so-000-gfx90a-xnack-.hsaco.raw --unbundle
+
+Relocating code objects: 0it [00:00, ?it/s]Relocating code objects: 6it [00:00, 30878.31it/s]
+> UserWarning: Code object files are not compressed in `--no-merge-files` build mode.
+# Kernel Building elapsed time = 11.6 secs
+# Actual Solutions: 6 / 6 after KernelWriter
+
++ ERR=0
++ /home/iamthecage/rocm-libraries/shared/tensile/next-cmake/build/tensile-client --config-file /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/build/../source/ClientParameters.ini
+loading config file /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/build/../source/ClientParameters.ini
+Loading /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/library/Cijk_I.so-000-gfx1201.hsaco
+Loading /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SnJxi8CqCoKINtTnwkAxxuSn2ypY0gDTmqadlq4DYB9w=_gfx1201.co
+Loading /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_S3k4pRBTBdRKDaVL-Mjr6hDLG2ZKPTJ-0WT824MaOoFg=_gfx1201.co
+Loading /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_S6VxCFcfT6sg0YWezbAd0T9yXhxUsv7cxS0v4wPmfFL0=_gfx1201.co
+Loading /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SJZ6dM_UwMsXp-aUBCCOq7o6X4d1qpv-KvQF1XAbYmvA=_gfx1201.co
+Loading /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_Sy8TnA4T6E8Xn4-rflicK_U7NG72TFW2jwle3loMHpaE=_gfx1201.co
+Loading /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/1_BenchmarkProblems/Cijk_Ailk_Bljk_I8II_BH_00/00_Final/source/library/Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SRUOraM1dnn7wu13WwW3K0LE5I1didnixudxt1EyxrX0=_gfx1201.co
+Log level: Debug
+run,problem-progress,solution-progress,operation,problem-sizes,solution,validation,time-us,gflops,empty,total-gran,tiles-per-cu,num-cus,tile0-gran,tile1-gran,cu-gran,wave-gran,mem-read-bytes,mem-write-bytes,temp-edge,clock-sys,clock-soc,clock-mem,fan-rpm,hardware-samples,gfx-frequency(median),power(median),hotspot-temperature(median),enqueue-time
+0,0/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,194.682,10.7722,,0.000976562,0.03125,32,0.5,0.5,0.03125,0.125,66560,1024,,,,,,,,,,2026-04-18 15:27:00.
+0,0/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,134.441,15.5991,,0.00195312,0.0625,32,0.5,0.5,0.0625,0.125,65536,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,0/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,98.641,21.2604,,0.00390625,0.125,32,0.5,0.5,0.125,0.125,65536,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,0/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,261.963,8.00553,,0.000244141,0.03125,32,0.25,0.25,0.03125,0.125,33792,1024,,,,,,,,,,2026-04-18 15:27:00.
+0,0/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,206.683,10.1467,,0.000488281,0.0625,32,0.25,0.25,0.0625,0.125,32768,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,0/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,164.522,12.7469,,0.000976562,0.125,32,0.25,0.25,0.125,0.125,32768,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,1/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,308.284,13.6053,,0.000976562,0.03125,32,0.5,0.5,0.03125,0.125,132096,1024,,,,,,,,,,2026-04-18 15:27:00.
+0,1/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,184.082,22.785,,0.00195312,0.0625,32,0.5,0.5,0.0625,0.125,131072,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,1/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,123.042,34.0884,,0.00390625,0.125,32,0.5,0.5,0.125,0.125,131072,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,1/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,436.085,9.61809,,0.000244141,0.03125,32,0.25,0.25,0.03125,0.125,66560,1024,,,,,,,,,,2026-04-18 15:27:00.
+0,1/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,257.843,16.2669,,0.000488281,0.0625,32,0.25,0.25,0.0625,0.125,65536,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,1/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,152.482,27.5069,,0.000976562,0.125,32,0.25,0.25,0.125,0.125,65536,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,2/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,613.887,13.6647,,0.000976562,0.03125,32,0.5,0.5,0.03125,0.125,263168,1024,,,,,,,,,,2026-04-18 15:27:00.
+0,2/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,318.564,26.3326,,0.00195312,0.0625,32,0.5,0.5,0.0625,0.125,262144,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,2/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,208.523,40.2287,,0.00390625,0.125,32,0.5,0.5,0.125,0.125,262144,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,2/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,852.37,9.84151,,0.000244141,0.03125,32,0.25,0.25,0.03125,0.125,132096,1024,,,,,,,,,,2026-04-18 15:27:00.
+0,2/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,443.605,18.9101,,0.000488281,0.0625,32,0.25,0.25,0.0625,0.125,131072,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,2/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,252.083,33.2772,,0.000976562,0.125,32,0.25,0.25,0.125,0.125,131072,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,3/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,1010.45,14.5282,,0.000976562,0.03125,32,0.5,0.5,0.03125,0.125,459776,1024,,,,,,,,,,2026-04-18 15:27:00.
+0,3/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,626.687,23.4249,,0.00195312,0.0625,32,0.5,0.5,0.0625,0.125,458752,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,3/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,295.403,49.695,,0.00390625,0.125,32,0.5,0.5,0.125,0.125,458752,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,3/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,1428.26,10.2783,,0.000244141,0.03125,32,0.25,0.25,0.03125,0.125,230400,1024,,,,,,,,,,2026-04-18 15:27:00.
+0,3/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,717.449,20.4615,,0.000488281,0.0625,32,0.25,0.25,0.0625,0.125,229376,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,3/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,389.405,37.6987,,0.000976562,0.125,32,0.25,0.25,0.125,0.125,229376,3072,,,,,,,,,,2026-04-18 15:27:00.
+0,4/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,161.482,51.9476,,0.00390625,0.0625,32,0.5,1,0.0625,0.125,266240,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,4/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,112.322,74.6836,,0.0078125,0.125,32,0.5,1,0.125,0.125,262144,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,4/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,76.441,109.74,,0.015625,0.25,32,0.5,1,0.25,0.125,262144,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,4/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,230.843,36.339,,0.000976562,0.03125,32,0.25,1,0.03125,0.125,135168,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,4/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,159.922,52.4544,,0.00195312,0.0625,32,0.25,1,0.0625,0.125,131072,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,4/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,121.121,69.2581,,0.00390625,0.125,32,0.25,1,0.125,0.125,131072,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,5/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,309.433,54.2192,,0.00390625,0.0625,32,0.5,1,0.0625,0.125,528384,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,5/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,123.922,135.385,,0.0078125,0.125,32,0.5,1,0.125,0.125,524288,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,5/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,77.721,215.865,,0.015625,0.25,32,0.5,1,0.25,0.125,524288,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,5/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,282.884,59.3078,,0.000976562,0.03125,32,0.25,1,0.03125,0.125,266240,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,5/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,181.802,92.2829,,0.00195312,0.0625,32,0.25,1,0.0625,0.125,262144,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,5/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,101.721,164.934,,0.00390625,0.125,32,0.25,1,0.125,0.125,262144,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,6/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,430.285,77.9819,,0.00390625,0.0625,32,0.5,1,0.0625,0.125,1052672,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,6/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,222.003,151.144,,0.0078125,0.125,32,0.5,1,0.125,0.125,1048576,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,6/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,128.721,260.676,,0.015625,0.25,32,0.5,1,0.25,0.125,1048576,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,6/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,559.487,59.9736,,0.000976562,0.03125,32,0.25,1,0.03125,0.125,528384,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,6/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,304.684,110.129,,0.00195312,0.0625,32,0.25,1,0.0625,0.125,524288,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,6/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,178.242,188.252,,0.00390625,0.125,32,0.25,1,0.125,0.125,524288,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,7/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,681.168,86.2052,,0.00390625,0.0625,32,0.5,1,0.0625,0.125,1839104,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,7/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,339.084,173.173,,0.0078125,0.125,32,0.5,1,0.125,0.125,1835008,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,7/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,187.722,312.804,,0.015625,0.25,32,0.5,1,0.25,0.125,1835008,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,7/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,886.091,66.2689,,0.000976562,0.03125,32,0.25,1,0.03125,0.125,921600,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,7/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,452.566,129.75,,0.00195312,0.0625,32,0.25,1,0.0625,0.125,917504,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,7/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,260.043,225.81,,0.00390625,0.125,32,0.25,1,0.125,0.125,917504,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,8/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,119.682,280.363,,0.015625,0.25,32,0.5,1,0.25,0.125,1064960,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,8/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,76,441.506,,0.03125,0.5,32,0.5,1,0.5,0.125,1048576,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,8/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,55.641,603.052,,0.125,1,32,0.5,1,1,0.25,1048576,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,8/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,151.722,221.157,,0.00390625,0.125,32,0.25,1,0.125,0.125,540672,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,8/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,100.841,332.746,,0.0078125,0.25,32,0.25,1,0.25,0.125,524288,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,8/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,71.881,466.805,,0.015625,0.5,32,0.25,1,0.5,0.125,524288,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,9/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,222.483,301.636,,0.015625,0.25,32,0.5,1,0.25,0.125,2113536,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,9/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,128.241,523.303,,0.03125,0.5,32,0.5,1,0.5,0.125,2097152,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,9/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,82.521,813.234,,0.125,1,32,0.5,1,1,0.25,2097152,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,9/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,287.803,233.176,,0.00390625,0.125,32,0.25,1,0.125,0.125,1064960,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,9/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,173.482,386.835,,0.0078125,0.25,32,0.25,1,0.25,0.125,1048576,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,9/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,104.601,641.57,,0.015625,0.5,32,0.25,1,0.5,0.125,1048576,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,10/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,451.925,296.991,,0.015625,0.25,32,0.5,1,0.25,0.125,4210688,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,10/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,240.523,558.025,,0.03125,0.5,32,0.5,1,0.5,0.125,4194304,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,10/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,147.082,912.537,,0.125,1,32,0.5,1,1,0.25,4194304,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,10/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,616.208,217.812,,0.00390625,0.125,32,0.25,1,0.125,0.125,2113536,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,10/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,353.124,380.087,,0.0078125,0.25,32,0.25,1,0.25,0.125,2097152,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,10/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,199.682,672.157,,0.015625,0.5,32,0.25,1,0.5,0.125,2097152,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,11/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,702.929,334.146,,0.015625,0.25,32,0.5,1,0.25,0.125,7356416,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,11/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,356.964,657.996,,0.03125,0.5,32,0.5,1,0.5,0.125,7340032,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,11/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,202.802,1158.18,,0.125,1,32,0.5,1,1,0.25,7340032,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,11/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,906.931,258.984,,0.00390625,0.125,32,0.25,1,0.125,0.125,3686400,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,11/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,470.085,499.657,,0.0078125,0.25,32,0.25,1,0.25,0.125,3670016,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,11/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(16,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,261.483,898.265,,0.015625,0.5,32,0.25,1,0.5,0.125,3670016,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,12/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,100.601,83.3849,,0.00390625,0.0625,32,1,0.5,0.0625,0.125,266240,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,12/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,70.12,119.632,,0.0078125,0.125,32,1,0.5,0.125,0.125,262144,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,12/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,48.241,173.89,,0.015625,0.25,32,1,0.5,0.25,0.125,262144,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,12/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,136.001,61.6805,,0.000976562,0.03125,32,1,0.25,0.03125,0.125,135168,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,12/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,110.002,76.2587,,0.00195312,0.0625,32,1,0.25,0.0625,0.125,131072,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,12/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,71.481,117.354,,0.00390625,0.125,32,1,0.25,0.125,0.125,131072,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,13/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,187.402,89.5253,,0.00390625,0.0625,32,1,0.5,0.0625,0.125,528384,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,13/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,118.281,141.842,,0.0078125,0.125,32,1,0.5,0.125,0.125,524288,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,13/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,72.161,232.497,,0.015625,0.25,32,1,0.5,0.25,0.125,524288,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,13/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,264.483,63.434,,0.000976562,0.03125,32,1,0.25,0.03125,0.125,266240,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,13/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,161.442,103.921,,0.00195312,0.0625,32,1,0.25,0.0625,0.125,262144,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,13/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,102.201,164.159,,0.00390625,0.125,32,1,0.25,0.125,0.125,262144,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,14/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,366.884,91.4579,,0.00390625,0.0625,32,1,0.5,0.0625,0.125,1052672,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,14/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,206.043,162.852,,0.0078125,0.125,32,1,0.5,0.125,0.125,1048576,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,14/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,116.881,287.082,,0.015625,0.25,32,1,0.5,0.25,0.125,1048576,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,14/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,483.646,69.3781,,0.000976562,0.03125,32,1,0.25,0.03125,0.125,528384,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,14/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,275.364,121.855,,0.00195312,0.0625,32,1,0.25,0.0625,0.125,524288,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,14/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,168.042,199.679,,0.00390625,0.125,32,1,0.25,0.125,0.125,524288,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,15/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,636.368,92.2741,,0.00390625,0.0625,32,1,0.5,0.0625,0.125,1839104,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,15/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,329.204,178.37,,0.0078125,0.125,32,1,0.5,0.125,0.125,1835008,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,15/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,177.722,330.405,,0.015625,0.25,32,1,0.5,0.25,0.125,1835008,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,15/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,820.61,71.5568,,0.000976562,0.03125,32,1,0.25,0.03125,0.125,921600,4096,,,,,,,,,,2026-04-18 15:27:00.
+0,15/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,448.726,130.86,,0.00195312,0.0625,32,1,0.25,0.0625,0.125,917504,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,15/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,244.723,239.946,,0.00390625,0.125,32,1,0.25,0.125,0.125,917504,12288,,,,,,,,,,2026-04-18 15:27:00.
+0,16/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,107.921,310.917,,0.015625,0.125,32,1,1,0.125,0.125,1064960,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,16/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,78.721,426.245,,0.03125,0.25,32,1,1,0.25,0.125,1048576,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,16/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,56.081,598.321,,0.0625,0.5,32,1,1,0.5,0.125,1048576,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,16/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,135.761,247.158,,0.00390625,0.03125,32,1,1,0.03125,0.125,540672,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,16/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,134.082,250.253,,0.0078125,0.0625,32,1,1,0.0625,0.125,524288,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,16/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,105.241,318.834,,0.015625,0.125,32,1,1,0.125,0.125,524288,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,17/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,186.723,359.403,,0.015625,0.125,32,1,1,0.125,0.125,2113536,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,17/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,117.841,569.487,,0.03125,0.25,32,1,1,0.25,0.125,2097152,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,17/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,73.721,910.309,,0.0625,0.5,32,1,1,0.5,0.125,2097152,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,17/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,249.523,268.949,,0.00390625,0.03125,32,1,1,0.03125,0.125,1064960,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,17/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,158.082,424.519,,0.0078125,0.0625,32,1,1,0.0625,0.125,1048576,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,17/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,100.081,670.546,,0.015625,0.125,32,1,1,0.125,0.125,1048576,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,18/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,370.645,362.119,,0.015625,0.125,32,1,1,0.125,0.125,4210688,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,18/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,211.723,633.931,,0.03125,0.25,32,1,1,0.25,0.125,4194304,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,18/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,133.522,1005.21,,0.0625,0.5,32,1,1,0.5,0.125,4194304,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,18/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,488.607,274.695,,0.00390625,0.03125,32,1,1,0.03125,0.125,2113536,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,18/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,286.403,468.632,,0.0078125,0.0625,32,1,1,0.0625,0.125,2097152,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,18/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,171.282,783.607,,0.015625,0.125,32,1,1,0.125,0.125,2097152,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,19/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,635.007,369.887,,0.015625,0.125,32,1,1,0.125,0.125,7356416,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,19/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,334.444,702.303,,0.03125,0.25,32,1,1,0.25,0.125,7340032,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,19/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,182.523,1286.86,,0.0625,0.5,32,1,1,0.5,0.125,7340032,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,19/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,820.69,286.199,,0.00390625,0.03125,32,1,1,0.03125,0.125,3686400,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,19/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,446.885,525.596,,0.0078125,0.0625,32,1,1,0.0625,0.125,3670016,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,19/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,245.923,955.1,,0.015625,0.125,32,1,1,0.125,0.125,3670016,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,20/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,101.282,1325.19,,0.0625,0.5,32,1,1,0.5,0.125,4259840,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,20/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,72.601,1848.7,,0.25,1,32,1,1,1,0.25,4194304,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,20/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,50.281,2669.35,,0.375,2,32,1,1,1,0.375,4194304,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,20/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,133.922,1002.21,,0.015625,0.125,32,1,1,0.125,0.125,2162688,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,20/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,110.841,1210.9,,0.03125,0.25,32,1,1,0.25,0.125,2097152,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,20/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,73.161,1834.55,,0.0625,0.5,32,1,1,0.5,0.125,2097152,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,21/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,194.402,1380.83,,0.0625,0.5,32,1,1,0.5,0.125,8454144,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,21/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,121.642,2206.77,,0.25,1,32,1,1,1,0.25,8388608,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,21/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,75.881,3537.58,,0.375,2,32,1,1,1,0.375,8388608,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,21/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,255.963,1048.73,,0.015625,0.125,32,1,1,0.125,0.125,4259840,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,21/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,167.522,1602.39,,0.03125,0.25,32,1,1,0.25,0.125,4194304,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,21/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,103.081,2604.12,,0.0625,0.5,32,1,1,0.5,0.125,4194304,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,22/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,388.445,1382.1,,0.0625,0.5,32,1,1,0.5,0.125,16842752,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,22/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,233.443,2299.79,,0.25,1,32,1,1,1,0.25,16777216,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,22/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,132.482,4052.41,,0.375,2,32,1,1,1,0.375,16777216,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,22/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,525.727,1021.2,,0.015625,0.125,32,1,1,0.125,0.125,8454144,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,22/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,333.844,1608.15,,0.03125,0.25,32,1,1,0.25,0.125,8388608,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,22/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,216.123,2484.1,,0.0625,0.5,32,1,1,0.5,0.125,8388608,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,23/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,653.848,1436.92,,0.0625,0.5,32,1,1,0.5,0.125,29425664,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,23/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,349.004,2692.02,,0.25,1,32,1,1,1,0.25,29360128,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,23/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,201.883,4653.8,,0.375,2,32,1,1,1,0.375,29360128,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,23/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,837.37,1121.99,,0.015625,0.125,32,1,1,0.125,0.125,14745600,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,23/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,468.086,2007.16,,0.03125,0.25,32,1,1,0.25,0.125,14680064,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,23/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(64,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,256.523,3662.53,,0.0625,0.5,32,1,1,0.5,0.125,14680064,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,24/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,93.081,360.486,,0.015625,0.25,32,1,0.5,0.25,0.125,1064960,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,24/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,65.681,510.87,,0.03125,0.5,32,1,0.5,0.5,0.125,1048576,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,24/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,45.201,742.338,,0.125,1,32,1,0.5,1,0.25,1048576,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,24/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,131.761,254.661,,0.00390625,0.125,32,1,0.25,0.125,0.125,540672,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,24/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,92.721,361.886,,0.0078125,0.25,32,1,0.25,0.25,0.125,524288,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,24/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,66.041,508.085,,0.015625,0.5,32,1,0.25,0.5,0.125,524288,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,25/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,178.523,375.912,,0.015625,0.25,32,1,0.5,0.25,0.125,2113536,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,25/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,110.042,609.848,,0.03125,0.5,32,1,0.5,0.5,0.125,2097152,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,25/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,67.241,998.035,,0.125,1,32,1,0.5,1,0.25,2097152,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,25/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,248.923,269.597,,0.00390625,0.125,32,1,0.25,0.125,0.125,1064960,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,25/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,150.802,445.013,,0.0078125,0.25,32,1,0.25,0.25,0.125,1048576,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,25/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,93.761,715.744,,0.015625,0.5,32,1,0.25,0.5,0.125,1048576,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,26/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,355.004,378.074,,0.015625,0.25,32,1,0.5,0.25,0.125,4210688,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,26/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,197.563,679.367,,0.03125,0.5,32,1,0.5,0.5,0.125,4194304,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,26/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,110.201,1217.94,,0.125,1,32,1,0.5,1,0.25,4194304,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,26/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,487.566,275.281,,0.00390625,0.125,32,1,0.25,0.125,0.125,2113536,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,26/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,269.883,497.318,,0.0078125,0.25,32,1,0.25,0.25,0.125,2097152,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,26/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,151.962,883.232,,0.015625,0.5,32,1,0.25,0.5,0.125,2097152,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,27/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,620.768,378.372,,0.015625,0.25,32,1,0.5,0.25,0.125,7356416,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,27/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,323.884,725.201,,0.03125,0.5,32,1,0.5,0.5,0.125,7340032,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,27/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,174.562,1345.54,,0.125,1,32,1,0.5,1,0.25,7340032,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,27/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,830.131,282.945,,0.00390625,0.125,32,1,0.25,0.125,0.125,3686400,16384,,,,,,,,,,2026-04-18 15:27:00.
+0,27/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,444.646,528.243,,0.0078125,0.25,32,1,0.25,0.25,0.125,3670016,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,27/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,16,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,233.643,1005.3,,0.015625,0.5,32,1,0.25,0.5,0.125,3670016,49152,,,,,,,,,,2026-04-18 15:27:00.
+0,28/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,92.761,1446.92,,0.0625,0.5,32,1,1,0.5,0.125,4259840,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,28/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,66.641,2014.04,,0.25,1,32,1,1,1,0.25,4194304,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,28/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,46.2,2905.15,,0.375,2,32,1,1,1,0.375,4194304,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,28/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,130.762,1026.43,,0.015625,0.125,32,1,1,0.125,0.125,2162688,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,28/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,101.201,1326.25,,0.03125,0.25,32,1,1,0.25,0.125,2097152,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,28/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,67.761,1980.75,,0.0625,0.5,32,1,1,0.5,0.125,2097152,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,29/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,179.922,1491.95,,0.0625,0.5,32,1,1,0.5,0.125,8454144,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,29/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,110.402,2431.44,,0.25,1,32,1,1,1,0.25,8388608,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,29/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,68.92,3894.88,,0.375,2,32,1,1,1,0.375,8388608,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,29/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,245.803,1092.08,,0.015625,0.125,32,1,1,0.125,0.125,4259840,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,29/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,151.842,1767.86,,0.03125,0.25,32,1,1,0.25,0.125,4194304,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,29/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,96.401,2784.57,,0.0625,0.5,32,1,1,0.5,0.125,4194304,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,30/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,364.204,1474.09,,0.0625,0.5,32,1,1,0.5,0.125,16842752,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,30/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,205.763,2609.17,,0.25,1,32,1,1,1,0.25,16777216,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,30/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,117.681,4562.09,,0.375,2,32,1,1,1,0.375,16777216,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,30/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,487.806,1100.58,,0.015625,0.125,32,1,1,0.125,0.125,8454144,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,30/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,281.444,1907.56,,0.03125,0.25,32,1,1,0.25,0.125,8388608,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,30/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,164.642,3260.84,,0.0625,0.5,32,1,1,0.5,0.125,8388608,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,31/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,630.848,1489.3,,0.0625,0.5,32,1,1,0.5,0.125,29425664,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,31/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,336.964,2788.2,,0.25,1,32,1,1,1,0.25,29360128,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,31/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,190.042,4943.77,,0.375,2,32,1,1,1,0.375,29360128,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,31/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,827.29,1135.66,,0.015625,0.125,32,1,1,0.125,0.125,14745600,65536,,,,,,,,,,2026-04-18 15:27:00.
+0,31/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,440.846,2131.18,,0.03125,0.25,32,1,1,0.25,0.125,14680064,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,31/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,64,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,248.323,3783.48,,0.0625,0.5,32,1,1,0.5,0.125,14680064,196608,,,,,,,,,,2026-04-18 15:27:00.
+0,32/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,103.481,5188.11,,0.375,2,32,1,1,1,0.375,17039360,262144,,,,,,,,,,2026-04-18 15:27:00.
+0,32/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,88.362,6075.81,,0.625,4,32,1,1,1,0.625,16777216,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,32/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,65.641,8178.9,,1,8,32,1,1,1,1,16777216,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,32/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,129.762,4137.35,,0.0625,0.5,32,1,1,0.5,0.125,8650752,262144,,,,,,,,,,2026-04-18 15:27:00.
+0,32/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,111.321,4822.73,,0.25,1,32,1,1,1,0.25,8388608,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,32/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,4096)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,87.321,6148.25,,0.375,2,32,1,1,1,0.375,8388608,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,33/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,188.003,5711.3,,0.375,2,32,1,1,1,0.375,33816576,262144,,,,,,,,,,2026-04-18 15:27:00.
+0,33/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,130.641,8219.03,,0.625,4,32,1,1,1,0.625,33554432,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,33/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,100.602,10673.2,,1,8,32,1,1,1,1,33554432,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,33/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,253.964,4227.93,,0.0625,0.5,32,1,1,0.5,0.125,17039360,262144,,,,,,,,,,2026-04-18 15:27:00.
+0,33/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,174.763,6143.99,,0.25,1,32,1,1,1,0.25,16777216,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,33/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,8192)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,121.041,8870.89,,0.375,2,32,1,1,1,0.375,16777216,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,34/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,394.485,5443.77,,0.375,2,32,1,1,1,0.375,67371008,262144,,,,,,,,,,2026-04-18 15:27:00.
+0,34/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,256.483,8372.81,,0.625,4,32,1,1,1,0.625,67108864,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,34/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,148.642,14447.4,,1,8,32,1,1,1,1,67108864,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,34/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,518.326,4143.11,,0.0625,0.5,32,1,1,0.5,0.125,33816576,262144,,,,,,,,,,2026-04-18 15:27:00.
+0,34/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,321.043,6689.08,,0.25,1,32,1,1,1,0.25,33554432,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,34/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,16384)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,198.363,10826,,0.375,2,32,1,1,1,0.375,33554432,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,35/35,0/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,639.688,5874.89,,0.375,2,32,1,1,1,0.375,117702656,262144,,,,,,,,,,2026-04-18 15:27:00.
+0,35/35,1/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,368.444,10199.9,,0.625,4,32,1,1,1,0.625,117440512,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,35/35,2/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32,NO_CHECK,214.443,17524.9,,1,8,32,1,1,1,1,117440512,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,35/35,3/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,841.37,4466.64,,0.0625,0.5,32,1,1,0.5,0.125,58982400,262144,,,,,,,,,,2026-04-18 15:27:00.
+0,35/35,4/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,479.086,7844.3,,0.25,1,32,1,1,1,0.25,58720256,786432,,,,,,,,,,2026-04-18 15:27:00.
+0,35/35,5/5,Contraction_l_Ailk_Bljk_Cijk_Dijk,"(256,256,1,28672)",Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64,NO_CHECK,279.683,13437,,0.375,2,32,1,1,1,0.375,58720256,786432,,,,,,,,,,2026-04-18 15:27:00.
++ [[ 0 -ne 0 ]]
++ exit 0
+################################################################################
+# Cijk_Ailk_Bljk_I8II_BH_00
+# 00_Final: End - 22.095s
+################################################################################
+
+clientExit=0 (PASS) for ['/home/iamthecage/rocm-libraries/shared/tensile/next-tuning/gfx1201-wide-v2/i8gemm_wmma_gsu_nn.yaml']
+
+# LibraryLogic config: {'ScheduleName': 'navi48', 'DeviceNames': ['Device 7550'], 'ArchitectureName': 'gfx1201'}
+# DefaultAnalysisParameters: 
+
+################################################################################
+# Analysing data in 2_BenchmarkData - 22.096s
+#   ScheduleName: navi48
+#   DeviceNames: ['Device 7550']
+#   ArchitectureName: gfx1201
+#   SolutionImportanceMin: 0.01
+################################################################################
+
+################################################################################
+# Analyzing: Cijk_Ailk_Bljk_I8II_BH
+# Read: /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/2_BenchmarkData/Cijk_Ailk_Bljk_I8II_BH_00.yaml
+# ProblemSizes: ProblemSizes
+
+# Solutions:
+#  (0) Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA256_LBSPPB256_TT2_32
+#  (1) Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA256_LBSPPB256_TT2_32
+#  (2) Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32
+#  (3) Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU1_K1_LBSPPA512_LBSPPB512_TT4_64
+#  (4) Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU2_K1_LBSPPA512_LBSPPB512_TT4_64
+#  (5) Cijk_Ailk_Bljk_I8II_BH_MT64x64x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA512_LBSPPB512_TT4_64
+################################################################################
+# Merging Solutions:
+                                                    # LogicAnalyzer .....                          16.7%                                                    # LogicAnalyzer ..........                     33.3%                                                    # LogicAnalyzer ...............                50.0%                                                    # LogicAnalyzer ....................           66.7%                                                    # LogicAnalyzer .........................      83.3%                                                     # LogicAnalyzer .............................. 100.0%UnifiedProblemSizes: [[], [], [], [], [], [], [], []]
+ExactProblemSizes: {(256, 256, 1, 4096, 256, 256, 256, 4096), (64, 64, 1, 16384, 64, 64, 64, 16384), (16, 64, 1, 4096, 16, 16, 16, 4096), (256, 64, 1, 
+16384, 256, 256, 256, 16384), (256, 64, 1, 28672, 256, 256, 256, 28672), (256, 256, 1, 8192, 256, 256, 256, 8192), (256, 64, 1, 4096, 256, 256, 256, 
+4096), (256, 16, 1, 8192, 256, 256, 256, 8192), (256, 64, 1, 8192, 256, 256, 256, 8192), (16, 64, 1, 28672, 16, 16, 16, 28672), (64, 64, 1, 28672, 64, 
+64, 64, 28672), (16, 64, 1, 16384, 16, 16, 16, 16384), (64, 256, 1, 16384, 64, 64, 64, 16384), (256, 16, 1, 4096, 256, 256, 256, 4096), (64, 16, 1, 8192,
+64, 64, 64, 8192), (16, 64, 1, 8192, 16, 16, 16, 8192), (64, 16, 1, 4096, 64, 64, 64, 4096), (16, 256, 1, 16384, 16, 16, 16, 16384), (16, 16, 1, 4096, 
+16, 16, 16, 4096), (16, 256, 1, 8192, 16, 16, 16, 8192), (16, 256, 1, 28672, 16, 16, 16, 28672), (64, 64, 1, 8192, 64, 64, 64, 8192), (64, 256, 1, 4096, 
+64, 64, 64, 4096), (64, 256, 1, 8192, 64, 64, 64, 8192), (256, 16, 1, 28672, 256, 256, 256, 28672), (256, 16, 1, 16384, 256, 256, 256, 16384), (16, 16, 
+1, 16384, 16, 16, 16, 16384), (16, 256, 1, 4096, 16, 16, 16, 4096), (256, 256, 1, 16384, 256, 256, 256, 16384), (64, 256, 1, 28672, 64, 64, 64, 28672), 
+(64, 64, 1, 4096, 64, 64, 64, 4096), (256, 256, 1, 28672, 256, 256, 256, 28672), (16, 16, 1, 28672, 16, 16, 16, 28672), (64, 16, 1, 16384, 64, 64, 64, 
+16384), (64, 16, 1, 28672, 64, 64, 64, 28672), (16, 16, 1, 8192, 16, 16, 16, 8192)}
+RangeProblemSizes: {(256, 256, 1, 4096, 256, 256, 256, 4096), (64, 64, 1, 16384, 64, 64, 64, 16384), (16, 64, 1, 4096, 16, 16, 16, 4096), (256, 64, 1, 
+16384, 256, 256, 256, 16384), (256, 64, 1, 28672, 256, 256, 256, 28672), (256, 256, 1, 8192, 256, 256, 256, 8192), (256, 64, 1, 4096, 256, 256, 256, 
+4096), (256, 16, 1, 8192, 256, 256, 256, 8192), (256, 64, 1, 8192, 256, 256, 256, 8192), (16, 64, 1, 28672, 16, 16, 16, 28672), (64, 64, 1, 28672, 64, 
+64, 64, 28672), (16, 64, 1, 16384, 16, 16, 16, 16384), (64, 256, 1, 16384, 64, 64, 64, 16384), (256, 16, 1, 4096, 256, 256, 256, 4096), (64, 16, 1, 8192,
+64, 64, 64, 8192), (16, 64, 1, 8192, 16, 16, 16, 8192), (64, 16, 1, 4096, 64, 64, 64, 4096), (16, 256, 1, 16384, 16, 16, 16, 16384), (16, 16, 1, 4096, 
+16, 16, 16, 4096), (16, 256, 1, 8192, 16, 16, 16, 8192), (16, 256, 1, 28672, 16, 16, 16, 28672), (64, 64, 1, 8192, 64, 64, 64, 8192), (64, 256, 1, 4096, 
+64, 64, 64, 4096), (64, 256, 1, 8192, 64, 64, 64, 8192), (256, 16, 1, 28672, 256, 256, 256, 28672), (256, 16, 1, 16384, 256, 256, 256, 16384), (16, 16, 
+1, 16384, 16, 16, 16, 16384), (16, 256, 1, 4096, 16, 16, 16, 4096), (256, 256, 1, 16384, 256, 256, 256, 16384), (64, 256, 1, 28672, 64, 64, 64, 28672), 
+(64, 64, 1, 4096, 64, 64, 64, 4096), (256, 256, 1, 28672, 256, 256, 256, 28672), (16, 16, 1, 28672, 16, 16, 16, 28672), (64, 16, 1, 16384, 64, 64, 64, 
+16384), (64, 16, 1, 28672, 64, 64, 64, 28672), (16, 16, 1, 8192, 16, 16, 16, 8192)}
+# NumProblemSizes: [0, 0, 0, 0, 0, 0, 0, 0]
+TotalProblems: 0
+TotalSolutions: 6
+TotalSize: 0
+IndexOrder: [2, 3, 0, 1]
+reading datafile /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/2_BenchmarkData/Cijk_Ailk_Bljk_I8II_BH_00.csv
+# ExactWinners: {(16, 16, 1, 4096, 16, 16, 16, 4096): [2, 21.2604], (16, 16, 1, 8192, 16, 16, 16, 8192): [2, 34.0884], (16, 16, 1, 16384, 16, 16, 16, 
+16384): [2, 40.2287], (16, 16, 1, 28672, 16, 16, 16, 28672): [2, 49.695], (16, 64, 1, 4096, 16, 16, 16, 4096): [2, 109.74], (16, 64, 1, 8192, 16, 16, 16,
+8192): [2, 215.865], (16, 64, 1, 16384, 16, 16, 16, 16384): [2, 260.676], (16, 64, 1, 28672, 16, 16, 16, 28672): [2, 312.804], (16, 256, 1, 4096, 16, 16,
+16, 4096): [2, 603.052], (16, 256, 1, 8192, 16, 16, 16, 8192): [2, 813.234], (16, 256, 1, 16384, 16, 16, 16, 16384): [2, 912.537], (16, 256, 1, 28672, 
+16, 16, 16, 28672): [2, 1158.18], (64, 16, 1, 4096, 64, 64, 64, 4096): [2, 173.89], (64, 16, 1, 8192, 64, 64, 64, 8192): [2, 232.497], (64, 16, 1, 16384,
+64, 64, 64, 16384): [2, 287.082], (64, 16, 1, 28672, 64, 64, 64, 28672): [2, 330.405], (64, 64, 1, 4096, 64, 64, 64, 4096): [2, 598.321], (64, 64, 1, 
+8192, 64, 64, 64, 8192): [2, 910.309], (64, 64, 1, 16384, 64, 64, 64, 16384): [2, 1005.21], (64, 64, 1, 28672, 64, 64, 64, 28672): [2, 1286.86], (64, 
+256, 1, 4096, 64, 64, 64, 4096): [2, 2669.35], (64, 256, 1, 8192, 64, 64, 64, 8192): [2, 3537.58], (64, 256, 1, 16384, 64, 64, 64, 16384): [2, 4052.41], 
+(64, 256, 1, 28672, 64, 64, 64, 28672): [2, 4653.8], (256, 16, 1, 4096, 256, 256, 256, 4096): [2, 742.338], (256, 16, 1, 8192, 256, 256, 256, 8192): [2, 
+998.035], (256, 16, 1, 16384, 256, 256, 256, 16384): [2, 1217.94], (256, 16, 1, 28672, 256, 256, 256, 28672): [2, 1345.54], (256, 64, 1, 4096, 256, 256, 
+256, 4096): [2, 2905.15], (256, 64, 1, 8192, 256, 256, 256, 8192): [2, 3894.88], (256, 64, 1, 16384, 256, 256, 256, 16384): [2, 4562.09], (256, 64, 1, 
+28672, 256, 256, 256, 28672): [2, 4943.77], (256, 256, 1, 4096, 256, 256, 256, 4096): [2, 8178.9], (256, 256, 1, 8192, 256, 256, 256, 8192): [2, 
+10673.2], (256, 256, 1, 16384, 256, 256, 256, 16384): [2, 14447.4], (256, 256, 1, 28672, 256, 256, 256, 28672): [2, 17524.9]}
+problemIndicesForGlobalRange []
+Winners {2}
+After Removals:
+
+( 0) Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_GSU4_K1_LBSPPA256_LBSPPB256_TT2_32 : 
+Cijk_Ailk_Bljk_I8II_BH_MT32x32x16_MI16x16x16x1_SN_1LDSB0_APM1_AAIGTEn1_AAILTEn1_AAV0_ABV0_ACED0_AF0EM1_AF1EM1_AMAS0_ASE_ASGT_ASLT_ASM_ASAE01_ASBE01_ASCE0
+1_ASDE01_ASEM1_AAC0_BL1_BS1_CUM0_CDO0_CTDA0_CLR0_DSK0_DRA0_DU16_DULD1_DTLA0_DTLB0_DTVA0_DTVB0_DAF0_DKP0_DVO0_ETSP_EPS0_ELFLR0_EMLL0_FSSC10_F16AI0_F16AIR0
+_FL0_GLVWA4_GLVWB4_GR2A1_GR2B1_GRCGA1_GRCGB1_GRCVA1_GRCVB1_GRPM1_GRVW4_GSU4_GSUASB_GSUAA0_GSUSARR1_GSUWGMRR0_GLS0_ISA1201_IU1_IA0_KLA_LEL0_LBSPPA256_LBSP
+PB256_LPA16_LPB16_LDL1_LR2A1_LR2B1_LRVW8_LW2A1_LW2B1_LWPMn1_LDW0_LT1_FMA_MIAV1_MTSM64_MTSM1_MDA2_MI16_16_16_1_MO40_MVN256_MMFSC_MKFGSU256_MVN0_NR0_NTA0_N
+TB0_NTC0_NTD0_NEPBS0_NLCA1_NLCB1_ONLL0_OPLV0_PBD0_PFD1_PG2_PSD0_PSLn1_PWCn1_PWLn1_PK0_PKAB0_PAP0_PAPM0_PGR0_PLR0_PKA0_RK0_SGR0_SIA0_SLW0_SS0_SU32_SUM0_SU
+S256_SCIU0_SCIUE0_SCIUI1_SCIUPL0_SPO0_SRVW0_SSO0_SVW4_SK0_SKA0_SKXCCM0_SNLL0_TSGRA0_TSGRB0_TT2_32_TLDS0_UIIDU0_UMLDSA0_UMLDSB0_UMF0_U64SL1_UIOFGRO0_USFGR
+On1_VAW1_VSn1_VW1_VWB1_VFLRP0_WSGRA1_WSGRB1_WS32_WG16_2_1_WGM8_WGMTB
+[] enRule([[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]])
+[] MultiProblem & NotLastIndex
+> UserWarning: [] MultiProblem & NotLastIndex :: nextRule==None; returning
+# Final Range Logic:
+None
+# Range Logic Complexity: [0, 0, 0, 0, 0, 0, 0, 0]
+
+# Score: 0 ms
+# Exact Logic:
+
+{(16, 16, 1, 4096, 16, 16, 16, 4096): [0, 21.2604], (16, 16, 1, 8192, 16, 16, 16, 8192): [0, 34.0884], (16, 16, 1, 16384, 16, 16, 16, 16384): [0, 
+40.2287], (16, 16, 1, 28672, 16, 16, 16, 28672): [0, 49.695], (16, 64, 1, 4096, 16, 16, 16, 4096): [0, 109.74], (16, 64, 1, 8192, 16, 16, 16, 8192): [0, 
+215.865], (16, 64, 1, 16384, 16, 16, 16, 16384): [0, 260.676], (16, 64, 1, 28672, 16, 16, 16, 28672): [0, 312.804], (16, 256, 1, 4096, 16, 16, 16, 4096):
+[0, 603.052], (16, 256, 1, 8192, 16, 16, 16, 8192): [0, 813.234], (16, 256, 1, 16384, 16, 16, 16, 16384): [0, 912.537], (16, 256, 1, 28672, 16, 16, 16, 
+28672): [0, 1158.18], (64, 16, 1, 4096, 64, 64, 64, 4096): [0, 173.89], (64, 16, 1, 8192, 64, 64, 64, 8192): [0, 232.497], (64, 16, 1, 16384, 64, 64, 64,
+16384): [0, 287.082], (64, 16, 1, 28672, 64, 64, 64, 28672): [0, 330.405], (64, 64, 1, 4096, 64, 64, 64, 4096): [0, 598.321], (64, 64, 1, 8192, 64, 64, 
+64, 8192): [0, 910.309], (64, 64, 1, 16384, 64, 64, 64, 16384): [0, 1005.21], (64, 64, 1, 28672, 64, 64, 64, 28672): [0, 1286.86], (64, 256, 1, 4096, 64,
+64, 64, 4096): [0, 2669.35], (64, 256, 1, 8192, 64, 64, 64, 8192): [0, 3537.58], (64, 256, 1, 16384, 64, 64, 64, 16384): [0, 4052.41], (64, 256, 1, 
+28672, 64, 64, 64, 28672): [0, 4653.8], (256, 16, 1, 4096, 256, 256, 256, 4096): [0, 742.338], (256, 16, 1, 8192, 256, 256, 256, 8192): [0, 998.035], 
+(256, 16, 1, 16384, 256, 256, 256, 16384): [0, 1217.94], (256, 16, 1, 28672, 256, 256, 256, 28672): [0, 1345.54], (256, 64, 1, 4096, 256, 256, 256, 
+4096): [0, 2905.15], (256, 64, 1, 8192, 256, 256, 256, 8192): [0, 3894.88], (256, 64, 1, 16384, 256, 256, 256, 16384): [0, 4562.09], (256, 64, 1, 28672, 
+256, 256, 256, 28672): [0, 4943.77], (256, 256, 1, 4096, 256, 256, 256, 4096): [0, 8178.9], (256, 256, 1, 8192, 256, 256, 256, 8192): [0, 10673.2], (256,
+256, 1, 16384, 256, 256, 256, 16384): [0, 14447.4], (256, 256, 1, 28672, 256, 256, 256, 28672): [0, 17524.9]}
+# writing library logic YAML /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn/3_LibraryLogic/navi48_Cijk_Ailk_Bljk_I8II_BH.yaml
+################################################################################
+# Finish Analysing data to /home/iamthecage/out-v2/i8gemm_wmma_gsu_nn in 22.250s
+################################################################################
+
+

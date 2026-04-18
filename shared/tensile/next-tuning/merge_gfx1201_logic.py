@@ -9,7 +9,7 @@ logic directory:
 
 Workflow:
   1. Collect all 3_LibraryLogic/*.yaml files from completed benchmark runs
-  2. Group by problem type (Cijk layout + dtype family)
+  2. Group by actual output filename to prevent ProblemType collisions
   3. Merge WMMA + VALU logic for same problem type using TensileMergeLibrary
   4. Rename from navi48_* to gfx1201_* (rocBLAS convention)
   5. Separate batched (BH) from grouped-batch (BH_GB) variants
@@ -46,48 +46,22 @@ TENSILE_DIR = Path("/home/iamthecage/rocm-libraries/shared/tensile")
 MERGE_TOOL = TENSILE_DIR / "Tensile" / "bin" / "TensileMergeLibrary"
 
 # ---------------------------------------------------------------------------
-# Mapping from our config names to rocBLAS logic families
+# Mapping from our config names to rocBLAS logic families (for status display)
 # ---------------------------------------------------------------------------
-# rocBLAS logic filename convention:
-#   {arch}_Cijk_{A_layout}_{B_layout}_{dtype_family}[_GB].yaml
-#
-# Our config names encode: {dtype}_{method}[_gb]_{transpose}
-# where method = wmma|valu|native and transpose = nn|nt|tn|tt
-#
-# Multiple methods (wmma + valu) for the same {dtype}_{transpose} produce
-# logic files for the SAME rocBLAS family — they must be merged.
-# ---------------------------------------------------------------------------
-
-# Map config dtype prefix -> rocBLAS dtype family
 DTYPE_TO_FAMILY = {
-    "hgemm":    "HHS_BH",     # f16 in, f32 accum, f16 out (High Precision Accumulate)
-    "bf16gemm": "BBS_BH",     # bf16 in, f32 accum, bf16 out
-    "hss":      "HB",         # f16 in, f32 out (Half B)
-    "bss":      "BSS_BH",     # bf16 in, f32 out
-    "sgemm":    "SB",         # f32 in, f32 out (Single B)
-    "dgemm":    "DB",         # f64 in, f64 out (Double B) -- may not exist in navi31
-    "i8gemm":   "I8II_BH",    # int8 in, int32 out
+    "hgemm":    "HHS_BH / HB", 
+    "bf16gemm": "BBS_BH",     
+    "hss":      "HB / HSS_BH",         
+    "bss":      "BSS_BH",     
+    "sgemm":    "SB",         
+    "dgemm":    "DB",         
+    "i8gemm":   "I8II_BH",    
 }
-
-# Transpose -> Cijk layout
-TRANSPOSE_TO_LAYOUT = {
-    "nn": "Cijk_Ailk_Bljk",   # A=N, B=N
-    "nt": "Cijk_Ailk_Bjlk",   # A=N, B=T
-    "tn": "Cijk_Alik_Bljk",   # A=T, B=N
-    "tt": "Cijk_Alik_Bjlk",   # A=T, B=T
-}
-
 
 def parse_config_name(name):
     """Parse a benchmark output dir name into components.
     
     Returns: (dtype, method, is_gb, transpose) or None if unparsable.
-    
-    Examples:
-      hgemm_wmma_nn     -> (hgemm, wmma, False, nn)
-      bf16gemm_valu_gb_nt -> (bf16gemm, valu, True, nt)
-      sgemm_nn          -> (sgemm, valu, False, nn)  # implicit VALU
-      hgemm_wmma_native_tt -> (hgemm, wmma_native, False, tt)
     """
     parts = name.split("_")
     transpose = parts[-1]
@@ -100,7 +74,7 @@ def parse_config_name(name):
     # Determine dtype prefix
     if name.startswith("bf16gemm"):
         dtype = "bf16gemm"
-        rest = parts[1:-1]  # skip bf16gemm and transpose
+        rest = parts[1:-1]
     elif name.startswith("hgemm"):
         dtype = "hgemm"
         rest = parts[1:-1]
@@ -125,30 +99,15 @@ def parse_config_name(name):
     # Determine method from remaining parts
     rest_clean = [p for p in rest if p not in ("gb",)]
     if not rest_clean:
-        method = "valu"  # e.g. sgemm_nn -> implicit VALU
+        method = "valu"
     else:
-        method = "_".join(rest_clean)  # e.g. "wmma", "valu", "wmma_native"
+        method = "_".join(rest_clean)
     
     return (dtype, method, is_gb, transpose)
 
 
-def get_logic_filename(dtype, transpose, is_gb, arch="gfx1201"):
-    """Build the rocBLAS logic filename for a dtype/transpose/gb combination."""
-    family = DTYPE_TO_FAMILY.get(dtype)
-    if not family:
-        return None
-    layout = TRANSPOSE_TO_LAYOUT.get(transpose)
-    if not layout:
-        return None
-    gb_suffix = "_GB" if is_gb else ""
-    return f"{arch}_{layout}_{family}{gb_suffix}.yaml"
-
-
 def collect_logic_files():
-    """Scan benchmark output dirs for 3_LibraryLogic/*.yaml files.
-    
-    Returns: dict mapping (dtype, transpose, is_gb) -> [(method, yaml_path), ...]
-    """
+    """Scan benchmark dirs and group purely by the actual target filename."""
     groups = defaultdict(list)
     
     for bench_dir in BENCHMARK_DIRS:
@@ -158,30 +117,31 @@ def collect_logic_files():
         for entry in sorted(bench_dir.iterdir()):
             if not entry.is_dir():
                 continue
-        
+            
             parsed = parse_config_name(entry.name)
             if not parsed:
                 print(f"  SKIP: {entry.name} (unparsable name)")
                 continue
-        
+            
             dtype, method, is_gb, transpose = parsed
-        
+            
             logic_dir = entry / "3_LibraryLogic"
             if not logic_dir.exists():
-                print(f"  SKIP: {entry.name} (no 3_LibraryLogic/)")
                 continue
-        
+            
             yamls = list(logic_dir.glob("*.yaml"))
             if not yamls:
-                print(f"  SKIP: {entry.name} (no yaml in 3_LibraryLogic/)")
                 continue
-        
-            if len(yamls) > 1:
-                print(f"  WARN: {entry.name} has {len(yamls)} logic files, using first")
-        
-            key = (dtype, transpose, is_gb)
-            groups[key].append((method, yamls[0]))
-    
+            
+            src_yaml = yamls[0]
+            
+            # Build target name directly from the actual Tensile output
+            target_name = src_yaml.name.replace("navi48_", "gfx1201_")
+            if is_gb and "_GB" not in target_name:
+                target_name = target_name.replace(".yaml", "_GB.yaml")
+                
+            groups[target_name].append((dtype, transpose, is_gb, method, src_yaml))
+            
     return groups
 
 
@@ -189,10 +149,14 @@ def show_status(groups):
     """Print status of all collected logic files."""
     print("\n=== gfx1201 Benchmark Logic Files ===\n")
     
-    # Group by dtype
-    by_dtype = defaultdict(list)
-    for (dtype, transpose, is_gb), methods in sorted(groups.items()):
-        by_dtype[dtype].append((transpose, is_gb, methods))
+    # Restructure for pretty printing
+    by_dtype = defaultdict(dict)
+    for target_name, items in groups.items():
+        for dtype, transpose, is_gb, method, src_yaml in items:
+            key = (transpose, is_gb, target_name)
+            if key not in by_dtype[dtype]:
+                by_dtype[dtype][key] = []
+            by_dtype[dtype][key].append(method)
     
     total_logic = 0
     total_merged = 0
@@ -201,29 +165,29 @@ def show_status(groups):
         family = DTYPE_TO_FAMILY.get(dtype, "???")
         print(f"\n{dtype} -> {family}:")
         
-        for transpose, is_gb, methods in sorted(by_dtype[dtype]):
+        # Sort by transpose, then gb, then target_name
+        for (transpose, is_gb, target), methods in sorted(by_dtype[dtype].items()):
             gb_tag = " [GB]" if is_gb else ""
-            method_names = [m[0] for m in methods]
-            target = get_logic_filename(dtype, transpose, is_gb)
             merge_note = " ← WILL MERGE" if len(methods) > 1 else ""
-            print(f"  {transpose.upper()}{gb_tag}: {','.join(method_names)} -> {target}{merge_note}")
+            print(f"  {transpose.upper()}{gb_tag}: {','.join(methods)} -> {target}{merge_note}")
             total_logic += len(methods)
-            total_merged += 1
+            
+    total_merged = len(groups)
     
-    # What's missing for navi31 parity?
     print("\n\n=== Coverage Summary ===")
     print(f"  Logic files collected: {total_logic}")
     print(f"  Merged families:      {total_merged}")
     
-    # navi31 has 10 families × 4 transposes = 40 files
-    # gfx1201 target: navi31 parity + DB, DB_GB, BSS_BH for completeness
+    # Deduce actual families from the filenames Tensile generated
+    our_families = set()
+    for target_name in groups.keys():
+        # Strip extension and split by underscores. Family name is everything after the 4th underscore
+        parts = target_name.replace(".yaml", "").split("_")
+        family = "_".join(parts[4:])
+        our_families.add(family)
+
     target_families = {"HHS_BH", "HHS_BH_GB", "BBS_BH", "BBS_BH_GB", "HB", "HB_GB", "SB", "SB_GB", "I8II_BH", "I8II_BH_GB",
                        "DB", "DB_GB", "BSS_BH"}
-    our_families = set()
-    for (dtype, transpose, is_gb), _ in groups.items():
-        family = DTYPE_TO_FAMILY.get(dtype, "")
-        gb_suffix = "_GB" if is_gb else ""
-        our_families.add(f"{family}{gb_suffix}")
     
     print(f"\n  Our families:    {sorted(our_families)}")
     print(f"  Target families: {sorted(target_families)}")
@@ -235,7 +199,6 @@ def show_status(groups):
     if extra:
         print(f"  EXTRA (we have beyond navi31): {sorted(extra)}")
     
-    # Size coverage advantage
     print(f"\n=== Size Coverage vs AMD ===")
     print(f"  navi31: N/K max 8192 — NO coverage for dims > 8192")
     print(f"  gfx942: sparse, misses 14336, 18432 entirely")
@@ -258,24 +221,18 @@ def merge_logic_files(groups, output_dir, dry_run=False):
     
     results = {"copied": 0, "merged": 0, "failed": 0, "skipped": 0}
     
-    for (dtype, transpose, is_gb), methods in sorted(groups.items()):
-        target_name = get_logic_filename(dtype, transpose, is_gb)
-        if not target_name:
-            print(f"  SKIP: no target name for {dtype}/{transpose}")
-            results["skipped"] += 1
-            continue
-        
+    for target_name, items in sorted(groups.items()):
         target_path = output_dir / target_name
         
-        if len(methods) == 1:
+        if len(items) == 1:
             # Single source — just copy with rename
-            method, src = methods[0]
+            dtype, transpose, is_gb, method, src = items[0]
             print(f"  COPY: {src.name} -> {target_name} ({method})")
             if not dry_run:
                 # Read, update arch name, write
                 with open(src) as f:
                     doc = yaml.safe_load(f)
-                # Update arch name to gfx1201 convention (Tensile outputs "navi48")
+                # Update arch name to gfx1201 convention
                 if isinstance(doc, list) and len(doc) > 1:
                     doc[1] = "gfx1201"
                 with open(target_path, "w") as f:
@@ -284,29 +241,25 @@ def merge_logic_files(groups, output_dir, dry_run=False):
         
         else:
             # Multiple sources — need to merge
-            # Strategy: use the first as base, merge the rest incrementally
-            method_names = [m[0] for m in methods]
+            method_names = [item[3] for item in items]
             print(f"  MERGE: {target_name} <- {method_names}")
             
             if dry_run:
                 results["merged"] += 1
                 continue
             
-            # Create temp dirs for merge workflow
             import tempfile
             with tempfile.TemporaryDirectory() as tmpdir:
                 # Put first source as "original"
                 orig_dir = os.path.join(tmpdir, "original")
                 os.makedirs(orig_dir)
                 
-                base_method, base_src = methods[0]
-                # Standardize filename for merge tool (it matches by Cijk pattern)
+                base_src = items[0][4]
                 std_name = target_name.replace("gfx1201_", "navi48_")
                 shutil.copy2(base_src, os.path.join(orig_dir, std_name))
                 
-                # Merge each additional source incrementally
                 current_dir = orig_dir
-                for method, src in methods[1:]:
+                for dtype, transpose, is_gb, method, src in items[1:]:
                     inc_dir = os.path.join(tmpdir, f"inc_{method}")
                     os.makedirs(inc_dir)
                     shutil.copy2(src, os.path.join(inc_dir, std_name))
@@ -320,14 +273,17 @@ def merge_logic_files(groups, output_dir, dry_run=False):
                         current_dir,
                         inc_dir,
                         out_dir,
-                        "--force_merge", "true",
+                        "--force_merge", "false",
+                        "--notrim",
+                        "--add_solution_tags",
                         "-v", "0",
                     ]
                     
                     try:
                         result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
                         if result.returncode != 0:
-                            print(f"    MERGE FAILED: {result.stderr[:200]}")
+                            # Expanded stderr slice to ensure the true exception is visible
+                            print(f"    MERGE FAILED:\n{result.stderr[-1500:]}")
                             results["failed"] += 1
                             break
                     except subprocess.TimeoutExpired:
@@ -340,7 +296,6 @@ def merge_logic_files(groups, output_dir, dry_run=False):
                     # All merges succeeded — copy result
                     merged_file = os.path.join(current_dir, std_name)
                     if os.path.exists(merged_file):
-                        # Read, rename arch, write
                         with open(merged_file) as f:
                             doc = yaml.safe_load(f)
                         if isinstance(doc, list) and len(doc) > 1:

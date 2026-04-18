@@ -1,0 +1,79 @@
+# WMMA DepthU sweep — Scheduling ON, sweep DepthU from scratch
+# Purpose: Get properly derived solutions for DepthU=32 and DepthU=64 with scheduling enabled
+# This is the config that FAILED when we tried modifying existing library logic YAMLs
+# because changing DepthU invalidated derived params. The benchmark flow re-derives everything.
+#
+# Usage:
+#   export PYTHONPATH=/home/iamthecage/rocm-libraries/shared/tensile
+#   python3 /home/iamthecage/rocm-libraries/shared/tensile/Tensile/bin/Tensile \
+#     wmma_depthu_sched.yaml ./depthu_output \
+#     --arch gfx1201 --cxx-compiler /opt/rocm/bin/amdclang++ \
+#     --no-merge-files -v
+#
+# Fork combos: DU(3) × GRVA(2) × SS(2) × WSGRBA(2) = 24 combos — very fast
+
+TestParameters:
+  marks: [skip-gfx900, skip-gfx906, skip-gfx908, skip-gfx90a, skip-gfx942, skip-gfx950, skip-gfx1010, skip-gfx1011, skip-gfx1012, skip-gfx1030, skip-gfx1031, skip-gfx1032, skip-gfx1033, skip-gfx1034, skip-gfx1035, skip-gfx1036, skip-gfx1100, skip-gfx1101, skip-gfx1102]
+
+GlobalParameters:
+  NumElementsToValidate: 0
+  KernelTime: True
+  MaxWorkspaceSize: 67108864
+  PrintSolutionRejectionReason: True
+  MergeFiles: False
+  DataInitTypeAlpha: 1
+  DataInitTypeBeta: 0
+  EnqueuesPerSync: 1
+  SyncsPerBenchmark: 1
+  SleepPercent: 0
+
+BenchmarkProblems:
+  -
+    - # NT — B transposed (Ailk_Bjlk) — f16 HPA WMMA V2 (v_wmma_f32_16x16x16_f16)
+      OperationType: GEMM
+      DataType: h
+      ComputeDataType: s
+      DestDataType: h
+      HighPrecisionAccumulate: True
+      TransposeA: False
+      TransposeB: True
+      UseBeta: True
+      Batched: True
+
+    - InitialSolutionParameters:
+      BenchmarkCommonParameters:
+        - KernelLanguage: ["Assembly"]
+        - EdgeType: ["ShiftPtr"]
+      ForkParameters:
+        - MIArchVgpr: [True]
+        - WavefrontSize: [32]
+        - MatrixInstruction:
+          - [16, 16, 16, 1,  1,  4,4,  1,1]   # MT64×64, single wave
+        - WorkGroup:
+          - [32, 1, 1]
+        # --- Scheduling LOCKED ON ---
+        - PrefetchGlobalRead: [1]
+        - PrefetchLocalRead: [1]
+        - ScheduleLocalWrite: [1]
+        - ScheduleGlobalRead: [1]
+        - ScheduleIterAlg: [1]
+        # --- DepthU sweep — the whole point of this config ---
+        - DepthU: [16, 32, 64]
+        # --- Memory access patterns ---
+        - TransposeLDS: [0]
+        - VectorWidth: [1]
+        - GlobalReadVectorWidth: [2, 4]
+        - SourceSwap: [0, 1]
+        - WaveSeparateGlobalReadA: [0, 1]
+        - WaveSeparateGlobalReadB: [0]
+        - OptNoLoadLoop: [0]
+      BenchmarkFinalParameters:
+        - ProblemSizes:
+          - Exact: [256, 256, 1, 256]
+          - Exact: [1024, 1024, 1, 1024]
+          - Exact: [4096, 4096, 1, 4096]
+
+LibraryLogic:
+    ScheduleName: "navi48"
+    DeviceNames: ["Device 7550"]
+    ArchitectureName: "gfx1201"

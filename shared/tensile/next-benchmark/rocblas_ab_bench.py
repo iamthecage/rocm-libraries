@@ -181,7 +181,7 @@ def _default_tolerances(dtype_name: str) -> tuple[float, float]:
 def verify_gemm(M: int, N: int, K: int, dtype, dtype_name: str,
                 atol: float, rtol: float, device: str = "cuda") -> dict:
     """
-    Verify a single GEMM by comparing GPU result against fp32 CPU reference.
+    Verify a single GEMM by comparing GPU result against fp64 GPU reference.
 
     Returns dict with:
       pass: bool, max_abs_err, max_rel_err, mean_abs_err,
@@ -189,24 +189,25 @@ def verify_gemm(M: int, N: int, K: int, dtype, dtype_name: str,
     """
     import torch
 
-    # Generate inputs on CPU in the target dtype, then cast to fp32 for reference
-    A_cpu = torch.randn(M, K, dtype=dtype)
-    B_cpu = torch.randn(K, N, dtype=dtype)
+    # Generate directly on GPU
+    A_gpu = torch.randn(M, K, dtype=dtype, device=device)
+    B_gpu = torch.randn(K, N, dtype=dtype, device=device)
 
-    # Reference: upcast to fp32 on CPU for ground-truth
-    ref = torch.mm(A_cpu.float(), B_cpu.float())
+    # Reference: upcast to fp64 ON THE GPU for the ground-truth
+    # This takes microseconds instead of minutes
+    ref = torch.mm(A_gpu.double(), B_gpu.double()) 
 
     # GPU result in native dtype
-    A_gpu = A_cpu.to(device)
-    B_gpu = B_cpu.to(device)
     result_gpu = torch.mm(A_gpu, B_gpu)
     torch.cuda.synchronize()
 
-    # Compare on CPU in fp32
+    # Move to CPU just for the error comparison
     result_cpu = result_gpu.float().cpu()
-    abs_err = (result_cpu - ref).abs()
+    ref_cpu = ref.float().cpu()
+    
+    abs_err = (result_cpu - ref_cpu).abs()
     # For relative error, normalize by max(|ref|, 1) to avoid div-by-zero on small values
-    rel_err = abs_err / (ref.abs().clamp(min=1.0))
+    rel_err = abs_err / (ref_cpu.abs().clamp(min=1.0))
 
     max_abs = abs_err.max().item()
     max_rel = rel_err.max().item()
@@ -218,7 +219,7 @@ def verify_gemm(M: int, N: int, K: int, dtype, dtype_name: str,
 
     passed = mismatched == 0
 
-    del A_cpu, B_cpu, A_gpu, B_gpu, result_gpu, result_cpu, ref, abs_err, rel_err
+    del A_gpu, B_gpu, result_gpu, result_cpu, ref, ref_cpu, abs_err, rel_err
 
     return {
         "pass": passed,
@@ -230,7 +231,6 @@ def verify_gemm(M: int, N: int, K: int, dtype, dtype_name: str,
         "atol": atol,
         "rtol": rtol,
     }
-
 
 # ---------------------------------------------------------------------------
 # Benchmark engine

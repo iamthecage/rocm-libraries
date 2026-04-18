@@ -257,6 +257,11 @@ endif()
 
 add_subdirectory(tensilelite)
 
+# If not building the host library, find the installed one for the client to link against
+if(NOT HIPBLASLT_ENABLE_HOST AND HIPBLASLT_ENABLE_CLIENT)
+    find_package(hipblaslt REQUIRED)
+endif()
+
 if(HIPBLASLT_ENABLE_HOST)
     if(HIPBLASLT_BUILD_SHARED_LIBS)
         add_library(hipblaslt SHARED)

@@ -1,0 +1,32 @@
+
+@PACKAGE_INIT@
+    
+set_and_check(rocblas_INCLUDE_DIR @PACKAGE_INCLUDE_INSTALL_DIR@)
+
+set_and_check(rocblas_INCLUDE_DIRS @PACKAGE_INCLUDE_INSTALL_DIR@)
+
+set_and_check(ROCBLAS_INCLUDE_DIR @PACKAGE_INCLUDE_INSTALL_DIR@)
+
+set_and_check(ROCBLAS_INCLUDE_DIRS @PACKAGE_INCLUDE_INSTALL_DIR@)
+
+set_and_check(rocblas_INCLUDE_DIR @PACKAGE_INCLUDE_INSTALL_DIR@)
+
+set_and_check(rocblas_INCLUDE_DIRS @PACKAGE_INCLUDE_INSTALL_DIR@)
+
+set_and_check(rocblas_TARGET_FILE @PACKAGE_CONFIG_PACKAGE_INSTALL_DIR@/rocblas-targets.cmake)
+
+find_dependency(hip)
+
+include(${rocblas_TARGET_FILE})
+
+set(rocblas_LIBRARIES roc::rocblas)
+
+set(rocblas_LIBRARY roc::rocblas)
+
+set(ROCBLAS_LIBRARIES roc::rocblas)
+
+set(ROCBLAS_LIBRARY roc::rocblas)
+
+set(rocblas_LIBRARIES roc::rocblas)
+
+set(rocblas_LIBRARY roc::rocblas)

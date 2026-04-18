@@ -12476,6 +12476,8 @@ class KernelWriterAssembly(KernelWriter):
           #restructuring the code to handle edge case
           if kernel["ProblemType"]["Fp8NoPackUpConversion"] or gwvw == 1:
             byteSel = "src0_sel:BYTE_0" if vi%4==0 else "src0_sel:BYTE_1" if vi%4==1 else "src0_sel:BYTE_2" if vi%4==2 else "src0_sel:BYTE_3"
+            if self.version[0] >= 12:
+              byteSel = "" if vi%4==0 else f"byte_sel:{vi%4}"
             if kernel["ProblemType"]["DestDataType"].isFloat8():
               kStr += "v_cvt_f32_fp8 v%u, %s %s   // convert fp8 in lo_byte[0] to f32%s"%(vgprF8Temp0, vgpr(dataCExternal), byteSel, self.endLine)
             else:
@@ -12489,6 +12491,8 @@ class KernelWriterAssembly(KernelWriter):
 
             if (vi%2) == 1: ## vi%4 == 1 or vi%4 == 3
               wordSel = "" if vi%4 == 1 else "src0_sel:WORD_1"
+              if self.version[0] >= 12:
+                wordSel = "" if vi%4 == 1 else "op_sel:[1,0]"
               wordTxt = "lo_16" if vi%4==1 else "hi_16"
               kStr += f32Tof8PkInst + " v[%u:%u], %s  %s  // convert two f8 in %s to f32%s"%(vgprF8Temp0, vgprF8Temp1, vgpr(dataCExternal), wordSel, wordTxt, self.endLine)
 
@@ -14986,6 +14990,8 @@ class KernelWriterAssembly(KernelWriter):
               #restructuring the code to handle edge case
               if kernel["ProblemType"]["Fp8NoPackUpConversion"] or gwvw == 1:
                 byteSel = "src0_sel:BYTE_0" if vi%4==0 else "src0_sel:BYTE_1" if vi%4==1 else "src0_sel:BYTE_2" if vi%4==2 else "src0_sel:BYTE_3"
+                if self.version[0] >= 12:
+                  byteSel = "" if vi%4==0 else f"byte_sel:{vi%4}"
                 if kernel["ProblemType"]["DestDataType"].isFloat8():
                   kStr += "v_cvt_f32_fp8 v%u, %s %s   // convert fp8 in lo_byte[0] to f32%s"%(vgprF8Temp0, vgpr(dataCExternal), byteSel, self.endLine)
                 else:
@@ -15000,6 +15006,8 @@ class KernelWriterAssembly(KernelWriter):
 
                 if (vi%2) == 1: ## vi%4 == 1 or vi%4 == 3
                   wordSel = "" if vi%4 == 1 else "src0_sel:WORD_1"
+                  if self.version[0] >= 12:
+                    wordSel = "" if vi%4 == 1 else "op_sel:[1,0]"
                   wordTxt = "lo_16" if vi%4==1 else "hi_16"
                   kStr += f32Tof8PkInst + " v[%u:%u], %s  %s  // convert two f8 in %s to f32%s"%(vgprF8Temp0, vgprF8Temp1, vgpr(dataCExternal), wordSel, wordTxt, self.endLine)
 
