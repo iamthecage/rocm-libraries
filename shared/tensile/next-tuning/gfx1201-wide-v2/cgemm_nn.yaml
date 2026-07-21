@@ -26,6 +26,7 @@ BenchmarkProblems:
       ComplexConjugateB: False
       UseBeta: True
       Batched: True
+      StridedBatched: True
 
     - InitialSolutionParameters:
       BenchmarkCommonParameters:

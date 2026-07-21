@@ -486,7 +486,7 @@ def wmma_fork_params_gsu():
 # ---------------------------------------------------------------------------
 # Problem type blocks
 # ---------------------------------------------------------------------------
-def problem_type_wmma_hgemm(ta, tb, desc):
+def problem_type_wmma_hgemm(ta, tb, desc, strided_batched=True):
     return f"""\
     - # {desc} — f16 HPA WMMA V2 (v_wmma_f32_16x16x16_f16)
       OperationType: GEMM
@@ -497,10 +497,11 @@ def problem_type_wmma_hgemm(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_wmma_bf16gemm(ta, tb, desc):
+def problem_type_wmma_bf16gemm(ta, tb, desc, strided_batched=True):
     return f"""\
     - # {desc} — bf16 HPA WMMA V2 (v_wmma_f32_16x16x16_bf16)
       OperationType: GEMM
@@ -511,10 +512,11 @@ def problem_type_wmma_bf16gemm(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_valu_hgemm(ta, tb, desc):
+def problem_type_valu_hgemm(ta, tb, desc, strided_batched=True):
     return f"""\
     - # {desc} — f16 HPA VALU (fallback for sizes/shapes where WMMA is not selected)
       OperationType: GEMM
@@ -525,10 +527,11 @@ def problem_type_valu_hgemm(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_valu_hgemm_native(ta, tb, desc):
+def problem_type_valu_hgemm_native(ta, tb, desc, strided_batched=True):
     return f"""\
     - # {desc} — f16 native (non-HPA, f16 accumulate)
       OperationType: GEMM
@@ -539,10 +542,11 @@ def problem_type_valu_hgemm_native(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_valu_bf16gemm(ta, tb, desc):
+def problem_type_valu_bf16gemm(ta, tb, desc, strided_batched=True):
     return f"""\
     - # {desc} — bf16 HPA VALU
       OperationType: GEMM
@@ -553,10 +557,11 @@ def problem_type_valu_bf16gemm(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_sgemm(ta, tb, desc):
+def problem_type_sgemm(ta, tb, desc, strided_batched=True):
     return f"""\
     - # {desc} — f32 VALU
       OperationType: GEMM
@@ -564,10 +569,11 @@ def problem_type_sgemm(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_i8gemm(ta, tb, desc):
+def problem_type_i8gemm(ta, tb, desc, strided_batched=True):
     # DataType: I8 (int8, char='I8', index 8 in Tensile DataType enum)
     # ComputeDataType/DestDataType: I (int32, char='I', index 6)
     return f"""\
@@ -580,10 +586,11 @@ def problem_type_i8gemm(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_dgemm(ta, tb, desc):
+def problem_type_dgemm(ta, tb, desc, strided_batched=True):
     return f"""\
     - # {desc} — f64 VALU
       OperationType: GEMM
@@ -591,10 +598,11 @@ def problem_type_dgemm(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_cgemm(ta, tb, ca, cb, desc):
+def problem_type_cgemm(ta, tb, ca, cb, desc, strided_batched=True):
     return f"""\
     - # {desc} — f32 complex VALU
       OperationType: GEMM
@@ -606,10 +614,11 @@ def problem_type_cgemm(ta, tb, ca, cb, desc):
       ComplexConjugateA: {str(ca)}
       ComplexConjugateB: {str(cb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_zgemm(ta, tb, ca, cb, desc):
+def problem_type_zgemm(ta, tb, ca, cb, desc, strided_batched=True):
     return f"""\
     - # {desc} — f64 complex VALU
       OperationType: GEMM
@@ -621,10 +630,11 @@ def problem_type_zgemm(ta, tb, ca, cb, desc):
       ComplexConjugateA: {str(ca)}
       ComplexConjugateB: {str(cb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_wmma_hgemm_gsu(ta, tb, desc):
+def problem_type_wmma_hgemm_gsu(ta, tb, desc, strided_batched=True):
     return f"""\
     - # {desc} — f16 HPA WMMA V2 with GSU sweep
       OperationType: GEMM
@@ -635,10 +645,11 @@ def problem_type_wmma_hgemm_gsu(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_wmma_bf16gemm_gsu(ta, tb, desc):
+def problem_type_wmma_bf16gemm_gsu(ta, tb, desc, strided_batched=True):
     return f"""\
     - # {desc} — bf16 HPA WMMA V2 with GSU sweep
       OperationType: GEMM
@@ -649,10 +660,11 @@ def problem_type_wmma_bf16gemm_gsu(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_wmma_i8gemm_gsu(ta, tb, desc):
+def problem_type_wmma_i8gemm_gsu(ta, tb, desc, strided_batched=True):
     return f"""\
     - # {desc} — int8 WMMA with GSU sweep (I8II_BH)
       OperationType: GEMM
@@ -663,10 +675,11 @@ def problem_type_wmma_i8gemm_gsu(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_wmma_hgemm_native(ta, tb, desc):
+def problem_type_wmma_hgemm_native(ta, tb, desc, strided_batched=True):
     return f"""\
     - # {desc} — f16 native WMMA (V_WMMA_F16_16X16X16_F16 — f16 accumulate)
       OperationType: GEMM
@@ -677,10 +690,11 @@ def problem_type_wmma_hgemm_native(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_wmma_hss(ta, tb, desc):
+def problem_type_wmma_hss(ta, tb, desc, strided_batched=True):
     """V_WMMA_F32_16X16X16_F16 with D stored as F32 (HSS_BH).
     hipBLASLT serves this with MFMA kernels — WMMA V2 path is uncovered there.
     """
@@ -694,10 +708,11 @@ def problem_type_wmma_hss(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_wmma_bss(ta, tb, desc):
+def problem_type_wmma_bss(ta, tb, desc, strided_batched=True):
     """V_WMMA_F32_16X16X16_BF16 with D stored as F32 (BSS_BH).
     hipBLASLT serves this with MFMA kernels — WMMA V2 path is uncovered there.
     """
@@ -711,10 +726,11 @@ def problem_type_wmma_bss(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_wmma_i8gemm(ta, tb, desc):
+def problem_type_wmma_i8gemm(ta, tb, desc, strided_batched=True):
     """V_WMMA_I32_16X16X16_IU8 — int8 in, int32 accumulate/out.
     hipBLASLT serves I8II_BH with MFMA kernels — this is the WMMA V2 path.
     """
@@ -728,10 +744,11 @@ def problem_type_wmma_i8gemm(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_valu_hss(ta, tb, desc):
+def problem_type_valu_hss(ta, tb, desc, strided_batched=True):
     return f"""\
     - # {desc} — f16→f32 VALU (f16 in, f32 out — HSS_BH, VALU fallback)
       OperationType: GEMM
@@ -742,10 +759,11 @@ def problem_type_valu_hss(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
-def problem_type_valu_bss(ta, tb, desc):
+def problem_type_valu_bss(ta, tb, desc, strided_batched=True):
     return f"""\
     - # {desc} — bf16→f32 VALU (bf16 in, f32 out — BSS_BH, VALU fallback)
       OperationType: GEMM
@@ -756,7 +774,8 @@ def problem_type_valu_bss(ta, tb, desc):
       TransposeA: {str(ta)}
       TransposeB: {str(tb)}
       UseBeta: True
-      Batched: True"""
+      Batched: True
+      StridedBatched: {str(strided_batched)}"""
 
 
 # ---------------------------------------------------------------------------
@@ -1089,6 +1108,226 @@ def configs():
                 valu_fork_params_hpa(),
                 sizes_gb,
                 f"hss_valu_gb_{tsuffix}",
+            )
+        )
+
+    # ── Grouped-batch FIXED (StridedBatched=False) ─────────────────────────────────────
+        sizes_gb = problem_sizes_block(M_GB, N_GB, K_GB)
+
+        yield (
+            f"hgemm_wmma_gb_fixed_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_wmma_hgemm(ta, tb, tdesc + " [grouped-batch / MoE]", strided_batched=False),
+                COMMON_PARAMS_WMMA,
+                wmma_fork_params(),
+                sizes_gb,
+                f"hgemm_wmma_gb_fixed_{tsuffix}",
+            )
+        )
+
+        yield (
+            f"bf16gemm_wmma_gb_fixed_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_wmma_bf16gemm(ta, tb, tdesc + " [grouped-batch / MoE]", strided_batched=False),
+                COMMON_PARAMS_WMMA,
+                wmma_fork_params(),
+                sizes_gb,
+                f"bf16gemm_wmma_gb_fixed_{tsuffix}",
+            )
+        )
+
+        yield (
+            f"hgemm_valu_gb_fixed_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_valu_hgemm(ta, tb, tdesc + " [grouped-batch / MoE]", strided_batched=False),
+                COMMON_PARAMS_VALU,
+                valu_fork_params_hpa(),
+                sizes_gb,
+                f"hgemm_valu_gb_fixed_{tsuffix}",
+            )
+        )
+
+        yield (
+            f"bf16gemm_valu_gb_fixed_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_valu_bf16gemm(ta, tb, tdesc + " [grouped-batch / MoE]", strided_batched=False),
+                COMMON_PARAMS_VALU,
+                valu_fork_params_hpa(),
+                sizes_gb,
+                f"bf16gemm_valu_gb_fixed_{tsuffix}",
+            )
+        )
+
+        sizes_i8_gb = problem_sizes_block(M_I8_GB, N_I8_GB, K_I8_GB)
+        yield (
+            f"i8gemm_valu_gb_fixed_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_i8gemm(ta, tb, tdesc + " [grouped-batch / MoE]", strided_batched=False),
+                COMMON_PARAMS_VALU,
+                valu_fork_params_i8gemm(),
+                sizes_i8_gb,
+                f"i8gemm_valu_gb_fixed_{tsuffix}",
+            )
+        )
+
+        yield (
+            f"hss_wmma_gb_fixed_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_wmma_hss(ta, tb, tdesc + " [grouped-batch / MoE]", strided_batched=False),
+                COMMON_PARAMS_WMMA,
+                wmma_fork_params(),
+                sizes_gb,
+                f"hss_wmma_gb_fixed_{tsuffix}",
+            )
+        )
+
+        yield (
+            f"hss_valu_gb_fixed_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_valu_hss(ta, tb, tdesc + " [grouped-batch / MoE]", strided_batched=False),
+                COMMON_PARAMS_VALU,
+                valu_fork_params_hpa(),
+                sizes_gb,
+                f"hss_valu_gb_fixed_{tsuffix}",
+            )
+        )
+
+    
+
+        # --- Newly added missing GB blocks ---
+        yield (
+            f"bss_wmma_gb_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_wmma_bss(ta, tb, tdesc + " [grouped-batch / MoE]"),
+                COMMON_PARAMS_WMMA,
+                wmma_fork_params(),
+                sizes_gb,
+                f"bss_wmma_gb_{tsuffix}",
+            )
+        )
+
+        yield (
+            f"bss_valu_gb_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_valu_bss(ta, tb, tdesc + " [grouped-batch / MoE]"),
+                COMMON_PARAMS_VALU,
+                valu_fork_params_hpa(),
+                sizes_gb,
+                f"bss_valu_gb_{tsuffix}",
+            )
+        )
+
+        yield (
+            f"i8gemm_wmma_gb_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_wmma_i8gemm(ta, tb, tdesc + " [grouped-batch / MoE]"),
+                COMMON_PARAMS_WMMA,
+                wmma_fork_params_i8(),
+                sizes_i8_gb,
+                f"i8gemm_wmma_gb_{tsuffix}",
+            )
+        )
+
+        # --- Newly added missing GB FIXED blocks (StridedBatched: False) ---
+        yield (
+            f"bss_wmma_gb_fixed_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_wmma_bss(ta, tb, tdesc + " [grouped-batch / MoE]", strided_batched=False),
+                COMMON_PARAMS_WMMA,
+                wmma_fork_params(),
+                sizes_gb,
+                f"bss_wmma_gb_fixed_{tsuffix}",
+            )
+        )
+
+        yield (
+            f"bss_valu_gb_fixed_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_valu_bss(ta, tb, tdesc + " [grouped-batch / MoE]", strided_batched=False),
+                COMMON_PARAMS_VALU,
+                valu_fork_params_hpa(),
+                sizes_gb,
+                f"bss_valu_gb_fixed_{tsuffix}",
+            )
+        )
+
+        yield (
+            f"i8gemm_wmma_gb_fixed_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_wmma_i8gemm(ta, tb, tdesc + " [grouped-batch / MoE]", strided_batched=False),
+                COMMON_PARAMS_WMMA,
+                wmma_fork_params_i8(),
+                sizes_i8_gb,
+                f"i8gemm_wmma_gb_fixed_{tsuffix}",
+            )
+        )
+
+
+        # --- Newly added missing GB blocks ---
+        yield (
+            f"bss_wmma_gb_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_wmma_bss(ta, tb, tdesc + " [grouped-batch / MoE]"),
+                COMMON_PARAMS_WMMA,
+                wmma_fork_params(),
+                sizes_gb,
+                f"bss_wmma_gb_{tsuffix}",
+            )
+        )
+
+        yield (
+            f"bss_valu_gb_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_valu_bss(ta, tb, tdesc + " [grouped-batch / MoE]"),
+                COMMON_PARAMS_VALU,
+                valu_fork_params_hpa(),
+                sizes_gb,
+                f"bss_valu_gb_{tsuffix}",
+            )
+        )
+
+        yield (
+            f"i8gemm_wmma_gb_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_wmma_i8gemm(ta, tb, tdesc + " [grouped-batch / MoE]"),
+                COMMON_PARAMS_WMMA,
+                wmma_fork_params_i8(),
+                sizes_i8_gb,
+                f"i8gemm_wmma_gb_{tsuffix}",
+            )
+        )
+
+        # --- Newly added missing GB FIXED blocks (StridedBatched: False) ---
+        yield (
+            f"bss_wmma_gb_fixed_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_wmma_bss(ta, tb, tdesc + " [grouped-batch / MoE]", strided_batched=False),
+                COMMON_PARAMS_WMMA,
+                wmma_fork_params(),
+                sizes_gb,
+                f"bss_wmma_gb_fixed_{tsuffix}",
+            )
+        )
+
+        yield (
+            f"bss_valu_gb_fixed_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_valu_bss(ta, tb, tdesc + " [grouped-batch / MoE]", strided_batched=False),
+                COMMON_PARAMS_VALU,
+                valu_fork_params_hpa(),
+                sizes_gb,
+                f"bss_valu_gb_fixed_{tsuffix}",
+            )
+        )
+
+        yield (
+            f"i8gemm_wmma_gb_fixed_{tsuffix}.yaml",
+            build_yaml(
+                problem_type_wmma_i8gemm(ta, tb, tdesc + " [grouped-batch / MoE]", strided_batched=False),
+                COMMON_PARAMS_WMMA,
+                wmma_fork_params_i8(),
+                sizes_i8_gb,
+                f"i8gemm_wmma_gb_fixed_{tsuffix}",
             )
         )
 

@@ -295,6 +295,15 @@ namespace Tensile
             {
                 return validateSolutionCast<ManagedContractionInputs_B8F8_B8_S>(inputs);
             }
+            // hybrid cases with To = F8
+            case ManagedContractionInputs_F8B8_F8_S::TypeId():
+            {
+                return validateSolutionCast<ManagedContractionInputs_F8B8_F8_S>(inputs);
+            }
+            case ManagedContractionInputs_B8F8_F8_S::TypeId():
+            {
+                return validateSolutionCast<ManagedContractionInputs_B8F8_F8_S>(inputs);
+            }
             // cases with To = F16
             case ManagedContractionInputs_F8_H_S::TypeId():
             {

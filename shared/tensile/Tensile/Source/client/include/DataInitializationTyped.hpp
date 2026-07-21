@@ -908,6 +908,11 @@ namespace Tensile
             = ManagedContractionInputs<Float8, BFloat8, BFloat8, BFloat8, float, float>;
         using ManagedContractionInputs_B8F8_B8_S
             = ManagedContractionInputs<BFloat8, Float8, BFloat8, BFloat8, float, float>;
+        // hybrid cases with To = F8
+        using ManagedContractionInputs_F8B8_F8_S
+            = ManagedContractionInputs<Float8, BFloat8, Float8, Float8, float, float>;
+        using ManagedContractionInputs_B8F8_F8_S
+            = ManagedContractionInputs<BFloat8, Float8, Float8, Float8, float, float>;
         // cases with To = f16
         using ManagedContractionInputs_F8_H_S
             = ManagedContractionInputs<Float8, Float8, Half, Half, float, float>;

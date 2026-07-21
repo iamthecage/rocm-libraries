@@ -571,6 +571,37 @@ namespace Tensile
                         problem, typedInputs, validationStride);
                 }
             }
+            // hybrid cases with To = F8
+            case ContractionInputs_F8B8_F8_S::TypeId():
+            {
+                auto const& typedInputs = dynamic_cast<ContractionInputs_F8B8_F8_S const&>(inputs);
+                // request for StochasticRounding
+                if(problem.stochasticRounding())
+                {
+                    return ReferenceSolution<ContractionInputs_F8B8_F8_S, float, true>::SolveCPU(
+                        problem, typedInputs, validationStride);
+                }
+                else // Non-SR
+                {
+                    return ReferenceSolution<ContractionInputs_F8B8_F8_S, float, false>::SolveCPU(
+                        problem, typedInputs, validationStride);
+                }
+            }
+            case ContractionInputs_B8F8_F8_S::TypeId():
+            {
+                auto const& typedInputs = dynamic_cast<ContractionInputs_B8F8_F8_S const&>(inputs);
+                // request for StochasticRounding
+                if(problem.stochasticRounding())
+                {
+                    return ReferenceSolution<ContractionInputs_B8F8_F8_S, float, true>::SolveCPU(
+                        problem, typedInputs, validationStride);
+                }
+                else // Non-SR
+                {
+                    return ReferenceSolution<ContractionInputs_B8F8_F8_S, float, false>::SolveCPU(
+                        problem, typedInputs, validationStride);
+                }
+            }
             // cases with To = f16
             case ContractionInputs_F8_H_S::TypeId():
             {

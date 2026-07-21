@@ -347,6 +347,17 @@ namespace Tensile
                 return GetTyped<ContractionInputs_B8F8_B8_S>(
                     args, problemFactory, maxWorkspaceSize);
             }
+            // hybrid cases with To = F8
+            case ContractionInputs_F8B8_F8_S::TypeId():
+            {
+                return GetTyped<ContractionInputs_F8B8_F8_S>(
+                    args, problemFactory, maxWorkspaceSize);
+            }
+            case ContractionInputs_B8F8_F8_S::TypeId():
+            {
+                return GetTyped<ContractionInputs_B8F8_F8_S>(
+                    args, problemFactory, maxWorkspaceSize);
+            }
             // cases with To = half
             case ContractionInputs_F8_H_S::TypeId():
             {

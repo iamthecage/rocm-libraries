@@ -25,6 +25,7 @@ BenchmarkProblems:
       TransposeB: False
       UseBeta: True
       Batched: True
+      StridedBatched: True
 
     - InitialSolutionParameters:
       BenchmarkCommonParameters:

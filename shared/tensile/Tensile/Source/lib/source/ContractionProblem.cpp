@@ -1357,6 +1357,9 @@ namespace Tensile
     // hybrid cases with To as BF8
     template struct TypedContractionInputs<Float8, BFloat8, BFloat8, BFloat8, float, float>;
     template struct TypedContractionInputs<BFloat8, Float8, BFloat8, BFloat8, float, float>;
+    // hybrid cases with To as F8
+    template struct TypedContractionInputs<Float8, BFloat8, Float8, Float8, float, float>;
+    template struct TypedContractionInputs<BFloat8, Float8, Float8, Float8, float, float>;
     // hybrid cases: Ti=F8, To=f16, Tc=f32
     template struct TypedContractionInputs<Float8, Float8, Half, Half, float, float>;
     template struct TypedContractionInputs<BFloat8, BFloat8, Half, Half, float, float>;

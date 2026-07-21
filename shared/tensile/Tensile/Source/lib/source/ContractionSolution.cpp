@@ -1619,6 +1619,17 @@ namespace Tensile
             auto const& typedInputs = dynamic_cast<ContractionInputs_B8F8_B8_S const&>(inputs);
             return solveTyped(problem, typedInputs, hardware);
         }
+        // hybrid cases with To = F8
+        case ContractionInputs_F8B8_F8_S::TypeId():
+        {
+            auto const& typedInputs = dynamic_cast<ContractionInputs_F8B8_F8_S const&>(inputs);
+            return solveTyped(problem, typedInputs, hardware);
+        }
+        case ContractionInputs_B8F8_F8_S::TypeId():
+        {
+            auto const& typedInputs = dynamic_cast<ContractionInputs_B8F8_F8_S const&>(inputs);
+            return solveTyped(problem, typedInputs, hardware);
+        }
             // hybrid with F16 output
         case ContractionInputs_F8_H_S::TypeId():
         {

@@ -129,9 +129,19 @@ YAMLS_TO_RUN=()
 for yaml in "${ALL_YAMLS[@]}"; do
     name=$(basename "$yaml" .yaml)
 
-    # Apply --filter if set
-    if [[ -n "$FILTER" ]] && [[ "$name" != *"${FILTER}"* ]]; then
-        continue
+    # Apply --filter if set (supports comma-separated list for OR logic)
+    if [[ -n "$FILTER" ]]; then
+        MATCHED=0
+        IFS=',' read -ra FILTERS <<< "$FILTER"
+        for f in "${FILTERS[@]}"; do
+            if [[ "$f" == ^* ]]; then
+                prefix="${f:1}"
+                [[ "$name" == ${prefix}* ]] && MATCHED=1
+            else
+                [[ "$name" == *"$f"* ]] && MATCHED=1
+            fi
+        done
+        [[ $MATCHED -eq 0 ]] && continue
     fi
 
     # --rerun-failed: skip configs that already passed, only run previously failed

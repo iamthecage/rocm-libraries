@@ -1037,6 +1037,11 @@ namespace Tensile
         = TypedContractionInputs<Float8, BFloat8, BFloat8, BFloat8, float, float>;
     using ContractionInputs_B8F8_B8_S
         = TypedContractionInputs<BFloat8, Float8, BFloat8, BFloat8, float, float>;
+    // hybrid cases with To = F8
+    using ContractionInputs_F8B8_F8_S
+        = TypedContractionInputs<Float8, BFloat8, Float8, Float8, float, float>;
+    using ContractionInputs_B8F8_F8_S
+        = TypedContractionInputs<BFloat8, Float8, Float8, Float8, float, float>;
     // cases with To = f16
     using ContractionInputs_F8_H_S
         = TypedContractionInputs<Float8, Float8, Half, Half, float, float>;
